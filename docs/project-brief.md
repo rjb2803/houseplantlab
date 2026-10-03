@@ -27,7 +27,7 @@ The approved mockup establishes the design direction:
 
 The design should feel calm, premium, natural, and useful. Accessibility, legible contrast, responsive behaviour, and page speed are part of the design rather than later additions.
 
-The mockup is the visual reference. Before implementation is treated as visually approved, the source mockup or exported reference images should be added to the project so comparisons can be made against it.
+The approved interface mockup is stored at `docs/design-reference/approved-interface-reference.png` and is the visual acceptance reference for desktop and mobile implementation. It covers the homepage, plant profile, symptom-led problem checker, editorial archive, plant identifier, and mobile homepage.
 
 ## 3. Primary information architecture
 

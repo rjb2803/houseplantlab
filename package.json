@@ -1,12 +1,13 @@
 {
   "name": "houseplantlab",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Build and validation tooling for the HouseplantLab WordPress project.",
   "type": "module",
   "scripts": {
     "check": "node scripts/check.mjs",
     "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve-preview.mjs",
     "test": "npm run check && npm run build"
   },
   "engines": {

@@ -27,12 +27,15 @@ npm test
 
 The deployable files are written to `dist/wp-content`. Install or deploy its theme and plugin folders to the corresponding WordPress `wp-content` paths, then activate **HouseplantLab Core** and **HouseplantLab**.
 
+To review the current responsive homepage direction without a WordPress installation, run `npm run preview` and open `http://127.0.0.1:4173`. This preview uses illustrated photography placeholders; production photography remains content-managed in WordPress.
+
 ## Documentation
 
 - [Project brief and decisions](docs/project-brief.md)
 - [Initial implementation plan](docs/implementation-plan.md)
 - [Architecture decision](docs/architecture.md)
 - [Build and deployment guide](docs/deployment.md)
+- [Approved design reference](docs/design-reference/README.md)
 
 ## Repository shape
 
