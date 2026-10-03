@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   package:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -21,7 +21,7 @@ jobs:
       - run: npm test
       - name: Create hosting archive
         run: cd dist && zip -r ../houseplantlab-deploy.zip wp-content BUILD.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: houseplantlab-deploy-${{ github.sha }}
           path: houseplantlab-deploy.zip
