@@ -1,0 +1,30 @@
+name: Package deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Create hosting archive
+        run: cd dist && zip -r ../houseplantlab-deploy.zip wp-content BUILD.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: houseplantlab-deploy-${{ github.sha }}
+          path: houseplantlab-deploy.zip
+          if-no-files-found: error
+          retention-days: 30
+
