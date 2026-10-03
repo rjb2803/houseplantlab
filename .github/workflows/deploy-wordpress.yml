@@ -1,6 +1,8 @@
 name: Deploy WordPress files
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       mode:
@@ -42,12 +44,12 @@ jobs:
           cls -la
           cls -la public_html
           cls -la public_html/wp-content
-          cls -la wp-content
+          cls -la public_html/wp-content/mu-plugins
           bye
           LFTP
 
   deploy:
-    if: inputs.mode == 'deploy'
+    if: github.event_name == 'push' || inputs.mode == 'deploy'
     runs-on: ubuntu-24.04
     environment: production
     steps:
