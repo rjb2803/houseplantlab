@@ -21,7 +21,7 @@ jobs:
       - run: npm test
       - name: Create hosting archive
         run: cd dist && zip -r ../houseplantlab-deploy.zip wp-content BUILD.txt
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: houseplantlab-deploy-${{ github.sha }}
           path: houseplantlab-deploy.zip
