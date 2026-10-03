@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.4.0
+Version: 0.4.1
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -113,19 +113,35 @@ a { text-underline-offset: 0.18em; }
 .hpl-home { background: var(--wp--preset--color--cream); }
 
 .hpl-hero {
-  background: var(--wp--preset--color--forest);
+  background-color: var(--wp--preset--color--forest);
+  background-image: url("assets/images/hero-monstera-mock-v1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--wp--preset--color--paper);
   overflow: hidden;
+  position: relative;
+}
+
+.hpl-hero::before {
+  background: linear-gradient(90deg, rgb(8 28 20 / 92%) 0%, rgb(8 28 20 / 72%) 38%, rgb(8 28 20 / 18%) 68%, rgb(8 28 20 / 4%) 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
 }
 
 .hpl-hero__columns {
   gap: 0;
   margin-bottom: 0;
-  min-height: 31rem;
+  min-height: 34rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hpl-hero__copy {
-  padding: clamp(3rem, 7vw, 6.5rem) clamp(2rem, 5vw, 5rem) 3.5rem 0;
+  padding: clamp(3rem, 7vw, 6rem) clamp(2rem, 5vw, 5rem) 3rem 0;
 }
 
 .hpl-hero__copy h1 {
@@ -158,22 +174,13 @@ a { text-underline-offset: 0.18em; }
 }
 
 .hpl-hero__image {
-  background-color: #183d2b;
-  background-image: url("assets/images/hero-monstera-mock-v1.png");
-  background-position: 62% center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 31rem;
+  min-height: 34rem;
   position: relative;
 }
 
 .hpl-hero__image .wp-block-post-featured-image,
 .hpl-hero__image .wp-block-post-featured-image img {
-  height: 100%;
-  margin: 0;
-  min-height: 31rem;
-  object-fit: cover;
-  width: 100%;
+  display: none;
 }
 
 .hpl-hero__image:has(.wp-block-post-featured-image img) .hpl-photo-placeholder { display: none; }
@@ -182,6 +189,8 @@ a { text-underline-offset: 0.18em; }
   border-top: 1px solid rgb(255 255 255 / 20%);
   gap: 0;
   padding-block: 1.1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hpl-trust-row p {
@@ -366,17 +375,23 @@ a { text-underline-offset: 0.18em; }
   }
 
   .hpl-hero__copy {
-    background: linear-gradient(90deg, rgb(12 38 27 / 94%), rgb(12 38 27 / 56%));
     min-height: 30rem;
     padding: 4rem 1.25rem 2.5rem;
     position: relative;
     z-index: 2;
   }
 
+  .hpl-hero {
+    background-position: 58% center;
+  }
+
+  .hpl-hero::before {
+    background: linear-gradient(90deg, rgb(12 38 27 / 88%), rgb(12 38 27 / 42%));
+  }
+
   .hpl-hero__copy h1 { font-size: clamp(2.55rem, 12vw, 4rem) !important; }
 
   .hpl-hero__image {
-    background-position: 58% center;
     inset: 0;
     min-height: 30rem;
     position: absolute;
