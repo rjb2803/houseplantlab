@@ -17,3 +17,12 @@ add_action('after_setup_theme', static function (): void {
     add_editor_style('style.css');
 });
 
+add_action('wp_enqueue_scripts', static function (): void {
+    wp_enqueue_style(
+        'houseplantlab',
+        get_stylesheet_uri(),
+        [],
+        (string) wp_get_theme()->get('Version')
+    );
+});
+
