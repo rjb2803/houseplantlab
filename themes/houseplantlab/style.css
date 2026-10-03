@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.4.2
+Version: 0.4.3
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -71,8 +71,7 @@ a { text-underline-offset: 0.18em; }
 }
 
 .hpl-header {
-  background: rgb(255 254 249 / 96%);
-  backdrop-filter: blur(12px);
+  background: var(--wp--preset--color--paper);
   border-bottom: 1px solid rgb(20 55 42 / 12%);
   box-shadow: 0 2px 18px rgb(20 55 42 / 6%);
   position: sticky;
