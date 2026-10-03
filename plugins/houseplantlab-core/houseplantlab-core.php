@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,30 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.1.0';
+const HOUSEPLANTLAB_CORE_VERSION = '0.2.0';
+
+/**
+ * Keep public traffic on the configured HTTPS origin.
+ */
+function houseplantlab_enforce_https(): void
+{
+    if (is_ssl()) {
+        return;
+    }
+
+    $host = wp_parse_url(home_url('/'), PHP_URL_HOST);
+    if (! is_string($host) || $host === '') {
+        return;
+    }
+
+    $request_uri = isset($_SERVER['REQUEST_URI'])
+        ? wp_unslash((string) $_SERVER['REQUEST_URI'])
+        : '/';
+
+    wp_safe_redirect('https://' . $host . $request_uri, 301, 'HouseplantLab');
+    exit;
+}
+add_action('template_redirect', 'houseplantlab_enforce_https', -100);
 
 /**
  * Register permanent site content structures.
