@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.3.0
+Version: 0.4.0
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -217,6 +217,83 @@ a { text-underline-offset: 0.18em; }
 
 .hpl-plant-card .wp-block-post-title { margin-bottom: 0.35rem; }
 
+.hpl-mock-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hpl-mock-grid--plants { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.hpl-mock-grid--articles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.hpl-mock-card {
+  color: var(--wp--preset--color--forest);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.hpl-mock-image {
+  background-repeat: no-repeat;
+  display: block;
+  width: 100%;
+}
+
+.hpl-mock-grid--plants .hpl-mock-image {
+  aspect-ratio: 1;
+  background-image: url("assets/images/popular-plants-mock-v1.png");
+  background-size: 300% 200%;
+}
+
+.hpl-plant-image--1 { background-position: 0 0; }
+.hpl-plant-image--2 { background-position: 50% 0; }
+.hpl-plant-image--3 { background-position: 100% 0; }
+.hpl-plant-image--4 { background-position: 0 100%; }
+.hpl-plant-image--5 { background-position: 50% 100%; }
+.hpl-plant-image--6 { background-position: 100% 100%; }
+
+.hpl-mock-grid--articles .hpl-mock-image {
+  aspect-ratio: 4 / 3;
+  background-image: url("assets/images/article-thumbnails-mock-v1.png");
+  background-size: 400% auto;
+}
+
+.hpl-article-image--1 { background-position: 0 center; }
+.hpl-article-image--2 { background-position: 33.333% center; }
+.hpl-article-image--3 { background-position: 66.667% center; }
+.hpl-article-image--4 { background-position: 100% center; }
+
+.hpl-mock-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.75rem 0.8rem 0.9rem;
+}
+
+.hpl-mock-card__body strong {
+  font-size: 0.79rem;
+  line-height: 1.25;
+}
+
+.hpl-mock-card__body small {
+  color: #697269;
+  font-size: 0.64rem;
+  margin-top: auto;
+}
+
+.hpl-mock-grid--plants .hpl-mock-card__body small {
+  color: var(--wp--preset--color--leaf);
+  font-weight: 750;
+}
+
+.hpl-mock-card__body b {
+  background: #e7efe5;
+  border-radius: 999px;
+  color: var(--wp--preset--color--leaf);
+  font-weight: 700;
+  padding: 0.15rem 0.38rem;
+}
+
 .hpl-diagnosis { background: #e9ede2; }
 .hpl-diagnosis .wp-block-columns { gap: clamp(2rem, 7vw, 7rem); }
 .hpl-diagnosis h2 { margin-block: 0.5rem 0.75rem; }
@@ -228,7 +305,9 @@ a { text-underline-offset: 0.18em; }
 
 .hpl-symptom-card {
   align-items: flex-end;
-  background: linear-gradient(145deg, #c4a947, #4c723d);
+  background-image: url("assets/images/plant-symptoms-mock-v1.png");
+  background-repeat: no-repeat;
+  background-size: 300% auto;
   border: 0.45rem solid var(--wp--preset--color--paper);
   border-radius: 0.35rem;
   box-shadow: var(--hpl-shadow);
@@ -251,9 +330,9 @@ a { text-underline-offset: 0.18em; }
   width: 100%;
 }
 
-.hpl-symptom-card--one { left: 6%; transform: rotate(-7deg); }
-.hpl-symptom-card--two { background: linear-gradient(145deg, #af764c, #58704a); left: 35%; transform: rotate(2deg); z-index: 2; }
-.hpl-symptom-card--three { background: linear-gradient(145deg, #8f4f3a, #294d34); left: 64%; transform: rotate(7deg); }
+.hpl-symptom-card--one { background-position: 0 center; left: 6%; transform: rotate(-7deg); }
+.hpl-symptom-card--two { background-position: 50% center; left: 35%; transform: rotate(2deg); z-index: 2; }
+.hpl-symptom-card--three { background-position: 100% center; left: 64%; transform: rotate(7deg); }
 
 .hpl-card__meta {
   color: #647067;
@@ -273,6 +352,8 @@ a { text-underline-offset: 0.18em; }
   .hpl-plant-query .wp-block-post-template { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hpl-article-query .wp-block-post-template { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hpl-hero__copy { padding-left: 1.25rem; }
+  .hpl-mock-grid--plants { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hpl-mock-grid--articles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 781px) {
@@ -333,6 +414,14 @@ a { text-underline-offset: 0.18em; }
   }
 
   .hpl-plant-card { width: 9.5rem; }
+
+  .hpl-mock-grid--plants {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+  }
+
+  .hpl-mock-grid--plants .hpl-mock-card { flex: 0 0 9.5rem; }
   .hpl-diagnosis__visual { min-height: 14rem; }
 
   .hpl-symptom-card {
@@ -349,6 +438,7 @@ a { text-underline-offset: 0.18em; }
   .hpl-brand__title { font-size: 1rem; }
   .hpl-article-query .wp-block-post-template { grid-template-columns: 1fr 1fr; }
   .hpl-section__heading { align-items: baseline; }
+  .hpl-mock-grid--articles { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

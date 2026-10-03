@@ -18,4 +18,11 @@ The remaining reference screens will be implemented in later slices using the sa
 
 ## Temporary homepage imagery
 
-`themes/houseplantlab/assets/images/hero-monstera-mock-v1.png` is an AI-generated mock hero used to establish the approved composition while original HouseplantLab photography is prepared. It must not be labelled as original HouseplantLab evidence and should be replaced by the homepage featured image when suitable original photography is available.
+The following AI-generated mock assets establish the approved composition while original HouseplantLab photography and editorial content are prepared:
+
+- `themes/houseplantlab/assets/images/hero-monstera-mock-v1.png`
+- `themes/houseplantlab/assets/images/popular-plants-mock-v1.png`
+- `themes/houseplantlab/assets/images/plant-symptoms-mock-v1.png`
+- `themes/houseplantlab/assets/images/article-thumbnails-mock-v1.png`
+
+They must not be labelled as original HouseplantLab evidence. Replace them with content-managed original photography as the relevant profiles and articles are published.
