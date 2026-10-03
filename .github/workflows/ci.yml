@@ -23,5 +23,5 @@ jobs:
       - run: npm ci
       - run: npm test
       - name: Lint PHP
-        run: find themes plugins -name '*.php' -print0 | xargs -0 -n1 php -l
+        run: find themes plugins deploy -name '*.php' -print0 | xargs -0 -n1 php -l
 
