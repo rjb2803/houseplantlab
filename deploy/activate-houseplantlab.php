@@ -28,6 +28,7 @@ add_action('init', static function (): void {
     update_option('blogdescription', 'Healthy Houseplants. Happier Homes.');
     update_option('home', 'https://houseplantlab.co.uk');
     update_option('siteurl', 'https://houseplantlab.co.uk');
+    update_option('permalink_structure', '/%postname%/');
     update_option('houseplantlab_bootstrapped', '0.3.0');
 
     $monstera = get_page_by_path('monstera-deliciosa', OBJECT, 'plant');
@@ -78,5 +79,5 @@ HTML,
 
     flush_rewrite_rules(false);
     @unlink(__FILE__);
-}, 0);
+}, 99);
 
