@@ -1,4 +1,47 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} --><main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Plant profile</p><!-- /wp:paragraph --><!-- wp:post-title {"level":1,"fontSize":"x-large"} /--><!-- wp:post-featured-image {"align":"wide"} /--><!-- wp:post-content {"layout":{"type":"constrained"}} /--><!-- wp:group {"className":"hpl-card","style":{"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} --><div class="wp-block-group hpl-card" style="padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30)"><!-- wp:heading {"level":2,"fontSize":"large"} --><h2 class="wp-block-heading has-large-font-size">About our evidence</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Grown &amp; photographed by HouseplantLab. Guidance is reviewed as our plants and observations develop.</p><!-- /wp:paragraph --></div><!-- /wp:group --></main><!-- /wp:group -->
-<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
 
+<!-- wp:group {"tagName":"main","className":"hpl-profile","layout":{"type":"default"}} -->
+<main class="wp-block-group hpl-profile"><!-- wp:group {"align":"full","className":"hpl-profile-hero","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull hpl-profile-hero"><!-- wp:columns {"align":"wide","verticalAlignment":"stretch","className":"hpl-profile-hero__columns"} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-stretch hpl-profile-hero__columns"><!-- wp:column {"verticalAlignment":"center","width":"52%","className":"hpl-profile-hero__copy"} -->
+<div class="wp-block-column is-vertically-aligned-center hpl-profile-hero__copy" style="flex-basis:52%"><!-- wp:paragraph {"className":"hpl-breadcrumb"} --><p class="hpl-breadcrumb"><a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/plants/">Plants</a></p><!-- /wp:paragraph -->
+<!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Complete plant guide</p><!-- /wp:paragraph -->
+<!-- wp:post-title {"level":1,"fontSize":"x-large"} /-->
+<!-- wp:post-excerpt {"moreText":"","showMoreOnNewLine":false,"fontSize":"medium"} /-->
+<!-- wp:group {"className":"hpl-profile-hero__signals","layout":{"type":"flex","flexWrap":"wrap"}} --><div class="wp-block-group hpl-profile-hero__signals"><!-- wp:paragraph --><p>✓ Practical care</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>✓ UK homes</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>✓ Clear problem solving</p><!-- /wp:paragraph --></div><!-- /wp:group --></div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"stretch","width":"48%","className":"hpl-profile-hero__media"} -->
+<div class="wp-block-column is-vertically-aligned-stretch hpl-profile-hero__media" style="flex-basis:48%"><!-- wp:post-featured-image {"aspectRatio":"4/3","scale":"cover"} /--><div class="hpl-profile-hero__fallback" aria-hidden="true"></div></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:html --><nav class="hpl-profile-nav" aria-label="Plant guide sections"><div class="hpl-profile-nav__inner"><a href="#quick-facts">Quick facts</a><a href="#care-guide">Care guide</a><a href="#recommended-kit">Recommended kit</a><a href="#our-evidence">Our evidence</a></div></nav><!-- /wp:html -->
+
+<!-- wp:group {"align":"wide","className":"hpl-profile-layout","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide hpl-profile-layout"><!-- wp:group {"className":"hpl-profile-main","layout":{"type":"default"}} -->
+<div class="wp-block-group hpl-profile-main"><!-- wp:group {"anchor":"quick-facts","className":"hpl-profile-section hpl-profile-facts","layout":{"type":"default"}} -->
+<section id="quick-facts" class="wp-block-group hpl-profile-section hpl-profile-facts"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">At a glance</p><!-- /wp:paragraph --><!-- wp:heading {"level":2,"fontSize":"large"} --><h2 class="wp-block-heading has-large-font-size">Quick facts</h2><!-- /wp:heading --><!-- wp:shortcode -->[houseplantlab_plant_facts]<!-- /wp:shortcode --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"anchor":"care-guide","className":"hpl-profile-section hpl-profile-content","layout":{"type":"constrained"}} -->
+<section id="care-guide" class="wp-block-group hpl-profile-section hpl-profile-content"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">How to keep it thriving</p><!-- /wp:paragraph --><!-- wp:heading {"level":2,"fontSize":"large"} --><h2 class="wp-block-heading has-large-font-size">Care guide</h2><!-- /wp:heading --><!-- wp:post-content {"layout":{"type":"constrained"}} /--></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"anchor":"recommended-kit","className":"hpl-profile-section hpl-profile-products","layout":{"type":"default"}} -->
+<section id="recommended-kit" class="wp-block-group hpl-profile-section hpl-profile-products"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Useful, not excessive</p><!-- /wp:paragraph --><!-- wp:heading {"level":2,"fontSize":"large"} --><h2 class="wp-block-heading has-large-font-size">Recommended care kit</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Only the items that solve a genuine care need for this plant. No decorative filler and no untested claims.</p><!-- /wp:paragraph --><!-- wp:shortcode -->[houseplantlab_recommended_products]<!-- /wp:shortcode --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"anchor":"our-evidence","className":"hpl-profile-section hpl-profile-evidence","layout":{"type":"default"}} -->
+<section id="our-evidence" class="wp-block-group hpl-profile-section hpl-profile-evidence"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Why trust this guide?</p><!-- /wp:paragraph --><!-- wp:heading {"level":2,"fontSize":"large"} --><h2 class="wp-block-heading has-large-font-size">Our evidence</h2><!-- /wp:heading --><!-- wp:paragraph --><p>We separate direct observations from general horticultural guidance and update recommendations as our plants, photographs and product tests develop.</p><!-- /wp:paragraph --></section>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"aside","className":"hpl-profile-sidebar","layout":{"type":"default"}} -->
+<aside class="wp-block-group hpl-profile-sidebar"><!-- wp:group {"className":"hpl-profile-help","layout":{"type":"default"}} --><div class="wp-block-group hpl-profile-help"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Plant looking unhappy?</p><!-- /wp:paragraph --><!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Diagnose the symptom</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Work through yellow leaves, brown marks, drooping and pests one step at a time.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/tools/plant-problem-checker/">Start the plant checker →</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:group -->
+<!-- wp:group {"className":"hpl-profile-disclosure","layout":{"type":"default"}} --><div class="wp-block-group hpl-profile-disclosure"><!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Commercial transparency</h3><!-- /wp:heading --><!-- wp:paragraph --><p>If a recommendation uses an affiliate link, it is labelled and may earn us a commission. That never changes the price you pay or the care advice you receive.</p><!-- /wp:paragraph --></div><!-- /wp:group --></aside>
+<!-- /wp:group --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

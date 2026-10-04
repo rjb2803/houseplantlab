@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.4.5
+Version: 0.5.0
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -468,6 +468,218 @@ a { text-underline-offset: 0.18em; }
   padding: 0.2rem 0.45rem;
 }
 
+.hpl-profile { background: var(--wp--preset--color--paper); }
+
+.hpl-profile-hero {
+  background: linear-gradient(135deg, #edf1e8 0%, #f8f5ed 100%);
+  overflow: hidden;
+}
+
+.hpl-profile-hero__columns {
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-bottom: 0;
+  min-height: 34rem;
+}
+
+.hpl-profile-hero__copy { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.hpl-profile-hero__copy h1 { margin-block: 0.65rem 1rem; }
+.hpl-profile-hero__copy .wp-block-post-excerpt { max-width: 38rem; }
+.hpl-profile-hero__copy .wp-block-post-excerpt__excerpt { margin: 0; }
+
+.hpl-breadcrumb {
+  color: #647067;
+  font-size: 0.78rem;
+  margin-bottom: 2rem;
+}
+
+.hpl-breadcrumb a { color: inherit; }
+
+.hpl-profile-hero__signals {
+  gap: 0.65rem 1.25rem !important;
+  margin-top: 2rem;
+}
+
+.hpl-profile-hero__signals p {
+  color: var(--wp--preset--color--leaf);
+  font-size: 0.82rem;
+  font-weight: 750;
+  margin: 0;
+}
+
+.hpl-profile-hero__media {
+  min-height: 34rem;
+  position: relative;
+}
+
+.hpl-profile-hero__media .wp-block-post-featured-image,
+.hpl-profile-hero__media .wp-block-post-featured-image img {
+  height: 100%;
+  margin: 0;
+  min-height: 34rem;
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.hpl-profile-hero__fallback {
+  background-image: url("assets/images/hero-monstera-mock-v1.png");
+  background-position: 66% center;
+  background-size: cover;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.hpl-profile-nav {
+  background: var(--wp--preset--color--paper);
+  border-block: 1px solid var(--hpl-border);
+  position: sticky;
+  top: clamp(4.25rem, 4rem + 1.2vw, 5.5rem);
+  z-index: 20;
+}
+
+.hpl-profile-nav__inner {
+  display: flex;
+  gap: clamp(1.25rem, 4vw, 3.5rem);
+  margin-inline: auto;
+  max-width: 73.75rem;
+  overflow-x: auto;
+  padding: 0 1rem;
+  scrollbar-width: none;
+}
+
+.hpl-profile-nav a {
+  border-bottom: 2px solid transparent;
+  color: var(--wp--preset--color--forest);
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding-block: 1rem 0.85rem;
+  text-decoration: none;
+}
+
+.hpl-profile-nav a:hover {
+  border-bottom-color: var(--wp--preset--color--leaf);
+  color: var(--wp--preset--color--leaf);
+}
+
+.hpl-profile-layout {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.hpl-profile-main { min-width: 0; }
+
+.hpl-profile-section {
+  border-bottom: 1px solid var(--hpl-border);
+  margin-bottom: clamp(3.5rem, 7vw, 6rem);
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  scroll-margin-top: 9rem;
+}
+
+.hpl-profile-section:last-child { margin-bottom: 0; }
+.hpl-profile-section > .hpl-eyebrow { color: var(--wp--preset--color--leaf); margin-bottom: 0.5rem; }
+.hpl-profile-section > h2 { margin-top: 0; }
+
+.hpl-facts {
+  border: 1px solid var(--hpl-border);
+  border-radius: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.75rem 0 0;
+  overflow: hidden;
+}
+
+.hpl-fact {
+  background: #fbfaf5;
+  border-bottom: 1px solid var(--hpl-border);
+  padding: 1rem 1.15rem;
+}
+
+.hpl-fact:nth-child(odd) { border-right: 1px solid var(--hpl-border); }
+.hpl-fact:nth-last-child(-n + 2) { border-bottom: 0; }
+.hpl-fact dt { color: #657066; font-size: 0.68rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; }
+.hpl-fact dd { color: var(--wp--preset--color--forest); font-weight: 700; margin: 0.25rem 0 0; }
+
+.hpl-profile-content > .wp-block-post-content > * { max-width: 46rem; }
+.hpl-profile-content h2 { margin-top: 2.5rem; }
+.hpl-profile-content h3 { margin-top: 2rem; }
+
+.hpl-products {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.75rem;
+}
+
+.hpl-product {
+  background: var(--wp--preset--color--paper);
+  border: 1px solid var(--hpl-border);
+  border-radius: 0.8rem;
+  box-shadow: var(--hpl-shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 14rem;
+  padding: 1.15rem;
+}
+
+.hpl-product__number { color: #97aa98; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; }
+.hpl-product h3 { font-family: var(--wp--preset--font-family--interface); font-size: 1rem; margin: 1.2rem 0 0.5rem; }
+.hpl-product p { color: #59665d; font-size: 0.82rem; line-height: 1.55; }
+.hpl-product__link { color: var(--wp--preset--color--leaf); font-size: 0.8rem; font-weight: 800; margin-top: auto; text-decoration: none; }
+.hpl-product__pending { color: #6d766f; font-size: 0.68rem; font-style: italic; line-height: 1.4; margin-top: auto; }
+
+.hpl-affiliate-disclosure {
+  background: #edf2e9;
+  border-left: 3px solid var(--wp--preset--color--leaf);
+  color: #4d5b51;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+}
+
+.hpl-profile-evidence {
+  background: #edf2e9;
+  border: 1px solid #d4dfd2;
+  border-radius: 0.9rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hpl-profile-sidebar { min-width: 0; }
+
+.hpl-profile-help,
+.hpl-profile-disclosure {
+  border: 1px solid var(--hpl-border);
+  border-radius: 0.85rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.hpl-profile-help {
+  background: var(--wp--preset--color--forest);
+  color: var(--wp--preset--color--paper);
+  position: sticky;
+  top: 10rem;
+}
+
+.hpl-profile-help .hpl-eyebrow,
+.hpl-profile-help h2 { color: inherit; }
+.hpl-profile-help h2 { margin-top: 0.45rem; }
+.hpl-profile-help p { font-size: 0.9rem; }
+.hpl-profile-help .wp-block-button__link { background: var(--wp--preset--color--paper); color: var(--wp--preset--color--forest); font-size: 0.78rem; }
+
+.hpl-profile-disclosure {
+  background: #fbfaf5;
+  color: #59665d;
+  margin-top: 1rem;
+}
+
+.hpl-profile-disclosure h3 { font-family: var(--wp--preset--font-family--interface); font-size: 0.9rem; }
+.hpl-profile-disclosure p { font-size: 0.75rem; line-height: 1.55; }
+
 @media (max-width: 1100px) {
   .hpl-header__inner { width: calc(100% - 3rem); }
   .hpl-header__cta { display: none; }
@@ -534,6 +746,14 @@ a { text-underline-offset: 0.18em; }
   .hpl-mock-grid--plants { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hpl-mock-grid--articles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hpl-header__cta { display: none; }
+  .hpl-profile-layout { grid-template-columns: 1fr; }
+  .hpl-profile-sidebar {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hpl-profile-help { position: static; }
+  .hpl-profile-disclosure { margin-top: 0; }
 }
 
 @media (max-width: 781px) {
@@ -572,6 +792,17 @@ a { text-underline-offset: 0.18em; }
     padding: 1rem 0;
     width: 100%;
   }
+
+  .hpl-profile-hero__columns { gap: 0; }
+  .hpl-profile-hero__copy { padding: 2.75rem 1.25rem; }
+  .hpl-profile-hero__media { min-height: 23rem; }
+  .hpl-profile-hero__media .wp-block-post-featured-image,
+  .hpl-profile-hero__media .wp-block-post-featured-image img { min-height: 23rem; }
+  .hpl-profile-nav { top: 4.25rem; }
+  .hpl-profile-layout { padding: 3rem 1rem; }
+  .hpl-products { grid-template-columns: 1fr; }
+  .hpl-product { min-height: 0; }
+  .hpl-profile-sidebar { grid-template-columns: 1fr; }
 
   .hpl-hero__columns {
     min-height: 0;
