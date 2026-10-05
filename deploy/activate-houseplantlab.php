@@ -29,7 +29,7 @@ add_action('init', static function (): void {
     update_option('home', 'https://houseplantlab.co.uk');
     update_option('siteurl', 'https://houseplantlab.co.uk');
     update_option('permalink_structure', '/%postname%/');
-    update_option('houseplantlab_bootstrapped', '0.5.0');
+    update_option('houseplantlab_bootstrapped', '0.6.0');
 
     $monstera = get_page_by_path('monstera-deliciosa', OBJECT, 'plant');
     if (! $monstera instanceof WP_Post) {
@@ -70,6 +70,13 @@ HTML,
             'houseplantlab_mature_size' => 'Up to 2–3 metres indoors',
             'houseplantlab_pet_safety' => 'Toxic if chewed',
             'houseplantlab_photo_provenance' => 'Temporary generated mock image',
+            'houseplantlab_care_intro' => 'Monstera deliciosa is a striking, easy-to-love houseplant with dramatic split leaves. With the right light, watering and humidity, it can grow quickly and bring a lush tropical feel to a UK home.',
+            'houseplantlab_care_light_body' => 'Monstera deliciosa prefers bright, indirect light. Place it near a bright window, ideally east or west-facing, where it receives plenty of natural light without harsh direct sun. Too little light can result in smaller leaves and fewer splits, while strong direct sun can scorch the leaves.',
+            'houseplantlab_care_light_tip' => 'A few hours of gentle morning sun is usually fine, but avoid strong midday sun, especially in summer.',
+            'houseplantlab_care_watering_body' => 'Water when the top 3–5 cm of compost feels dry. Water thoroughly, allowing excess water to drain away, and never leave the pot standing in water. In most UK homes this is roughly every one to two weeks, depending on the season, light and pot size.',
+            'houseplantlab_care_watering_tip' => 'It is safer to underwater slightly than to overwater. Yellow leaves are often an early sign of persistently wet compost.',
+            'houseplantlab_care_humidity_body' => 'Monstera deliciosa is comfortable in average household humidity but appreciates moderately humid air. Keep it away from cold draughts and directly above radiators, and wipe the broad leaves occasionally so they can make the most of available light.',
+            'houseplantlab_care_humidity_tip' => 'Misting raises humidity only briefly. Grouping plants or using a humidifier is more effective during dry winter months.',
             'houseplantlab_product_1_name' => 'Free-draining houseplant compost',
             'houseplantlab_product_1_reason' => 'A balanced, airy mix helps roots receive oxygen while avoiding long periods of waterlogging.',
             'houseplantlab_product_2_name' => 'Sturdy moss or coir pole',

@@ -35,6 +35,7 @@ To review the current responsive homepage direction without a WordPress installa
 - [Initial implementation plan](docs/implementation-plan.md)
 - [Architecture decision](docs/architecture.md)
 - [Build and deployment guide](docs/deployment.md)
+- [Plant profile editorial process](docs/plant-profile-editorial-process.md)
 - [Approved design reference](docs/design-reference/README.md)
 
 ## Repository shape

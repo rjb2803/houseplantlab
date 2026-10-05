@@ -714,6 +714,137 @@ a { text-underline-offset: 0.18em; }
 .hpl-profile-content h2 { margin-top: 2.5rem; }
 .hpl-profile-content h3 { margin-top: 2rem; }
 
+.hpl-care-guide__intro {
+  color: #45564c;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+  max-width: 48rem;
+}
+
+.hpl-care-card {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  grid-template-columns: minmax(12rem, 0.72fr) minmax(0, 1.6fr);
+  margin-bottom: 1.4rem;
+}
+
+.hpl-care-card__media {
+  border-radius: 0.75rem;
+  margin: 0;
+  min-height: 13.5rem;
+  overflow: hidden;
+}
+
+.hpl-care-card__media img,
+.hpl-care-card__fallback {
+  display: block;
+  height: 100%;
+  min-height: 13.5rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.hpl-care-card__fallback {
+  background-image: url("assets/images/monstera-care-triptych-v1.png");
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+}
+
+.hpl-care-card__fallback--light { background-position: 0 center; }
+.hpl-care-card__fallback--watering { background-position: 50% center; }
+.hpl-care-card__fallback--humidity { background-position: 100% center; }
+
+.hpl-care-card__content { padding-block: 0.35rem; }
+
+.hpl-care-card__heading {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.hpl-care-card__heading h3 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  margin: 0;
+}
+
+.hpl-care-card__icon {
+  align-items: center;
+  background: #e8f0e5;
+  border-radius: 50%;
+  color: var(--wp--preset--color--leaf);
+  display: flex;
+  flex: 0 0 2.55rem;
+  height: 2.55rem;
+  justify-content: center;
+}
+
+.hpl-care-card__icon svg { height: 1.25rem; width: 1.25rem; }
+
+.hpl-care-card__content > p {
+  color: #45564c;
+  font-size: 0.88rem;
+  line-height: 1.68;
+  margin: 0.65rem 0 0;
+}
+
+.hpl-care-tip {
+  align-items: flex-start;
+  background: #edf2e9;
+  border: 1px solid #dce6d8;
+  border-radius: 0.65rem;
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.85rem;
+}
+
+.hpl-care-tip > span {
+  color: var(--wp--preset--color--leaf);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.hpl-care-tip p {
+  color: #45564c;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.hpl-care-tip strong { display: block; }
+
+.hpl-ad-slot {
+  align-items: center;
+  background: #edf2e9;
+  border: 1px solid #dce6d8;
+  border-radius: 0.7rem;
+  color: #6f7c73;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2.25rem;
+  min-height: 9rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.hpl-ad-slot::before,
+.hpl-ad-slot::after {
+  background: rgb(57 113 83 / 7%);
+  border-radius: 70% 30% 65% 35%;
+  content: "";
+  height: 8rem;
+  position: absolute;
+  transform: rotate(28deg);
+  width: 4rem;
+}
+
+.hpl-ad-slot::before { left: 4%; top: 25%; }
+.hpl-ad-slot::after { bottom: 15%; right: 5%; }
+.hpl-ad-slot span { font-family: var(--wp--preset--font-family--editorial); font-size: 1.15rem; }
+.hpl-ad-slot small { font-size: 0.68rem; margin-top: 0.2rem; }
+
 .hpl-products {
   display: grid;
   gap: 1rem;
@@ -929,6 +1060,15 @@ a { text-underline-offset: 0.18em; }
     background-position: 70% 42%;
     background-size: cover;
   }
+  .hpl-care-card {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    margin-bottom: 2.25rem;
+  }
+  .hpl-care-card__media,
+  .hpl-care-card__media img,
+  .hpl-care-card__fallback { min-height: 13rem; }
+  .hpl-care-card__content { padding: 0; }
   .hpl-products { grid-template-columns: 1fr; }
   .hpl-product { min-height: 0; }
   .hpl-profile-sidebar { grid-template-columns: 1fr; }
