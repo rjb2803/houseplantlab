@@ -31,7 +31,9 @@ The fixed sequence is:
 4. Care guide: Light, Watering, Humidity
 5. In-content advertising position
 6. Recommended care kit
-7. Evidence and related guidance
+7. Plant problem checker
+8. Evidence strip
+9. Related guidance
 
 The Plant post body is reserved for future long-form sections such as common problems, propagation, soil and feeding, and FAQs. It should not duplicate the structured care-guide fields.
 

@@ -463,7 +463,7 @@ function houseplantlab_render_recommended_products(): string
             : '<span class="hpl-product__pending">Recommendation link added after testing</span>';
 
         $cards .= sprintf(
-            '<article class="hpl-product"><span class="hpl-product__number">%02d</span><h3>%s</h3><p>%s</p>%s</article>',
+            '<article class="hpl-product"><span class="hpl-product__image hpl-product__image--%1$d" role="img" aria-label="%2$s"></span><div class="hpl-product__body"><h3>%2$s</h3><p>%3$s</p>%4$s</div></article>',
             $product,
             esc_html($name),
             esc_html($reason),
@@ -475,7 +475,7 @@ function houseplantlab_render_recommended_products(): string
         return '';
     }
 
-    return '<div class="hpl-products">' . $cards . '</div><p class="hpl-affiliate-disclosure"><strong>How we recommend:</strong> products are selected for a specific care job and links are added only after review. Some future links may be affiliate links, which can earn HouseplantLab a commission at no extra cost to you.</p>';
+    return '<div class="hpl-products">' . $cards . '</div><p id="affiliate-disclosure" class="hpl-affiliate-disclosure"><strong>How we recommend:</strong> products are selected for a specific care job and links are added only after review. Some future links may be affiliate links, which can earn HouseplantLab a commission at no extra cost to you.</p>';
 }
 add_shortcode('houseplantlab_recommended_products', 'houseplantlab_render_recommended_products');
 
