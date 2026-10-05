@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.4.0
+ * Version: 0.5.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.4.0';
+const HOUSEPLANTLAB_CORE_VERSION = '0.5.0';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -92,12 +92,15 @@ add_action('init', 'houseplantlab_register_content');
 function houseplantlab_register_meta(): void
 {
     $text_fields = [
+        'houseplantlab_common_name',
         'houseplantlab_botanical_name',
+        'houseplantlab_origin',
         'houseplantlab_difficulty',
         'houseplantlab_light',
         'houseplantlab_watering',
         'houseplantlab_humidity',
         'houseplantlab_growth',
+        'houseplantlab_mature_size',
         'houseplantlab_pet_safety',
         'houseplantlab_photo_provenance',
     ];
@@ -183,12 +186,15 @@ function houseplantlab_render_plant_facts(): string
     }
 
     $facts = [
+        'Common name' => 'houseplantlab_common_name',
         'Botanical name' => 'houseplantlab_botanical_name',
+        'Origin' => 'houseplantlab_origin',
         'Difficulty' => 'houseplantlab_difficulty',
         'Light' => 'houseplantlab_light',
         'Watering' => 'houseplantlab_watering',
         'Humidity' => 'houseplantlab_humidity',
         'Growth rate' => 'houseplantlab_growth',
+        'Mature size' => 'houseplantlab_mature_size',
         'Pet safety' => 'houseplantlab_pet_safety',
     ];
 
@@ -206,7 +212,24 @@ function houseplantlab_render_plant_facts(): string
         );
     }
 
-    return $items === '' ? '' : '<dl class="hpl-facts">' . $items . '</dl>';
+    if ($items === '') {
+        return '';
+    }
+
+    $image = get_the_post_thumbnail(
+        get_the_ID(),
+        'large',
+        [
+            'class' => 'hpl-facts-card__image',
+            'loading' => 'lazy',
+        ]
+    );
+
+    $media = $image !== ''
+        ? $image
+        : '<span class="hpl-facts-card__fallback" role="img" aria-label="Close-up of Monstera deliciosa foliage"></span>';
+
+    return '<div class="hpl-facts-card"><dl class="hpl-facts">' . $items . '</dl><figure class="hpl-facts-card__media">' . $media . '</figure></div>';
 }
 add_shortcode('houseplantlab_plant_facts', 'houseplantlab_render_plant_facts');
 

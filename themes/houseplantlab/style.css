@@ -663,25 +663,52 @@ a { text-underline-offset: 0.18em; }
 .hpl-profile-section > .hpl-eyebrow { color: var(--wp--preset--color--leaf); margin-bottom: 0.5rem; }
 .hpl-profile-section > h2 { margin-top: 0; }
 
-.hpl-facts {
+.hpl-profile-facts > h2 { margin-bottom: 1rem; }
+
+.hpl-facts-card {
   border: 1px solid var(--hpl-border);
   border-radius: 0.85rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 1.75rem 0 0;
+  grid-template-columns: minmax(0, 1.55fr) minmax(15rem, 0.9fr);
   overflow: hidden;
 }
+
+.hpl-facts { margin: 0; }
 
 .hpl-fact {
   background: #fbfaf5;
   border-bottom: 1px solid var(--hpl-border);
-  padding: 1rem 1.15rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(7.5rem, 0.72fr) minmax(0, 1.35fr);
+  padding: 0.65rem 1rem;
 }
 
-.hpl-fact:nth-child(odd) { border-right: 1px solid var(--hpl-border); }
-.hpl-fact:nth-last-child(-n + 2) { border-bottom: 0; }
-.hpl-fact dt { color: #657066; font-size: 0.68rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; }
-.hpl-fact dd { color: var(--wp--preset--color--forest); font-weight: 700; margin: 0.25rem 0 0; }
+.hpl-fact:last-child { border-bottom: 0; }
+.hpl-fact dt { color: #657066; font-size: 0.7rem; font-weight: 700; }
+.hpl-fact dd { color: var(--wp--preset--color--forest); font-size: 0.78rem; font-weight: 650; margin: 0; }
+
+.hpl-facts-card__media {
+  border-left: 1px solid var(--hpl-border);
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.hpl-facts-card__image,
+.hpl-facts-card__fallback {
+  display: block;
+  height: 100%;
+  min-height: 22rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.hpl-facts-card__fallback {
+  background-image: url("assets/images/hero-monstera-mock-v1.png");
+  background-position: 70% center;
+  background-size: auto 125%;
+}
 
 .hpl-profile-content > .wp-block-post-content > * { max-width: 46rem; }
 .hpl-profile-content h2 { margin-top: 2.5rem; }
@@ -890,6 +917,18 @@ a { text-underline-offset: 0.18em; }
   .hpl-profile-hero__media .wp-block-post-featured-image img { min-height: 23rem; }
   .hpl-profile-nav { top: 4.25rem; }
   .hpl-profile-layout { padding: 3rem 1rem; }
+  .hpl-facts-card { grid-template-columns: 1fr; }
+  .hpl-facts-card__media {
+    border-left: 0;
+    border-top: 1px solid var(--hpl-border);
+    min-height: 15rem;
+  }
+  .hpl-facts-card__image,
+  .hpl-facts-card__fallback { min-height: 15rem; }
+  .hpl-facts-card__fallback {
+    background-position: 70% 42%;
+    background-size: cover;
+  }
   .hpl-products { grid-template-columns: 1fr; }
   .hpl-product { min-height: 0; }
   .hpl-profile-sidebar { grid-template-columns: 1fr; }

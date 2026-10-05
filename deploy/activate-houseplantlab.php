@@ -29,7 +29,7 @@ add_action('init', static function (): void {
     update_option('home', 'https://houseplantlab.co.uk');
     update_option('siteurl', 'https://houseplantlab.co.uk');
     update_option('permalink_structure', '/%postname%/');
-    update_option('houseplantlab_bootstrapped', '0.3.0');
+    update_option('houseplantlab_bootstrapped', '0.5.0');
 
     $monstera = get_page_by_path('monstera-deliciosa', OBJECT, 'plant');
     if (! $monstera instanceof WP_Post) {
@@ -53,27 +53,33 @@ add_action('init', static function (): void {
 HTML,
         ], true);
 
-        if (! is_wp_error($plant_id)) {
-            $meta = [
-                'houseplantlab_botanical_name' => 'Monstera deliciosa',
-                'houseplantlab_difficulty' => 'Easy to moderate',
-                'houseplantlab_light' => 'Bright, indirect light',
-                'houseplantlab_watering' => 'When the top 3–5 cm feels dry',
-                'houseplantlab_humidity' => 'Average to humid',
-                'houseplantlab_growth' => 'Fast in good light',
-                'houseplantlab_pet_safety' => 'Toxic if chewed',
-                'houseplantlab_photo_provenance' => 'Temporary generated mock image',
-                'houseplantlab_product_1_name' => 'Free-draining houseplant compost',
-                'houseplantlab_product_1_reason' => 'A balanced, airy mix helps roots receive oxygen while avoiding long periods of waterlogging.',
-                'houseplantlab_product_2_name' => 'Sturdy moss or coir pole',
-                'houseplantlab_product_2_reason' => 'Support gives mature stems somewhere to climb and keeps a large plant manageable indoors.',
-                'houseplantlab_product_3_name' => 'Balanced liquid houseplant feed',
-                'houseplantlab_product_3_reason' => 'Useful during active growth when applied at the label rate rather than as a cure for poor conditions.',
-            ];
+    } else {
+        $plant_id = $monstera->ID;
+    }
 
-            foreach ($meta as $key => $value) {
-                update_post_meta($plant_id, $key, $value);
-            }
+    if (isset($plant_id) && ! is_wp_error($plant_id)) {
+        $meta = [
+            'houseplantlab_common_name' => 'Monstera, Swiss cheese plant',
+            'houseplantlab_botanical_name' => 'Monstera deliciosa',
+            'houseplantlab_origin' => 'Central America',
+            'houseplantlab_difficulty' => 'Easy to moderate',
+            'houseplantlab_light' => 'Bright, indirect light',
+            'houseplantlab_watering' => 'When the top 3–5 cm feels dry',
+            'houseplantlab_humidity' => 'Average to humid',
+            'houseplantlab_growth' => 'Fast in good light',
+            'houseplantlab_mature_size' => 'Up to 2–3 metres indoors',
+            'houseplantlab_pet_safety' => 'Toxic if chewed',
+            'houseplantlab_photo_provenance' => 'Temporary generated mock image',
+            'houseplantlab_product_1_name' => 'Free-draining houseplant compost',
+            'houseplantlab_product_1_reason' => 'A balanced, airy mix helps roots receive oxygen while avoiding long periods of waterlogging.',
+            'houseplantlab_product_2_name' => 'Sturdy moss or coir pole',
+            'houseplantlab_product_2_reason' => 'Support gives mature stems somewhere to climb and keeps a large plant manageable indoors.',
+            'houseplantlab_product_3_name' => 'Balanced liquid houseplant feed',
+            'houseplantlab_product_3_reason' => 'Useful during active growth when applied at the label rate rather than as a cure for poor conditions.',
+        ];
+
+        foreach ($meta as $key => $value) {
+            update_post_meta($plant_id, $key, $value);
         }
     }
 
