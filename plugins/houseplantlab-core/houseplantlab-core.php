@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.3.0
+ * Version: 0.4.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.3.0';
+const HOUSEPLANTLAB_CORE_VERSION = '0.4.0';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -120,6 +120,58 @@ function houseplantlab_register_meta(): void
     }
 }
 add_action('init', 'houseplantlab_register_meta');
+
+/**
+ * Render the four most important care signals in the plant hero. Keeping this
+ * data in post meta means the same hero works for every plant profile.
+ */
+function houseplantlab_render_plant_hero_signals(): string
+{
+    if (get_post_type() !== 'plant') {
+        return '';
+    }
+
+    $signals = [
+        [
+            'label' => 'Care level',
+            'key' => 'houseplantlab_difficulty',
+            'icon' => '<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 2"/>',
+        ],
+        [
+            'label' => 'Light',
+            'key' => 'houseplantlab_light',
+            'icon' => '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/>',
+        ],
+        [
+            'label' => 'Watering',
+            'key' => 'houseplantlab_watering',
+            'icon' => '<path d="M12 2.75S6.5 9.1 6.5 14a5.5 5.5 0 0 0 11 0C17.5 9.1 12 2.75 12 2.75Z"/>',
+        ],
+        [
+            'label' => 'Pet safety',
+            'key' => 'houseplantlab_pet_safety',
+            'icon' => '<path d="M8.7 12.3c-2.25 1.3-3.6 3.15-3.05 5.05.55 1.85 2.6 2.15 4.15 1.4 1.35-.65 3.05-.65 4.4 0 1.55.75 3.6.45 4.15-1.4.55-1.9-.8-3.75-3.05-5.05-2.05-1.2-4.55-1.2-6.6 0Z"/><circle cx="6.25" cy="8.25" r="1.55"/><circle cx="10.25" cy="5.75" r="1.55"/><circle cx="17.75" cy="8.25" r="1.55"/><circle cx="13.75" cy="5.75" r="1.55"/>',
+        ],
+    ];
+
+    $items = '';
+    foreach ($signals as $signal) {
+        $value = trim((string) get_post_meta(get_the_ID(), $signal['key'], true));
+        if ($value === '') {
+            continue;
+        }
+
+        $items .= sprintf(
+            '<div class="hpl-profile-signal"><span class="hpl-profile-signal__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">%s</svg></span><span><small>%s</small><strong>%s</strong></span></div>',
+            $signal['icon'],
+            esc_html($signal['label']),
+            esc_html($value)
+        );
+    }
+
+    return $items === '' ? '' : '<div class="hpl-profile-signals">' . $items . '</div>';
+}
+add_shortcode('houseplantlab_plant_hero_signals', 'houseplantlab_render_plant_hero_signals');
 
 /**
  * Render editorially useful plant facts from the registered plant metadata.

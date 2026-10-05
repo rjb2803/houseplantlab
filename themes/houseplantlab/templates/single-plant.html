@@ -1,22 +1,25 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
 <!-- wp:group {"tagName":"main","className":"hpl-profile","layout":{"type":"default"}} -->
-<main class="wp-block-group hpl-profile"><!-- wp:group {"align":"full","className":"hpl-profile-hero","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull hpl-profile-hero"><!-- wp:columns {"align":"wide","verticalAlignment":"stretch","className":"hpl-profile-hero__columns"} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-stretch hpl-profile-hero__columns"><!-- wp:column {"verticalAlignment":"center","width":"52%","className":"hpl-profile-hero__copy"} -->
-<div class="wp-block-column is-vertically-aligned-center hpl-profile-hero__copy" style="flex-basis:52%"><!-- wp:paragraph {"className":"hpl-breadcrumb"} --><p class="hpl-breadcrumb"><a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/plants/">Plants</a></p><!-- /wp:paragraph -->
-<!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Complete plant guide</p><!-- /wp:paragraph -->
+<main class="wp-block-group hpl-profile"><!-- wp:group {"align":"wide","className":"hpl-profile-intro","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide hpl-profile-intro"><!-- wp:paragraph {"className":"hpl-breadcrumb"} --><p class="hpl-breadcrumb"><a href="/">Home</a> <span aria-hidden="true">/</span> <a href="/plants/">Plants</a> <span aria-hidden="true">/</span> <span>Plant guide</span></p><!-- /wp:paragraph -->
+<!-- wp:group {"className":"hpl-profile-hero","layout":{"type":"default"}} -->
+<div class="wp-block-group hpl-profile-hero"><!-- wp:columns {"verticalAlignment":"stretch","className":"hpl-profile-hero__columns"} -->
+<div class="wp-block-columns are-vertically-aligned-stretch hpl-profile-hero__columns"><!-- wp:column {"verticalAlignment":"center","width":"48%","className":"hpl-profile-hero__copy"} -->
+<div class="wp-block-column is-vertically-aligned-center hpl-profile-hero__copy" style="flex-basis:48%"><!-- wp:paragraph {"className":"hpl-eyebrow"} --><p class="hpl-eyebrow">Complete plant guide</p><!-- /wp:paragraph -->
 <!-- wp:post-title {"level":1,"fontSize":"x-large"} /-->
 <!-- wp:post-excerpt {"moreText":"","showMoreOnNewLine":false,"fontSize":"medium"} /-->
-<!-- wp:group {"className":"hpl-profile-hero__signals","layout":{"type":"flex","flexWrap":"wrap"}} --><div class="wp-block-group hpl-profile-hero__signals"><!-- wp:paragraph --><p>✓ Practical care</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>✓ UK homes</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>✓ Clear problem solving</p><!-- /wp:paragraph --></div><!-- /wp:group --></div>
+<!-- wp:shortcode -->[houseplantlab_plant_hero_signals]<!-- /wp:shortcode --></div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"stretch","width":"48%","className":"hpl-profile-hero__media"} -->
-<div class="wp-block-column is-vertically-aligned-stretch hpl-profile-hero__media" style="flex-basis:48%"><!-- wp:post-featured-image {"aspectRatio":"4/3","scale":"cover"} /--><div class="hpl-profile-hero__fallback" aria-hidden="true"></div></div>
+<!-- wp:column {"verticalAlignment":"stretch","width":"52%","className":"hpl-profile-hero__media"} -->
+<div class="wp-block-column is-vertically-aligned-stretch hpl-profile-hero__media" style="flex-basis:52%"><!-- wp:post-featured-image {"aspectRatio":"4/3","scale":"cover"} /--><div class="hpl-profile-hero__fallback" aria-hidden="true"></div></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
 
-<!-- wp:html --><nav class="hpl-profile-nav" aria-label="Plant guide sections"><div class="hpl-profile-nav__inner"><a href="#quick-facts">Quick facts</a><a href="#care-guide">Care guide</a><a href="#recommended-kit">Recommended kit</a><a href="#our-evidence">Our evidence</a></div></nav><!-- /wp:html -->
+<!-- wp:html --><nav class="hpl-profile-nav" aria-label="Plant guide sections"><div class="hpl-profile-nav__inner"><a class="is-active" href="#quick-facts">Overview</a><a href="#care-guide">Care</a><a href="#common-problems">Problems</a><a href="#propagation">Propagation</a><a href="#soil-and-feeding">Soil &amp; Feeding</a><a href="#frequently-asked-questions">FAQ</a></div></nav><!-- /wp:html -->
 
 <!-- wp:group {"align":"wide","className":"hpl-profile-layout","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide hpl-profile-layout"><!-- wp:group {"className":"hpl-profile-main","layout":{"type":"default"}} -->
