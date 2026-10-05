@@ -416,7 +416,8 @@ function houseplantlab_render_care_guide(): string
             : sprintf('<div class="hpl-care-tip"><span aria-hidden="true">♧</span><p><strong>Top tip</strong>%s</p></div>', esc_html($tip));
 
         $cards .= sprintf(
-            '<article class="hpl-care-card"><figure class="hpl-care-card__media">%s</figure><div class="hpl-care-card__content"><div class="hpl-care-card__heading"><span class="hpl-care-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">%s</svg></span><h3>%s</h3></div><p>%s</p>%s</div></article>',
+            '<article id="care-%s" class="hpl-care-card"><figure class="hpl-care-card__media">%s</figure><div class="hpl-care-card__content"><div class="hpl-care-card__heading"><span class="hpl-care-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">%s</svg></span><h3>%s</h3></div><p>%s</p>%s</div></article>',
+            esc_attr($slug),
             $media,
             $section['icon'],
             esc_html($section['title']),
