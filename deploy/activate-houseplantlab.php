@@ -77,12 +77,12 @@ HTML,
             'houseplantlab_care_watering_tip' => 'It is safer to underwater slightly than to overwater. Yellow leaves are often an early sign of persistently wet compost.',
             'houseplantlab_care_humidity_body' => 'Monstera deliciosa is comfortable in average household humidity but appreciates moderately humid air. Keep it away from cold draughts and directly above radiators, and wipe the broad leaves occasionally so they can make the most of available light.',
             'houseplantlab_care_humidity_tip' => 'Misting raises humidity only briefly. Grouping plants or using a humidifier is more effective during dry winter months.',
-            'houseplantlab_product_1_name' => 'Free-draining houseplant compost',
-            'houseplantlab_product_1_reason' => 'A balanced, airy mix helps roots receive oxygen while avoiding long periods of waterlogging.',
-            'houseplantlab_product_2_name' => 'Sturdy moss or coir pole',
-            'houseplantlab_product_2_reason' => 'Support gives mature stems somewhere to climb and keeps a large plant manageable indoors.',
-            'houseplantlab_product_3_name' => 'Balanced liquid houseplant feed',
-            'houseplantlab_product_3_reason' => 'Useful during active growth when applied at the label rate rather than as a cure for poor conditions.',
+            'houseplantlab_product_1_name' => 'Soil moisture meter',
+            'houseplantlab_product_1_reason' => 'A simple check that can help confirm whether the compost is still moist before watering again.',
+            'houseplantlab_product_2_name' => 'Balanced liquid houseplant feed',
+            'houseplantlab_product_2_reason' => 'Useful during active spring and summer growth when applied at the label rate.',
+            'houseplantlab_product_3_name' => 'Sturdy moss or coir pole',
+            'houseplantlab_product_3_reason' => 'Support gives mature stems somewhere to climb and keeps a large plant manageable indoors.',
         ];
 
         foreach ($meta as $key => $value) {
