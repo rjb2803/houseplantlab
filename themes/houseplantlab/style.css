@@ -1224,33 +1224,8 @@ a { text-underline-offset: 0.18em; }
   .hpl-care-card__media img,
   .hpl-care-card__fallback { min-height: 13rem; }
   .hpl-care-card__content { padding: 0; }
-  .hpl-products {
-    gap: 1.25rem;
-    grid-template-columns: 1fr;
-  }
-  .hpl-product {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-  .hpl-product__image {
-    height: 11rem;
-    min-height: 11rem;
-  }
-  .hpl-product__body { padding: 1.1rem 1.15rem 1.2rem; }
-  .hpl-product h3 {
-    font-size: 1.05rem;
-    line-height: 1.2;
-  }
-  .hpl-product p {
-    font-size: 0.88rem;
-    line-height: 1.55;
-  }
-  .hpl-product__pending,
-  .hpl-product__link {
-    font-size: 0.78rem;
-    margin-top: 0.9rem;
-    padding-top: 0;
-  }
+  .hpl-products { grid-template-columns: 1fr; }
+  .hpl-product { min-height: 9rem; }
   .hpl-problem-checker { grid-template-columns: auto minmax(0, 1fr); }
   .hpl-problem-checker a { grid-column: 1 / -1; text-align: center; }
   .hpl-evidence-strip { grid-template-columns: auto minmax(0, 1fr); }
