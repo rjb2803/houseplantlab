@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.5.1
+Version: 0.7.0
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -1387,5 +1387,316 @@ a { text-underline-offset: 0.18em; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+/* Publication plant profile */
+.hpl-publication {
+  --pub-cream: #f5f1e8;
+  --pub-ink: #12392d;
+  --pub-leaf: #3d7658;
+  background: var(--wp--preset--color--paper);
+  color: var(--pub-ink);
+}
+
+.hpl-pub-breadcrumb {
+  color: #77837b;
+  font-size: 0.72rem;
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 1.15rem clamp(1.5rem, 5vw, 4.75rem);
+}
+
+.hpl-pub-breadcrumb a { color: inherit; }
+.hpl-pub-breadcrumb span { margin-inline: 0.55rem; }
+
+.hpl-pub-hero {
+  display: grid;
+  grid-template-columns: 47% 53%;
+  margin-inline: auto;
+  max-width: 90rem;
+  position: relative;
+}
+
+.hpl-pub-hero__copy {
+  align-items: flex-start;
+  background: linear-gradient(145deg, #edf2e9, #f8f4eb);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 38rem;
+  padding: 4.3rem clamp(2.2rem, 6vw, 5.6rem) 8.5rem;
+}
+
+.hpl-pub-kicker {
+  color: var(--pub-leaf);
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hpl-pub-hero h1 {
+  font-family: var(--wp--preset--font-family--editorial);
+  font-size: clamp(3.9rem, 6.5vw, 6rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.91;
+  margin: 1.1rem 0 1.3rem;
+  max-width: 7.5ch;
+}
+
+.hpl-pub-botanical {
+  color: var(--pub-leaf);
+  font-family: var(--wp--preset--font-family--editorial);
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 0 0 1.6rem;
+}
+
+.hpl-pub-deck {
+  color: #29483d;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 32rem;
+}
+
+.hpl-pub-byline {
+  align-items: center;
+  border-top: 1px solid #ced8cc;
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 2.3rem;
+  padding-top: 1.35rem;
+  width: 100%;
+}
+
+.hpl-pub-byline__mark {
+  align-items: center;
+  background: linear-gradient(145deg, #51795d, #173f32);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 3px 12px rgb(23 60 46 / 17%);
+  color: white;
+  display: flex;
+  flex: 0 0 2.6rem;
+  height: 2.6rem;
+  justify-content: center;
+}
+
+.hpl-pub-byline strong,
+.hpl-pub-byline small { display: block; }
+.hpl-pub-byline small { color: #69766f; font-size: 0.65rem; }
+
+.hpl-pub-hero__media {
+  background: #cad6c5;
+  margin: 0;
+  min-height: 38rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.hpl-pub-hero__media::before {
+  background: linear-gradient(90deg, #edf2e9, transparent);
+  content: "";
+  inset: 0 auto 0 0;
+  pointer-events: none;
+  position: absolute;
+  width: clamp(3rem, 8vw, 7rem);
+  z-index: 2;
+}
+
+.hpl-pub-hero__image,
+.hpl-pub-hero__fallback {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.hpl-pub-hero__fallback {
+  background: url("assets/images/hero-monstera-mock-v1.png") center / cover;
+}
+
+.hpl-pub-hero__media figcaption {
+  background: rgb(18 57 45 / 92%);
+  bottom: 1.5rem;
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  position: absolute;
+  right: 1.5rem;
+  z-index: 3;
+}
+
+.hpl-pub-facts {
+  background: var(--pub-ink);
+  bottom: 0;
+  color: white;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(5, 1fr);
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 4;
+}
+
+.hpl-pub-fact { border-right: 1px solid rgb(255 255 255 / 17%); padding: 1.35rem clamp(1rem, 2.1vw, 2rem); }
+.hpl-pub-fact:last-child { border: 0; }
+.hpl-pub-fact span { display: block; font-size: 0.57rem; font-weight: 800; letter-spacing: 0.13em; opacity: 0.65; text-transform: uppercase; }
+.hpl-pub-fact strong { display: block; font-family: var(--wp--preset--font-family--editorial); font-size: 0.98rem; font-weight: 500; line-height: 1.35; margin-top: 0.25rem; }
+
+.hpl-pub-nav {
+  background: rgb(255 253 248 / 97%);
+  border-bottom: 1px solid var(--hpl-border);
+  box-shadow: 0 9px 24px rgb(18 57 45 / 6%);
+  display: flex;
+  gap: clamp(1.7rem, 4vw, 3rem);
+  overflow-x: auto;
+  padding: 0 clamp(1.5rem, 5vw, 4.75rem);
+  position: sticky;
+  scrollbar-width: none;
+  top: 0;
+  z-index: 20;
+}
+
+.hpl-pub-nav a { border-bottom: 2px solid transparent; flex: none; font-size: 0.7rem; font-weight: 800; padding: 1.1rem 0 0.9rem; }
+.hpl-pub-nav a:first-child { border-color: var(--pub-leaf); color: var(--pub-leaf); }
+
+.hpl-pub-editorial {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 47.5rem) minmax(15rem, 17.5rem);
+  justify-content: center;
+  padding: 4.8rem clamp(1.5rem, 5vw, 4.75rem);
+}
+
+.hpl-pub-story h2,
+.hpl-pub-section h2,
+.hpl-pub-commerce h2,
+.hpl-pub-evidence h2 {
+  font-family: var(--wp--preset--font-family--editorial);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  margin: 0 0 1.25rem;
+}
+
+.hpl-pub-standfirst { font-family: var(--wp--preset--font-family--editorial); font-size: 1.25rem; font-style: italic; line-height: 1.65; margin-bottom: 2.2rem; }
+.hpl-pub-story > p { color: #304b40; font-size: 1rem; line-height: 1.9; }
+.hpl-pub-intro::first-letter { color: var(--pub-leaf); float: left; font-family: var(--wp--preset--font-family--editorial); font-size: 5.5rem; line-height: 0.72; padding: 0.75rem 0.65rem 0 0; }
+.hpl-pub-story blockquote { border-block: 1px solid var(--hpl-border); font-family: var(--wp--preset--font-family--editorial); font-size: clamp(1.55rem, 2.4vw, 1.85rem); font-style: italic; line-height: 1.35; margin: 3rem 0; padding: 2rem 0.5rem; }
+
+.hpl-publication .hpl-care-guide { display: grid; gap: 0.85rem; grid-template-columns: repeat(3, 1fr); margin-top: 2.3rem; }
+.hpl-publication .hpl-care-guide__intro { display: none; }
+.hpl-publication .hpl-care-card { background: #edf2e9; border: 0; border-radius: 0.65rem; display: block; overflow: hidden; }
+.hpl-publication .hpl-care-card__media { height: 11.5rem; width: 100%; }
+.hpl-publication .hpl-care-card__content { padding: 1.35rem; }
+.hpl-publication .hpl-care-card__heading h3 { font-family: var(--wp--preset--font-family--editorial); font-size: 1.55rem; font-weight: 500; }
+.hpl-publication .hpl-care-card__heading { gap: 0.45rem; }
+.hpl-publication .hpl-care-card__icon { display: none; }
+.hpl-publication .hpl-care-card__content > p { font-size: 0.75rem; line-height: 1.6; }
+.hpl-publication .hpl-care-tip { display: none; }
+
+.hpl-pub-rail nav { border-top: 3px solid var(--pub-ink); padding-top: 1rem; }
+.hpl-pub-rail nav h2 { font-family: var(--wp--preset--font-family--editorial); font-size: 1.4rem; font-weight: 500; margin: 0 0 0.75rem; }
+.hpl-pub-rail nav a { border-bottom: 1px solid var(--hpl-border); display: block; font-size: 0.72rem; font-weight: 700; padding: 0.65rem 0; }
+.hpl-pub-rail nav a span { color: var(--pub-leaf); float: right; }
+.hpl-pub-ad { align-items: center; background: #edf1e8; color: #879087; display: flex; font-size: 0.58rem; height: 21rem; justify-content: center; letter-spacing: 0.12em; margin-top: 2.2rem; text-transform: uppercase; }
+.hpl-pub-promise { background: #eef3ea; border-left: 3px solid var(--pub-leaf); font-size: 0.72rem; margin-top: 1.7rem; padding: 1rem; }
+
+.hpl-pub-section { padding: 4.6rem clamp(1.5rem, 5vw, 4.75rem); scroll-margin-top: 6rem; }
+.hpl-pub-section--sage { background: #eef2e9; }
+.hpl-pub-section__heading { align-items: end; display: flex; justify-content: space-between; margin: 0 auto 2rem; max-width: 81rem; }
+.hpl-pub-section__heading > p { color: #69766f; max-width: 32rem; }
+.hpl-pub-section__heading h2 { max-width: 14ch; }
+.hpl-pub-problems { display: grid; gap: 0.95rem; grid-template-columns: repeat(3, 1fr); margin-inline: auto; max-width: 81rem; }
+.hpl-pub-problem { background: var(--wp--preset--color--paper); border: 1px solid var(--hpl-border); border-radius: 0.65rem; overflow: hidden; }
+.hpl-pub-problem__image { background-image: url("assets/images/plant-symptoms-mock-v1.png"); background-repeat: no-repeat; background-size: 300% 100%; display: block; height: 13.5rem; }
+.hpl-pub-problem__image--2 { background-position: 50% center; }
+.hpl-pub-problem__image--3 { background-position: 100% center; }
+.hpl-pub-problem > div { padding: 1.5rem; }
+.hpl-pub-problem h3 { font-family: var(--wp--preset--font-family--editorial); font-size: 1.5rem; font-weight: 500; margin: 0 0 0.5rem; }
+.hpl-pub-problem p { color: #4f6259; font-size: 0.75rem; }
+.hpl-pub-problem a,
+.hpl-pub-problem__pending { color: var(--pub-leaf); font-size: 0.68rem; font-weight: 800; }
+
+.hpl-pub-propagation { align-items: center; display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: 1fr 1fr; margin-inline: auto; max-width: 81rem; }
+.hpl-pub-propagation__image { background: url("assets/images/monstera-care-triptych-v1.png") 50% center / 300% 100%; min-height: 27.5rem; }
+.hpl-pub-propagation p { line-height: 1.8; }
+.hpl-pub-propagation ol { counter-reset: step; list-style: none; margin: 1.8rem 0 0; padding: 0; }
+.hpl-pub-propagation li { border-top: 1px solid var(--hpl-border); counter-increment: step; padding: 0.9rem 0 0.9rem 2.8rem; position: relative; }
+.hpl-pub-propagation li::before { color: var(--pub-leaf); content: "0" counter(step); font-size: 0.62rem; font-weight: 900; left: 0; letter-spacing: 0.1em; position: absolute; top: 1.05rem; }
+
+.hpl-pub-commerce { background: var(--pub-ink); color: white; padding: 4.4rem clamp(1.5rem, 5vw, 4.75rem); scroll-margin-top: 6rem; }
+.hpl-pub-commerce__heading { align-items: end; display: flex; justify-content: space-between; margin: auto; max-width: 81rem; }
+.hpl-pub-commerce__heading .hpl-pub-kicker { color: #9bc0a5; }
+.hpl-pub-commerce__heading > p { max-width: 30rem; opacity: 0.72; }
+.hpl-publication .hpl-products { gap: 0.85rem; margin: 2rem auto 0; max-width: 81rem; }
+.hpl-publication .hpl-product { border: 0; grid-template-columns: 9rem 1fr; min-height: 12rem; }
+.hpl-publication .hpl-product__image { height: 100%; min-height: 12rem; }
+.hpl-publication .hpl-product__body { padding: 1.4rem; }
+.hpl-publication .hpl-product h3 { font-size: 1.25rem; }
+.hpl-publication .hpl-affiliate-disclosure { color: white; font-size: 0.58rem; margin: 1.1rem auto 0; max-width: 81rem; opacity: 0.62; }
+
+.hpl-pub-faq { display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: 1fr 1.6fr; margin-inline: auto; max-width: 81rem; }
+.hpl-pub-faq__list details { border-top: 1px solid var(--hpl-border); padding: 1.2rem 0; }
+.hpl-pub-faq__list summary { cursor: pointer; font-family: var(--wp--preset--font-family--editorial); font-size: 1.15rem; }
+.hpl-pub-faq__list p { color: #53635b; font-size: 0.8rem; }
+
+.hpl-pub-evidence { background: #dfe9dc; display: grid; gap: 3.5rem; grid-template-columns: 1fr 1.6fr; padding: 3.4rem clamp(1.5rem, 5vw, 4.75rem); }
+.hpl-pub-evidence h2 { font-size: 2.4rem; }
+.hpl-pub-evidence p { margin-top: 0; }
+.hpl-pub-evidence a { border-bottom: 1px solid var(--pub-leaf); color: var(--pub-leaf); font-weight: 800; }
+
+@media (max-width: 900px) {
+  .hpl-pub-hero { grid-template-columns: 1fr; }
+  .hpl-pub-hero__copy { min-height: 0; padding: 3.4rem 1.75rem 3.8rem; }
+  .hpl-pub-hero h1 { font-size: clamp(3.1rem, 13vw, 4.2rem); }
+  .hpl-pub-hero__media { min-height: 27rem; }
+  .hpl-pub-hero__media::before { display: none; }
+  .hpl-pub-facts { grid-template-columns: repeat(2, 1fr); position: static; }
+  .hpl-pub-fact:nth-child(even) { border-right: 0; }
+  .hpl-pub-fact:last-child { grid-column: 1 / -1; }
+  .hpl-pub-editorial { grid-template-columns: 1fr; padding-block: 3.5rem; }
+  .hpl-pub-rail { display: grid; gap: 1.25rem; grid-template-columns: 1fr 1fr; }
+  .hpl-pub-ad { height: 14rem; margin-top: 0; }
+  .hpl-pub-problems,
+  .hpl-publication .hpl-products { grid-template-columns: 1fr; }
+  .hpl-pub-propagation { grid-template-columns: 1fr; }
+  .hpl-pub-propagation__image { min-height: 22rem; }
+  .hpl-pub-faq,
+  .hpl-pub-evidence { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .hpl-pub-breadcrumb { padding-inline: 1.1rem; }
+  .hpl-pub-hero__copy { padding-inline: 1.7rem; }
+  .hpl-pub-hero__media { min-height: 21rem; }
+  .hpl-pub-fact { padding: 1.1rem 0.75rem; }
+  .hpl-pub-nav { gap: 1.7rem; padding-inline: 1.1rem; }
+  .hpl-pub-editorial,
+  .hpl-pub-section,
+  .hpl-pub-commerce,
+  .hpl-pub-evidence { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .hpl-pub-story h2,
+  .hpl-pub-section h2,
+  .hpl-pub-commerce h2 { font-size: 2.35rem; }
+  .hpl-publication .hpl-care-guide { grid-template-columns: 1fr; }
+  .hpl-pub-rail { display: block; }
+  .hpl-pub-ad { margin-top: 2rem; }
+  .hpl-pub-section__heading,
+  .hpl-pub-commerce__heading { align-items: start; display: block; }
+  .hpl-pub-problems,
+  .hpl-publication .hpl-products { display: flex; margin-right: -1.25rem; overflow-x: auto; padding-right: 1.25rem; }
+  .hpl-pub-problem,
+  .hpl-publication .hpl-product { flex: 0 0 84%; }
+  .hpl-publication .hpl-product { display: block; }
+  .hpl-publication .hpl-product__image { height: 11rem; min-height: 0; }
 }
 
