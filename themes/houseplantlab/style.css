@@ -42,6 +42,37 @@ a { text-underline-offset: 0.18em; }
 
 .hpl-card .wp-block-post-featured-image { margin: 0; }
 
+.hpl-profile-card {
+  position: relative;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.hpl-profile-card:hover,
+.hpl-profile-card:focus-within {
+  border-color: rgb(35 102 72 / 42%);
+  box-shadow: var(--hpl-shadow);
+  transform: translateY(-2px);
+}
+
+.hpl-profile-card .wp-block-post-title a::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.hpl-profile-card__link {
+  color: var(--wp--preset--color--leaf);
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.hpl-profile-card a:focus-visible {
+  outline: 3px solid var(--wp--preset--color--leaf);
+  outline-offset: 4px;
+}
+
 .hpl-card__body { padding: 0.8rem 0.85rem 0.9rem; }
 .hpl-card__body > * { margin-block-start: 0; }
 
