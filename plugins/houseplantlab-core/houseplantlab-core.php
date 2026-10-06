@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.0
+ * Version: 0.7.1
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.0';
+const HOUSEPLANTLAB_CORE_VERSION = '0.7.1';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -711,7 +711,14 @@ function houseplantlab_render_publication_profile(): string
         <section class="hpl-pub-evidence"><h2>How we know</h2><div><p>This profile combines first-hand growing observations with guidance from reputable horticultural sources. Product claims and photographs are labelled according to their provenance.</p><a href="<?php echo esc_url(home_url('/about/')); ?>">Read our editorial and testing policy <span aria-hidden="true">→</span></a></div></section>
     </main>
     <?php
-    return (string) ob_get_clean();
+    $profile = (string) ob_get_clean();
+
+    // Core's Shortcode block can run paragraph formatting over returned HTML.
+    // Removing whitespace between tags prevents stray paragraphs from becoming
+    // grid children and breaking the carefully controlled publication layout.
+    $compact_profile = preg_replace('/>\s+</', '><', $profile);
+
+    return is_string($compact_profile) ? $compact_profile : $profile;
 }
 add_shortcode('houseplantlab_publication_profile', 'houseplantlab_render_publication_profile');
 
