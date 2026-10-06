@@ -26,3 +26,7 @@ add_action('wp_enqueue_scripts', static function (): void {
     );
 });
 
+add_action('wp_head', static function (): void {
+    echo '<meta name="google-site-verification" content="0q2VJe6VnaDhuZytklPbkyVyVNX7Q0jw0_kazQuBWG8">' . "\n";
+}, 1);
+
