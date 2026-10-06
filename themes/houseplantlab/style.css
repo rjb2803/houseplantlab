@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.7.0
+Version: 0.7.1
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -1627,7 +1627,8 @@ a { text-underline-offset: 0.18em; }
 .hpl-pub-problem__pending { color: var(--pub-leaf); font-size: 0.68rem; font-weight: 800; }
 
 .hpl-pub-propagation { align-items: center; display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: 1fr 1fr; margin-inline: auto; max-width: 81rem; }
-.hpl-pub-propagation__image { background: url("assets/images/monstera-care-triptych-v1.png") 50% center / 300% 100%; min-height: 27.5rem; }
+.hpl-pub-propagation__image { background: url("assets/images/monstera-care-triptych-v1.png") 50% center / 300% 100%; grid-column: 1; min-height: 27.5rem; }
+.hpl-pub-propagation > div { grid-column: 2; }
 .hpl-pub-propagation p { line-height: 1.8; }
 .hpl-pub-propagation ol { counter-reset: step; list-style: none; margin: 1.8rem 0 0; padding: 0; }
 .hpl-pub-propagation li { border-top: 1px solid var(--hpl-border); counter-increment: step; padding: 0.9rem 0 0.9rem 2.8rem; position: relative; }
@@ -1638,10 +1639,10 @@ a { text-underline-offset: 0.18em; }
 .hpl-pub-commerce__heading .hpl-pub-kicker { color: #9bc0a5; }
 .hpl-pub-commerce__heading > p { max-width: 30rem; opacity: 0.72; }
 .hpl-publication .hpl-products { gap: 0.85rem; margin: 2rem auto 0; max-width: 81rem; }
-.hpl-publication .hpl-product { border: 0; grid-template-columns: 9rem 1fr; min-height: 12rem; }
-.hpl-publication .hpl-product__image { height: 100%; min-height: 12rem; }
-.hpl-publication .hpl-product__body { padding: 1.4rem; }
-.hpl-publication .hpl-product h3 { font-size: 1.25rem; }
+.hpl-publication .hpl-product { border: 0; color: var(--pub-ink); grid-template-columns: 9rem minmax(0, 1fr); height: 12rem; min-height: 12rem; }
+.hpl-publication .hpl-product__image { height: 12rem; min-height: 0; }
+.hpl-publication .hpl-product__body { min-width: 0; padding: 1.4rem; }
+.hpl-publication .hpl-product h3 { color: var(--pub-ink); font-family: var(--wp--preset--font-family--editorial); font-size: 1.25rem; }
 .hpl-publication .hpl-affiliate-disclosure { color: white; font-size: 0.58rem; margin: 1.1rem auto 0; max-width: 81rem; opacity: 0.62; }
 
 .hpl-pub-faq { display: grid; gap: clamp(2.5rem, 6vw, 5rem); grid-template-columns: 1fr 1.6fr; margin-inline: auto; max-width: 81rem; }
@@ -1669,6 +1670,7 @@ a { text-underline-offset: 0.18em; }
   .hpl-pub-problems,
   .hpl-publication .hpl-products { grid-template-columns: 1fr; }
   .hpl-pub-propagation { grid-template-columns: 1fr; }
+  .hpl-pub-propagation > div { grid-column: 1; }
   .hpl-pub-propagation__image { min-height: 22rem; }
   .hpl-pub-faq,
   .hpl-pub-evidence { grid-template-columns: 1fr; }
