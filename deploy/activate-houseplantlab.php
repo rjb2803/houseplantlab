@@ -29,7 +29,7 @@ add_action('init', static function (): void {
     update_option('home', 'https://houseplantlab.co.uk');
     update_option('siteurl', 'https://houseplantlab.co.uk');
     update_option('permalink_structure', '/%postname%/');
-    update_option('houseplantlab_bootstrapped', '0.6.0');
+    update_option('houseplantlab_bootstrapped', '0.7.0');
 
     $monstera = get_page_by_path('monstera-deliciosa', OBJECT, 'plant');
     if (! $monstera instanceof WP_Post) {
@@ -77,6 +77,28 @@ HTML,
             'houseplantlab_care_watering_tip' => 'It is safer to underwater slightly than to overwater. Yellow leaves are often an early sign of persistently wet compost.',
             'houseplantlab_care_humidity_body' => 'Monstera deliciosa is comfortable in average household humidity but appreciates moderately humid air. Keep it away from cold draughts and directly above radiators, and wipe the broad leaves occasionally so they can make the most of available light.',
             'houseplantlab_care_humidity_tip' => 'Misting raises humidity only briefly. Grouping plants or using a humidifier is more effective during dry winter months.',
+            'houseplantlab_overview_standfirst' => 'Monstera deliciosa earns its place as an icon. Give it room, steady warmth and something to climb, and each new leaf can become larger and more deeply divided than the last.',
+            'houseplantlab_overview_body_one' => 'In its natural habitat, Monstera climbs towards the canopy using aerial roots. That climbing habit explains most of what the plant wants indoors: filtered light, an open but moisture-retentive compost, and a sturdy support. It is forgiving enough for a first-time grower, but responds visibly to thoughtful care.',
+            'houseplantlab_overview_body_two' => 'Position it near an east- or west-facing window, or set it back from strong south-facing glass. Rotate the pot occasionally for balanced growth, but avoid repeatedly moving a settled plant between very different conditions.',
+            'houseplantlab_overview_quote' => 'The secret is not more water or more feed—it is giving the plant enough light to use them well.',
+            'houseplantlab_problem_1_title' => 'Yellow leaves',
+            'houseplantlab_problem_1_body' => 'Often linked to persistently wet compost, low light or the natural loss of an older leaf.',
+            'houseplantlab_problem_2_title' => 'Brown marks',
+            'houseplantlab_problem_2_body' => 'Separate dry edges from spreading lesions; the pattern tells you where to look first.',
+            'houseplantlab_problem_3_title' => 'No new splits',
+            'houseplantlab_problem_3_body' => 'Young leaves and low light are the usual explanations—not a special fertiliser deficiency.',
+            'houseplantlab_propagation_intro' => 'A leaf without a node may remain attractive in water, but it cannot produce a complete new plant. Choose a healthy cutting with one node and, ideally, an aerial root.',
+            'houseplantlab_propagation_step_1' => 'Take a clean cutting just below a viable node.',
+            'houseplantlab_propagation_step_2' => 'Root in water or an airy propagation mix in bright, indirect light.',
+            'houseplantlab_propagation_step_3' => 'Pot on once several branching roots have formed.',
+            'houseplantlab_faq_1_question' => 'How often should I water a Monstera?',
+            'houseplantlab_faq_1_answer' => 'Check the compost rather than following a calendar. Water when the top 3–5 cm feels dry, then let excess water drain fully.',
+            'houseplantlab_faq_2_question' => 'Why are there no splits in the leaves?',
+            'houseplantlab_faq_2_answer' => 'Juvenile plants naturally have solid leaves. Mature plants also need strong filtered light and climbing support to produce larger, divided foliage.',
+            'houseplantlab_faq_3_question' => 'Should I mist the leaves?',
+            'houseplantlab_faq_3_answer' => 'Misting changes humidity only briefly. Wiping dust from the leaves and avoiding radiators and cold draughts are more useful.',
+            'houseplantlab_faq_4_question' => 'Is Monstera safe around pets?',
+            'houseplantlab_faq_4_answer' => 'No. The plant contains calcium oxalate crystals and should be kept away from pets and children likely to chew it.',
             'houseplantlab_product_1_name' => 'Soil moisture meter',
             'houseplantlab_product_1_reason' => 'A simple check that can help confirm whether the compost is still moist before watering again.',
             'houseplantlab_product_2_name' => 'Balanced liquid houseplant feed',

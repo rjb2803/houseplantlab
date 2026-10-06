@@ -16,8 +16,13 @@ Every individual plant guide is a WordPress **Plant** post. Do not create plant 
    - Watering guidance and top tip;
    - Humidity guidance and top tip.
 5. Add an optional image URL for each care section when an approved original photograph is available. Until then, the theme uses the clearly identified temporary fallback triptych.
-6. Preview at desktop and mobile widths before publication.
-7. Confirm that factual claims, pet-safety wording and product recommendations have an editorial source or direct HouseplantLab observation.
+6. Complete the **Publication sections** fields:
+   - overview standfirst, supporting paragraphs and pull quote;
+   - three common problems with optional links to detailed guides;
+   - propagation introduction and three ordered steps;
+   - four plant-specific questions and answers.
+7. Preview at desktop and mobile widths before publication.
+8. Confirm that factual claims, pet-safety wording and product recommendations have an editorial source or direct HouseplantLab observation.
 
 ## Layout contract
 
@@ -25,17 +30,19 @@ The theme controls the order and visual presentation. Editors supply structured 
 
 The fixed sequence is:
 
-1. Hero and care signals
-2. Section navigation
-3. Quick facts
-4. Care guide: Light, Watering, Humidity
-5. In-content advertising position
-6. Recommended care kit
-7. Plant problem checker
-8. Evidence strip
-9. Related guidance
+1. Publication hero, authorship and review date
+2. Five-item care-facts ribbon
+3. Sticky section navigation
+4. Editorial overview and pull quote
+5. Care guide: Light, Watering, Humidity
+6. Restrained sidebar advertising position
+7. Common problems
+8. Propagation
+9. Recommended care kit and affiliate disclosure
+10. Frequently asked questions
+11. Evidence and methodology strip
 
-The Plant post body is reserved for future long-form sections such as common problems, propagation, soil and feeding, and FAQs. It should not duplicate the structured care-guide fields.
+The Plant post body is reserved for supplementary material. It should not duplicate the structured publication or care-guide fields.
 
 ## Editorial rules
 
