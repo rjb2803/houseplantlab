@@ -29,6 +29,17 @@ The deployable files are written to `dist/wp-content`. Install or deploy its the
 
 To review the current responsive homepage direction without a WordPress installation, run `npm run preview` and open `http://127.0.0.1:4173`. This preview uses illustrated photography placeholders; production photography remains content-managed in WordPress.
 
+## Editorial agents
+
+The repository includes a local-only editorial workflow for evidence-led briefs, research, drafting and review. It has no WordPress publishing capability.
+
+```bash
+npm run agents:fixture
+npm run agents:live
+```
+
+The fixture is an offline acceptance test. Live mode requires `OPENAI_API_KEY`, uses the confirmed URLs in `content-production/site-manifest.json`, and still writes only local human-review packages. See [the editorial-agent guide](editorial-agents/README.md).
+
 ## Documentation
 
 - [Project brief and decisions](docs/project-brief.md)
@@ -36,6 +47,7 @@ To review the current responsive homepage direction without a WordPress installa
 - [Architecture decision](docs/architecture.md)
 - [Build and deployment guide](docs/deployment.md)
 - [Plant profile editorial process](docs/plant-profile-editorial-process.md)
+- [Editorial agent workflow](editorial-agents/README.md)
 - [Approved design reference](docs/design-reference/README.md)
 
 ## Repository shape
@@ -46,6 +58,8 @@ houseplantlab/
 ├── docs/                       Project decisions and operating guidance
 ├── themes/houseplantlab/       Lightweight custom WordPress theme
 ├── plugins/houseplantlab-core/ Site-specific content types and tool logic
+├── editorial-agents/           Local research, drafting and review workflow
+├── content-production/         Queue, site manifest and generated run outputs
 ├── scripts/                    Dependency-free validation and packaging
 └── README.md
 ```

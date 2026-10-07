@@ -6,4 +6,6 @@ Thumbs.db
 .env.*
 !.env.example
 .wp-env.json
+editorial-agents/dist/
+content-production/runs/
 

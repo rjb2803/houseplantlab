@@ -8,10 +8,23 @@
     "check": "node scripts/check.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve-preview.mjs",
-    "test": "npm run check && npm run build"
+    "agents:typecheck": "tsc --noEmit -p editorial-agents/tsconfig.json",
+    "agents:build": "tsc -p editorial-agents/tsconfig.build.json",
+    "agents:test": "npm run agents:build && node --test --test-isolation=none editorial-agents/dist/tests/*.test.js",
+    "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
+    "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
+    "test": "npm run check && npm run build && npm run agents:typecheck && npm run agents:test"
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.19.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   }
 }
-
