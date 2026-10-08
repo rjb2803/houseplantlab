@@ -114,10 +114,43 @@ export const WorkflowBundleSchema = z.object({
   quality: QualityReportSchema,
 });
 
+export const QueueStatusSchema = z.enum([
+  "queued",
+  "running",
+  "ready-for-human-review",
+  "needs-revision",
+  "failed",
+  "paused",
+]);
+
+export const QueueItemSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  assignment: z.string().min(20),
+  plant: z.string().min(3),
+  priority: z.number().int().positive(),
+  status: QueueStatusSchema,
+  attempts: z.number().int().nonnegative(),
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
+  lastAttemptAt: z.string().datetime().nullable(),
+  lastRunId: z.string().nullable(),
+  lastOutputPath: z.string().nullable(),
+  lastError: z.string().nullable(),
+});
+
+export const EditorialQueueSchema = z.object({
+  version: z.literal(1),
+  timeZone: z.literal("Europe/London"),
+  maxRunsPerDay: z.number().int().min(1).max(5),
+  items: z.array(QueueItemSchema),
+});
+
 export type ArticleBrief = z.infer<typeof ArticleBriefSchema>;
 export type EvidencePack = z.infer<typeof EvidencePackSchema>;
 export type DraftPackage = z.infer<typeof DraftPackageSchema>;
 export type EditorialReport = z.infer<typeof EditorialReportSchema>;
 export type QualityReport = z.infer<typeof QualityReportSchema>;
 export type WorkflowBundle = z.infer<typeof WorkflowBundleSchema>;
+export type QueueItem = z.infer<typeof QueueItemSchema>;
+export type EditorialQueue = z.infer<typeof EditorialQueueSchema>;
 

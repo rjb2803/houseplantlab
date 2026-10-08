@@ -60,18 +60,19 @@ export async function runLiveWorkflow(
   }
 
   const startedAt = new Date().toISOString();
+  const currentDate = startedAt.slice(0, 10);
   const allowedLinks = qualityContext.allowedInternalPaths?.length
     ? qualityContext.allowedInternalPaths.join("\n")
     : "No internal links are currently confirmed.";
   const briefResult = await run(
     directorAgent,
-    `${assignment}\nOnly use internal paths from this confirmed site manifest; do not invent future URLs:\n${allowedLinks}`,
+    `Current date: ${currentDate}.\n${assignment}\nOnly use internal paths from this confirmed site manifest; do not invent future URLs:\n${allowedLinks}`,
   );
   const brief = assertOutput(briefResult.finalOutput, "Director");
 
   const evidenceResult = await run(
     researchAgent,
-    `Research this approved article brief. Return only the evidence pack.\n${JSON.stringify(brief, null, 2)}`,
+    `Current date: ${currentDate}. Research this approved article brief. Return only the evidence pack.\n${JSON.stringify(brief, null, 2)}`,
   );
   const evidence = assertOutput(evidenceResult.finalOutput, "Research");
 
@@ -88,15 +89,15 @@ export async function runLiveWorkflow(
   let editorial = assertOutput(editorialResult.finalOutput, "Editor");
   const editorialHistory: EditorialReport[] = [editorial];
 
-  if (editorial.status === "revise") {
+  for (let revisionNumber = 1; editorial.status === "revise" && revisionNumber <= 2; revisionNumber += 1) {
     const revisionResult = await run(
       writerAgent,
-      `Revise the draft to resolve every blocker and unsupported claim in the editorial report. Do not add new claims. Use only confirmed internal paths. Return the complete revised draft package.\nCONFIRMED INTERNAL PATHS\n${allowedLinks}\nBRIEF\n${JSON.stringify(brief, null, 2)}\nEVIDENCE\n${JSON.stringify(evidence, null, 2)}\nCURRENT DRAFT\n${JSON.stringify(draft, null, 2)}\nEDITORIAL REPORT\n${JSON.stringify(editorial, null, 2)}`,
+      `Current date: ${currentDate}. This is correction round ${revisionNumber} of 2. Revise the draft to resolve every blocker and unsupported claim in the editorial report. Remove a claim when the evidence does not directly support it. Do not add new claims. Never recommend a plant-protection product without exact evidence for its current UK-authorised use, target problem and label requirements. Use only confirmed internal paths. Return the complete revised draft package.\nCONFIRMED INTERNAL PATHS\n${allowedLinks}\nBRIEF\n${JSON.stringify(brief, null, 2)}\nEVIDENCE\n${JSON.stringify(evidence, null, 2)}\nCURRENT DRAFT\n${JSON.stringify(draft, null, 2)}\nEDITORIAL REPORT\n${JSON.stringify(editorial, null, 2)}`,
     );
     draft = assertOutput(revisionResult.finalOutput, "Writer revision");
     editorialResult = await run(
       editorAgent,
-      `Re-audit the revised package. Return only the editorial report.\nBRIEF\n${JSON.stringify(brief, null, 2)}\nEVIDENCE\n${JSON.stringify(evidence, null, 2)}\nREVISED DRAFT\n${JSON.stringify(draft, null, 2)}`,
+      `Current date: ${currentDate}. Re-audit the revised package. Return only the editorial report.\nBRIEF\n${JSON.stringify(brief, null, 2)}\nEVIDENCE\n${JSON.stringify(evidence, null, 2)}\nREVISED DRAFT\n${JSON.stringify(draft, null, 2)}`,
     );
     editorial = assertOutput(editorialResult.finalOutput, "Editor revision");
     editorialHistory.push(editorial);

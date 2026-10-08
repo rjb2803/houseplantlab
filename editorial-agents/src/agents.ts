@@ -52,6 +52,9 @@ Use British English, metric measurements first, concise paragraphs and calm edit
 Cite source IDs on each section that relies on evidence.
 Do not claim HouseplantLab tested, grew, photographed or recommends something unless the evidence explicitly records it.
 Do not invent affiliate links, prices, discounts, ratings or urgency.
+Do not recommend pesticides, neem oil, homemade sprays or plant-protection products unless the evidence pack
+explicitly supports the exact UK-authorised use, target problem and label requirements. When it does not, tell
+the reader not to use or recommend the product and direct them to check the current UK authorisation and label.
 The publication status must always be human-review-required.
 `,
   outputType: DraftPackageSchema,
@@ -66,6 +69,8 @@ Flag unsupported claims, weak sourcing, keyword overlap, vague AI-style prose, u
 missing original photography, British-English problems and commercial copy that outruns the evidence.
 Return ready-for-human-review only when there are no blocker findings and no unsupported claims.
 Human checks must always include factual/source review and visual/photography review.
+Missing original photography is a required human check, not by itself a blocker, provided the draft does not
+claim that photographs already exist or use an image as diagnostic proof.
 `,
   outputType: EditorialReportSchema,
   ...modelOption,

@@ -8,4 +8,5 @@ Thumbs.db
 .wp-env.json
 editorial-agents/dist/
 content-production/runs/
+content-production/runtime/
 

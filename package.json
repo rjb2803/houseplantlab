@@ -13,6 +13,8 @@
     "agents:test": "npm run agents:build && node --test --test-isolation=none editorial-agents/dist/tests/*.test.js",
     "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
     "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
+    "agents:autonomous": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js",
+    "agents:status": "npm run agents:build && node editorial-agents/dist/src/status-cli.js",
     "test": "npm run check && npm run build && npm run agents:typecheck && npm run agents:test"
   },
   "engines": {

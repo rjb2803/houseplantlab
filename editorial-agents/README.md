@@ -34,6 +34,17 @@ npm run agents:live
 
 Live mode uses OpenAI-hosted web search. Its output still remains local and still requires human review.
 
+## Run the autonomous newsroom
+
+```powershell
+npm run agents:autonomous
+npm run agents:status
+```
+
+The autonomous worker processes exactly one queued article per run. It uses `content-production/queue/articles.json`, respects the configured daily limit, prevents overlapping workers, performs one automatic revision when required and leaves every successful article at `ready-for-human-review`.
+
+It cannot publish, deploy, push Git, edit WordPress or change the approved internal-link manifest.
+
 ## Verify the system
 
 ```powershell
