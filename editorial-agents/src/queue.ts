@@ -160,7 +160,7 @@ export async function runAutonomousWorker(
 export async function summariseQueue(projectRoot: string): Promise<Record<string, unknown>> {
   const queue = await readQueue(path.join(projectRoot, "content-production", "queue", "articles.json"));
   const counts = Object.fromEntries(
-    ["queued", "running", "ready-for-human-review", "needs-revision", "failed", "paused"].map((status) => [
+    ["queued", "running", "ready-for-human-review", "wordpress-draft", "needs-revision", "failed", "paused"].map((status) => [
       status,
       queue.items.filter((item) => item.status === status).length,
     ]),

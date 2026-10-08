@@ -118,6 +118,7 @@ export const QueueStatusSchema = z.enum([
   "queued",
   "running",
   "ready-for-human-review",
+  "wordpress-draft",
   "needs-revision",
   "failed",
   "paused",
@@ -136,6 +137,9 @@ export const QueueItemSchema = z.object({
   lastRunId: z.string().nullable(),
   lastOutputPath: z.string().nullable(),
   lastError: z.string().nullable(),
+  wordpressPostId: z.number().int().positive().nullable().default(null),
+  wordpressEditUrl: z.string().url().nullable().default(null),
+  wordpressSyncedAt: z.string().datetime().nullable().default(null),
 });
 
 export const EditorialQueueSchema = z.object({

@@ -45,6 +45,16 @@ The autonomous worker processes exactly one queued article per run. It uses `con
 
 It cannot publish, deploy, push Git, edit WordPress or change the approved internal-link manifest.
 
+## Send an approved package to WordPress as a draft
+
+Set `WP_SITE_URL`, `WP_USERNAME` and `WP_APP_PASSWORD` for a dedicated WordPress contributor account, then run:
+
+```powershell
+npm run agents:sync-wordpress
+```
+
+The connector selects one `ready-for-human-review` package, revalidates its complete bundle, converts its structured Markdown to escaped HTML and creates a normal WordPress post with the status hard-coded to `draft`. It refuses another hostname, a failed quality report, unsupported editorial claims or an unexpected non-draft response. It records the WordPress post ID and edit URL in the queue to prevent duplicate uploads. It has no publish operation.
+
 ## Verify the system
 
 ```powershell
