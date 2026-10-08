@@ -10,6 +10,7 @@ on:
         type: choice
         options:
           - inspect
+          - verify
           - deploy
           - activate
 
@@ -44,6 +45,41 @@ jobs:
           cls -la public_html/wp-content
           bye
           LFTP
+
+  verify:
+    if: inputs.mode == 'verify'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Install FTP client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Download deployed HouseplantLab folders without changing the server
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          mkdir -p remote/theme remote/plugin
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_HOST" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          set net:max-retries 3
+          set net:timeout 20
+          mirror --verbose public_html/wp-content/themes/houseplantlab remote/theme
+          mirror --verbose public_html/wp-content/plugins/houseplantlab-core remote/plugin
+          bye
+          LFTP
+      - name: Verify deployed files exactly match the clean build
+        run: |
+          diff -ru --no-dereference dist/wp-content/themes/houseplantlab remote/theme
+          diff -ru --no-dereference dist/wp-content/plugins/houseplantlab-core remote/plugin
 
   deploy:
     if: inputs.mode == 'deploy'
