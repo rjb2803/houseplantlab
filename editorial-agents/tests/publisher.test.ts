@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fixtureBrief, fixtureDraft, fixtureEditorial, fixtureEvidence } from "../src/fixture.js";
-import { renderBundleContent, syncReadyDraftToWordPress } from "../src/publisher.js";
+import { renderBundleContent, renderMarkdown, syncReadyDraftToWordPress } from "../src/publisher.js";
 import { WorkflowBundleSchema } from "../src/schemas.js";
 
 async function createProject(qualityPassed = true): Promise<string> {
@@ -123,4 +123,10 @@ test("reader-facing rendering strips internal references everywhere", () => {
   assert.doesNotMatch(html, /\[S\d+\]/);
   assert.doesNotMatch(html, /Evidence:/);
   assert.doesNotMatch(html, /Sources and further reading/);
+});
+
+test("markdown subheadings render as semantic WordPress headings", () => {
+  const html = renderMarkdown("Introductory paragraph.\n\n### Root damage\n\nRoot damage needs careful inspection.");
+  assert.match(html, /<h3>Root damage<\/h3>/);
+  assert.doesNotMatch(html, /###/);
 });

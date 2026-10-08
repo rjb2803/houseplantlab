@@ -65,6 +65,13 @@ export function renderMarkdown(markdown: string): string {
       index += 1;
       continue;
     }
+    const heading = /^(#{1,6})\s+(.+)$/.exec(line);
+    if (heading) {
+      const level = Math.max(3, heading[1].length);
+      output.push(`<h${level}>${inlineMarkdown(heading[2])}</h${level}>`);
+      index += 1;
+      continue;
+    }
     if (line.includes("|") && index + 1 < lines.length && isTableDivider(lines[index + 1])) {
       const headers = tableCells(line);
       index += 2;
@@ -101,7 +108,7 @@ export function renderMarkdown(markdown: string): string {
     }
     const paragraph = [line];
     index += 1;
-    while (index < lines.length && lines[index].trim() && !/^[-*]\s+|^\d+\.\s+|^>\s+/.test(lines[index].trim())) {
+    while (index < lines.length && lines[index].trim() && !/^#{1,6}\s+|^[-*]\s+|^\d+\.\s+|^>\s+/.test(lines[index].trim())) {
       if (index + 1 < lines.length && isTableDivider(lines[index + 1])) break;
       paragraph.push(lines[index].trim());
       index += 1;
