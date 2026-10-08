@@ -21,7 +21,8 @@
       "wordpressSyncedAt": "2026-10-08T22:11:37.668Z",
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "monstera-drooping",
@@ -41,27 +42,29 @@
       "wordpressSyncedAt": "2026-10-08T22:36:58.796Z",
       "wordpressMediaId": 16,
       "publishedUrl": "https://houseplantlab.co.uk/why-is-my-monstera-deliciosa-drooping/",
-      "publishedAt": "2026-10-08T23:10:33.141Z"
+      "publishedAt": "2026-10-08T23:10:33.141Z",
+      "seoBriefPath": null
     },
     {
       "id": "monstera-leaves-curling",
       "assignment": "Prepare an evidence-led UK article explaining curled Monstera deliciosa leaves, likely environmental and root causes, diagnostic checks and safe next steps.",
       "plant": "Monstera deliciosa",
       "priority": 3,
-      "status": "queued",
-      "attempts": 0,
+      "status": "published",
+      "attempts": 1,
       "createdAt": "2026-10-08T08:00:00.000Z",
-      "updatedAt": "2026-10-08T08:00:00.000Z",
-      "lastAttemptAt": null,
-      "lastRunId": null,
-      "lastOutputPath": null,
+      "updatedAt": "2026-10-08T23:39:38.259Z",
+      "lastAttemptAt": "2026-10-08T23:33:49.305Z",
+      "lastRunId": "live-why-are-my-monstera-deliciosa-leaves-curling-2026-10-08T23-33-49-348Z",
+      "lastOutputPath": "content-production/runs/live-why-are-my-monstera-deliciosa-leaves-curling-2026-10-08T23-33-49-348Z",
       "lastError": null,
-      "wordpressPostId": null,
-      "wordpressEditUrl": null,
-      "wordpressSyncedAt": null,
-      "wordpressMediaId": null,
-      "publishedUrl": null,
-      "publishedAt": null
+      "wordpressPostId": 17,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=17&action=edit",
+      "wordpressSyncedAt": "2026-10-08T23:36:10.504Z",
+      "wordpressMediaId": 18,
+      "publishedUrl": "https://houseplantlab.co.uk/why-are-my-monstera-deliciosa-leaves-curling/",
+      "publishedAt": "2026-10-08T23:39:38.259Z",
+      "seoBriefPath": null
     },
     {
       "id": "monstera-aerial-roots",
@@ -81,7 +84,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "watering-monstera-uk",
@@ -101,7 +105,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "monstera-soil-mix",
@@ -121,7 +126,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "repot-monstera",
@@ -141,7 +147,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "propagate-monstera",
@@ -161,7 +168,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "monstera-not-splitting",
@@ -181,7 +189,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "monstera-pet-safety",
@@ -201,7 +210,8 @@
       "wordpressSyncedAt": null,
       "wordpressMediaId": null,
       "publishedUrl": null,
-      "publishedAt": null
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "peace-lily-drooping",
