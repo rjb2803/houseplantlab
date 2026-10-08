@@ -26,16 +26,16 @@
       "plant": "Monstera deliciosa",
       "priority": 2,
       "status": "wordpress-draft",
-      "attempts": 1,
+      "attempts": 2,
       "createdAt": "2026-10-08T08:00:00.000Z",
-      "updatedAt": "2026-10-08T22:28:47.494Z",
-      "lastAttemptAt": "2026-10-08T22:26:46.187Z",
-      "lastRunId": "live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-26-46-225Z",
-      "lastOutputPath": "content-production/runs/live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-26-46-225Z",
+      "updatedAt": "2026-10-08T22:36:58.796Z",
+      "lastAttemptAt": "2026-10-08T22:34:34.723Z",
+      "lastRunId": "live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-34-34-763Z",
+      "lastOutputPath": "content-production/runs/live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-34-34-763Z",
       "lastError": null,
       "wordpressPostId": 11,
       "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=11&action=edit",
-      "wordpressSyncedAt": "2026-10-08T22:28:47.494Z"
+      "wordpressSyncedAt": "2026-10-08T22:36:58.796Z"
     },
     {
       "id": "monstera-leaves-curling",

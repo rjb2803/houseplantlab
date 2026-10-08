@@ -9,6 +9,9 @@ const LOCK_MAX_AGE_MS = 4 * 60 * 60 * 1000;
 export interface SiteManifest {
   existingArticleSlugs: string[];
   allowedInternalPaths: string[];
+  minimumArticleWords?: number;
+  maximumArticleWords?: number;
+  requireClosingSummary?: boolean;
 }
 
 export interface AutonomousResult {
@@ -124,6 +127,9 @@ export async function runAutonomousWorker(
       const bundle = await workflow(item.assignment, {
         existingSlugs: manifest.existingArticleSlugs,
         allowedInternalPaths: manifest.allowedInternalPaths,
+        minimumArticleWords: manifest.minimumArticleWords,
+        maximumArticleWords: manifest.maximumArticleWords,
+        requireClosingSummary: manifest.requireClosingSummary,
       });
       const outputDirectory = await persistBundle(projectRoot, bundle);
       const relativeOutput = path.relative(projectRoot, outputDirectory).replaceAll("\\", "/");

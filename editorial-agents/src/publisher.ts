@@ -173,7 +173,10 @@ export async function syncReadyDraftToWordPress(
     comment_status: "closed",
     ping_status: "closed",
   };
-  const endpoint = new URL("/wp-json/wp/v2/posts", origin);
+  const endpoint = new URL(
+    item.wordpressPostId ? `/wp-json/wp/v2/posts/${item.wordpressPostId}` : "/wp-json/wp/v2/posts",
+    origin,
+  );
   const response = await (dependencies.fetch ?? fetch)(endpoint, {
     method: "POST",
     redirect: "error",
@@ -202,5 +205,13 @@ export async function syncReadyDraftToWordPress(
   const temporaryPath = `${queuePath}.tmp`;
   await writeFile(temporaryPath, `${JSON.stringify(queue, null, 2)}\n`, "utf8");
   await rename(temporaryPath, queuePath);
-  return { outcome: "wordpress-draft", itemId: item.id, postId: wordpressDraft.id, editUrl, message: "WordPress draft created. Human publication is still required." };
+  return {
+    outcome: "wordpress-draft",
+    itemId: item.id,
+    postId: wordpressDraft.id,
+    editUrl,
+    message: item.wordpressPostId
+      ? "Existing WordPress draft updated. Human publication is still required."
+      : "WordPress draft created. Human publication is still required.",
+  };
 }

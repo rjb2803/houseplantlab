@@ -1,5 +1,8 @@
 {
   "existingArticleSlugs": [],
+  "minimumArticleWords": 1300,
+  "maximumArticleWords": 1900,
+  "requireClosingSummary": true,
   "allowedInternalPaths": [
     "/plants/",
     "/plants/monstera-deliciosa/"

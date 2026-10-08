@@ -50,6 +50,8 @@ Write a practical UK-focused HouseplantLab article using only the supplied appro
 Answer the main question immediately, then help the reader distinguish likely causes and take safe next steps.
 Use British English, metric measurements first, concise paragraphs and calm editorial language.
 Write with the authority and polish of a premium gardening publication: observant, composed, specific and useful.
+Target 1,400-1,800 words of genuinely useful reader-facing copy. Add diagnostic detail, examples, distinctions and
+safe next steps rather than padding, repetition or extra introductory material.
 Prefer confident plain-English sentences with a varied natural rhythm. Avoid chatty gimmicks, alarmist openings,
 generic SEO filler, repeated caveats and formulaic phrases such as "a symptom, not a diagnosis".
 Approved tone example: "A brown mark on a Monstera leaf is easy to notice and surprisingly difficult to diagnose.
@@ -63,6 +65,8 @@ Do not recommend pesticides, neem oil, homemade sprays or plant-protection produ
 explicitly supports the exact UK-authorised use, target problem and label requirements. When it does not, tell
 the reader not to use or recommend the product and direct them to check the current UK authorisation and label.
 The publication status must always be human-review-required.
+The final section must be titled exactly "In summary" and contain 100-220 words. It must synthesise the likely causes,
+the order of checks and the safest immediate actions without introducing new claims or repeating the introduction.
 `,
   outputType: DraftPackageSchema,
   ...modelOption,
@@ -76,6 +80,8 @@ Flag unsupported claims, weak sourcing, keyword overlap, vague AI-style prose, u
 missing original photography, British-English problems and commercial copy that outruns the evidence.
 Treat visible source IDs, Evidence lines, Sources sections and bibliographies as blockers. Evidence belongs in the
 structured claimSourceIds and evidence pack, never in reader-facing prose.
+Treat fewer than 1,300 useful words, a missing final "In summary" section, or a weak ending that merely stops rather
+than synthesising the advice as blockers. Do not reward length created through repetition or filler.
 Return ready-for-human-review only when there are no blocker findings and no unsupported claims.
 Human checks must always include factual/source review and visual/photography review.
 Missing original photography is a required human check, not by itself a blocker, provided the draft does not

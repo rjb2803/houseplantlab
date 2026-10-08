@@ -11,10 +11,16 @@ const manifestPath = path.join(projectRoot, "content-production", "site-manifest
 const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as {
   existingArticleSlugs: string[];
   allowedInternalPaths: string[];
+  minimumArticleWords?: number;
+  maximumArticleWords?: number;
+  requireClosingSummary?: boolean;
 };
 const qualityContext = {
   existingSlugs: manifest.existingArticleSlugs,
   allowedInternalPaths: manifest.allowedInternalPaths,
+  minimumArticleWords: manifest.minimumArticleWords,
+  maximumArticleWords: manifest.maximumArticleWords,
+  requireClosingSummary: manifest.requireClosingSummary,
 };
 
 if (args.has("--fixture") === args.has("--live")) {

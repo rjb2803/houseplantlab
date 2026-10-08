@@ -67,6 +67,24 @@ test("publisher refuses a package that failed quality checks", async () => {
   assert.equal(called, false);
 });
 
+test("publisher updates an existing WordPress draft instead of creating a duplicate", async () => {
+  const root = await createProject();
+  const queuePath = path.join(root, "content-production", "queue", "articles.json");
+  const queue = JSON.parse(await readFile(queuePath, "utf8"));
+  queue.items[0].wordpressPostId = 42;
+  await writeFile(queuePath, JSON.stringify(queue));
+  let endpoint = "";
+  const result = await syncReadyDraftToWordPress(root, {
+    env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "publisher", WP_APP_PASSWORD: "secret" },
+    fetch: async (input) => {
+      endpoint = String(input);
+      return new Response(JSON.stringify({ id: 42, status: "draft", link: "https://houseplantlab.co.uk/?p=42" }), { status: 200, headers: { "Content-Type": "application/json" } });
+    },
+  });
+  assert.equal(endpoint, "https://houseplantlab.co.uk/wp-json/wp/v2/posts/42");
+  assert.match(result.message, /updated/);
+});
+
 test("publisher refuses to send credentials to another host", async () => {
   const root = await createProject();
   await assert.rejects(() => syncReadyDraftToWordPress(root, {

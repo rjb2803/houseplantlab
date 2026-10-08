@@ -13,12 +13,23 @@ import {
 export interface QualityContext {
   existingSlugs?: string[];
   allowedInternalPaths?: string[];
+  minimumArticleWords?: number;
+  maximumArticleWords?: number;
+  requireClosingSummary?: boolean;
 }
 
 const PLACEHOLDER_PATTERN = /\b(?:todo|tbc|lorem ipsum|insert (?:link|image|source)|placeholder)\b/i;
 const UNVERIFIED_EXPERIENCE_PATTERN = /\b(?:we tested|our test|we found|in our experiment|we recommend)\b/i;
 const AI_STYLE_PATTERN = /\b(?:delve into|in today's fast-paced world|unlock the secrets|game-changer|revolutionary)\b/i;
 const VISIBLE_REFERENCE_PATTERN = /\[(?:S\d+)(?:\s*,\s*S\d+)*\]|\[S\d+\](?:\[S\d+\])+|^\s*(?:evidence|sources?|references?)\s*:/im;
+
+function countWords(value: string): number {
+  return value
+    .replace(/[#*_>`|\[\]()]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
 
 export function runQualityChecks(
   briefInput: ArticleBrief,
@@ -60,9 +71,27 @@ export function runQualityChecks(
   }
 
   const fullDraft = [draft.title, draft.excerpt, draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n");
+  const readerWordCount = countWords([draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n"));
   if (PLACEHOLDER_PATTERN.test(fullDraft)) errors.push("Draft contains placeholder language.");
   if (VISIBLE_REFERENCE_PATTERN.test(fullDraft)) errors.push("Draft exposes internal evidence references in reader-facing copy.");
   if (AI_STYLE_PATTERN.test(fullDraft)) warnings.push("Draft contains generic AI-style phrasing.");
+  if (context.minimumArticleWords && readerWordCount < context.minimumArticleWords) {
+    errors.push(`Draft is too short: ${readerWordCount} words; minimum is ${context.minimumArticleWords}.`);
+  }
+  if (context.maximumArticleWords && readerWordCount > context.maximumArticleWords) {
+    warnings.push(`Draft is longer than the preferred limit: ${readerWordCount} words; preferred maximum is ${context.maximumArticleWords}.`);
+  }
+  if (context.requireClosingSummary) {
+    const finalSection = draft.sections.at(-1);
+    if (!finalSection || finalSection.heading.trim().toLowerCase() !== "in summary") {
+      errors.push("Draft must end with an 'In summary' section.");
+    } else {
+      const summaryWords = countWords(finalSection.markdown);
+      if (summaryWords < 100 || summaryWords > 220) {
+        errors.push(`Closing summary must contain 100-220 words; found ${summaryWords}.`);
+      }
+    }
+  }
 
   const hasOwnerObservation = evidence.sources.some((source) => source.sourceType === "houseplantlab-observation");
   if (UNVERIFIED_EXPERIENCE_PATTERN.test(fullDraft) && !hasOwnerObservation) {

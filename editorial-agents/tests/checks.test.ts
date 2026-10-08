@@ -85,3 +85,19 @@ test("visible source references are blocked from reader-facing copy", () => {
   assert.match(report.errors.join("\n"), /exposes internal evidence references/);
 });
 
+test("an undersized article is blocked when the publication minimum applies", () => {
+  const report = runQualityChecks(fixtureBrief, fixtureEvidence, fixtureDraft, fixtureEditorial, {
+    minimumArticleWords: 1300,
+  });
+  assert.equal(report.passed, false);
+  assert.match(report.errors.join("\n"), /too short/);
+});
+
+test("a missing closing summary is blocked when the publication rule applies", () => {
+  const report = runQualityChecks(fixtureBrief, fixtureEvidence, fixtureDraft, fixtureEditorial, {
+    requireClosingSummary: true,
+  });
+  assert.equal(report.passed, false);
+  assert.match(report.errors.join("\n"), /must end with an 'In summary' section/);
+});
+
