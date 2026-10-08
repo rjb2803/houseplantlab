@@ -26,6 +26,8 @@ Connect the host to `rjb2803/houseplantlab`, use `main` as the production branch
 
 The destination mapping must preserve `themes/houseplantlab` and `plugins/houseplantlab-core`. Do not configure a destructive mirror of the whole WordPress installation; WordPress core, third-party plugins, media uploads and configuration are outside this repository.
 
+The included GitHub deployment workflow is deliberately manual-only. After updating the repository secrets, run it first in `inspect` mode. Use `deploy` only after inspection confirms the WordPress path, then use `activate`. A normal push to `main` validates and packages the project but does not change production.
+
 If the host cannot build from GitHub, run the **Package deployment** workflow and download its `houseplantlab-deploy-<commit>` artifact. Extract the archive into the WordPress root so its `wp-content` directory merges with the existing one.
 
 After the first deployment:
