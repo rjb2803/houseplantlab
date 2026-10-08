@@ -10,7 +10,7 @@
     "preview": "node scripts/serve-preview.mjs",
     "agents:typecheck": "tsc --noEmit -p editorial-agents/tsconfig.json",
     "agents:build": "tsc -p editorial-agents/tsconfig.build.json",
-    "agents:test": "npm run agents:build && node --test --experimental-test-isolation=none editorial-agents/dist/tests/checks.test.js editorial-agents/dist/tests/image-workflow.test.js editorial-agents/dist/tests/live-publisher.test.js editorial-agents/dist/tests/publisher.test.js editorial-agents/dist/tests/queue.test.js editorial-agents/dist/tests/workflow.test.js",
+    "agents:test": "npm run agents:build && node --test --experimental-test-isolation=none editorial-agents/dist/tests/checks.test.js editorial-agents/dist/tests/image-workflow.test.js editorial-agents/dist/tests/live-publisher.test.js editorial-agents/dist/tests/publisher.test.js editorial-agents/dist/tests/queue.test.js editorial-agents/dist/tests/seo-workflow.test.js editorial-agents/dist/tests/workflow.test.js",
     "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
     "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
     "agents:autonomous": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js",
@@ -18,6 +18,7 @@
     "agents:sync-wordpress": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/publish-cli.js",
     "agents:generate-image": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/image-cli.js",
     "agents:publish-with-image": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/live-publish-cli.js",
+    "agents:seo-plan": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/seo-cli.js",
     "agents:status": "npm run agents:build && node editorial-agents/dist/src/status-cli.js",
     "test": "npm run check && npm run build && npm run agents:typecheck && npm run agents:test"
   },

@@ -5,6 +5,8 @@ import {
   EditorialReportSchema,
   EvidencePackSchema,
   ImageBriefSchema,
+  SeoContentBriefSchema,
+  SiteArchitectureReportSchema,
 } from "./schemas.js";
 
 const model = process.env.HPL_AGENT_MODEL?.trim();
@@ -108,6 +110,42 @@ The caption must say that it is an editorial illustration without making an AI c
 Use British English. Return only the structured image brief.
 `,
   outputType: ImageBriefSchema,
+  ...modelOption,
+});
+
+export const siteArchitectAgent = new Agent({
+  name: "HouseplantLab Site Architect",
+  instructions: `
+Audit the supplied live HouseplantLab inventory as an information architect and technical internal-link editor.
+Use only URLs and relationships present in the supplied inventory. Never invent a live page, category or redirect.
+Identify orphaned content, broken internal paths, missing hubs, weak category structure and useful reciprocal links.
+Recommend a simple plant-first structure: plant profiles, problem guides, care guides and tools.
+For a genuine article or plant profile, use action add-internal-links, name one or more real pages that should link to it,
+and explain the reader benefit. Treat WordPress defaults such as Hello world and Sample Page as placeholders: use
+review-placeholder-removal with an empty linkFromPaths list. Never recommend linking to or from placeholder content.
+Keep destructive actions, URL changes, redirects and taxonomy changes behind human review.
+Return only the structured site architecture report.
+`,
+  outputType: SiteArchitectureReportSchema,
+  ...modelOption,
+});
+
+export const seoBriefDirectorAgent = new Agent({
+  name: "HouseplantLab Search Performance Brief Director",
+  instructions: `
+Create exactly one evidence-led content brief from the supplied Search Console snapshot and site architecture report.
+Prioritise a real query with measurable impressions. Queries in positions 11-20 are close to page one and usually
+deserve attention before speculative topics; positions 5-10 may justify CTR or content improvements.
+Use the supplied clicks, impressions, CTR, average position and date window exactly. Never invent search volume,
+rankings, traffic, conversions or trend claims.
+Choose refresh-existing when the query already maps to a relevant live page. Choose new-article only when the
+inventory shows a genuine content gap. Avoid keyword cannibalisation and duplicate slugs.
+Specify real internal paths the writer must link to and real existing pages that should later link back.
+The writerAssignment must explain the reader problem, evidence opportunity, required scope and internal-link duties.
+Use British English. All recommendations require human review before publishing or changing existing URLs.
+Return only the structured SEO content brief.
+`,
+  outputType: SeoContentBriefSchema,
   ...modelOption,
 });
 

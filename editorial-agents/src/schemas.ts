@@ -135,6 +135,90 @@ export const ImageManifestSchema = z.object({
   brief: ImageBriefSchema,
 });
 
+export const SitePageSchema = z.object({
+  id: z.number().int().nonnegative(),
+  type: z.enum(["post", "page", "plant"]),
+  title: z.string().min(1),
+  slug: z.string().min(1),
+  url: z.string().url(),
+  path: z.string().regex(/^\/.*\/$/),
+  modifiedAt: z.string().datetime(),
+  categoryIds: z.array(z.number().int().nonnegative()),
+  outgoingInternalPaths: z.array(z.string().regex(/^\/.*\/$/)),
+});
+
+export const SiteInventorySchema = z.object({
+  auditedAt: z.string().datetime(),
+  origin: z.literal("https://houseplantlab.co.uk"),
+  pages: z.array(SitePageSchema),
+  brokenInternalPaths: z.array(z.string()),
+  orphanPaths: z.array(z.string()),
+  categoryNames: z.array(z.string()),
+});
+
+export const SearchPerformanceRowSchema = z.object({
+  page: z.string().url(),
+  query: z.string().min(1),
+  clicks: z.number().nonnegative(),
+  impressions: z.number().nonnegative(),
+  ctr: z.number().min(0).max(1),
+  position: z.number().positive(),
+});
+
+export const SearchPerformanceSnapshotSchema = z.object({
+  siteUrl: z.string().min(3),
+  startDate: z.string().date(),
+  endDate: z.string().date(),
+  capturedAt: z.string().datetime(),
+  rows: z.array(SearchPerformanceRowSchema),
+  topPerformingPages: z.array(z.object({
+    page: z.string().url(),
+    clicks: z.number().nonnegative(),
+    impressions: z.number().nonnegative(),
+    ctr: z.number().min(0).max(1),
+    averagePosition: z.number().positive(),
+  })),
+  strikingDistanceQueries: z.array(SearchPerformanceRowSchema),
+});
+
+export const SiteArchitectureReportSchema = z.object({
+  summary: z.string().min(30),
+  requiredHubs: z.array(z.object({ title: z.string(), path: z.string(), purpose: z.string() })),
+  orphanFixes: z.array(z.object({
+    orphanPath: z.string(),
+    action: z.enum(["add-internal-links", "review-placeholder-removal"]),
+    linkFromPaths: z.array(z.string()),
+    reason: z.string(),
+  })),
+  brokenLinkFixes: z.array(z.object({ brokenPath: z.string(), foundOnPaths: z.array(z.string()), action: z.string() })),
+  categoryActions: z.array(z.string()),
+  requiredHumanChecks: z.array(z.string()).min(1),
+});
+
+export const SeoContentBriefSchema = z.object({
+  recommendationType: z.enum(["new-article", "refresh-existing"]),
+  plant: z.string().min(3),
+  proposedTitle: z.string().min(10),
+  proposedSlug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  targetUrl: z.string().url().nullable(),
+  primaryQuery: z.string().min(3),
+  supportingQueries: z.array(z.string().min(3)),
+  performanceEvidence: z.object({
+    clicks: z.number().nonnegative(),
+    impressions: z.number().nonnegative(),
+    ctr: z.number().min(0).max(1),
+    averagePosition: z.number().positive(),
+    startDate: z.string().date(),
+    endDate: z.string().date(),
+  }),
+  rationale: z.string().min(40),
+  requiredSections: z.array(z.string().min(3)).min(4),
+  linkToPaths: z.array(z.string().regex(/^\/.*\/$/)).min(1),
+  requestLinksFromPaths: z.array(z.string().regex(/^\/.*\/$/)),
+  writerAssignment: z.string().min(80),
+  humanReviewNotes: z.array(z.string()).min(1),
+});
+
 export const QueueStatusSchema = z.enum([
   "queued",
   "running",
@@ -165,6 +249,7 @@ export const QueueItemSchema = z.object({
   wordpressMediaId: z.number().int().positive().nullable().default(null),
   publishedUrl: z.string().url().nullable().default(null),
   publishedAt: z.string().datetime().nullable().default(null),
+  seoBriefPath: z.string().nullable().default(null),
 });
 
 export const EditorialQueueSchema = z.object({
@@ -182,6 +267,11 @@ export type QualityReport = z.infer<typeof QualityReportSchema>;
 export type WorkflowBundle = z.infer<typeof WorkflowBundleSchema>;
 export type ImageBrief = z.infer<typeof ImageBriefSchema>;
 export type ImageManifest = z.infer<typeof ImageManifestSchema>;
+export type SiteInventory = z.infer<typeof SiteInventorySchema>;
+export type SearchPerformanceRow = z.infer<typeof SearchPerformanceRowSchema>;
+export type SearchPerformanceSnapshot = z.infer<typeof SearchPerformanceSnapshotSchema>;
+export type SiteArchitectureReport = z.infer<typeof SiteArchitectureReportSchema>;
+export type SeoContentBrief = z.infer<typeof SeoContentBriefSchema>;
 export type QueueItem = z.infer<typeof QueueItemSchema>;
 export type EditorialQueue = z.infer<typeof EditorialQueueSchema>;
 

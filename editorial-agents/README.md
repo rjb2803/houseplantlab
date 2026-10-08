@@ -75,6 +75,25 @@ This is an explicit production action. It selects the newest tracked WordPress d
 
 The article is recorded as `published` in the queue and must receive the owner's requested post-publication review. The command refuses another hostname, a failed editorial package, a missing image manifest or a non-editorial image classification.
 
+## Audit structure and create the next SEO-led writer brief
+
+```powershell
+npm run agents:seo-plan
+```
+
+The Site Architect inventories published posts, pages and plant profiles through the public WordPress REST API, records their real outgoing links, identifies broken paths and orphaned pages, and refreshes the internal-link allowlist from observed live URLs. Default WordPress placeholders are audited but never approved as linking targets.
+
+When read-only Google Search Console credentials are configured, the Search Performance stage requests the most recent 28-day final-data window ending three days ago. It records page/query clicks, impressions, CTR and average position, then identifies queries in positions 11-20 as “striking distance” opportunities. The SEO Brief Director combines those measurements with the site architecture report and produces `next-writer-brief.json`. A genuinely new article brief is added to the editorial queue; an existing-page refresh is saved for the refresh workflow and is never turned into a duplicate post.
+
+Search Console configuration uses OAuth 2.0 with the read-only `webmasters.readonly` scope. Keep these values only in the ignored `.env` file:
+
+- `GSC_SITE_URL=sc-domain:houseplantlab.co.uk`
+- `GSC_CLIENT_ID`
+- `GSC_CLIENT_SECRET`
+- `GSC_REFRESH_TOKEN`
+
+Without these four values, the structural audit still runs and records that performance data is unavailable; it will not invent rankings or search volumes.
+
 ## Verify the system
 
 ```powershell
@@ -86,10 +105,11 @@ The commands compile to ignored JavaScript under `editorial-agents/dist/`. The p
 
 ## Security boundary
 
-- The draft connector accepts only a WordPress username and Application Password from the ignored local `.env` file. It never accepts cPanel, FTP, database or Search Console credentials.
-- No public-publish operation exists. The connector can create only a WordPress draft, and a human must publish it in WordPress.
+- WordPress automation accepts only a username and Application Password from the ignored local `.env` file. It never accepts cPanel, FTP or database credentials.
+- Search Console automation accepts only read-only OAuth credentials from `.env`; it never requests Search Console write access.
+- Public publication is a separate explicit command and requires a WordPress Author account. The draft connector itself remains draft-only.
 - `.env` files are ignored by Git and must never be committed or pasted into chat.
 - Source records, editorial findings and deterministic checks are preserved with every run.
 - `content-production/site-manifest.json` is the allowlist for internal links; agents cannot invent future URLs.
-- The WordPress integration must use a dedicated Contributor account and a separate human approval boundary.
+- The WordPress integration must use a dedicated Author account and the documented post-publication review boundary.
 
