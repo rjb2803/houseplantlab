@@ -114,6 +114,27 @@ export const WorkflowBundleSchema = z.object({
   quality: QualityReportSchema,
 });
 
+export const ImageBriefSchema = z.object({
+  articleSlug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  assetType: z.literal("hero"),
+  prompt: z.string().min(120),
+  filename: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*-hero-v\d+\.png$/),
+  altText: z.string().min(20).max(180),
+  caption: z.string().min(20).max(240),
+  classification: z.literal("ai-generated-editorial-illustration"),
+  diagnosticUseAllowed: z.literal(false),
+  visualChecks: z.array(z.string().min(8)).min(4),
+});
+
+export const ImageManifestSchema = z.object({
+  generatedAt: z.string().datetime(),
+  model: z.string().min(3),
+  status: z.literal("human-review-required"),
+  sourceBundlePath: z.string().min(3),
+  imagePath: z.string().min(3),
+  brief: ImageBriefSchema,
+});
+
 export const QueueStatusSchema = z.enum([
   "queued",
   "running",
@@ -155,6 +176,8 @@ export type DraftPackage = z.infer<typeof DraftPackageSchema>;
 export type EditorialReport = z.infer<typeof EditorialReportSchema>;
 export type QualityReport = z.infer<typeof QualityReportSchema>;
 export type WorkflowBundle = z.infer<typeof WorkflowBundleSchema>;
+export type ImageBrief = z.infer<typeof ImageBriefSchema>;
+export type ImageManifest = z.infer<typeof ImageManifestSchema>;
 export type QueueItem = z.infer<typeof QueueItemSchema>;
 export type EditorialQueue = z.infer<typeof EditorialQueueSchema>;
 

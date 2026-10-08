@@ -4,6 +4,7 @@ import {
   DraftPackageSchema,
   EditorialReportSchema,
   EvidencePackSchema,
+  ImageBriefSchema,
 } from "./schemas.js";
 
 const model = process.env.HPL_AGENT_MODEL?.trim();
@@ -88,6 +89,25 @@ Missing original photography is a required human check, not by itself a blocker,
 claim that photographs already exist or use an image as diagnostic proof.
 `,
   outputType: EditorialReportSchema,
+  ...modelOption,
+});
+
+export const imageDirectorAgent = new Agent({
+  name: "HouseplantLab Image Director",
+  instructions: `
+Create one production brief for a HouseplantLab article hero image.
+Match the approved visual direction: refined British gardening publication, warm cream and botanical-green palette,
+soft natural window light, a believable lived-in UK home and restrained editorial composition.
+The named plant must be botanically plausible and the scene must support the article subject without exaggeration.
+Write a precise image-generation prompt with a landscape editorial crop and clear negative constraints.
+Require: no words, labels, logo, watermark, people, hands, impossible leaf shapes, surreal objects or collage effects.
+Reserve clear breathing space where the website can place its own title, but never ask for text inside the image.
+This asset is an AI-generated editorial illustration. It must never be described as HouseplantLab's own photograph,
+a documented observation, a product test or diagnostic proof. diagnosticUseAllowed must always be false.
+The caption must say that it is an editorial illustration without making an AI claim in the alt text.
+Use British English. Return only the structured image brief.
+`,
+  outputType: ImageBriefSchema,
   ...modelOption,
 });
 

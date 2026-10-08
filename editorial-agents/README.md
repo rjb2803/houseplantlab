@@ -1,6 +1,6 @@
 # HouseplantLab editorial agents
 
-This local editorial pipeline prepares evidence-led article packages for human review. It does not connect to WordPress, publish content, upload media or use FTP.
+This editorial pipeline prepares evidence-led article packages, creates review-only WordPress drafts and generates review-only editorial hero images. It cannot publish posts, upload media or use FTP.
 
 ## Workflow
 
@@ -54,6 +54,16 @@ npm run agents:sync-wordpress
 ```
 
 The connector selects one `ready-for-human-review` package, revalidates its complete bundle, converts its structured Markdown to escaped HTML and creates a normal WordPress post with the status hard-coded to `draft`. It refuses another hostname, a failed quality report, unsupported editorial claims or an unexpected non-draft response. It records the WordPress post ID and edit URL in the queue to prevent duplicate uploads. It has no publish operation.
+
+## Generate an article hero image for review
+
+```powershell
+npm run agents:generate-image
+```
+
+The Image Director reads the newest article package that passed editorial review, writes a constrained hero-image brief, and uses the OpenAI Image API to create a landscape PNG. The PNG and its manifest are saved inside that article's ignored `content-production/runs/.../images/` folder. The manifest includes the filename, alt text, caption, model, review state and the non-diagnostic classification.
+
+This command does not upload media or alter WordPress. Generated images are editorial illustrations. Genuine symptom photography remains mandatory wherever an image is used as evidence of a diagnosis or HouseplantLab observation.
 
 ## Verify the system
 

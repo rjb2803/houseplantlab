@@ -10,12 +10,13 @@
     "preview": "node scripts/serve-preview.mjs",
     "agents:typecheck": "tsc --noEmit -p editorial-agents/tsconfig.json",
     "agents:build": "tsc -p editorial-agents/tsconfig.build.json",
-    "agents:test": "npm run agents:build && node --test --experimental-test-isolation=none editorial-agents/dist/tests/checks.test.js editorial-agents/dist/tests/publisher.test.js editorial-agents/dist/tests/queue.test.js editorial-agents/dist/tests/workflow.test.js",
+    "agents:test": "npm run agents:build && node --test --experimental-test-isolation=none editorial-agents/dist/tests/checks.test.js editorial-agents/dist/tests/image-workflow.test.js editorial-agents/dist/tests/publisher.test.js editorial-agents/dist/tests/queue.test.js editorial-agents/dist/tests/workflow.test.js",
     "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
     "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
     "agents:autonomous": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js",
     "agents:autonomous:force": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js --force",
     "agents:sync-wordpress": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/publish-cli.js",
+    "agents:generate-image": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/image-cli.js",
     "agents:status": "npm run agents:build && node editorial-agents/dist/src/status-cli.js",
     "test": "npm run check && npm run build && npm run agents:typecheck && npm run agents:test"
   },
@@ -24,6 +25,7 @@
   },
   "dependencies": {
     "@openai/agents": "^0.19.0",
+    "openai": "^7.30.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {
