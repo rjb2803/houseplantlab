@@ -255,7 +255,7 @@ export const QueueItemSchema = z.object({
 export const EditorialQueueSchema = z.object({
   version: z.literal(1),
   timeZone: z.literal("Europe/London"),
-  maxRunsPerDay: z.number().int().min(1).max(5),
+  maxRunsPerDay: z.number().int().min(1).max(20),
   items: z.array(QueueItemSchema),
 });
 
