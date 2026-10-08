@@ -47,7 +47,7 @@ It cannot publish, deploy, push Git, edit WordPress or change the approved inter
 
 ## Send an approved package to WordPress as a draft
 
-Set `WP_SITE_URL`, `WP_USERNAME` and `WP_APP_PASSWORD` for a dedicated WordPress contributor account, then run:
+Copy `.env.example` to the ignored local `.env` file and set `WP_SITE_URL`, `WP_USERNAME` and `WP_APP_PASSWORD` for a dedicated WordPress contributor account, then run:
 
 ```powershell
 npm run agents:sync-wordpress
@@ -66,10 +66,10 @@ The commands compile to ignored JavaScript under `editorial-agents/dist/`. The p
 
 ## Security boundary
 
-- No WordPress, cPanel, FTP, database or Search Console credentials are accepted.
-- No publishing tool exists in this phase.
-- `.env` files are ignored by Git.
+- The draft connector accepts only a WordPress username and Application Password from the ignored local `.env` file. It never accepts cPanel, FTP, database or Search Console credentials.
+- No public-publish operation exists. The connector can create only a WordPress draft, and a human must publish it in WordPress.
+- `.env` files are ignored by Git and must never be committed or pasted into chat.
 - Source records, editorial findings and deterministic checks are preserved with every run.
 - `content-production/site-manifest.json` is the allowlist for internal links; agents cannot invent future URLs.
-- A future WordPress integration must use a restricted draft-only account and a separate human approval boundary.
+- The WordPress integration must use a dedicated Contributor account and a separate human approval boundary.
 
