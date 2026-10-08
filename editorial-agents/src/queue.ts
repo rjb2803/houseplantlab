@@ -23,6 +23,7 @@ export interface AutonomousDependencies {
   now?: () => Date;
   workflow?: typeof runLiveWorkflow;
   persistBundle?: typeof saveBundle;
+  ignoreDailyLimit?: boolean;
 }
 
 function londonDate(date: Date): string {
@@ -99,7 +100,7 @@ export async function runAutonomousWorker(
     const attemptsToday = queue.items.filter(
       (item) => item.lastAttemptAt && londonDate(new Date(item.lastAttemptAt)) === today,
     ).length;
-    if (attemptsToday >= queue.maxRunsPerDay) {
+    if (!dependencies.ignoreDailyLimit && attemptsToday >= queue.maxRunsPerDay) {
       return { outcome: "daily-limit", itemId: null, runId: null, outputPath: null, message: "Daily article limit reached." };
     }
 

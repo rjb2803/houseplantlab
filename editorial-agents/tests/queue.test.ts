@@ -71,3 +71,19 @@ test("autonomous worker respects the daily run limit", async () => {
   assert.equal(result.outcome, "daily-limit");
 });
 
+test("an explicit manual force run may exceed the scheduled daily limit", async () => {
+  const root = await makeProject();
+  const queuePath = path.join(root, "content-production", "queue", "articles.json");
+  const queue = JSON.parse(await readFile(queuePath, "utf8"));
+  queue.maxRunsPerDay = 1;
+  queue.items[0].lastAttemptAt = "2026-10-08T08:30:00.000Z";
+  await writeFile(queuePath, JSON.stringify(queue));
+  const result = await runAutonomousWorker(root, {
+    now: () => new Date("2026-10-08T09:00:00.000Z"),
+    ignoreDailyLimit: true,
+    workflow: async () => runFixtureWorkflow({ allowedInternalPaths: ["/plants/monstera-deliciosa/"] }),
+    persistBundle: async (_root, bundle) => path.join(root, "content-production", "runs", bundle.run.id),
+  });
+  assert.equal(result.outcome, "ready-for-human-review");
+});
+

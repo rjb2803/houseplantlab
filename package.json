@@ -14,6 +14,7 @@
     "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
     "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
     "agents:autonomous": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js",
+    "agents:autonomous:force": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js --force",
     "agents:sync-wordpress": "npm run agents:build && node --env-file-if-exists=.env editorial-agents/dist/src/publish-cli.js",
     "agents:status": "npm run agents:build && node editorial-agents/dist/src/status-cli.js",
     "test": "npm run check && npm run build && npm run agents:typecheck && npm run agents:test"
