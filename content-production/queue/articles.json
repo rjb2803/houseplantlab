@@ -18,24 +18,30 @@
       "lastError": null,
       "wordpressPostId": 7,
       "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=7&action=edit",
-      "wordpressSyncedAt": "2026-10-08T22:11:37.668Z"
+      "wordpressSyncedAt": "2026-10-08T22:11:37.668Z",
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "monstera-drooping",
       "assignment": "Prepare an evidence-led UK article explaining why Monstera deliciosa droops, how to inspect moisture, roots, light and temperature, and when intervention is needed.",
       "plant": "Monstera deliciosa",
       "priority": 2,
-      "status": "wordpress-draft",
+      "status": "published",
       "attempts": 2,
       "createdAt": "2026-10-08T08:00:00.000Z",
-      "updatedAt": "2026-10-08T22:36:58.796Z",
+      "updatedAt": "2026-10-08T23:10:33.141Z",
       "lastAttemptAt": "2026-10-08T22:34:34.723Z",
       "lastRunId": "live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-34-34-763Z",
       "lastOutputPath": "content-production/runs/live-why-is-my-monstera-deliciosa-drooping-2026-10-08T22-34-34-763Z",
       "lastError": null,
       "wordpressPostId": 11,
       "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=11&action=edit",
-      "wordpressSyncedAt": "2026-10-08T22:36:58.796Z"
+      "wordpressSyncedAt": "2026-10-08T22:36:58.796Z",
+      "wordpressMediaId": 16,
+      "publishedUrl": "https://houseplantlab.co.uk/why-is-my-monstera-deliciosa-drooping/",
+      "publishedAt": "2026-10-08T23:10:33.141Z"
     },
     {
       "id": "monstera-leaves-curling",
@@ -52,7 +58,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "monstera-aerial-roots",
@@ -69,7 +78,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "watering-monstera-uk",
@@ -86,7 +98,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "monstera-soil-mix",
@@ -103,7 +118,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "repot-monstera",
@@ -120,7 +138,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "propagate-monstera",
@@ -137,7 +158,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "monstera-not-splitting",
@@ -154,7 +178,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     },
     {
       "id": "monstera-pet-safety",
@@ -171,7 +198,10 @@
       "lastError": null,
       "wordpressPostId": null,
       "wordpressEditUrl": null,
-      "wordpressSyncedAt": null
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null
     }
   ]
 }
