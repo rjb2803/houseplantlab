@@ -8,14 +8,17 @@
       "assignment": "Prepare an evidence-led UK article explaining brown spots on Monstera deliciosa leaves, how readers can distinguish likely causes, and which corrective actions are safe.",
       "plant": "Monstera deliciosa",
       "priority": 1,
-      "status": "ready-for-human-review",
+      "status": "wordpress-draft",
       "attempts": 2,
       "createdAt": "2026-10-08T08:00:00.000Z",
-      "updatedAt": "2026-10-08T19:34:30.117Z",
+      "updatedAt": "2026-10-08T22:11:37.668Z",
       "lastAttemptAt": "2026-10-08T19:33:14.467Z",
       "lastRunId": "live-brown-spots-monstera-deliciosa-leaves-2026-10-08T19-33-14-504Z",
       "lastOutputPath": "content-production/runs/live-brown-spots-monstera-deliciosa-leaves-2026-10-08T19-33-14-504Z",
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": 7,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=7&action=edit",
+      "wordpressSyncedAt": "2026-10-08T22:11:37.668Z"
     },
     {
       "id": "monstera-drooping",
@@ -29,7 +32,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "monstera-leaves-curling",
@@ -43,7 +49,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "monstera-aerial-roots",
@@ -57,7 +66,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "watering-monstera-uk",
@@ -71,7 +83,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "monstera-soil-mix",
@@ -85,7 +100,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "repot-monstera",
@@ -99,7 +117,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "propagate-monstera",
@@ -113,7 +134,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "monstera-not-splitting",
@@ -127,7 +151,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     },
     {
       "id": "monstera-pet-safety",
@@ -141,7 +168,10 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null
     }
   ]
 }
