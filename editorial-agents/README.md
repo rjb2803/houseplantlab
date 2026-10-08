@@ -65,6 +65,16 @@ The Image Director reads the newest article package that passed editorial review
 
 This command does not upload media or alter WordPress. Generated images are editorial illustrations. Genuine symptom photography remains mandatory wherever an image is used as evidence of a diagnosis or HouseplantLab observation.
 
+## Publish a WordPress draft with its hero image
+
+```powershell
+npm run agents:publish-with-image
+```
+
+This is an explicit production action. It selects the newest tracked WordPress draft, revalidates the article and image manifest, uploads exactly one PNG, records its alt text and illustration caption, attaches it as the featured image and publishes the matching post. The dedicated WordPress account must have `upload_files`, `edit_posts` and `publish_posts`; WordPress's Author role provides these capabilities without granting site administration.
+
+The article is recorded as `published` in the queue and must receive the owner's requested post-publication review. The command refuses another hostname, a failed editorial package, a missing image manifest or a non-editorial image classification.
+
 ## Verify the system
 
 ```powershell
