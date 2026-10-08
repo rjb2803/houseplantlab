@@ -69,3 +69,19 @@ test("unverified HouseplantLab experience is blocked", () => {
   assert.match(report.errors.join("\n"), /without an observation record/);
 });
 
+test("visible source references are blocked from reader-facing copy", () => {
+  const report = runQualityChecks(
+    fixtureBrief,
+    fixtureEvidence,
+    {
+      ...fixtureDraft,
+      sections: fixtureDraft.sections.map((section, index) =>
+        index === 0 ? { ...section, markdown: `${section.markdown} [S1]\n\nEvidence: S1` } : section,
+      ),
+    },
+    fixtureEditorial,
+  );
+  assert.equal(report.passed, false);
+  assert.match(report.errors.join("\n"), /exposes internal evidence references/);
+});
+

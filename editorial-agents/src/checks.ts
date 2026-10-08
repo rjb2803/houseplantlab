@@ -18,6 +18,7 @@ export interface QualityContext {
 const PLACEHOLDER_PATTERN = /\b(?:todo|tbc|lorem ipsum|insert (?:link|image|source)|placeholder)\b/i;
 const UNVERIFIED_EXPERIENCE_PATTERN = /\b(?:we tested|our test|we found|in our experiment|we recommend)\b/i;
 const AI_STYLE_PATTERN = /\b(?:delve into|in today's fast-paced world|unlock the secrets|game-changer|revolutionary)\b/i;
+const VISIBLE_REFERENCE_PATTERN = /\[(?:S\d+)(?:\s*,\s*S\d+)*\]|\[S\d+\](?:\[S\d+\])+|^\s*(?:evidence|sources?|references?)\s*:/im;
 
 export function runQualityChecks(
   briefInput: ArticleBrief,
@@ -60,6 +61,7 @@ export function runQualityChecks(
 
   const fullDraft = [draft.title, draft.excerpt, draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n");
   if (PLACEHOLDER_PATTERN.test(fullDraft)) errors.push("Draft contains placeholder language.");
+  if (VISIBLE_REFERENCE_PATTERN.test(fullDraft)) errors.push("Draft exposes internal evidence references in reader-facing copy.");
   if (AI_STYLE_PATTERN.test(fullDraft)) warnings.push("Draft contains generic AI-style phrasing.");
 
   const hasOwnerObservation = evidence.sources.some((source) => source.sourceType === "houseplantlab-observation");

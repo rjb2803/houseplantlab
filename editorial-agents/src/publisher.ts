@@ -39,6 +39,15 @@ function inlineMarkdown(value: string): string {
     .replace(/\[([^\]]+)\]\(((?:https:\/\/|\/)[^)]+)\)/g, '<a href="$2">$1</a>');
 }
 
+function stripInternalReferences(value: string): string {
+  return value
+    .replace(/\s*\[(?:S\d+)(?:\s*,\s*S\d+)*\]/gi, "")
+    .replace(/\s*(?:\[S\d+\])+/gi, "")
+    .replace(/^\s*(?:evidence|sources?|references?)\s*:.*$/gim, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 function isTableDivider(line: string): boolean {
   return /^\|?(?:\s*:?-{3,}:?\s*\|)+\s*:?-{3,}:?\s*\|?$/.test(line.trim());
 }
@@ -48,7 +57,7 @@ function tableCells(line: string): string[] {
 }
 
 export function renderMarkdown(markdown: string): string {
-  const lines = markdown.replaceAll("\r\n", "\n").split("\n");
+  const lines = stripInternalReferences(markdown).replaceAll("\r\n", "\n").split("\n");
   const output: string[] = [];
   for (let index = 0; index < lines.length;) {
     const line = lines[index].trim();
@@ -102,24 +111,14 @@ export function renderMarkdown(markdown: string): string {
   return output.join("\n");
 }
 
-function renderBundleContent(bundle: z.infer<typeof WorkflowBundleSchema>): string {
-  const sourceById = new Map(bundle.evidence.sources.map((source) => [source.id, source]));
-  const usedSourceIds = new Set(bundle.draft.sections.flatMap((section) => section.claimSourceIds));
+export function renderBundleContent(bundle: z.infer<typeof WorkflowBundleSchema>): string {
   const sections = bundle.draft.sections.map((section) => [
     `<h2>${escapeHtml(section.heading)}</h2>`,
     renderMarkdown(section.markdown),
   ].join("\n"));
-  const sources = [...usedSourceIds]
-    .map((id) => sourceById.get(id))
-    .filter((source): source is NonNullable<typeof source> => Boolean(source))
-    .map((source) => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a> — ${escapeHtml(source.organisation)}</li>`)
-    .join("");
   return [
-    `<p class="hpl-article-answer"><strong>${escapeHtml(bundle.draft.openingAnswer)}</strong></p>`,
+    `<p class="hpl-article-answer"><strong>${escapeHtml(stripInternalReferences(bundle.draft.openingAnswer))}</strong></p>`,
     ...sections,
-    sources ? `<h2>Sources and further reading</h2><ol>${sources}</ol>` : "",
-    "<hr>",
-    "<p><em>Draft created by the HouseplantLab editorial workflow. Factual, photography and final editorial checks are required before publication.</em></p>",
   ].filter(Boolean).join("\n");
 }
 

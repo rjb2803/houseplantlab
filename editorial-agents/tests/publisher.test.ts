@@ -4,7 +4,8 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fixtureBrief, fixtureDraft, fixtureEditorial, fixtureEvidence } from "../src/fixture.js";
-import { syncReadyDraftToWordPress } from "../src/publisher.js";
+import { renderBundleContent, syncReadyDraftToWordPress } from "../src/publisher.js";
+import { WorkflowBundleSchema } from "../src/schemas.js";
 
 async function createProject(qualityPassed = true): Promise<string> {
   const root = await mkdtemp(path.join(os.tmpdir(), "hpl-publisher-"));
@@ -82,4 +83,26 @@ test("publisher refuses an unexpected published response", async () => {
       headers: { "Content-Type": "application/json" },
     }),
   }), (error: unknown) => error instanceof Error && error.message.includes("draft") && error.message.includes("status"));
+});
+
+test("reader-facing rendering strips internal references everywhere", () => {
+  const bundle = WorkflowBundleSchema.parse({
+    run: { id: "fixture-run", mode: "fixture", startedAt: "2026-10-08T10:00:00.000Z", completedAt: "2026-10-08T10:01:00.000Z", revisionCount: 0 },
+    brief: fixtureBrief,
+    evidence: fixtureEvidence,
+    draft: {
+      ...fixtureDraft,
+      openingAnswer: `${fixtureDraft.openingAnswer} [S1][S2]`,
+      sections: fixtureDraft.sections.map((section, index) => index === 0
+        ? { ...section, markdown: `${section.markdown} [S1]\n\nEvidence: S1` }
+        : section),
+    },
+    editorial: fixtureEditorial,
+    editorialHistory: [fixtureEditorial],
+    quality: { passed: true, checkedAt: "2026-10-08T10:01:00.000Z", errors: [], warnings: [] },
+  });
+  const html = renderBundleContent(bundle);
+  assert.doesNotMatch(html, /\[S\d+\]/);
+  assert.doesNotMatch(html, /Evidence:/);
+  assert.doesNotMatch(html, /Sources and further reading/);
 });
