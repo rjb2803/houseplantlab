@@ -10,7 +10,7 @@
     "preview": "node scripts/serve-preview.mjs",
     "agents:typecheck": "tsc --noEmit -p editorial-agents/tsconfig.json",
     "agents:build": "tsc -p editorial-agents/tsconfig.build.json",
-    "agents:test": "npm run agents:build && node --test --test-isolation=none editorial-agents/dist/tests/*.test.js",
+    "agents:test": "npm run agents:build && node --test editorial-agents/dist/tests/checks.test.js editorial-agents/dist/tests/queue.test.js editorial-agents/dist/tests/workflow.test.js",
     "agents:fixture": "npm run agents:build && node editorial-agents/dist/src/cli.js --fixture",
     "agents:live": "npm run agents:build && node editorial-agents/dist/src/cli.js --live",
     "agents:autonomous": "npm run agents:build && node editorial-agents/dist/src/autonomous-cli.js",
