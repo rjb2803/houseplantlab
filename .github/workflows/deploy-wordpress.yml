@@ -42,7 +42,6 @@ jobs:
           cls -la
           cls -la public_html
           cls -la public_html/wp-content
-          cls -la public_html/wp-content/mu-plugins
           bye
           LFTP
 
