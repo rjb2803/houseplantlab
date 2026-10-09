@@ -72,7 +72,7 @@ add_filter('template_include', static function (string $template): string {
 
 add_filter('pre_get_document_title', static function (string $title): string {
     return hpl_is_field_journal_request()
-        ? 'The Field Journal – HouseplantLab'
+        ? 'HouseplantLab Journal – Practical Plant Care'
         : $title;
 });
 
