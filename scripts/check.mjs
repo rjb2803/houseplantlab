@@ -5,6 +5,8 @@ const requiredFiles = [
   'themes/houseplantlab/theme.json',
   'themes/houseplantlab/functions.php',
   'themes/houseplantlab/templates/index.html',
+  'themes/houseplantlab/blog.php',
+  'themes/houseplantlab/assets/src/field-journal.css',
   'plugins/houseplantlab-core/houseplantlab-core.php',
 ];
 
