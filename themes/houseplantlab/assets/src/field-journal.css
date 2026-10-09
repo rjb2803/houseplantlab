@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  .hpl-field-journal-page *,
+  .hpl-field-journal-page *::before,
+  .hpl-field-journal-page *::after {
+    box-sizing: border-box;
+  }
+
   .hpl-field-journal-page {
     background: #f7f2e7;
     color: #102f24;
@@ -47,6 +53,7 @@
 
   .hpl-field-journal-page .hpl-primary-nav .wp-block-navigation-item__content {
     border-radius: 0;
+    font-style: normal;
   }
 
   .hpl-field-journal-page .hpl-primary-nav a[href$="/blog/"] {
@@ -57,6 +64,8 @@
 
   .hpl-field-journal-page .hpl-header__cta {
     border-radius: 0.28rem;
+    color: white !important;
+    font-style: normal;
   }
 
   .hpl-journal-main {
