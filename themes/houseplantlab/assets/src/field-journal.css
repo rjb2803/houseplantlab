@@ -29,20 +29,18 @@
   .hpl-journal-search input { background: transparent; border: 0; color: #385247; font-size: 0.75rem; min-width: 0; outline: 0; width: 100%; }
 
   .hpl-journal-main { background: #f8f4e9; padding: 0 clamp(1.25rem, 3.3vw, 3.5rem) 2.3rem; }
-  .hpl-journal-masthead { align-items: center; display: grid; min-height: 13.5rem; overflow: hidden; position: relative; text-align: center; }
-  .hpl-journal-masthead__copy { margin: auto; max-width: 53rem; padding: 2.6rem 10rem 2.1rem; position: relative; z-index: 2; }
+  .hpl-journal-masthead { align-items: center; background: url("../images/journal-masthead-foliage-v2.png") center / 100% 100% no-repeat; display: grid; min-height: 11.75rem; overflow: hidden; position: relative; text-align: center; }
+  .hpl-journal-masthead__copy { margin: auto; max-width: 53rem; padding: 2.1rem 10rem 1.75rem; position: relative; z-index: 2; }
   .hpl-journal-masthead h1 { font-size: clamp(3.4rem, 5.6vw, 5.75rem); margin: 0; white-space: nowrap; }
   .hpl-journal-masthead__copy p { font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.35rem); margin: 0.55rem 0 0; }
   .hpl-journal-masthead__copy > span { background: #4f7a5d; display: block; height: 1px; margin: 1.15rem auto 0; width: 3.2rem; }
-  .hpl-journal-masthead__leaf { background-image: url("../images/hero-monstera-mock-v1.png"); background-repeat: no-repeat; bottom: 0; position: absolute; top: 0; width: 18rem; }
-  .hpl-journal-masthead__leaf--left { background-position: 73% 34%; background-size: 58rem auto; left: -2rem; mask-image: linear-gradient(90deg, #000 58%, transparent 100%); }
-  .hpl-journal-masthead__leaf--right { background-position: 95% 30%; background-size: 65rem auto; mask-image: linear-gradient(270deg, #000 52%, transparent 100%); right: -5rem; }
+  .hpl-journal-masthead__leaf { display: none; }
   .hpl-journal-masthead__words { color: #597765; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.31em; line-height: 1.9; margin: 0; position: absolute; right: 8.5rem; text-align: left; text-transform: uppercase; top: 3.15rem; z-index: 3; }
   .hpl-journal-masthead__words::after { background: #78947f; content: ""; display: block; height: 1px; margin-top: 0.8rem; width: 2.8rem; }
 
   .hpl-journal-feature-grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.42fr) minmax(22rem, 0.96fr); }
-  .hpl-journal-lead { min-height: 31rem; overflow: hidden; }
-  .hpl-journal-lead > a { display: block; height: 100%; min-height: 31rem; overflow: hidden; position: relative; }
+  .hpl-journal-lead { min-height: 25rem; overflow: hidden; }
+  .hpl-journal-lead > a { display: block; height: 100%; min-height: 25rem; overflow: hidden; position: relative; }
   .hpl-journal-lead img { height: 100%; object-fit: cover; object-position: 68% center; position: absolute; transition: transform 500ms ease; width: 100%; }
   .hpl-journal-lead:hover img { transform: scale(1.02); }
   .hpl-journal-lead__shade { background: linear-gradient(180deg, transparent 32%, rgb(5 31 22 / 86%) 100%); inset: 0; position: absolute; }
@@ -58,11 +56,11 @@
   .hpl-journal-side-card__image img { height: 100%; object-fit: cover; transition: transform 500ms ease; width: 100%; }
   .hpl-journal-side-card:hover img { transform: scale(1.025); }
   .hpl-journal-side-card__copy { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 1.6rem 1.8rem 3.2rem; position: relative; }
-  .hpl-journal-side-card h2 { font-size: clamp(1.45rem, 2vw, 2rem); margin: 0 0 0.65rem; }
+  .hpl-journal-side-card h2 { display: -webkit-box; font-size: clamp(1.3rem, 1.65vw, 1.7rem); margin: 0 0 0.65rem; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   .hpl-journal-side-card p { color: #52645b; font-family: Georgia, serif; font-size: 0.86rem; line-height: 1.4; margin: 0; }
   .hpl-journal-side-card .hpl-journal-arrow { bottom: 1rem; height: 2rem; right: 1rem; width: 2rem; }
 
-  .hpl-journal-plant-browser { padding: 2.3rem 0 2rem; }
+  .hpl-journal-plant-browser { padding: 1.65rem 0 1.45rem; }
   .hpl-journal-heading-row { align-items: end; display: flex; justify-content: space-between; }
   .hpl-journal-heading-row h2 { font-size: clamp(2rem, 3vw, 3rem); margin: 0; }
   .hpl-journal-heading-row p { color: #53655c; font-family: Georgia, serif; font-size: 0.9rem; margin: 0.3rem 0 0; }
@@ -71,18 +69,18 @@
   .hpl-journal-plant-pills a { align-items: center; background: #fffef9; border: 1px solid #dfe2d8; border-radius: 999px; display: inline-flex; font-size: 0.72rem; gap: 0.5rem; padding: 0.6rem 0.9rem; white-space: nowrap; }
   .hpl-journal-plant-pills span { color: #5f9469; font-size: 0.8rem; }
 
-  .hpl-journal-latest { border-top: 1px solid #d9ddd2; padding: 2rem 0 2.2rem; }
+  .hpl-journal-latest { border-top: 1px solid #d9ddd2; padding: 1.55rem 0 1.7rem; }
   .hpl-journal-latest__grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.15rem; }
   .hpl-journal-article-card { background: #fffdf7; min-width: 0; overflow: hidden; }
   .hpl-journal-article-card__image { aspect-ratio: 16 / 7.6; display: block; overflow: hidden; }
   .hpl-journal-article-card__image img { height: 100%; object-fit: cover; transition: transform 500ms ease; width: 100%; }
   .hpl-journal-article-card:hover img { transform: scale(1.025); }
-  .hpl-journal-article-card__copy { min-height: 10.5rem; padding: 1rem 3.2rem 1.1rem 1rem; position: relative; }
+  .hpl-journal-article-card__copy { min-height: 8.75rem; padding: 0.85rem 3.2rem 0.95rem 1rem; position: relative; }
   .hpl-journal-article-card h3 { font-size: clamp(1.25rem, 1.75vw, 1.7rem); margin: 0 0 0.55rem; }
   .hpl-journal-article-card p { color: #53655c; font-family: Georgia, serif; font-size: 0.8rem; line-height: 1.45; margin: 0; }
   .hpl-journal-article-card .hpl-journal-arrow { bottom: 0.9rem; height: 2rem; right: 0.9rem; width: 2rem; }
 
-  .hpl-journal-ad { background: #ede6d7; display: grid; grid-template-columns: 1.05fr 1.8fr 0.45fr; min-height: 16rem; overflow: hidden; position: relative; }
+  .hpl-journal-ad { background: #ede6d7; display: grid; grid-template-columns: 1.05fr 1.8fr 0.45fr; min-height: 13rem; overflow: hidden; position: relative; }
   .hpl-journal-ad__label { font-size: 0.55rem; left: 1.5rem; letter-spacing: 0.18em; position: absolute; text-transform: uppercase; top: 1.25rem; }
   .hpl-journal-ad__copy { align-self: center; padding: 2.7rem 1rem 2rem 2rem; position: relative; z-index: 2; }
   .hpl-journal-ad__copy h2 { font-size: clamp(2rem, 3vw, 3rem); margin: 0; }
