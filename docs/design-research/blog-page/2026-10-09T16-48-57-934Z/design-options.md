@@ -67,6 +67,8 @@ Animation, focus treatment and text scaling must remain usable for people with v
 
 ## 1. The Editorial Desk
 
+![The Editorial Desk blog-page concept](direction-1-editorial-desk.png)
+
 A curated magazine-style index that prioritises the latest and most useful HouseplantLab work while retaining strong routes into plants, problems and care topics.
 
 **Intended reader behaviour:** Scan a small set of featured stories, then refine by topic or browse the chronological archive. Readers should understand why an article is useful before opening it.
@@ -172,6 +174,8 @@ A curated magazine-style index that prioritises the latest and most useful House
 
 ## 2. The Plant Problem Index
 
+![The Plant Problem Index blog-page concept](direction-2-plant-problem-index.png)
+
 A utility-led archive organised around the reader’s plant, visible symptom and desired task, with editorial content as the answer layer.
 
 **Intended reader behaviour:** Start with a plant or symptom, narrow to a manageable set of relevant guides, then continue into the authority plant hub or checker.
@@ -275,6 +279,8 @@ A utility-led archive organised around the reader’s plant, visible symptom and
 ---
 
 ## 3. The Field Journal
+
+![The Field Journal blog-page concept](direction-3-field-journal.png)
 
 A visual, chronological and thematic journal that treats HouseplantLab’s observations, experiments and original photography as the primary discovery experience.
 

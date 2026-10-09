@@ -1,0 +1,22 @@
+{
+  "status": "human-review-required",
+  "generator": "built-in-imagegen",
+  "implementationTarget": "semantic-html5-tailwind-css",
+  "images": [
+    {
+      "directionId": "direction-1",
+      "directionName": "The Editorial Desk",
+      "imagePath": "direction-1-editorial-desk.png"
+    },
+    {
+      "directionId": "direction-2",
+      "directionName": "The Plant Problem Index",
+      "imagePath": "direction-2-plant-problem-index.png"
+    },
+    {
+      "directionId": "direction-3",
+      "directionName": "The Field Journal",
+      "imagePath": "direction-3-field-journal.png"
+    }
+  ]
+}

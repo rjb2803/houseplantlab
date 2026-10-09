@@ -2,6 +2,10 @@
 
 > Approval gate: do not implement this handoff until the owner approves the recommended direction.
 
+## Frontend target
+
+The approved direction must be implemented with semantic HTML5 and Tailwind CSS. The visual PNG is a design target, not a reason to use fixed-position screenshots or brittle pixel matching. Follow [the frontend implementation contract](frontend-contract.md) for landmarks, responsive behaviour, component construction, accessibility, advertising and performance requirements.
+
 ## Recommended direction: The Editorial Desk
 
 The Editorial Desk best balances the approved premium character, the current modest but useful article library, immediate editorial credibility and scalable discovery. It provides a recognisable publication experience without overbuilding the taxonomy before content governance is proven. Direction 2 should inform the filtering and symptom-led pathways, while Direction 3 should inform photography-led feature modules and notebook bridges.

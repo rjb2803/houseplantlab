@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { runBlogDesignWorkflow } from "../src/blog-design-workflow.js";
+import { generateBlogDesignImages } from "../src/blog-design-visuals.js";
 import type { BlogDesignResearchPackage } from "../src/schemas.js";
 
 async function createProject(): Promise<string> {
@@ -102,6 +103,23 @@ test("blog design workflow writes three reviewable options and a handoff without
   assert.match(input, /LIVE ARTICLE SUBJECTS/);
   assert.match(await readFile(path.join(root, result.optionsPath), "utf8"), /Guided Discovery/);
   assert.match(await readFile(path.join(root, result.handoffPath), "utf8"), /Approval gate/);
+  assert.match(await readFile(path.join(root, result.frontendContractPath), "utf8"), /semantic HTML5/);
+  assert.match(await readFile(path.join(root, result.frontendContractPath), "utf8"), /Tailwind CSS/);
   assert.match(await readFile(path.join(root, result.designBoardPath), "utf8"), /Recommended/);
   assert.equal(await readFile(path.join(root, "themes/houseplantlab/templates/index.html"), "utf8"), "<!-- wp:query /-->");
+});
+
+test("blog design visual workflow renders one review image for each direction", async () => {
+  const root = await createProject();
+  const design = await runBlogDesignWorkflow(root, {
+    now: () => new Date("2026-10-09T12:00:00.000Z"),
+    design: async () => fixture,
+  });
+  const png = Buffer.concat([Buffer.from("89504e470d0a1a0a", "hex"), Buffer.from([0])]);
+  const visual = await generateBlogDesignImages(root, design.outputDirectory, {
+    env: {},
+    generateImage: async () => png,
+  });
+  assert.equal(visual.imagePaths.length, 3);
+  assert.match(await readFile(path.join(root, visual.manifestPath), "utf8"), /semantic-html5-tailwind-css/);
 });
