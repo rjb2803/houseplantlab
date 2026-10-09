@@ -338,6 +338,27 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-are-my-peace-lily-leaves-turning-yellow/",
       "publishedAt": "2026-10-09T14:37:17.503Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "snake-plant-watering",
+      "assignment": "Prepare an evidence-led UK guide explaining how to water a Snake Plant without using a rigid calendar. Cover checking compost moisture, seasonal and environmental differences, drainage, signs that warrant a root check, and a safe step-by-step watering method. Avoid unsupported home remedies, product recommendations and universal schedules. Keep all source names and evidence identifiers out of reader-facing prose and use only claims directly supported by the evidence pack.",
+      "plant": "Snake Plant",
+      "priority": 17,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-09T15:00:49.883Z",
+      "updatedAt": "2026-10-09T15:05:48.108Z",
+      "lastAttemptAt": "2026-10-09T15:01:41.039Z",
+      "lastRunId": "live-how-to-water-snake-plant-2026-10-09T15-01-41-082Z",
+      "lastOutputPath": "content-production/runs/live-how-to-water-snake-plant-2026-10-09T15-01-41-082Z",
+      "lastError": null,
+      "wordpressPostId": 55,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=55&action=edit",
+      "wordpressSyncedAt": "2026-10-09T15:04:20.696Z",
+      "wordpressMediaId": 56,
+      "publishedUrl": "https://houseplantlab.co.uk/how-to-water-snake-plant/",
+      "publishedAt": "2026-10-09T15:05:48.108Z",
+      "seoBriefPath": null
     }
   ]
 }
