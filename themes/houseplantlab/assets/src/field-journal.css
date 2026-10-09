@@ -84,9 +84,9 @@
     background-image: url("../images/field-journal-botanical-ornament-v1.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: min(96%, 92rem) auto;
-    min-height: 20.5rem;
-    padding: clamp(3.5rem, 6vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 3.5rem;
+    background-size: min(96%, 112rem) auto;
+    min-height: calc(100svh - 4.45rem);
+    padding: clamp(4rem, 8vh, 7rem) clamp(1.25rem, 5vw, 4.5rem);
     position: relative;
   }
 
@@ -202,40 +202,6 @@
   .hpl-journal-footer nav a,
   .hpl-journal-footer__legal a { font-size: 0.62rem; }
   .hpl-journal-footer__legal { display: flex; gap: 0.9rem; }
-}
-
-@media (min-width: 1024px) {
-  .hpl-journal-main {
-    overflow: visible;
-  }
-
-  .hpl-journal-feature {
-    display: block !important;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    max-width: none !important;
-    min-height: clamp(40rem, 74vh, 52rem);
-    overflow: hidden;
-    position: relative;
-    width: 100vw !important;
-  }
-
-  .hpl-journal-feature__image {
-    inset: 0;
-    min-height: clamp(40rem, 74vh, 52rem);
-    position: absolute;
-  }
-
-  .hpl-journal-feature__story {
-    background: rgb(255 253 247 / 96%);
-    box-shadow: -1.5rem 0 4rem rgb(20 55 42 / 8%);
-    margin-left: auto;
-    min-height: clamp(40rem, 74vh, 52rem);
-    padding-inline: clamp(3rem, 5vw, 6rem);
-    position: relative;
-    width: min(43rem, 43vw);
-    z-index: 2;
-  }
 }
 
 @media (max-width: 1023px) {
