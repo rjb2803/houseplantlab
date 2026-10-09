@@ -11,7 +11,10 @@
 
   .hpl-field-journal-page {
     background: #f7f2e7;
+    box-sizing: border-box;
     color: #102f24;
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   .hpl-field-journal-page h1,
@@ -73,6 +76,8 @@
       radial-gradient(circle at 22% 5%, rgb(255 255 255 / 72%), transparent 22rem),
       #f7f2e7;
     overflow: hidden;
+    max-width: 100%;
+    width: 100%;
   }
 
   .hpl-journal-masthead {
@@ -87,6 +92,7 @@
 
   .hpl-journal-masthead__copy {
     max-width: 58rem;
+    min-width: 0;
     padding-left: clamp(0rem, 8vw, 8rem);
     position: relative;
     z-index: 1;
@@ -207,16 +213,18 @@
 }
 
 @media (max-width: 767px) {
-  .hpl-journal-masthead { min-height: 0; padding-block: 3rem 2.6rem; }
+  .hpl-journal-masthead { max-width: 100% !important; min-height: 0; padding-block: 3rem 2.6rem; width: 100% !important; }
   .hpl-journal-masthead { background-image: none; }
-  .hpl-journal-feature { margin-inline: 1rem; width: auto; }
+  .hpl-journal-deck,
+  .hpl-journal-intro { overflow-wrap: anywhere; }
+  .hpl-journal-feature { margin-inline: 1rem; max-width: calc(100% - 2rem) !important; width: calc(100% - 2rem) !important; }
   .hpl-journal-feature__image { min-height: 20rem; }
   .hpl-journal-feature__story { min-height: 0; padding: 1.6rem; }
   .hpl-journal-feature__story h2 { font-size: 2.35rem; }
   .hpl-journal-section,
   .hpl-journal-columns,
   .hpl-journal-connect { padding-inline: 1rem; }
-  .hpl-journal-ad { margin-inline: 1rem; min-height: 16rem; width: auto; }
+  .hpl-journal-ad { margin-inline: 1rem; max-width: calc(100% - 2rem) !important; min-height: 16rem; width: calc(100% - 2rem) !important; }
   .hpl-journal-ad__content { inset: 2rem 1.5rem 5rem; }
   .hpl-journal-ad__content a { margin-left: 0.65rem; }
   .hpl-journal-ad__brand { border-left: 0; border-top: 1px solid #52675c; bottom: 0.8rem; height: 3rem; inset-inline: 1.5rem; top: auto; width: auto; }
