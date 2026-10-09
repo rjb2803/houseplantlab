@@ -204,6 +204,36 @@
   .hpl-journal-footer__legal { display: flex; gap: 0.9rem; }
 }
 
+@media (min-width: 1024px) {
+  .hpl-journal-feature {
+    display: block !important;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    max-width: none !important;
+    min-height: clamp(40rem, 74vh, 52rem);
+    overflow: hidden;
+    position: relative;
+    width: 100vw !important;
+  }
+
+  .hpl-journal-feature__image {
+    inset: 0;
+    min-height: clamp(40rem, 74vh, 52rem);
+    position: absolute;
+  }
+
+  .hpl-journal-feature__story {
+    background: rgb(255 253 247 / 96%);
+    box-shadow: -1.5rem 0 4rem rgb(20 55 42 / 8%);
+    margin-left: auto;
+    min-height: clamp(40rem, 74vh, 52rem);
+    padding-inline: clamp(3rem, 5vw, 6rem);
+    position: relative;
+    width: min(43rem, 43vw);
+    z-index: 2;
+  }
+}
+
 @media (max-width: 1023px) {
   .hpl-journal-masthead__copy { padding-left: 0; }
   .hpl-journal-masthead__art { display: none; }
