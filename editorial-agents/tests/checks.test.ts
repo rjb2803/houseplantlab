@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { runQualityChecks } from "../src/checks.js";
+import { countReaderWords, draftHasVisibleReferences, runQualityChecks } from "../src/checks.js";
 import { fixtureBrief, fixtureDraft, fixtureEditorial, fixtureEvidence } from "../src/fixture.js";
 
 test("the Monstera acceptance fixture passes deterministic checks", () => {
@@ -83,6 +83,24 @@ test("visible source references are blocked from reader-facing copy", () => {
   );
   assert.equal(report.passed, false);
   assert.match(report.errors.join("\n"), /exposes internal evidence references/);
+});
+
+test("source commentary hidden in disclosures is also blocked", () => {
+  const draft = {
+    ...fixtureDraft,
+    disclosures: [...fixtureDraft.disclosures, "Claims checked against the supplied evidence pack."],
+  };
+  assert.equal(draftHasVisibleReferences(draft), true);
+  const report = runQualityChecks(fixtureBrief, fixtureEvidence, draft, fixtureEditorial);
+  assert.equal(report.passed, false);
+  assert.match(report.errors.join("\n"), /exposes internal evidence references/);
+});
+
+test("reader word count excludes metadata and counts article copy", () => {
+  const words = countReaderWords(fixtureDraft);
+  assert.ok(words > 0);
+  const changedMetadata = { ...fixtureDraft, title: "metadata ".repeat(500), excerpt: "metadata ".repeat(500) };
+  assert.equal(countReaderWords(changedMetadata), words);
 });
 
 test("an undersized article is blocked when the publication minimum applies", () => {

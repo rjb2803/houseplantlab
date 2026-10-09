@@ -21,7 +21,7 @@ export interface QualityContext {
 const PLACEHOLDER_PATTERN = /\b(?:todo|tbc|lorem ipsum|insert (?:link|image|source)|placeholder)\b/i;
 const UNVERIFIED_EXPERIENCE_PATTERN = /\b(?:we tested|our test|we found|in our experiment|we recommend)\b/i;
 const AI_STYLE_PATTERN = /\b(?:delve into|in today's fast-paced world|unlock the secrets|game-changer|revolutionary)\b/i;
-const VISIBLE_REFERENCE_PATTERN = /\[(?:S\d+)(?:\s*,\s*S\d+)*\]|\[S\d+\](?:\[S\d+\])+|^\s*(?:evidence|sources?|references?)\s*:/im;
+const VISIBLE_REFERENCE_PATTERN = /\[(?:S\d+)(?:\s*,\s*S\d+)*\]|\[S\d+\](?:\[S\d+\])+|^\s*(?:evidence|sources?|references?)\s*:|\b(?:evidence pack|source ids?|claimsourceids|supplied evidence|cited horticultural sources?)\b/im;
 
 function countWords(value: string): number {
   return value
@@ -29,6 +29,22 @@ function countWords(value: string): number {
     .trim()
     .split(/\s+/)
     .filter(Boolean).length;
+}
+
+export function countReaderWords(draft: DraftPackage): number {
+  return countWords([draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n"));
+}
+
+export function draftHasVisibleReferences(draft: DraftPackage): boolean {
+  const readerFacingCopy = [
+    draft.title,
+    draft.excerpt,
+    draft.openingAnswer,
+    ...draft.sections.map((section) => section.markdown),
+    ...draft.internalLinks.flatMap((link) => [link.title, link.relationship]),
+    ...draft.disclosures,
+  ].join("\n");
+  return VISIBLE_REFERENCE_PATTERN.test(readerFacingCopy);
 }
 
 export function runQualityChecks(
@@ -70,10 +86,17 @@ export function runQualityChecks(
     }
   }
 
-  const fullDraft = [draft.title, draft.excerpt, draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n");
-  const readerWordCount = countWords([draft.openingAnswer, ...draft.sections.map((section) => section.markdown)].join("\n"));
+  const fullDraft = [
+    draft.title,
+    draft.excerpt,
+    draft.openingAnswer,
+    ...draft.sections.map((section) => section.markdown),
+    ...draft.internalLinks.flatMap((link) => [link.title, link.relationship]),
+    ...draft.disclosures,
+  ].join("\n");
+  const readerWordCount = countReaderWords(draft);
   if (PLACEHOLDER_PATTERN.test(fullDraft)) errors.push("Draft contains placeholder language.");
-  if (VISIBLE_REFERENCE_PATTERN.test(fullDraft)) errors.push("Draft exposes internal evidence references in reader-facing copy.");
+  if (draftHasVisibleReferences(draft)) errors.push("Draft exposes internal evidence references in reader-facing copy.");
   if (AI_STYLE_PATTERN.test(fullDraft)) warnings.push("Draft contains generic AI-style phrasing.");
   if (context.minimumArticleWords && readerWordCount < context.minimumArticleWords) {
     errors.push(`Draft is too short: ${readerWordCount} words; minimum is ${context.minimumArticleWords}.`);
