@@ -1,7 +1,12 @@
 {
   "existingArticleSlugs": [
     "hello-world",
-    "why-is-my-monstera-deliciosa-drooping"
+    "why-is-my-monstera-deliciosa-drooping",
+    "brown-spots-monstera-deliciosa-leaves",
+    "why-are-my-monstera-deliciosa-leaves-curling",
+    "monstera-deliciosa-aerial-roots",
+    "how-often-to-water-monstera-deliciosa",
+    "best-growing-media-for-monstera-deliciosa"
   ],
   "minimumArticleWords": 1300,
   "maximumArticleWords": 1900,
@@ -9,7 +14,12 @@
   "allowedInternalPaths": [
     "/plants/",
     "/plants/monstera-deliciosa/",
-    "/why-is-my-monstera-deliciosa-drooping/"
+    "/why-is-my-monstera-deliciosa-drooping/",
+    "/brown-spots-monstera-deliciosa-leaves/",
+    "/why-are-my-monstera-deliciosa-leaves-curling/",
+    "/monstera-deliciosa-aerial-roots/",
+    "/how-often-to-water-monstera-deliciosa/",
+    "/best-growing-media-for-monstera-deliciosa/"
   ],
-  "lastLiveAuditAt": "2026-10-08T23:26:04.169Z"
+  "lastLiveAuditAt": "2026-10-09T05:24:10.520Z"
 }
