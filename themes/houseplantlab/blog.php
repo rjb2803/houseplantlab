@@ -124,12 +124,6 @@ $guides = new WP_Query([
                 <p class="hpl-journal-intro">Seasonal observations, hands-on experiments and practical advice from the HouseplantLab team. Real plants, real homes, real results.</p>
             </div>
             <div class="hpl-journal-masthead__art" aria-hidden="true">
-                <svg class="hpl-journal-leaf-art" viewBox="0 0 360 230" role="img">
-                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M177 220c4-69 5-134-16-198M176 140c-38-13-61-42-57-78 36 6 62 35 57 78Zm-1 36c38-17 66-49 70-91-43 4-70 37-70 91Z"/>
-                        <path d="M158 22c-8 29-3 66 18 118M123 67c15 20 32 40 53 73M243 86c-30 20-48 50-68 90M194 220c12-48 42-91 89-119M206 177c30 1 59-17 72-48-33-7-64 12-72 48Zm34-43c1-29 20-55 47-65 8 31-11 59-47 65Z"/>
-                    </g>
-                </svg>
                 <p>Observe<br>Learn<br>Grow<br>Repeat</p>
             </div>
         </header>

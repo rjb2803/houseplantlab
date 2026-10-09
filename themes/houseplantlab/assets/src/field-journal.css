@@ -76,21 +76,13 @@
   }
 
   .hpl-journal-masthead {
+    background-image: url("../images/field-journal-botanical-ornament-v1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: min(96%, 92rem) auto;
     min-height: 20.5rem;
     padding: clamp(3.5rem, 6vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 3.5rem;
     position: relative;
-  }
-
-  .hpl-journal-masthead::before {
-    color: #9caf99;
-    content: "❧";
-    font-family: Georgia, serif;
-    font-size: 9rem;
-    left: -1.25rem;
-    opacity: 0.36;
-    position: absolute;
-    top: 1rem;
-    transform: rotate(-31deg);
   }
 
   .hpl-journal-masthead__copy {
@@ -119,14 +111,12 @@
 
   .hpl-journal-masthead__art {
     align-items: center;
-    color: #91a48d;
     display: flex;
     justify-content: flex-end;
     position: relative;
   }
 
-  .hpl-journal-leaf-art { height: 14rem; opacity: 0.62; stroke-width: 1.25; width: 22rem; }
-  .hpl-journal-masthead__art p { border-bottom: 1px solid #91a48d; color: #314b3f; font-size: 0.58rem; letter-spacing: 0.32em; line-height: 2.15; margin-left: -1rem; padding-bottom: 0.65rem; text-transform: uppercase; }
+  .hpl-journal-masthead__art p { border-bottom: 1px solid #91a48d; color: #314b3f; font-size: 0.58rem; letter-spacing: 0.32em; line-height: 2.15; margin-right: 0.75rem; padding-bottom: 0.65rem; text-transform: uppercase; }
 
   .hpl-journal-feature { box-shadow: 0 12px 45px rgb(27 49 37 / 6%); }
   .hpl-journal-feature__image { display: block; min-height: 35rem; overflow: hidden; }
@@ -218,7 +208,7 @@
 
 @media (max-width: 767px) {
   .hpl-journal-masthead { min-height: 0; padding-block: 3rem 2.6rem; }
-  .hpl-journal-masthead::before { display: none; }
+  .hpl-journal-masthead { background-image: none; }
   .hpl-journal-feature { margin-inline: 1rem; width: auto; }
   .hpl-journal-feature__image { min-height: 20rem; }
   .hpl-journal-feature__story { min-height: 0; padding: 1.6rem; }
