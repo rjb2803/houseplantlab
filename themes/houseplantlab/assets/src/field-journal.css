@@ -31,7 +31,7 @@
   .hpl-journal-main { background: #f8f4e9; padding: 0 clamp(1.25rem, 3.3vw, 3.5rem) 2.3rem; }
   .hpl-journal-masthead { align-items: center; background: url("../images/journal-masthead-foliage-v2.png") center / 100% 100% no-repeat; display: grid; min-height: 11.75rem; overflow: hidden; position: relative; text-align: center; }
   .hpl-journal-masthead__copy { margin: auto; max-width: 53rem; padding: 2.1rem 10rem 1.75rem; position: relative; z-index: 2; }
-  .hpl-journal-masthead h1 { font-size: clamp(3.4rem, 5.6vw, 5.75rem); margin: 0; white-space: nowrap; }
+  .hpl-journal-masthead h1 { font-size: clamp(3.2rem, 4.9vw, 5rem); margin: 0; white-space: nowrap; }
   .hpl-journal-masthead__copy p { font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.35rem); margin: 0.55rem 0 0; }
   .hpl-journal-masthead__copy > span { background: #4f7a5d; display: block; height: 1px; margin: 1.15rem auto 0; width: 3.2rem; }
   .hpl-journal-masthead__leaf { display: none; }
@@ -39,8 +39,8 @@
   .hpl-journal-masthead__words::after { background: #78947f; content: ""; display: block; height: 1px; margin-top: 0.8rem; width: 2.8rem; }
 
   .hpl-journal-feature-grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.42fr) minmax(22rem, 0.96fr); }
-  .hpl-journal-lead { min-height: 25rem; overflow: hidden; }
-  .hpl-journal-lead > a { display: block; height: 100%; min-height: 25rem; overflow: hidden; position: relative; }
+  .hpl-journal-lead { min-height: 23rem; overflow: hidden; }
+  .hpl-journal-lead > a { display: block; height: 100%; min-height: 23rem; overflow: hidden; position: relative; }
   .hpl-journal-lead img { height: 100%; object-fit: cover; object-position: 68% center; position: absolute; transition: transform 500ms ease; width: 100%; }
   .hpl-journal-lead:hover img { transform: scale(1.02); }
   .hpl-journal-lead__shade { background: linear-gradient(180deg, transparent 32%, rgb(5 31 22 / 86%) 100%); inset: 0; position: absolute; }
