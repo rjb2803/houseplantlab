@@ -94,6 +94,22 @@ Search Console configuration uses OAuth 2.0 with the read-only `webmasters.reado
 
 Without these four values, the structural audit still runs and records that performance data is unavailable; it will not invent rankings or search volumes.
 
+## Research and design the blog index
+
+```powershell
+npm run agents:design-blog
+```
+
+The Blog Experience Designer researches current interaction, accessibility, performance and responsible-advertising guidance, then combines it with the existing HouseplantLab visual system and live article subjects. Every run produces exactly three distinct design directions plus:
+
+- a cited research record;
+- desktop and mobile layout-zone specifications;
+- interaction, accessibility and advertising rules;
+- a responsive HTML design board for visual comparison;
+- an implementation handoff covering tokens, components, breakpoints, analytics events and acceptance criteria.
+
+Artifacts are written under `docs/design-research/blog-page/<timestamp>/`. The package is always marked `human-review-required`. This workflow cannot edit the WordPress theme or publish anything; the owner must approve a direction before implementation begins.
+
 ## Verify the system
 
 ```powershell

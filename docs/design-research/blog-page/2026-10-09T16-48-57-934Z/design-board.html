@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HouseplantLab blog design board</title><style>
+  :root{--ink:#123c2f;--paper:#f7f3e9;--cream:#fffdf7;--sage:#dce7d7;--line:#cbd6c7;--accent:#39755c;--muted:#627068;--serif:Georgia,'Times New Roman',serif;--sans:Inter,Arial,sans-serif}*{box-sizing:border-box}body{margin:0;background:#e8eee5;color:var(--ink);font-family:var(--sans)}main{max-width:1500px;margin:auto;padding:48px 24px 80px}.intro{max-width:850px;margin-bottom:34px}.eyebrow,.direction header p{margin:0 0 8px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:12px;color:var(--accent)}h1,h2,h3{font-family:var(--serif);margin:0}h1{font-size:clamp(38px,5vw,66px);line-height:1}.intro>p{font-size:18px;line-height:1.6;color:#3f544a}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.direction{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 18px 48px rgba(21,54,40,.08)}.direction header{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.direction h2{font-size:28px}.pick{font-size:12px;background:var(--ink);color:white;padding:8px 10px;border-radius:999px}.concept{min-height:112px;line-height:1.5;color:#46594f}.browser{overflow:hidden;border:1px solid #abb9af;border-radius:13px;background:white;box-shadow:0 12px 28px rgba(20,45,35,.09)}.browser-bar{height:25px;background:#ecf0eb;padding:8px}.browser-bar i{display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:50%;background:#9eaea3}.site-head{display:flex;justify-content:space-between;gap:8px;padding:12px;font-size:10px;border-bottom:1px solid #dbe2dc}.site-head strong{font-family:var(--serif);font-size:13px}.wireframe{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;padding:10px;background:var(--paper);min-height:390px}.zone{display:flex;flex-direction:column;justify-content:flex-end;min-height:90px;border-radius:9px;padding:10px;background:var(--sage);border:1px solid #bfd0bc}.zone span{font-family:var(--serif);font-weight:700}.zone small{display:block;margin-top:5px;line-height:1.25;color:#52645a}.zone-1{grid-column:span 6;min-height:115px;background:linear-gradient(120deg,#123c2f,#4d745c);color:white}.zone-1 small{color:#e8eee5}.zone-2{grid-column:span 4}.zone-3{grid-column:span 2;background:#f0e3c8}.zone-4{grid-column:span 3}.notes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:17px}.notes h3{font-size:17px}.notes p{font-size:13px;line-height:1.45;color:var(--muted)}footer{margin-top:34px;padding:20px;border:1px solid var(--line);border-radius:14px;background:#f7fbf5} @media(max-width:1100px){.grid{grid-template-columns:1fr}.concept{min-height:auto}.wireframe{min-height:330px}}@media(max-width:600px){main{padding:30px 14px}.direction{padding:15px}.site-head nav{display:none}.wireframe{grid-template-columns:1fr}.zone,.zone-1,.zone-2,.zone-3,.zone-4{grid-column:1}.notes{grid-template-columns:1fr}}
+  </style></head><body><main><section class="intro"><p class="eyebrow">Human review required</p><h1>Blog design direction board</h1><p>Three researched interaction directions for HouseplantLab. This board is a comparison artifact only; it does not change the live WordPress site.</p></section><section class="grid"><article class="direction">
+      <header><div><p>Direction 1</p><h2>The Editorial Desk</h2></div><b class="pick">Recommended</b></header>
+      <p class="concept">A curated magazine-style index that prioritises the latest and most useful HouseplantLab work while retaining strong routes into plants, problems and care topics.</p>
+      <div class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><div class="site-head"><strong>HouseplantLab</strong><nav>Plants &nbsp; Problems &nbsp; Care Guides &nbsp; Blog</nav></div><div class="wireframe">
+      <section class="zone zone-1">
+        <span>Header and context</span>
+        <small>Orient the reader within Blog and provide immediate global actions.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Featured editorial rail</span>
+        <small>Surface the most useful or representative pieces without implying that every item is equally current.</small>
+      </section>
+      <section class="zone zone-3">
+        <span>Discovery toolbar</span>
+        <small>Let readers switch from curated browsing to deliberate discovery.</small>
+      </section>
+      <section class="zone zone-4">
+        <span>Results archive</span>
+        <small>Provide a dependable, indexable list of all qualifying editorial posts.</small>
+      </section>
+      <section class="zone zone-1">
+        <span>Related pathways</span>
+        <small>Turn the archive into a connected knowledge system rather than a dead-end feed.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Empty, loading and error states</span>
+        <small>Maintain trust when filtering or loading fails.</small>
+      </section></div></div>
+      <div class="notes"><div><h3>Best for</h3><p>Scan a small set of featured stories, then refine by topic or browse the chronological archive. Readers should understand why an article is useful before opening it.</p></div><div><h3>Trade-off</h3><p>Requires editorial curation rules and a featured-content field.</p></div></div>
+    </article><article class="direction">
+      <header><div><p>Direction 2</p><h2>The Plant Problem Index</h2></div></header>
+      <p class="concept">A utility-led archive organised around the reader’s plant, visible symptom and desired task, with editorial content as the answer layer.</p>
+      <div class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><div class="site-head"><strong>HouseplantLab</strong><nav>Plants &nbsp; Problems &nbsp; Care Guides &nbsp; Blog</nav></div><div class="wireframe">
+      <section class="zone zone-1">
+        <span>Utility hero</span>
+        <small>Make the archive immediately useful for a reader arriving with a problem.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Plant and symptom quick filters</span>
+        <small>Make the information architecture visible and teach readers how HouseplantLab is organised.</small>
+      </section>
+      <section class="zone zone-3">
+        <span>Diagnostic result panel</span>
+        <small>Show a focused set of articles relevant to the chosen combination.</small>
+      </section>
+      <section class="zone zone-4">
+        <span>Browse by care task</span>
+        <small>Support non-problem browsing and evergreen discovery.</small>
+      </section>
+      <section class="zone zone-1">
+        <span>Authority bridge</span>
+        <small>Connect individual articles to the structured plant database.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Empty/loading/error states</span>
+        <small>Explain combinations that have no published answer yet without pretending the taxonomy is complete.</small>
+      </section></div></div>
+      <div class="notes"><div><h3>Best for</h3><p>Start with a plant or symptom, narrow to a manageable set of relevant guides, then continue into the authority plant hub or checker.</p></div><div><h3>Trade-off</h3><p>More complex filter and relationship implementation.</p></div></div>
+    </article><article class="direction">
+      <header><div><p>Direction 3</p><h2>The Field Journal</h2></div></header>
+      <p class="concept">A visual, chronological and thematic journal that treats HouseplantLab’s observations, experiments and original photography as the primary discovery experience.</p>
+      <div class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><div class="site-head"><strong>HouseplantLab</strong><nav>Plants &nbsp; Problems &nbsp; Care Guides &nbsp; Blog</nav></div><div class="wireframe">
+      <section class="zone zone-1">
+        <span>Journal masthead</span>
+        <small>Frame the blog as an evolving record of practical houseplant work.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Visual journal stream</span>
+        <small>Create a recognisable editorial rhythm while preserving scanability.</small>
+      </section>
+      <section class="zone zone-3">
+        <span>Theme navigator</span>
+        <small>Let readers switch from chronology to subject-led browsing.</small>
+      </section>
+      <section class="zone zone-4">
+        <span>Plant notebook rail</span>
+        <small>Make original photography and plant authority relationships visible.</small>
+      </section>
+      <section class="zone zone-1">
+        <span>Archive controls and pagination</span>
+        <small>Prevent the visual journal from becoming difficult to search or traverse.</small>
+      </section>
+      <section class="zone zone-2">
+        <span>Empty/loading/error states</span>
+        <small>Preserve the journal’s visual rhythm when content is unavailable.</small>
+      </section></div></div>
+      <div class="notes"><div><h3>Best for</h3><p>Browse visually, notice a plant or theme, open an article, then follow a deliberate trail through related observations, care guidance and the plant profile.</p></div><div><h3>Trade-off</h3><p>Less direct for a reader with an urgent symptom unless search and theme routes are prominent.</p></div></div>
+    </article></section><footer><strong>Recommended:</strong> direction-1 — The Editorial Desk best balances the approved premium character, the current modest but useful article library, immediate editorial credibility and scalable discovery. It provides a recognisable publication experience without overbuilding the taxonomy before content governance is proven. Direction 2 should inform the filtering and symptom-led pathways, while Direction 3 should inform photography-led feature modules and notebook bridges.</footer></main></body></html>

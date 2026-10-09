@@ -1,0 +1,801 @@
+{
+  "status": "human-review-required",
+  "researchedAt": "2026-10-09T00:00:00Z",
+  "currentStateSummary": "HouseplantLab has an approved calm, premium visual language and a WordPress archive template that currently renders a basic three-column post grid with pagination. The index should evolve into a useful UK houseplant discovery hub linking editorial posts to plant authority hubs, symptoms, care techniques and the deterministic plant-problem checker. The supplied live subjects provide a strong initial content set, especially around Monstera deliciosa, Peace Lily, Snake Plant, Spider Plant, Pothos and Phalaenopsis orchid.",
+  "userGoals": [
+    "Find a relevant plant-care answer quickly.",
+    "Browse by plant, symptom, care topic and editorial format.",
+    "Move naturally between articles, plant authority hubs, related problems and the diagnosis tool.",
+    "Trust that content is evidence-led, UK-relevant and based on clearly labelled original photography where applicable.",
+    "Experience a premium archive without intrusive advertising, layout shift or deceptive interactions.",
+    "Use the index comfortably with keyboard, screen reader, touch, zoom and reduced-motion preferences."
+  ],
+  "citations": [
+    {
+      "title": "Web Content Accessibility Guidelines 2.2",
+      "organisation": "W3C",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "accessedOn": "2026-10-09",
+      "finding": "Provides the governing accessibility requirements, including focus visibility, target sizing, reflow, contrast and keyboard-operable interaction."
+    },
+    {
+      "title": "Page Structure Tutorial",
+      "organisation": "W3C WAI",
+      "url": "https://www.w3.org/WAI/tutorials/page-structure/",
+      "accessedOn": "2026-10-09",
+      "finding": "Supports semantic landmarks, logical heading hierarchy and structured page regions for navigation and assistive technology."
+    },
+    {
+      "title": "What's New in WCAG 2.2",
+      "organisation": "W3C WAI",
+      "url": "https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/",
+      "accessedOn": "2026-10-09",
+      "finding": "Highlights Focus Not Obscured and Focus Appearance considerations relevant to sticky headers, filters and cards."
+    },
+    {
+      "title": "Browser-level image lazy loading for the web",
+      "organisation": "web.dev",
+      "url": "https://web.dev/articles/browser-level-image-lazy-loading",
+      "accessedOn": "2026-10-09",
+      "finding": "Explains that image dimensions or aspect ratios should reserve space and reduce cumulative layout shift, particularly with lazy loading."
+    },
+    {
+      "title": "Serve images with correct dimensions",
+      "organisation": "web.dev",
+      "url": "https://web.dev/articles/serve-images-with-correct-dimensions",
+      "accessedOn": "2026-10-09",
+      "finding": "Recommends explicit image dimensions or aspect-ratio containers to prevent content movement and accidental taps."
+    },
+    {
+      "title": "Ad Best Practices",
+      "organisation": "Google Publisher Tag",
+      "url": "https://developers.google.com/publisher-tag/guides/ad-best-practices",
+      "accessedOn": "2026-10-09",
+      "finding": "Supports fixed ad-slot planning, prioritised above-the-fold loading and lazy loading below-the-fold ads."
+    },
+    {
+      "title": "Reduce ads to page-height ratio",
+      "organisation": "Google Publisher Ads Audits",
+      "url": "https://developers.google.com/publisher-ads-audits/reference/audits/viewport-ad-density",
+      "accessedOn": "2026-10-09",
+      "finding": "Uses a 30% page-height ad-density recommendation as a useful restraint benchmark."
+    },
+    {
+      "title": "Interstitials and dialogs",
+      "organisation": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials",
+      "accessedOn": "2026-10-09",
+      "finding": "Recommends avoiding promotional overlays that obstruct content and suggests unobtrusive banners instead."
+    },
+    {
+      "title": "Mobile-first indexing best practices",
+      "organisation": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing",
+      "accessedOn": "2026-10-09",
+      "finding": "Supports equivalent mobile content and careful mobile ad placement, particularly avoiding ads that dominate the initial viewport."
+    },
+    {
+      "title": "Online Affiliate Marketing",
+      "organisation": "ASA/CAP",
+      "url": "https://www.asa.org.uk/advice-online/affiliate-marketing.html",
+      "accessedOn": "2026-10-09",
+      "finding": "Affiliate content should be obviously identifiable as advertising before engagement; generic disclaimers may be insufficient."
+    },
+    {
+      "title": "Landmarks Pattern",
+      "organisation": "W3C WAI-ARIA APG",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/",
+      "accessedOn": "2026-10-09",
+      "finding": "Supports labelled landmarks, limited landmark proliferation and meaningful main, navigation, complementary and contentinfo regions."
+    },
+    {
+      "title": "prefers-reduced-motion CSS media feature",
+      "organisation": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+      "accessedOn": "2026-10-09",
+      "finding": "Provides implementation guidance for honouring reduced-motion preferences."
+    }
+  ],
+  "principles": [
+    {
+      "name": "Problem-first discovery",
+      "rationale": "The audience often arrives with a symptom or immediate care question rather than a desire to browse chronologically.",
+      "houseplantLabApplication": "Lead with search, symptom shortcuts and plant/topic filters; make the plant-problem checker a prominent but non-disruptive route.",
+      "evidenceUrls": [
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+        "https://www.w3.org/WAI/tutorials/page-structure/"
+      ]
+    },
+    {
+      "name": "Editorial hierarchy over feed mechanics",
+      "rationale": "A premium publication should distinguish authoritative guides, timely observations, experiments and reviews instead of presenting an undifferentiated post stream.",
+      "houseplantLabApplication": "Use content-format labels, featured editorial selections and clear metadata such as reviewed dates, plant and problem relationships.",
+      "evidenceUrls": [
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ]
+    },
+    {
+      "name": "Semantic structure and orientation",
+      "rationale": "Clear headings and landmarks reduce scanning effort and improve keyboard and assistive-technology navigation.",
+      "houseplantLabApplication": "Use one descriptive h1, labelled filter/search regions, landmarked results, logical h2 sections and a skip link.",
+      "evidenceUrls": [
+        "https://www.w3.org/WAI/tutorials/page-structure/",
+        "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/",
+        "https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html"
+      ]
+    },
+    {
+      "name": "Stable, image-led performance",
+      "rationale": "Photography is central to trust, but unreserved image and ad space can shift content and cause accidental activation.",
+      "houseplantLabApplication": "Store intrinsic dimensions, use aspect-ratio wrappers, reserve ad slots, lazy-load below-fold media and prioritise the first meaningful image.",
+      "evidenceUrls": [
+        "https://web.dev/articles/browser-level-image-lazy-loading",
+        "https://web.dev/articles/serve-images-with-correct-dimensions"
+      ]
+    },
+    {
+      "name": "Calm monetisation",
+      "rationale": "Ads must not obstruct diagnosis, interrupt reading or resemble controls and editorial cards.",
+      "houseplantLabApplication": "Use a small number of labelled, reserved placements; exclude ads from the filter toolbar and diagnosis callout; never use interstitials or sticky overlays that cover content.",
+      "evidenceUrls": [
+        "https://developers.google.com/publisher-tag/guides/ad-best-practices",
+        "https://developers.google.com/publisher-ads-audits/reference/audits/viewport-ad-density",
+        "https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials"
+      ]
+    },
+    {
+      "name": "Explicit commercial disclosure",
+      "rationale": "Affiliate relationships can otherwise make editorial recommendations appear independent when they are commercial communications.",
+      "houseplantLabApplication": "Label affiliate article cards and relevant content blocks with “Ad” or “Affiliate” before engagement, and keep disclosure visually and semantically associated with the commercial content.",
+      "evidenceUrls": [
+        "https://www.asa.org.uk/advice-online/affiliate-marketing.html"
+      ]
+    },
+    {
+      "name": "Direct manipulation with safe targets",
+      "rationale": "Filters, cards and mobile controls must be usable without precision pointing or accidental taps.",
+      "houseplantLabApplication": "Provide generous controls, separated hit areas, visible focus, no hover-only meaning, and a clear apply/reset model on mobile.",
+      "evidenceUrls": [
+        "https://www.w3.org/TR/WCAG22/",
+        "https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/"
+      ]
+    },
+    {
+      "name": "Respect user preferences",
+      "rationale": "Animation, focus treatment and text scaling must remain usable for people with vestibular, low-vision or cognitive needs.",
+      "houseplantLabApplication": "Honour prefers-reduced-motion, support zoom and text resizing, preserve focus visibility below sticky headers and avoid auto-advancing content.",
+      "evidenceUrls": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  ],
+  "directions": [
+    {
+      "id": "direction-1",
+      "name": "The Editorial Desk",
+      "concept": "A curated magazine-style index that prioritises the latest and most useful HouseplantLab work while retaining strong routes into plants, problems and care topics.",
+      "intendedReaderBehaviour": "Scan a small set of featured stories, then refine by topic or browse the chronological archive. Readers should understand why an article is useful before opening it.",
+      "visualCharacter": "Most faithful to the approved premium editorial direction: generous cream space, deep-green feature panel, large serif headlines, asymmetrical photography and quiet metadata.",
+      "layoutZones": [
+        {
+          "name": "Header and context",
+          "purpose": "Orient the reader within Blog and provide immediate global actions.",
+          "desktop": "Sticky compact header, breadcrumb, h1 “HouseplantLab journal”, short explanatory dek, search action and plant-checker CTA.",
+          "mobile": "Header condenses to brand, search and menu; breadcrumb remains short; h1 and dek stack with comfortable spacing.",
+          "interaction": "Skip link targets main; search opens a labelled page or dialog only when explicitly activated; no automatic overlay.",
+          "content": "Blog archive description, current date or update framing only when editorially meaningful.",
+          "advertisingRule": "No ad in the header or first hero region."
+        },
+        {
+          "name": "Featured editorial rail",
+          "purpose": "Surface the most useful or representative pieces without implying that every item is equally current.",
+          "desktop": "One large lead card beside two stacked secondary cards; lead may feature a Monstera deliciosa problem or a seasonal care guide.",
+          "mobile": "Lead card first, followed by two full-width cards; no horizontal carousel required.",
+          "interaction": "Each card has one clear destination; entire card may be linked, but metadata is not a separate competing target.",
+          "content": "Lead subjects can include brown spots, drooping, curled leaves, watering, repotting and growing media. Include format, plant/problem tags, reading time and reviewed date where available.",
+          "advertisingRule": "Editorial cards only; no paid card in the featured rail."
+        },
+        {
+          "name": "Discovery toolbar",
+          "purpose": "Let readers switch from curated browsing to deliberate discovery.",
+          "desktop": "Search field, content-type select, plant select, problem select and sort control in a horizontal toolbar; active filters appear as removable chips below.",
+          "mobile": "A prominent search field followed by a single “Filter and sort” button opening a native-feeling bottom sheet or dialog; active chips remain visible above results.",
+          "interaction": "Filters update on explicit apply on mobile; desktop may update immediately if the result count is announced. Escape closes dialogs; focus returns to invoking control.",
+          "content": "Real relationships include Monstera deliciosa, Peace Lily, Snake Plant, Spider Plant, Pothos and Phalaenopsis orchid; problems include yellow leaves, brown tips/spots, drooping, curling, watering and root concerns.",
+          "advertisingRule": "No ad inside the toolbar or immediately adjacent to filter controls."
+        },
+        {
+          "name": "Results archive",
+          "purpose": "Provide a dependable, indexable list of all qualifying editorial posts.",
+          "desktop": "Three-column rounded cards below the featured area, with consistent image ratio, format label, title, excerpt, plant/problem context and date. Use numbered pagination or a clearly labelled “Load more” that preserves URL state.",
+          "mobile": "Single-column cards with compact metadata and 44px-plus link/control targets; avoid overly dense two-column cards.",
+          "interaction": "Card links are keyboard reachable in source order. “Load more” appends content, announces the new range and updates history or provides a crawlable paginated fallback.",
+          "content": "Initial subjects include why Peace Lily leaves turn yellow, why Pothos leaves turn yellow, why Snake Plant leaves turn yellow, why Spider Plant tips turn brown, why Monstera deliciosa is drooping, not splitting or curling, and how to repot or water.",
+          "advertisingRule": "Optional reserved ad slot after the first results row on desktop and after approximately four cards on mobile; never insert an ad between title and excerpt."
+        },
+        {
+          "name": "Related pathways",
+          "purpose": "Turn the archive into a connected knowledge system rather than a dead-end feed.",
+          "desktop": "A quiet bottom section with three route cards: Browse plants, Explore problems, Use the plant checker.",
+          "mobile": "Stacked route cards after results and before pagination/footer.",
+          "interaction": "Standard links with descriptive names; route cards do not use deceptive button styling.",
+          "content": "Link to /plants/, /plants/monstera-deliciosa/, problem taxonomy pages where genuinely populated, and /tools/plant-problem-checker/.",
+          "advertisingRule": "No ad between results and diagnostic pathway."
+        },
+        {
+          "name": "Empty, loading and error states",
+          "purpose": "Maintain trust when filtering or loading fails.",
+          "desktop": "Skeleton cards preserve image and text geometry; empty state explains the active criteria and offers reset, broader browse and plant-checker routes.",
+          "mobile": "Same content hierarchy, with concise status announcement and full-width reset button.",
+          "interaction": "Use aria-live status for result counts and loading completion; retain the toolbar and active criteria.",
+          "content": "Example: “No articles match Monstera deliciosa + mould. Try removing one filter or browse all problems.” Do not invent content counts.",
+          "advertisingRule": "Do not show ads in empty or error states."
+        }
+      ],
+      "interactionPatterns": [
+        "Featured editorial selection with transparent labels such as “Featured guide” or “Recently reviewed”.",
+        "URL-persisted search, filters, sort and page state for shareability and crawlable fallback.",
+        "Removable filter chips with an explicit “Clear all”.",
+        "Pagination as the robust baseline; progressive enhancement may offer load more.",
+        "Focus return from filter dialog and polite result-count announcements.",
+        "Respect prefers-reduced-motion; hover elevation is disabled or minimised when requested."
+      ],
+      "monetisationPlacements": [
+        "One reserved responsive display slot below the first archive row on desktop.",
+        "One reserved responsive slot after approximately four mobile result cards, never in the header, toolbar or diagnosis route.",
+        "Affiliate labels on commercial articles or cards before the reader opens them.",
+        "No sticky mobile footer ad, pop-up, interstitial or ad that resembles a result card."
+      ],
+      "accessibilityRequirements": [
+        "Use one h1 and logical h2 sections for featured, discovery, results and pathways.",
+        "Use semantic main, nav, search/form, complementary and footer landmarks.",
+        "Ensure all controls are keyboard-operable and focus indicators remain visible below the sticky header.",
+        "Provide visible labels, programmatic names and error messages for search and filters.",
+        "Use at least 44 by 44 CSS pixel touch targets where practical and sufficient spacing between adjacent controls.",
+        "Preserve image aspect ratios and meaningful alt text; decorative images use empty alt.",
+        "Provide reduced-motion CSS and no auto-advancing rail."
+      ],
+      "strengths": [
+        "Strongest editorial and premium brand expression.",
+        "Clear distinction between curated work and the full archive.",
+        "Good initial experience while the content library is still modest.",
+        "Supports original photography and reviewed-date trust signals."
+      ],
+      "tradeoffs": [
+        "Requires editorial curation rules and a featured-content field.",
+        "More vertical space before the full archive.",
+        "The first screen may favour editorial browsing over immediate symptom filtering."
+      ]
+    },
+    {
+      "id": "direction-2",
+      "name": "The Plant Problem Index",
+      "concept": "A utility-led archive organised around the reader’s plant, visible symptom and desired task, with editorial content as the answer layer.",
+      "intendedReaderBehaviour": "Start with a plant or symptom, narrow to a manageable set of relevant guides, then continue into the authority plant hub or checker.",
+      "visualCharacter": "Calm cream utility interface with a deep-green diagnostic band, compact serif section headings, larger filter controls and photography used as evidence cues rather than decoration.",
+      "layoutZones": [
+        {
+          "name": "Utility hero",
+          "purpose": "Make the archive immediately useful for a reader arriving with a problem.",
+          "desktop": "Deep-green band containing h1 “Find the right plant guide”, concise explanation, search input and three large routes: Choose a plant, Choose a symptom, Browse care guides.",
+          "mobile": "Search appears first, followed by vertically stacked route buttons with explanatory microcopy.",
+          "interaction": "Search submits with Enter and a visible button; route controls move to anchored filter sections or set URL parameters without a page reload where enhanced.",
+          "content": "Use real symptom language: yellow leaves, brown tips/spots, drooping, curled leaves, not splitting, watering, repotting, aerial roots and growing media.",
+          "advertisingRule": "No advertising in the utility hero."
+        },
+        {
+          "name": "Plant and symptom quick filters",
+          "purpose": "Make the information architecture visible and teach readers how HouseplantLab is organised.",
+          "desktop": "Two columns: popular plants list with Monstera deliciosa first and symptom list with counts only when backed by actual query data; selected terms show state and related topic hints.",
+          "mobile": "Horizontal scroll is avoided for essential options; use stacked lists or a disclosure group with large buttons.",
+          "interaction": "Selecting a plant exposes related symptoms and updates results; selecting a symptom exposes relevant plants. Keyboard users can operate native links or checkboxes.",
+          "content": "Plants: Monstera deliciosa, Peace Lily, Snake Plant, Spider Plant, Pothos and Phalaenopsis orchid. Do not publicly present provisional plants as an agreed purchase list.",
+          "advertisingRule": "No ads between filters and first result."
+        },
+        {
+          "name": "Diagnostic result panel",
+          "purpose": "Show a focused set of articles relevant to the chosen combination.",
+          "desktop": "Results area with a prominent context summary, active filters, sort options and a two-column card grid with a slim complementary plant-hub panel.",
+          "mobile": "Context summary and active filters precede a single-column result list; plant-hub panel becomes an inline related card after the first or second result.",
+          "interaction": "Changing filters updates the result region and moves focus to its heading or status, not the page top. Provide a reset action.",
+          "content": "For Monstera deliciosa + drooping, surface the drooping article, watering article, repotting article and the Monstera hub when relevant. For Peace Lily + yellow leaves, surface the yellow-leaf and drooping articles where editorial relationships justify it.",
+          "advertisingRule": "At most one reserved ad after the first three focused results; avoid ads in diagnostic combinations with very few results."
+        },
+        {
+          "name": "Browse by care task",
+          "purpose": "Support non-problem browsing and evergreen discovery.",
+          "desktop": "Four editorial buckets: Watering, Repotting and soil, Light and growth, Propagation and flowering.",
+          "mobile": "Stacked rows with short descriptions and representative article links.",
+          "interaction": "Rows are links or native disclosure components; no hidden content that is inaccessible to keyboard or crawlers.",
+          "content": "Use existing subjects such as how often to water Monstera deliciosa, how to water Snake Plant, how to repot Monstera deliciosa, best growing media for Monstera deliciosa and how to get a Phalaenopsis orchid to flower again.",
+          "advertisingRule": "Commercial buying guidance must be explicitly labelled before engagement; no ads inside task rows."
+        },
+        {
+          "name": "Authority bridge",
+          "purpose": "Connect individual articles to the structured plant database.",
+          "desktop": "A full-width Monstera deliciosa authority panel with “Start with the plant profile” and links to Overview, Care, Problems, Propagation and Soil and feeding where pages exist.",
+          "mobile": "Compact plant-profile card after the results and before related articles.",
+          "interaction": "Descriptive links preserve context and avoid generic “Read more”.",
+          "content": "Use “Grown & photographed by HouseplantLab” only where the production image and provenance are genuine and editorially verified.",
+          "advertisingRule": "No ad between an article result and its plant authority bridge."
+        },
+        {
+          "name": "Empty/loading/error states",
+          "purpose": "Explain combinations that have no published answer yet without pretending the taxonomy is complete.",
+          "desktop": "Show selected criteria, an honest no-match explanation, reset options, nearest plant hub and checker route.",
+          "mobile": "Same with a prominent reset button and concise fallback routes.",
+          "interaction": "Use a status region for asynchronous updates; preserve selected criteria in the URL.",
+          "content": "Avoid fabricated counts, search volumes or claims that a topic is popular unless measured and approved.",
+          "advertisingRule": "No ads in no-match states."
+        }
+      ],
+      "interactionPatterns": [
+        "Progressive narrowing by plant and symptom, with a visible query summary.",
+        "Native checkbox/radio semantics where multiple or exclusive selection is needed.",
+        "Filter state encoded in the URL and restored on back/forward navigation.",
+        "Contextual cross-links from result cards to plant hub and problem taxonomy.",
+        "A deterministic “Use the plant checker” escape route that is clearly separate from article diagnosis.",
+        "No automatic diagnosis claim from archive filters."
+      ],
+      "monetisationPlacements": [
+        "Optional single desktop rail slot only below the focused result set, not beside the filter controls.",
+        "Optional mobile slot after the contextual authority bridge and at least three editorial results.",
+        "Affiliate-labelled buying guides may appear in care-task browsing, but not as indistinguishable diagnostic answers.",
+        "No ad on or adjacent to the checker CTA."
+      ],
+      "accessibilityRequirements": [
+        "Filter controls use native semantics, visible labels and grouped fieldsets where appropriate.",
+        "Result updates have a labelled live status and do not unexpectedly move focus.",
+        "The selected plant/symptom context is conveyed in text, not colour alone.",
+        "All disclosure buttons expose expanded/collapsed state and support Enter, Space and Escape where applicable.",
+        "Sticky utility elements must not obscure focused controls or headings.",
+        "Provide a skip link to results and a direct route to the plant checker."
+      ],
+      "strengths": [
+        "Fastest route for symptom-led readers.",
+        "Makes the plant/problem taxonomy tangible and reusable.",
+        "Strongest bridge between blog, plant database and diagnostic tool.",
+        "Works well with the current subject set, which is rich in symptom-led articles."
+      ],
+      "tradeoffs": [
+        "More complex filter and relationship implementation.",
+        "Can feel utilitarian if photography and editorial curation are underplayed.",
+        "Requires careful taxonomy governance to avoid misleading or thin combinations."
+      ]
+    },
+    {
+      "id": "direction-3",
+      "name": "The Field Journal",
+      "concept": "A visual, chronological and thematic journal that treats HouseplantLab’s observations, experiments and original photography as the primary discovery experience.",
+      "intendedReaderBehaviour": "Browse visually, notice a plant or theme, open an article, then follow a deliberate trail through related observations, care guidance and the plant profile.",
+      "visualCharacter": "Most distinctive and image-led: warm off-white canvas, alternating editorial bands, large rounded photography, restrained clay accents and generous serif titles. It remains calmer and less promotional than a social feed.",
+      "layoutZones": [
+        {
+          "name": "Journal masthead",
+          "purpose": "Frame the blog as an evolving record of practical houseplant work.",
+          "desktop": "Large serif h1 “The HouseplantLab journal”, short mission statement, search and a compact row of thematic links.",
+          "mobile": "Stacked masthead with search below the introduction and themes as a wrapping chip/list group.",
+          "interaction": "Theme links are ordinary navigational links; search is labelled and keyboard accessible.",
+          "content": "Themes: Plant problems, Care experiments, Watering, Soil and repotting, Growth and flowering, Reviews and updates.",
+          "advertisingRule": "No ad in the masthead."
+        },
+        {
+          "name": "Visual journal stream",
+          "purpose": "Create a recognisable editorial rhythm while preserving scanability.",
+          "desktop": "Alternating wide feature rows: image-led story on one side, concise title/excerpt/context on the other; every third item may use a compact two-card row.",
+          "mobile": "All items become a single ordered stream with image, label, title, excerpt and metadata; visual alternation is removed from source order.",
+          "interaction": "Each story has one primary link and optional secondary context links. No auto-scrolling carousel.",
+          "content": "Feature subjects can include Monstera aerial roots, not splitting, brown spots, drooping and Phalaenopsis reblooming. Distinguish observation, guide, review and experiment labels.",
+          "advertisingRule": "No ad inserted into the alternating editorial stream until after the third story; use a reserved full-width slot only after a complete story group."
+        },
+        {
+          "name": "Theme navigator",
+          "purpose": "Let readers switch from chronology to subject-led browsing.",
+          "desktop": "A horizontal but keyboard-scrollable theme navigation beneath the masthead or beside the stream; selected theme has a text and border state.",
+          "mobile": "Wrapped links or a native select; avoid requiring horizontal swipe to discover core themes.",
+          "interaction": "Themes route to stable filtered archive URLs, not client-only state.",
+          "content": "Link themes to actual categories/taxonomies only when enough content exists; avoid thin archive pages.",
+          "advertisingRule": "No paid placement styled as a theme."
+        },
+        {
+          "name": "Plant notebook rail",
+          "purpose": "Make original photography and plant authority relationships visible.",
+          "desktop": "Right-side complementary rail containing “Plant notebooks”: Monstera deliciosa first, then confirmed profiles as available; each includes image, status and links to care/problems.",
+          "mobile": "Inline notebook cards after a small group of journal entries.",
+          "interaction": "Cards link to plant hubs and selected related articles; provenance label appears only when true.",
+          "content": "Monstera deliciosa is the confirmed first authority plant. Other provisional plants remain internal planning material until approved.",
+          "advertisingRule": "No ads within notebook cards."
+        },
+        {
+          "name": "Archive controls and pagination",
+          "purpose": "Prevent the visual journal from becoming difficult to search or traverse.",
+          "desktop": "Search, format, plant, problem and date controls appear in a collapsible but always available archive-control panel; pagination remains visible.",
+          "mobile": "A “Filter journal” button opens a focus-managed sheet; pagination uses previous/next plus page numbers where space permits.",
+          "interaction": "Control state persists in URL; closing the sheet returns focus; pagination is crawlable.",
+          "content": "Metadata includes published or updated date only when editorially maintained, plus reading time if computed consistently.",
+          "advertisingRule": "Ad slots are outside the controls and pagination."
+        },
+        {
+          "name": "Empty/loading/error states",
+          "purpose": "Preserve the journal’s visual rhythm when content is unavailable.",
+          "desktop": "Skeleton rows mirror the alternating structure; empty state switches to a simple centred panel with browse links.",
+          "mobile": "Skeleton cards preserve fixed image ratios; empty state is compact and action-led.",
+          "interaction": "Loading status is announced; retry is a real button; no content jumps when imagery resolves.",
+          "content": "Offer “Browse all guides”, “Browse plants” and “Try the plant checker” as fallbacks.",
+          "advertisingRule": "Never show advertising in an error or no-results panel."
+        }
+      ],
+      "interactionPatterns": [
+        "Chronological editorial stream with stable server-rendered pagination.",
+        "Theme navigation as a taxonomy teaching device.",
+        "Alternating visual layout with DOM order matching reading order.",
+        "Notebook-style plant authority cross-links.",
+        "Optional “show more” enhancement only if crawlable pagination remains available.",
+        "Reduced-motion mode removes hover transforms and image movement."
+      ],
+      "monetisationPlacements": [
+        "One reserved full-width display slot after a complete group of three journal entries on desktop.",
+        "One mobile slot after four entries, with a defined minimum height to prevent layout shift.",
+        "Commercial reviews and buying guides carry a clear “Ad” or “Affiliate” label before the title or link.",
+        "No ad in the visual masthead, plant notebook rail, filter sheet or diagnosis pathway."
+      ],
+      "accessibilityRequirements": [
+        "DOM order follows reading order; visual alternation must not create confusing screen-reader sequence.",
+        "Images have stable aspect ratios, accurate alt text and responsive sources.",
+        "Theme navigation has an accessible name and selected state that is not colour-only.",
+        "Cards retain clear headings and link purpose without relying on image recognition.",
+        "Motion effects are non-essential and disabled or reduced under prefers-reduced-motion.",
+        "All controls remain usable at 200% zoom and reflow to one column."
+      ],
+      "strengths": [
+        "Strongest expression of original photography and evidence-led fieldwork.",
+        "Distinctive editorial identity without copying another publication.",
+        "Encourages deeper browsing and repeat discovery.",
+        "Good fit for experiments, observations, reviews and timely updates."
+      ],
+      "tradeoffs": [
+        "Less direct for a reader with an urgent symptom unless search and theme routes are prominent.",
+        "Alternating layouts are more implementation-sensitive.",
+        "Chronological prominence may under-serve evergreen authority unless plant and problem bridges are strong."
+      ]
+    }
+  ],
+  "handoff": {
+    "recommendedDirectionId": "direction-1",
+    "recommendationRationale": "The Editorial Desk best balances the approved premium character, the current modest but useful article library, immediate editorial credibility and scalable discovery. It provides a recognisable publication experience without overbuilding the taxonomy before content governance is proven. Direction 2 should inform the filtering and symptom-led pathways, while Direction 3 should inform photography-led feature modules and notebook bridges.",
+    "designTokens": [
+      {
+        "token": "--hpl-color-forest",
+        "value": "#14372a",
+        "usage": "Primary brand colour, headings on light surfaces, dark hero backgrounds."
+      },
+      {
+        "token": "--hpl-color-leaf",
+        "value": "#397153",
+        "usage": "Links, active states, secondary emphasis and accessible focus pairing."
+      },
+      {
+        "token": "--hpl-color-sage",
+        "value": "#bfd0bd",
+        "usage": "Quiet surfaces, selected filter backgrounds and supportive borders."
+      },
+      {
+        "token": "--hpl-color-cream",
+        "value": "#f6f1e7",
+        "usage": "Primary archive background and editorial section rhythm."
+      },
+      {
+        "token": "--hpl-color-paper",
+        "value": "#fffdf8",
+        "usage": "Cards, header, controls and high-contrast content surfaces."
+      },
+      {
+        "token": "--hpl-color-clay",
+        "value": "#b86645",
+        "usage": "Sparse accent for status or editorial markers; never the sole meaning cue."
+      },
+      {
+        "token": "--hpl-border",
+        "value": "#d9ded3",
+        "usage": "Card and control boundaries."
+      },
+      {
+        "token": "--hpl-radius-card",
+        "value": "1.25rem",
+        "usage": "Photography-led cards and feature panels."
+      },
+      {
+        "token": "--hpl-radius-control",
+        "value": "999px",
+        "usage": "Pills and buttons; avoid pill styling for long navigation labels where it harms scanning."
+      },
+      {
+        "token": "--hpl-content-wide",
+        "value": "1180px",
+        "usage": "Archive grid and feature layout maximum width."
+      },
+      {
+        "token": "--hpl-content-reading",
+        "value": "760px",
+        "usage": "Long-form supporting copy and explanatory text."
+      },
+      {
+        "token": "--hpl-space-section",
+        "value": "clamp(3rem, 6vw, 5.5rem)",
+        "usage": "Major vertical section rhythm."
+      },
+      {
+        "token": "--hpl-focus",
+        "value": "3px solid #397153 with 3px offset",
+        "usage": "Visible keyboard focus on light surfaces; provide a contrasting outer treatment on dark surfaces."
+      },
+      {
+        "token": "--hpl-motion",
+        "value": "160ms ease; disabled or reduced under prefers-reduced-motion",
+        "usage": "Small state transitions only; no essential information depends on motion."
+      },
+      {
+        "token": "--hpl-image-ratio-card",
+        "value": "4 / 3",
+        "usage": "Article thumbnails and skeleton reservation."
+      },
+      {
+        "token": "--hpl-image-ratio-feature",
+        "value": "16 / 10",
+        "usage": "Lead editorial image reservation."
+      },
+      {
+        "token": "--hpl-ad-min-height",
+        "value": "Defined per approved responsive slot size",
+        "usage": "Reserve space before ad request to prevent cumulative layout shift."
+      }
+    ],
+    "components": [
+      {
+        "name": "SkipLink",
+        "responsibility": "Moves keyboard focus to the main archive content.",
+        "states": [
+          "default",
+          "focused"
+        ]
+      },
+      {
+        "name": "SiteHeader",
+        "responsibility": "Provides brand, primary navigation, search and plant-checker route.",
+        "states": [
+          "desktop",
+          "mobile-menu-closed",
+          "mobile-menu-open",
+          "focused"
+        ]
+      },
+      {
+        "name": "ArchiveMasthead",
+        "responsibility": "Renders breadcrumb, h1, explanatory dek and optional search action.",
+        "states": [
+          "default",
+          "search-focused"
+        ]
+      },
+      {
+        "name": "FeaturedEditorialRail",
+        "responsibility": "Displays lead and secondary editorial selections with stable image geometry.",
+        "states": [
+          "loading",
+          "loaded",
+          "image-error",
+          "focused"
+        ]
+      },
+      {
+        "name": "ArchiveToolbar",
+        "responsibility": "Provides search, plant, problem, format and sort controls.",
+        "states": [
+          "default",
+          "active-filters",
+          "expanded-mobile",
+          "validation-error",
+          "focused"
+        ]
+      },
+      {
+        "name": "FilterChip",
+        "responsibility": "Displays and removes one active filter.",
+        "states": [
+          "default",
+          "hover",
+          "focused",
+          "remove-focused"
+        ]
+      },
+      {
+        "name": "ResultStatus",
+        "responsibility": "Announces result count or loading/error status without disruptive focus movement.",
+        "states": [
+          "idle",
+          "loading",
+          "updated",
+          "empty",
+          "error"
+        ]
+      },
+      {
+        "name": "ArticleCard",
+        "responsibility": "Presents image, content type, title, excerpt, context metadata and primary link.",
+        "states": [
+          "loading",
+          "loaded",
+          "image-error",
+          "hover",
+          "focused"
+        ]
+      },
+      {
+        "name": "PlantContextCard",
+        "responsibility": "Links an article to its relevant plant hub and related care/problem areas.",
+        "states": [
+          "default",
+          "focused"
+        ]
+      },
+      {
+        "name": "ProblemPathway",
+        "responsibility": "Routes readers to populated problem archives and the deterministic checker.",
+        "states": [
+          "default",
+          "focused"
+        ]
+      },
+      {
+        "name": "AdSlot",
+        "responsibility": "Reserves, labels and loads an approved responsive ad placement.",
+        "states": [
+          "reserved",
+          "loading",
+          "filled",
+          "empty",
+          "consent-blocked"
+        ]
+      },
+      {
+        "name": "Pagination",
+        "responsibility": "Provides crawlable archive traversal and current-page context.",
+        "states": [
+          "default",
+          "current",
+          "disabled",
+          "focused"
+        ]
+      },
+      {
+        "name": "EmptyState",
+        "responsibility": "Explains no matches and provides recovery routes.",
+        "states": [
+          "no-results",
+          "error",
+          "retrying"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "small-mobile",
+        "minimumWidth": 0,
+        "behaviour": "Single-column layout; compact header; filter sheet; cards use 4:3 images; controls are at least 44px high; no essential horizontal scrolling."
+      },
+      {
+        "name": "large-mobile-tablet",
+        "minimumWidth": 600,
+        "behaviour": "Single-column or two-column feature composition; toolbar may wrap; featured cards can use a two-up secondary arrangement; maintain one-column results until card width remains comfortable."
+      },
+      {
+        "name": "desktop",
+        "minimumWidth": 960,
+        "behaviour": "Full navigation; two- or three-column result grid; featured rail composition; toolbar in one row where it fits; optional complementary pathway panel."
+      },
+      {
+        "name": "wide-desktop",
+        "minimumWidth": 1280,
+        "behaviour": "Constrain content to 1180px or approved wide size; increase whitespace rather than card count; preserve readable line lengths and ad restraint."
+      }
+    ],
+    "contentRules": [
+      "Every index page has one descriptive h1 and server-rendered introductory copy.",
+      "Every article card must include a meaningful title link, format or topic context and a stable image ratio.",
+      "Use only confirmed public categories, plants and problems; do not expose the provisional purchase cohort as approved editorial content.",
+      "Link articles to a plant hub when the relationship is editorially valid; link to a problem archive only when that archive has substantive content.",
+      "Use descriptive link text such as “Read the Monstera deliciosa drooping guide”, not repeated generic “Read more”.",
+      "Show published and reviewed/updated dates only when maintained consistently; do not imply a review process that did not occur.",
+      "Use “Grown & photographed by HouseplantLab” only for verified original HouseplantLab photography.",
+      "Affiliate content must be labelled clearly before engagement with the relevant commercial content; maintain a site-wide disclosure page.",
+      "Do not fabricate result counts, popularity labels, user ratings, engagement metrics, search volumes or evidence claims.",
+      "Do not present AI-generated mock imagery as original evidence.",
+      "Keep the diagnosis checker separate from editorial certainty: archive filters suggest relevant content, not a diagnosis.",
+      "Ensure all pagination and primary result links are crawlable without JavaScript."
+    ],
+    "analyticsEvents": [
+      {
+        "name": "archive_search_submitted",
+        "trigger": "Reader submits a non-empty archive search.",
+        "purpose": "Understand query formulation and search refinement without claiming search-volume findings."
+      },
+      {
+        "name": "archive_filter_applied",
+        "trigger": "Reader applies or changes plant, problem, format or sort criteria.",
+        "purpose": "Measure interaction with discovery controls."
+      },
+      {
+        "name": "archive_filter_cleared",
+        "trigger": "Reader removes a chip or clears all filters.",
+        "purpose": "Identify refinement friction and recovery behaviour."
+      },
+      {
+        "name": "archive_result_opened",
+        "trigger": "Reader activates an article card or title link.",
+        "purpose": "Measure content discovery from the archive."
+      },
+      {
+        "name": "archive_pagination_used",
+        "trigger": "Reader activates next, previous, page number or progressively enhanced load-more control.",
+        "purpose": "Understand archive depth and traversal."
+      },
+      {
+        "name": "plant_hub_link_opened",
+        "trigger": "Reader opens a contextual plant profile link from the archive.",
+        "purpose": "Measure movement from editorial content into structured authority content."
+      },
+      {
+        "name": "problem_pathway_opened",
+        "trigger": "Reader opens a populated problem archive or symptom route.",
+        "purpose": "Measure symptom-led discovery."
+      },
+      {
+        "name": "checker_cta_opened",
+        "trigger": "Reader opens the plant-problem checker route from the archive.",
+        "purpose": "Measure transition from reading to practical tool use."
+      },
+      {
+        "name": "ad_slot_viewable",
+        "trigger": "Approved ad slot meets the agreed visibility definition after consent and loading.",
+        "purpose": "Measure monetisation delivery without equating visibility with success."
+      },
+      {
+        "name": "affiliate_link_activated",
+        "trigger": "Reader activates a clearly labelled affiliate link.",
+        "purpose": "Measure commercial interaction with disclosure context."
+      }
+    ],
+    "acceptanceCriteria": [
+      "The archive renders correctly at small mobile, large mobile/tablet, desktop and wide desktop widths without horizontal page scrolling.",
+      "The page uses semantic header, navigation, main, search/form, complementary and footer regions, with labelled repeated landmarks.",
+      "There is exactly one meaningful h1; section headings use a logical hierarchy and describe their content.",
+      "Keyboard users can reach, operate and leave search, filters, chips, cards, pagination, mobile menu and dialogs without traps.",
+      "Every keyboard focus indicator is visible, has sufficient contrast and is not entirely obscured by sticky header or other author-created content.",
+      "Touch controls meet or exceed 44 by 44 CSS pixels where practical, with adequate separation to prevent accidental taps.",
+      "At 200% zoom and normal text resizing, the archive remains usable with reflow and no essential content hidden or overlapping.",
+      "Search and filter state is represented textually, persists in the URL and is restorable with back/forward navigation.",
+      "Filter changes announce a status update; loading, empty, error and retry states are understandable without relying on colour or animation.",
+      "Cards reserve image space before media loads; ad slots reserve their agreed space before ad requests; no visible content jumps are introduced by archive media or advertising.",
+      "Below-fold images and ads are deferred appropriately, while critical above-fold content remains available promptly.",
+      "No promotional overlay, interstitial, sticky mobile footer ad or ad disguised as editorial navigation appears.",
+      "Ad density remains within the agreed restrained threshold and ads are absent from the header, filter controls, checker pathway and empty/error states.",
+      "Affiliate content is clearly labelled before engagement, with labels associated with the relevant commercial content.",
+      "The archive includes deliberate internal links to /plants/, /plants/monstera-deliciosa/, populated problem routes and /tools/plant-problem-checker/.",
+      "Only verified photography provenance is displayed; mock assets are never labelled as original HouseplantLab evidence.",
+      "The implementation preserves the approved cream, paper, forest, serif/sans-serif and rounded photography-led character without copying another publication’s trade dress.",
+      "Server-rendered pagination remains available if progressive enhancement such as load more is added.",
+      "Analytics events fire once per intended interaction, contain no unnecessary personal data and do not claim outcomes not measured."
+    ],
+    "openQuestions": [
+      "Which editorial taxonomy terms will be approved for public navigation at launch?",
+      "Will the owner approve a featured-content field, manual editorial ordering or both?",
+      "Which ad platform, consent mechanism and responsive slot sizes will be approved?",
+      "Should archive search use native WordPress search, a custom query endpoint or a future search service?",
+      "Will reviewed dates be editorially maintained for every article or only selected evidence-led guides?",
+      "Which launch pages beyond Monstera deliciosa are sufficiently complete to expose as authority hubs?",
+      "Will newsletter signup, accounts, saved diagnoses or comments be excluded from the first archive release?",
+      "Which analytics platform and retention/privacy settings will be approved before implementation?"
+    ]
+  }
+}

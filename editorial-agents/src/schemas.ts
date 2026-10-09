@@ -140,7 +140,7 @@ export const SitePageSchema = z.object({
   type: z.enum(["post", "page", "plant"]),
   title: z.string().min(1),
   slug: z.string().min(1),
-  url: z.string().url(),
+  url: z.string().min(8),
   path: z.string().regex(/^\/.*\/$/),
   modifiedAt: z.string().datetime(),
   categoryIds: z.array(z.number().int().nonnegative()),
@@ -219,6 +219,68 @@ export const SeoContentBriefSchema = z.object({
   humanReviewNotes: z.array(z.string()).min(1),
 });
 
+export const DesignResearchCitationSchema = z.object({
+  title: z.string().min(5),
+  organisation: z.string().min(2),
+  url: z.string().min(8),
+  accessedOn: z.string().date(),
+  finding: z.string().min(30),
+});
+
+export const InteractionPrincipleSchema = z.object({
+  name: z.string().min(4),
+  rationale: z.string().min(30),
+  houseplantLabApplication: z.string().min(30),
+  evidenceUrls: z.array(z.string().min(8)).min(1),
+});
+
+export const BlogLayoutZoneSchema = z.object({
+  name: z.string().min(3),
+  purpose: z.string().min(20),
+  desktop: z.string().min(20),
+  mobile: z.string().min(20),
+  interaction: z.string().min(20),
+  content: z.string().min(20),
+  advertisingRule: z.string().min(20),
+});
+
+export const BlogDesignDirectionSchema = z.object({
+  id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  name: z.string().min(4),
+  concept: z.string().min(40),
+  intendedReaderBehaviour: z.string().min(40),
+  visualCharacter: z.string().min(30),
+  layoutZones: z.array(BlogLayoutZoneSchema).min(5),
+  interactionPatterns: z.array(z.string().min(15)).min(4),
+  monetisationPlacements: z.array(z.string().min(20)).min(2),
+  accessibilityRequirements: z.array(z.string().min(15)).min(4),
+  strengths: z.array(z.string().min(15)).min(3),
+  tradeoffs: z.array(z.string().min(15)).min(2),
+});
+
+export const BlogDesignHandoffSchema = z.object({
+  recommendedDirectionId: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  recommendationRationale: z.string().min(60),
+  designTokens: z.array(z.object({ token: z.string().min(2), value: z.string().min(1), usage: z.string().min(10) })).min(8),
+  components: z.array(z.object({ name: z.string().min(3), responsibility: z.string().min(20), states: z.array(z.string().min(2)).min(1) })).min(6),
+  breakpoints: z.array(z.object({ name: z.string().min(2), minimumWidth: z.number().int().nonnegative(), behaviour: z.string().min(20) })).min(3),
+  contentRules: z.array(z.string().min(15)).min(5),
+  analyticsEvents: z.array(z.object({ name: z.string().regex(/^[a-z0-9_]+$/), trigger: z.string().min(15), purpose: z.string().min(15) })).min(4),
+  acceptanceCriteria: z.array(z.string().min(15)).min(8),
+  openQuestions: z.array(z.string().min(10)),
+});
+
+export const BlogDesignResearchPackageSchema = z.object({
+  status: z.literal("human-review-required"),
+  researchedAt: z.string().datetime(),
+  currentStateSummary: z.string().min(60),
+  userGoals: z.array(z.string().min(15)).min(4),
+  citations: z.array(DesignResearchCitationSchema).min(4),
+  principles: z.array(InteractionPrincipleSchema).min(5),
+  directions: z.array(BlogDesignDirectionSchema).length(3),
+  handoff: BlogDesignHandoffSchema,
+});
+
 export const QueueStatusSchema = z.enum([
   "queued",
   "running",
@@ -272,6 +334,7 @@ export type SearchPerformanceRow = z.infer<typeof SearchPerformanceRowSchema>;
 export type SearchPerformanceSnapshot = z.infer<typeof SearchPerformanceSnapshotSchema>;
 export type SiteArchitectureReport = z.infer<typeof SiteArchitectureReportSchema>;
 export type SeoContentBrief = z.infer<typeof SeoContentBriefSchema>;
+export type BlogDesignResearchPackage = z.infer<typeof BlogDesignResearchPackageSchema>;
 export type QueueItem = z.infer<typeof QueueItemSchema>;
 export type EditorialQueue = z.infer<typeof EditorialQueueSchema>;
 

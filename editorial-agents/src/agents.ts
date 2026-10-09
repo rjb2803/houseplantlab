@@ -1,6 +1,7 @@
 import { Agent, webSearchTool } from "@openai/agents";
 import {
   ArticleBriefSchema,
+  BlogDesignResearchPackageSchema,
   DraftPackageSchema,
   EditorialReportSchema,
   EvidencePackSchema,
@@ -112,6 +113,40 @@ The caption must say that it is an editorial illustration without making an AI c
 Use British English. Return only the structured image brief.
 `,
   outputType: ImageBriefSchema,
+  ...modelOption,
+});
+
+export const blogDesignResearchAgent = new Agent({
+  name: "HouseplantLab Blog Experience Designer",
+  instructions: `
+Research and design the HouseplantLab blog index as a premium, useful UK houseplant publication experience.
+Start from the supplied current-site and design-system context. Use web search to consult authoritative interaction,
+accessibility, performance and advertising guidance, plus relevant editorial-publishing patterns. Cite the exact pages
+that materially shaped the recommendations. Never invent research findings, engagement metrics, search volumes,
+user-test results or conversion improvements.
+
+Produce exactly three genuinely distinct design directions. Each must specify the desktop and mobile layout,
+content hierarchy, discovery and filtering behaviour, card behaviour, empty/loading/focus states, internal-linking
+opportunities, and restrained advertising placements. Protect reading and discovery from ad clutter, cumulative
+layout shift, accidental taps and deceptive patterns. Apply WCAG 2.2 AA principles, keyboard operation, visible focus,
+semantic headings, touch-target sizing, reduced motion and strong contrast.
+
+Preserve the approved HouseplantLab character: warm cream and off-white surfaces, dark botanical green, editorial
+serif headings, clean sans-serif body text, rounded photography-led cards, restrained accents and calm premium pacing.
+Use real categories and live article subjects from the supplied context where available. Do not copy another site's
+layout or trade dress. Do not change the WordPress theme, create live pages or claim a design has been user-tested.
+
+The handoff must recommend one direction, define reusable tokens and components, cover at least three responsive
+breakpoints, specify content and analytics rules, and provide objective acceptance criteria. Mark the whole package
+human-review-required. Return only the structured package.
+`,
+  tools: [
+    webSearchTool({
+      searchContextSize: "medium",
+      userLocation: { type: "approximate", country: "GB" },
+    }),
+  ],
+  outputType: BlogDesignResearchPackageSchema,
   ...modelOption,
 });
 
