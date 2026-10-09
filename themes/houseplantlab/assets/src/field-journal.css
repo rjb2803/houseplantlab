@@ -205,6 +205,10 @@
 }
 
 @media (min-width: 1024px) {
+  .hpl-journal-main {
+    overflow: visible;
+  }
+
   .hpl-journal-feature {
     display: block !important;
     margin-left: calc(50% - 50vw);
