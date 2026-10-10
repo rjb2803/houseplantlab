@@ -2,11 +2,19 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { run } from "@openai/agents";
 import { internalLinkStrategistAgent, siteArchitectAgent } from "./agents.js";
+import {
+  buildRankingOpportunities,
+  buildStrongSourcePages,
+  resolveSearchPerformance,
+  type RankingOpportunity,
+  type StrongSourcePage,
+} from "./internal-link-ranking.js";
 import { auditLiveSite } from "./site-audit.js";
 import {
   InternalLinkStrategySchema,
   SiteArchitectureReportSchema,
   type InternalLinkStrategy,
+  type SearchPerformanceSnapshot,
   type SiteArchitectureReport,
   type SiteInventory,
 } from "./schemas.js";
@@ -16,7 +24,9 @@ export interface InternalLinkStrategyDependencies {
   inventory?: () => Promise<SiteInventory>;
   architecture?: (input: string) => Promise<SiteArchitectureReport>;
   strategy?: (input: string) => Promise<InternalLinkStrategy>;
+  performance?: () => Promise<SearchPerformanceSnapshot>;
   fetch?: typeof fetch;
+  env?: NodeJS.ProcessEnv;
 }
 
 export interface InternalLinkStrategyResult {
@@ -24,6 +34,9 @@ export interface InternalLinkStrategyResult {
   assessedPostCount: number;
   clusterCount: number;
   priorityActionCount: number;
+  rankingOpportunityCount: number;
+  strongSourceCount: number;
+  searchPerformanceState: "measured" | "not-configured";
   strategyPath: string;
   markdownPath: string;
   message: string;
@@ -82,6 +95,8 @@ function renderMarkdown(
   inventory: SiteInventory,
   architecture: SiteArchitectureReport,
   strategy: InternalLinkStrategy,
+  rankingOpportunities: RankingOpportunity[],
+  strongSources: StrongSourcePage[],
 ): string {
   const lines = [
     "# HouseplantLab internal-linking strategy",
@@ -89,6 +104,18 @@ function renderMarkdown(
     `Live inventory audited: ${inventory.auditedAt}`,
     "",
     strategy.summary,
+    "",
+    "## Search-performance priorities",
+    "",
+    ...(rankingOpportunities.length
+      ? rankingOpportunities.map((item) => `- ${item.path} — “${item.query}”, position ${item.position.toFixed(1)}, ${item.impressions} impressions, ${item.clicks} clicks (${item.opportunity}).`)
+      : ["- No measured Search Console rows are available. Ranking-based priorities are paused; the strategy must not guess them."]),
+    "",
+    "## Strong source pages",
+    "",
+    ...(strongSources.length
+      ? strongSources.map((item) => `- ${item.path} — ${item.clicks} clicks, ${item.impressions} impressions, average position ${item.averagePosition.toFixed(1)}.`)
+      : ["- No measured Search Console rows are available, so no page is currently labelled a strong source." ]),
     "",
     "## Strategy principles",
     "",
@@ -130,6 +157,11 @@ export async function runInternalLinkStrategyWorkflow(
   const now = dependencies.now?.() ?? new Date();
   const request = dependencies.fetch ?? fetch;
   const inventory = await (dependencies.inventory ?? (() => auditLiveSite(request, now)))();
+  const performance = await (dependencies.performance
+    ? dependencies.performance()
+    : resolveSearchPerformance(now, { env: dependencies.env ?? process.env, fetch: request }));
+  const rankingOpportunities = buildRankingOpportunities(inventory, performance);
+  const strongSources = buildStrongSourcePages(inventory, performance);
   const createArchitecture = dependencies.architecture ?? defaultArchitecture;
   const architecture = SiteArchitectureReportSchema.parse(await createArchitecture(
     `Audit this live site inventory for internal-link architecture. Return only the structured report.\n${JSON.stringify(inventory, null, 2)}`,
@@ -137,6 +169,10 @@ export async function runInternalLinkStrategyWorkflow(
   const createStrategy = dependencies.strategy ?? defaultStrategy;
   const strategy = validateStrategy(InternalLinkStrategySchema.parse(await createStrategy([
     "Create the site-wide internal-linking strategy from the live inventory and architecture report.",
+    performance.rows.length
+      ? "Prioritise contextual links into measured pages in positions 11-20, followed by positions 5-10. Use the metrics exactly and never invent ranking evidence."
+      : "No measured Search Console rows are available. Do not make ranking claims; prioritise only relevance, clusters and orphan rescue.",
+    "SEARCH PERFORMANCE", JSON.stringify({ performance, rankingOpportunities, strongSources }, null, 2),
     "LIVE INVENTORY", JSON.stringify(inventory, null, 2),
     "ARCHITECTURE REPORT", JSON.stringify(architecture, null, 2),
   ].join("\n"))), inventory);
@@ -145,8 +181,8 @@ export async function runInternalLinkStrategyWorkflow(
   const runDirectory = path.join(projectRoot, "content-production", "internal-links", "runs", runId);
   const strategyDirectory = path.join(projectRoot, "content-production", "internal-links", "strategy");
   await Promise.all([mkdir(runDirectory, { recursive: true }), mkdir(strategyDirectory, { recursive: true })]);
-  const payload = { inventory, architecture, strategy };
-  const markdown = renderMarkdown(inventory, architecture, strategy);
+  const payload = { inventory, performance, rankingOpportunities, strongSources, architecture, strategy };
+  const markdown = renderMarkdown(inventory, architecture, strategy, rankingOpportunities, strongSources);
   const runJsonPath = path.join(runDirectory, "interlinking-strategy.json");
   const latestJsonPath = path.join(strategyDirectory, "latest.json");
   const latestMarkdownPath = path.join(strategyDirectory, "latest.md");
@@ -161,6 +197,9 @@ export async function runInternalLinkStrategyWorkflow(
     assessedPostCount: inventory.pages.filter((page) => page.type === "post").length,
     clusterCount: strategy.clusters.length,
     priorityActionCount: strategy.priorityActions.length,
+    rankingOpportunityCount: rankingOpportunities.length,
+    strongSourceCount: strongSources.length,
+    searchPerformanceState: performance.rows.length ? "measured" : "not-configured",
     strategyPath: relative(latestJsonPath),
     markdownPath: relative(latestMarkdownPath),
     message: "A validated site-wide internal-linking strategy is ready for the guarded link editor.",

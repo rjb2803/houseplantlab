@@ -1,183 +1,161 @@
 # HouseplantLab internal-linking strategy
 
-Live inventory audited: 2026-10-10T22:36:23.316Z
+Live inventory audited: 2026-10-10T22:51:23.881Z
 
-Prioritise plant-specific journeys, rescue genuine orphans, and strengthen Monstera’s existing cluster. Treat broken hubs, technical paths, taxonomy, placeholders and new hubs as review-only.
+Build around /plants/ as the plant-first pillar and /blog/ as the editorial discovery hub. Strengthen the well-developed Monstera cluster, rescue genuine orphans through relevant hub and reciprocal contextual links, and review broken utility/system links separately. Ranking-based prioritisation is unavailable because no Search Console rows were supplied.
+
+## Search-performance priorities
+
+- No measured Search Console rows are available. Ranking-based priorities are paused; the strategy must not guess them.
+
+## Strong source pages
+
+- No measured Search Console rows are available, so no page is currently labelled a strong source.
 
 ## Strategy principles
 
-- Use plant profiles as the strongest existing plant pillar.
-- Prioritise reciprocal plant-profile, care-guide and symptom-guide links.
-- Use only relevant same-plant or same-intent relationships; avoid unrelated cross-plant links.
-- Do not use placeholder or broken paths as live pillars or targets.
-- Validate every proposed edit against the live site before publishing.
+- Use only verified live paths; never use placeholders as pillars or targets.
+- Place approved links as contextual text hyperlinks in natural article sentences, not only generic related-content boxes.
+- Prioritise plant-profile-to-care/problem reciprocity and symptom-to-care journeys.
+- Keep links within relevant plant, symptom and care clusters; avoid unrelated cross-plant links.
+- Treat broken links, taxonomy, navigation, redirects, URL changes and new hubs as human-review items.
+- Use /plants/ for plant-first discovery and /blog/ for broad editorial discovery.
 
 ## Topic clusters
 
 ### Monstera deliciosa plant, care and problems
 
-Identify, care for and troubleshoot Monstera deliciosa.
+Understand Monstera care, diagnose symptoms and resolve growing issues.
 
 - Pillar: /plants/monstera-deliciosa/
 - Supporting pages: /best-growing-media-for-monstera-deliciosa/, /brown-spots-monstera-deliciosa-leaves/, /how-often-to-water-monstera-deliciosa/, /how-to-repot-monstera-deliciosa/, /monstera-deliciosa-aerial-roots/, /why-are-my-monstera-deliciosa-leaves-curling/, /why-is-my-monstera-deliciosa-drooping/, /why-is-my-monstera-deliciosa-not-splitting/
 
-### Pothos care and propagation
+### Plant-specific watering and flowering care
 
-Water, propagate and diagnose Pothos.
+Follow practical care methods for common houseplants.
 
-- Pillar: No suitable live pillar yet
-- Supporting pages: /how-to-propagate-pothos-from-stem-cuttings/, /how-to-water-pothos/, /why-are-my-pothos-leaves-turning-yellow/
-- Review-only hub recommendation: Review creation of a verified Pothos plant profile or cluster hub.
+- Pillar: /blog/
+- Supporting pages: /how-to-get-a-phalaenopsis-orchid-to-flower-again/, /how-to-water-aloe-vera-indoors/, /how-to-water-peace-lily/, /how-to-water-pothos/, /how-to-water-snake-plant/, /how-to-water-spider-plant/
+- Review-only hub recommendation: Review whether a verified plant-care hub should be created; do not create or use an unverified path without approval.
 
-### Spider Plant care, propagation and symptoms
+### Plant symptom and diagnosis guides
 
-Water, propagate and resolve brown tips.
+Identify causes of visible plant symptoms and choose safe corrective care.
 
-- Pillar: No suitable live pillar yet
-- Supporting pages: /how-to-propagate-spider-plant-babies/, /how-to-water-spider-plant/, /why-are-my-spider-plant-tips-turning-brown/
-- Review-only hub recommendation: Review creation of a verified Spider Plant profile or cluster hub.
+- Pillar: /blog/
+- Supporting pages: /brown-spots-fiddle-leaf-fig-leaves/, /why-are-my-calathea-leaves-curling/, /why-are-my-peace-lily-leaves-turning-yellow/, /why-is-my-peace-lily-drooping/, /why-are-my-pothos-leaves-turning-yellow/, /why-are-my-rubber-plant-leaves-turning-yellow/, /why-are-my-snake-plant-leaves-turning-yellow/, /why-are-my-spider-plant-tips-turning-brown/, /why-are-my-zz-plant-leaves-turning-yellow/
+- Review-only hub recommendation: Review the broken /problem/ path and taxonomy before approving a dedicated problem hub.
 
-### Peace Lily care and problems
+### Propagation methods
 
-Water Peace Lily and resolve drooping, yellow leaves or flowering problems.
+Propagate plants successfully and manage early aftercare.
 
-- Pillar: No suitable live pillar yet
-- Supporting pages: /how-to-water-peace-lily/, /why-are-my-peace-lily-leaves-turning-yellow/, /why-is-my-peace-lily-drooping/, /why-is-my-peace-lily-not-flowering/
-- Review-only hub recommendation: Review creation of a verified Peace Lily plant profile or cluster hub.
-
-### Snake Plant care and yellow leaves
-
-Water Snake Plant and diagnose yellowing.
-
-- Pillar: No suitable live pillar yet
-- Supporting pages: /how-to-water-snake-plant/, /why-are-my-snake-plant-leaves-turning-yellow/
-- Review-only hub recommendation: Review creation of a verified Snake Plant plant profile or cluster hub.
-
-### Standalone plant problem guides
-
-Diagnose symptoms on Fiddle Leaf Fig, Calathea, Rubber Plant and ZZ Plant.
-
-- Pillar: No suitable live pillar yet
-- Supporting pages: /brown-spots-fiddle-leaf-fig-leaves/, /why-are-my-calathea-leaves-curling/, /why-are-my-rubber-plant-leaves-turning-yellow/, /why-are-my-zz-plant-leaves-turning-yellow/
-- Review-only hub recommendation: Review restoration or creation of a verified problem hub and corresponding plant profiles.
-
-### Aloe Vera and Phalaenopsis Orchid care
-
-Follow species-specific watering and flowering guidance.
-
-- Pillar: No suitable live pillar yet
-- Supporting pages: /how-to-water-aloe-vera-indoors/, /how-to-get-a-phalaenopsis-orchid-to-flower-again/
-- Review-only hub recommendation: Review creation of verified plant profiles or a care hub.
+- Pillar: /blog/
+- Supporting pages: /how-to-propagate-pothos-from-stem-cuttings/, /how-to-propagate-spider-plant-babies/
+- Review-only hub recommendation: Review whether propagation deserves a verified hub; no live hub currently exists.
 
 ## Prioritised actions
 
 ### 1. link-orphan
 
-Rescue a high-intent Monstera orphan from the most relevant existing pillar.
+Rescue genuine isolated care and problem articles from the verified editorial hub using descriptive contextual links.
 
-- Link from: /plants/monstera-deliciosa/
-- Link to: /why-is-my-monstera-deliciosa-not-splitting/
+- Link from: /blog/
+- Link to: /brown-spots-fiddle-leaf-fig-leaves/, /how-to-get-a-phalaenopsis-orchid-to-flower-again/, /how-to-water-peace-lily/, /how-to-water-pothos/, /how-to-water-snake-plant/, /why-are-my-calathea-leaves-curling/, /why-are-my-rubber-plant-leaves-turning-yellow/
 
-### 2. strengthen-cluster
+### 2. add-reciprocal-links
 
-Make the existing Monstera profile a complete plant-first hub.
+Complete the orphan Monstera guide’s profile relationship and reinforce the strongest existing plant cluster.
+
+- Link from: /plants/monstera-deliciosa/, /why-is-my-monstera-deliciosa-not-splitting/
+- Link to: /why-is-my-monstera-deliciosa-not-splitting/, /plants/monstera-deliciosa/
+
+### 3. strengthen-cluster
+
+Make the verified plant profile a clear entry point to relevant care and symptom guides; validate article context before editing.
 
 - Link from: /plants/monstera-deliciosa/
 - Link to: /best-growing-media-for-monstera-deliciosa/, /brown-spots-monstera-deliciosa-leaves/, /how-often-to-water-monstera-deliciosa/, /how-to-repot-monstera-deliciosa/, /monstera-deliciosa-aerial-roots/, /why-are-my-monstera-deliciosa-leaves-curling/, /why-is-my-monstera-deliciosa-drooping/
 
-### 3. add-reciprocal-links
+### 4. add-reciprocal-links
 
-Provide a consistent return path to the Monstera profile.
+Ensure every relevant Monstera guide provides a contextual route back to the plant profile.
 
-- Link from: /why-is-my-monstera-deliciosa-not-splitting/, /best-growing-media-for-monstera-deliciosa/, /brown-spots-monstera-deliciosa-leaves/, /how-often-to-water-monstera-deliciosa/, /how-to-repot-monstera-deliciosa/, /monstera-deliciosa-aerial-roots/, /why-are-my-monstera-deliciosa-leaves-curling/, /why-is-my-monstera-deliciosa-drooping/
+- Link from: /best-growing-media-for-monstera-deliciosa/, /brown-spots-monstera-deliciosa-leaves/, /how-often-to-water-monstera-deliciosa/, /how-to-repot-monstera-deliciosa/, /monstera-deliciosa-aerial-roots/, /why-are-my-monstera-deliciosa-leaves-curling/, /why-is-my-monstera-deliciosa-drooping/, /why-is-my-monstera-deliciosa-not-splitting/
 - Link to: /plants/monstera-deliciosa/
-
-### 4. link-orphan
-
-Connect closely related Pothos care methods.
-
-- Link from: /how-to-propagate-pothos-from-stem-cuttings/
-- Link to: /how-to-water-pothos/
 
 ### 5. add-reciprocal-links
 
-Connect watering guidance to the directly relevant symptom guide.
+Connect Pothos care methods to the relevant symptom guide.
 
-- Link from: /how-to-water-pothos/
+- Link from: /how-to-water-pothos/, /how-to-propagate-pothos-from-stem-cuttings/
 - Link to: /why-are-my-pothos-leaves-turning-yellow/
 
-### 6. link-orphan
+### 6. add-reciprocal-links
 
-Complete the Spider Plant care-to-symptom journey.
+Connect Spider Plant care and propagation to the matching symptom guide.
 
-- Link from: /how-to-propagate-spider-plant-babies/
-- Link to: /how-to-water-spider-plant/, /why-are-my-spider-plant-tips-turning-brown/
+- Link from: /how-to-water-spider-plant/, /how-to-propagate-spider-plant-babies/
+- Link to: /why-are-my-spider-plant-tips-turning-brown/
 
-### 7. link-orphan
+### 7. add-reciprocal-links
 
-Connect flowering troubleshooting to relevant watering care.
+Create useful symptom-to-care journeys within the Peace Lily topic.
 
-- Link from: /why-is-my-peace-lily-not-flowering/
-- Link to: /how-to-water-peace-lily/
+- Link from: /how-to-water-peace-lily/, /why-is-my-peace-lily-not-flowering/
+- Link to: /why-are-my-peace-lily-leaves-turning-yellow/, /why-is-my-peace-lily-drooping/
 
-### 8. add-reciprocal-links
+### 8. review-broken-link
 
-Connect core care guidance with its symptom guide.
+Human review is required to remove, repair or validate broken utility, taxonomy, legal and system links.
 
-- Link from: /how-to-water-snake-plant/
-- Link to: /why-are-my-snake-plant-leaves-turning-yellow/
+- Link from: /blog/, /plants/
+- Link to: /about/, /category/care-guides/, /comments/feed/, /contact/, /feed/, /plants/feed/, /privacy-policy/, /problem/, /tools/, /tools/plant-problem-checker/, /wp-includes/js/dist/script-modules/interactivity/index.min.js/, /xmlrpc.php/
 
 ### 9. review-new-hub
 
-Review restoration or creation of verified plant, problem and care hubs; no unverified path is approved as a live target.
-
-
-### 10. review-broken-link
-
-Review broken hubs, feeds, technical endpoints and asset paths before editorial linking.
+Review potential care, problem or propagation hubs only after taxonomy and URL validation; no new hub is approved.
 
 - Link from: /blog/, /plants/
 
 ## Rollout
 
-- **Phase 1: Monstera journey.** Complete and reciprocate the strongest existing plant cluster. Actions: 1, 2, 3.
-- **Phase 2: Relevant orphan rescue.** Improve Pothos, Spider Plant, Peace Lily and Snake Plant journeys using existing relevant pages. Actions: 4, 5, 6, 7, 8.
-- **Phase 3: Hub and architecture review.** Verify broken hubs, review new hubs, taxonomy and navigation before broader discovery changes. Actions: 9, 10.
+- **Phase 1: Orphan rescue.** Expose genuine isolated content from /blog/ and connect the orphan Monstera guide to its verified profile. Actions: 1, 2.
+- **Phase 2: Cluster strengthening.** Complete Monstera profile reciprocity and add tightly relevant symptom-to-care links. Actions: 3, 4, 5, 6, 7.
+- **Phase 3: Technical and architecture review.** Resolve broken paths and assess taxonomy or hub changes without treating them as approved edits. Actions: 8, 9.
 
 ## Measurement
 
-- Reduce confirmed orphan count from 9 to 0, excluding the placeholder page after separate review.
-- Reduce broken internal paths from 12 to 0 or document intentional technical exceptions after review.
-- Measure cluster coverage: percentage of genuine articles assigned to a verified relevant plant, problem or care hub.
-- Measure average relevant internal links per article, segmented by cluster; do not use an arbitrary volume target.
-- Measure reciprocal-link coverage between plant profiles and their relevant care/problem guides.
-- Measure discovery clicks and organic entry-to-next-page journeys for each cluster.
+- Reduce verified orphan count from 9, excluding the placeholder /sample-page/ from editorial targets.
+- Reduce broken internal paths from 12 after human validation and approved cleanup.
+- Measure cluster coverage: percentage of genuine care/problem articles linked from an appropriate hub or plant pillar.
+- Measure reciprocal coverage: percentage of Monstera guides linking to and from /plants/monstera-deliciosa/.
+- Measure average relevant contextual links per article, while avoiding arbitrary volume targets.
+- Re-crawl after each phase and verify no new broken internal paths or unintended cross-plant links.
 
 ## Current architecture warnings
 
-- Broken path /about/: Human review: verify whether the page exists; remove or correct the link if not.
-- Broken path /category/care-guides/: Human review: verify or restore the care-guide hub before using it for article discovery.
-- Broken path /comments/feed/: Human review: remove unintended feed link from navigation if comments feeds are not part of the information architecture.
-- Broken path /contact/: Human review: verify the destination or remove the stale link.
-- Broken path /feed/: Human review: retain only if the site intentionally exposes an RSS feed.
-- Broken path /plants/feed/: Human review: retain or remove according to the intended RSS strategy.
-- Broken path /privacy-policy/: Human review: verify the legal page and restore or remove the link.
-- Broken path /problem/: Human review: verify or restore the problem hub; this is a key missing plant-first hub.
-- Broken path /tools/: Human review: verify or restore the tools hub.
-- Broken path /tools/plant-problem-checker/: Human review: verify the tool path before promoting it.
-- Broken path /wp-includes/js/dist/script-modules/interactivity/index.min.js/: Human review: remove this malformed asset path from crawlable internal navigation.
-- Broken path /xmlrpc.php/: Human review: remove this technical endpoint from crawlable internal navigation.
-- Review the Uncategorized assignment across genuine posts; organize content around plant profiles, problem guides, care guides and tools, subject to human taxonomy review.
-- Use /plants/ as the primary plant-first hub and build reciprocal links between each plant profile, its care guides and its problem guides.
-- Restore or verify /problem/ and /category/care-guides/ before relying on them as editorial hubs.
-- Keep technical feeds, endpoints and asset paths out of editorial navigation.
-- Do not link to or from /sample-page/; review its removal separately.
+- Broken path /about/: Human review: remove or repair the source links only after confirming the intended page.
+- Broken path /category/care-guides/: Human review: assess the weak Uncategorized structure and validate whether this category should exist.
+- Broken path /comments/feed/: Human review: remove broken feed links.
+- Broken path /contact/: Human review: remove or repair after validating availability.
+- Broken path /feed/: Human review: remove broken feed links.
+- Broken path /plants/feed/: Human review: remove broken feed link.
+- Broken path /privacy-policy/: Human review: restore or remove only after legal review.
+- Broken path /problem/: Human review: validate the problem hub before retaining these links.
+- Broken path /tools/: Human review: validate the tools hub before retaining the link.
+- Broken path /tools/plant-problem-checker/: Human review: validate or remove the checker links.
+- Broken path /wp-includes/js/dist/script-modules/interactivity/index.min.js/: Remove unintended system asset link after technical review.
+- Broken path /xmlrpc.php/: Remove unintended system endpoint links.
+- Review the lone Uncategorized assignment for all posts; group content conceptually into plant profiles, problem guides, care guides and tools only after human taxonomy review.
+- Use /plants/ as the plant-first entry point and /blog/ as the editorial discovery hub; do not create unverified category or hub URLs.
+- Prioritise reciprocal links between Monstera guides and /plants/monstera-deliciosa/; extend equivalent profile relationships only where a verified plant profile exists.
+- Avoid linking to or from placeholder content.
 
 ## Human review gates
 
-- Verify every destination before publishing any link.
-- Confirm whether /problem/, /category/care-guides/, /tools/ and /tools/plant-problem-checker/ are live intended destinations.
-- Review taxonomy changes away from Uncategorized.
-- Review broken feeds, XML-RPC, asset and utility paths in templates/navigation.
-- Do not link to /sample-page/; review its removal separately.
-- Create or restore hubs only through separate human approval; do not treat recommendations as live edits.
+- Validate every proposed contextual link against the article text before publishing.
+- Confirm whether broken hubs, utility, policy, feed and system paths should be restored or removed.
+- Review taxonomy before changing the Uncategorized structure.
+- Keep /sample-page/ excluded unless it is confirmed as genuine editorial content; do not link to it.
+- Validate any proposed new hub, URL, redirect or navigation change before implementation.

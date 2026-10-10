@@ -1,6 +1,6 @@
 {
   "inventory": {
-    "auditedAt": "2026-10-10T22:36:23.316Z",
+    "auditedAt": "2026-10-10T22:51:23.881Z",
     "origin": "https://houseplantlab.co.uk",
     "pages": [
       {
@@ -25,7 +25,7 @@
         "slug": "blog",
         "url": "https://houseplantlab.co.uk/blog/",
         "path": "/blog/",
-        "modifiedAt": "2026-10-10T22:36:23.316Z",
+        "modifiedAt": "2026-10-10T22:51:23.881Z",
         "categoryIds": [],
         "outgoingInternalPaths": [
           "/about/",
@@ -250,7 +250,7 @@
         "slug": "plants",
         "url": "https://houseplantlab.co.uk/plants/",
         "path": "/plants/",
-        "modifiedAt": "2026-10-10T22:36:23.316Z",
+        "modifiedAt": "2026-10-10T22:51:23.881Z",
         "categoryIds": [],
         "outgoingInternalPaths": [
           "/about/",
@@ -490,28 +490,29 @@
       "Uncategorized"
     ]
   },
+  "performance": {
+    "siteUrl": "sc-domain:houseplantlab.co.uk",
+    "startDate": "2026-09-10",
+    "endDate": "2026-10-07",
+    "capturedAt": "2026-10-10T22:51:23.881Z",
+    "rows": [],
+    "topPerformingPages": [],
+    "strikingDistanceQueries": []
+  },
+  "rankingOpportunities": [],
+  "strongSources": [],
   "architecture": {
-    "summary": "The inventory has strong Monstera cross-linking but weak site-wide discoverability. Most posts are assigned only to Uncategorized, several genuine articles are orphaned, and plant/problem/care/tool hubs are incomplete or contain broken utility paths. Review technical/default links separately from editorial links.",
+    "summary": "Plant content is concentrated in one Uncategorized category, with strong Monstera cross-linking but many isolated plant guides. Use the existing Plant profiles hub plus verified problem and tool paths; broken utility, feed, system and policy paths require human review. No new hubs or URLs should be created without validation.",
     "requiredHubs": [
       {
         "title": "Plant profiles",
         "path": "/plants/",
-        "purpose": "Primary plant-first index connecting each plant profile to its care guides and problem guides."
+        "purpose": "Primary index for plant-first profiles and verified plant-specific content."
       },
       {
-        "title": "Problem guides",
-        "path": "/problem/",
-        "purpose": "Central symptom-led index for troubleshooting articles; requires human review because the supplied path is currently broken."
-      },
-      {
-        "title": "Care guides",
-        "path": "/category/care-guides/",
-        "purpose": "Index for watering, propagation, repotting, growing media and flowering guidance; requires human review because the supplied path is currently broken."
-      },
-      {
-        "title": "Tools",
-        "path": "/tools/",
-        "purpose": "Index for diagnostic tools; requires human review because the supplied path is currently broken."
+        "title": "The Field Journal",
+        "path": "/blog/",
+        "purpose": "Editorial index linking verified care, problem and propagation content."
       }
     ],
     "orphanFixes": [
@@ -519,83 +520,82 @@
         "orphanPath": "/brown-spots-fiddle-leaf-fig-leaves/",
         "action": "add-internal-links",
         "linkFromPaths": [
-          "/plants/"
+          "/blog/"
         ],
-        "reason": "Link from the plant-profile hub or relevant Fiddle Leaf Fig profile area so readers can discover this genuine problem guide."
+        "reason": "Expose the genuine problem guide from the editorial hub so readers can discover it."
       },
       {
         "orphanPath": "/how-to-get-a-phalaenopsis-orchid-to-flower-again/",
         "action": "add-internal-links",
         "linkFromPaths": [
-          "/category/care-guides/"
+          "/blog/"
         ],
-        "reason": "Place this genuine flowering care guide in the care index once that real hub path is restored or verified."
+        "reason": "Give the genuine orchid care guide a discoverable entry point."
       },
       {
         "orphanPath": "/how-to-water-peace-lily/",
         "action": "add-internal-links",
         "linkFromPaths": [
-          "/category/care-guides/",
-          "/why-is-my-peace-lily-not-flowering/"
+          "/blog/"
         ],
-        "reason": "A care hub supports discovery, while the related flowering problem guide offers a useful next step."
+        "reason": "Connect the watering guide to the existing editorial index."
       },
       {
         "orphanPath": "/how-to-water-pothos/",
         "action": "add-internal-links",
         "linkFromPaths": [
-          "/category/care-guides/",
-          "/how-to-propagate-pothos-from-stem-cuttings/"
+          "/blog/"
         ],
-        "reason": "Connect watering intent to the care index and the existing Pothos propagation guide."
+        "reason": "Surface the genuine care guide from the editorial hub."
       },
       {
         "orphanPath": "/how-to-water-snake-plant/",
         "action": "add-internal-links",
         "linkFromPaths": [
-          "/category/care-guides/",
-          "/why-are-my-snake-plant-leaves-turning-yellow/"
+          "/blog/"
         ],
-        "reason": "Connect core care guidance with the existing Snake Plant symptom guide."
-      },
-      {
-        "orphanPath": "/why-are-my-calathea-leaves-curling/",
-        "action": "add-internal-links",
-        "linkFromPaths": [
-          "/problem/"
-        ],
-        "reason": "The problem hub is the appropriate symptom-led discovery point, subject to path verification."
-      },
-      {
-        "orphanPath": "/why-are-my-rubber-plant-leaves-turning-yellow/",
-        "action": "add-internal-links",
-        "linkFromPaths": [
-          "/problem/"
-        ],
-        "reason": "The problem hub provides a relevant entry point for this genuine troubleshooting article, subject to path verification."
-      },
-      {
-        "orphanPath": "/why-is-my-monstera-deliciosa-not-splitting/",
-        "action": "add-internal-links",
-        "linkFromPaths": [
-          "/plants/monstera-deliciosa/"
-        ],
-        "reason": "The Monstera profile should expose this high-intent problem guide; reciprocal linking would strengthen the plant cluster."
+        "reason": "Surface the genuine care guide from the editorial hub."
       },
       {
         "orphanPath": "/sample-page/",
         "action": "review-placeholder-removal",
         "linkFromPaths": [],
         "reason": "WordPress default placeholder; do not link to or from it."
+      },
+      {
+        "orphanPath": "/why-are-my-calathea-leaves-curling/",
+        "action": "add-internal-links",
+        "linkFromPaths": [
+          "/blog/"
+        ],
+        "reason": "Provide a discovery path for the genuine Calathea problem guide."
+      },
+      {
+        "orphanPath": "/why-are-my-rubber-plant-leaves-turning-yellow/",
+        "action": "add-internal-links",
+        "linkFromPaths": [
+          "/blog/"
+        ],
+        "reason": "Provide a discovery path for the genuine Rubber Plant problem guide."
+      },
+      {
+        "orphanPath": "/why-is-my-monstera-deliciosa-not-splitting/",
+        "action": "add-internal-links",
+        "linkFromPaths": [
+          "/plants/monstera-deliciosa/",
+          "/blog/"
+        ],
+        "reason": "Connect the Monstera troubleshooting guide to its plant profile and editorial hub."
       }
     ],
     "brokenLinkFixes": [
       {
         "brokenPath": "/about/",
         "foundOnPaths": [
-          "/blog/"
+          "/blog/",
+          "/plants/"
         ],
-        "action": "Human review: verify whether the page exists; remove or correct the link if not."
+        "action": "Human review: remove or repair the source links only after confirming the intended page."
       },
       {
         "brokenPath": "/category/care-guides/",
@@ -603,7 +603,7 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: verify or restore the care-guide hub before using it for article discovery."
+        "action": "Human review: assess the weak Uncategorized structure and validate whether this category should exist."
       },
       {
         "brokenPath": "/comments/feed/",
@@ -611,14 +611,14 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: remove unintended feed link from navigation if comments feeds are not part of the information architecture."
+        "action": "Human review: remove broken feed links."
       },
       {
         "brokenPath": "/contact/",
         "foundOnPaths": [
           "/blog/"
         ],
-        "action": "Human review: verify the destination or remove the stale link."
+        "action": "Human review: remove or repair after validating availability."
       },
       {
         "brokenPath": "/feed/",
@@ -626,21 +626,21 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: retain only if the site intentionally exposes an RSS feed."
+        "action": "Human review: remove broken feed links."
       },
       {
         "brokenPath": "/plants/feed/",
         "foundOnPaths": [
           "/plants/"
         ],
-        "action": "Human review: retain or remove according to the intended RSS strategy."
+        "action": "Human review: remove broken feed link."
       },
       {
         "brokenPath": "/privacy-policy/",
         "foundOnPaths": [
           "/blog/"
         ],
-        "action": "Human review: verify the legal page and restore or remove the link."
+        "action": "Human review: restore or remove only after legal review."
       },
       {
         "brokenPath": "/problem/",
@@ -648,14 +648,14 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: verify or restore the problem hub; this is a key missing plant-first hub."
+        "action": "Human review: validate the problem hub before retaining these links."
       },
       {
         "brokenPath": "/tools/",
         "foundOnPaths": [
           "/plants/"
         ],
-        "action": "Human review: verify or restore the tools hub."
+        "action": "Human review: validate the tools hub before retaining the link."
       },
       {
         "brokenPath": "/tools/plant-problem-checker/",
@@ -663,14 +663,14 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: verify the tool path before promoting it."
+        "action": "Human review: validate or remove the checker links."
       },
       {
         "brokenPath": "/wp-includes/js/dist/script-modules/interactivity/index.min.js/",
         "foundOnPaths": [
           "/plants/"
         ],
-        "action": "Human review: remove this malformed asset path from crawlable internal navigation."
+        "action": "Remove unintended system asset link after technical review."
       },
       {
         "brokenPath": "/xmlrpc.php/",
@@ -678,37 +678,36 @@
           "/blog/",
           "/plants/"
         ],
-        "action": "Human review: remove this technical endpoint from crawlable internal navigation."
+        "action": "Remove unintended system endpoint links."
       }
     ],
     "categoryActions": [
-      "Review the Uncategorized assignment across genuine posts; organize content around plant profiles, problem guides, care guides and tools, subject to human taxonomy review.",
-      "Use /plants/ as the primary plant-first hub and build reciprocal links between each plant profile, its care guides and its problem guides.",
-      "Restore or verify /problem/ and /category/care-guides/ before relying on them as editorial hubs.",
-      "Keep technical feeds, endpoints and asset paths out of editorial navigation.",
-      "Do not link to or from /sample-page/; review its removal separately."
+      "Review the lone Uncategorized assignment for all posts; group content conceptually into plant profiles, problem guides, care guides and tools only after human taxonomy review.",
+      "Use /plants/ as the plant-first entry point and /blog/ as the editorial discovery hub; do not create unverified category or hub URLs.",
+      "Prioritise reciprocal links between Monstera guides and /plants/monstera-deliciosa/; extend equivalent profile relationships only where a verified plant profile exists.",
+      "Avoid linking to or from placeholder content."
     ],
     "requiredHumanChecks": [
-      "Verify every broken path before changing links, removing pages, or creating redirects.",
-      "Confirm whether /problem/, /category/care-guides/, /tools/ and /tools/plant-problem-checker/ are intended live destinations.",
-      "Review taxonomy changes away from Uncategorized before implementation.",
-      "Check WordPress navigation and templates for unintended feeds, XML-RPC and asset links."
+      "Confirm whether broken utility pages, policy pages and hubs should be restored, removed or intentionally excluded.",
+      "Review taxonomy changes before replacing Uncategorized with plant/problem/care groupings.",
+      "Validate every proposed hub relationship and any destructive placeholder, feed or system-link cleanup."
     ]
   },
   "strategy": {
-    "summary": "Prioritise plant-specific journeys, rescue genuine orphans, and strengthen Monstera’s existing cluster. Treat broken hubs, technical paths, taxonomy, placeholders and new hubs as review-only.",
+    "summary": "Build around /plants/ as the plant-first pillar and /blog/ as the editorial discovery hub. Strengthen the well-developed Monstera cluster, rescue genuine orphans through relevant hub and reciprocal contextual links, and review broken utility/system links separately. Ranking-based prioritisation is unavailable because no Search Console rows were supplied.",
     "principles": [
-      "Use plant profiles as the strongest existing plant pillar.",
-      "Prioritise reciprocal plant-profile, care-guide and symptom-guide links.",
-      "Use only relevant same-plant or same-intent relationships; avoid unrelated cross-plant links.",
-      "Do not use placeholder or broken paths as live pillars or targets.",
-      "Validate every proposed edit against the live site before publishing."
+      "Use only verified live paths; never use placeholders as pillars or targets.",
+      "Place approved links as contextual text hyperlinks in natural article sentences, not only generic related-content boxes.",
+      "Prioritise plant-profile-to-care/problem reciprocity and symptom-to-care journeys.",
+      "Keep links within relevant plant, symptom and care clusters; avoid unrelated cross-plant links.",
+      "Treat broken links, taxonomy, navigation, redirects, URL changes and new hubs as human-review items.",
+      "Use /plants/ for plant-first discovery and /blog/ for broad editorial discovery."
     ],
     "clusters": [
       {
         "clusterId": "monstera",
         "name": "Monstera deliciosa plant, care and problems",
-        "readerIntent": "Identify, care for and troubleshoot Monstera deliciosa.",
+        "readerIntent": "Understand Monstera care, diagnose symptoms and resolve growing issues.",
         "pillarPath": "/plants/monstera-deliciosa/",
         "supportingPaths": [
           "/best-growing-media-for-monstera-deliciosa/",
@@ -723,76 +722,48 @@
         "missingHubRecommendation": null
       },
       {
-        "clusterId": "pothos",
-        "name": "Pothos care and propagation",
-        "readerIntent": "Water, propagate and diagnose Pothos.",
-        "pillarPath": null,
+        "clusterId": "plant-care",
+        "name": "Plant-specific watering and flowering care",
+        "readerIntent": "Follow practical care methods for common houseplants.",
+        "pillarPath": "/blog/",
         "supportingPaths": [
-          "/how-to-propagate-pothos-from-stem-cuttings/",
-          "/how-to-water-pothos/",
-          "/why-are-my-pothos-leaves-turning-yellow/"
-        ],
-        "missingHubRecommendation": "Review creation of a verified Pothos plant profile or cluster hub."
-      },
-      {
-        "clusterId": "spider-plant",
-        "name": "Spider Plant care, propagation and symptoms",
-        "readerIntent": "Water, propagate and resolve brown tips.",
-        "pillarPath": null,
-        "supportingPaths": [
-          "/how-to-propagate-spider-plant-babies/",
-          "/how-to-water-spider-plant/",
-          "/why-are-my-spider-plant-tips-turning-brown/"
-        ],
-        "missingHubRecommendation": "Review creation of a verified Spider Plant profile or cluster hub."
-      },
-      {
-        "clusterId": "peace-lily",
-        "name": "Peace Lily care and problems",
-        "readerIntent": "Water Peace Lily and resolve drooping, yellow leaves or flowering problems.",
-        "pillarPath": null,
-        "supportingPaths": [
+          "/how-to-get-a-phalaenopsis-orchid-to-flower-again/",
+          "/how-to-water-aloe-vera-indoors/",
           "/how-to-water-peace-lily/",
-          "/why-are-my-peace-lily-leaves-turning-yellow/",
-          "/why-is-my-peace-lily-drooping/",
-          "/why-is-my-peace-lily-not-flowering/"
-        ],
-        "missingHubRecommendation": "Review creation of a verified Peace Lily plant profile or cluster hub."
-      },
-      {
-        "clusterId": "snake-plant",
-        "name": "Snake Plant care and yellow leaves",
-        "readerIntent": "Water Snake Plant and diagnose yellowing.",
-        "pillarPath": null,
-        "supportingPaths": [
+          "/how-to-water-pothos/",
           "/how-to-water-snake-plant/",
-          "/why-are-my-snake-plant-leaves-turning-yellow/"
+          "/how-to-water-spider-plant/"
         ],
-        "missingHubRecommendation": "Review creation of a verified Snake Plant plant profile or cluster hub."
+        "missingHubRecommendation": "Review whether a verified plant-care hub should be created; do not create or use an unverified path without approval."
       },
       {
-        "clusterId": "other-plant-problems",
-        "name": "Standalone plant problem guides",
-        "readerIntent": "Diagnose symptoms on Fiddle Leaf Fig, Calathea, Rubber Plant and ZZ Plant.",
-        "pillarPath": null,
+        "clusterId": "plant-problems",
+        "name": "Plant symptom and diagnosis guides",
+        "readerIntent": "Identify causes of visible plant symptoms and choose safe corrective care.",
+        "pillarPath": "/blog/",
         "supportingPaths": [
           "/brown-spots-fiddle-leaf-fig-leaves/",
           "/why-are-my-calathea-leaves-curling/",
+          "/why-are-my-peace-lily-leaves-turning-yellow/",
+          "/why-is-my-peace-lily-drooping/",
+          "/why-are-my-pothos-leaves-turning-yellow/",
           "/why-are-my-rubber-plant-leaves-turning-yellow/",
+          "/why-are-my-snake-plant-leaves-turning-yellow/",
+          "/why-are-my-spider-plant-tips-turning-brown/",
           "/why-are-my-zz-plant-leaves-turning-yellow/"
         ],
-        "missingHubRecommendation": "Review restoration or creation of a verified problem hub and corresponding plant profiles."
+        "missingHubRecommendation": "Review the broken /problem/ path and taxonomy before approving a dedicated problem hub."
       },
       {
-        "clusterId": "other-care",
-        "name": "Aloe Vera and Phalaenopsis Orchid care",
-        "readerIntent": "Follow species-specific watering and flowering guidance.",
-        "pillarPath": null,
+        "clusterId": "propagation",
+        "name": "Propagation methods",
+        "readerIntent": "Propagate plants successfully and manage early aftercare.",
+        "pillarPath": "/blog/",
         "supportingPaths": [
-          "/how-to-water-aloe-vera-indoors/",
-          "/how-to-get-a-phalaenopsis-orchid-to-flower-again/"
+          "/how-to-propagate-pothos-from-stem-cuttings/",
+          "/how-to-propagate-spider-plant-babies/"
         ],
-        "missingHubRecommendation": "Review creation of verified plant profiles or a care hub."
+        "missingHubRecommendation": "Review whether propagation deserves a verified hub; no live hub currently exists."
       }
     ],
     "priorityActions": [
@@ -800,15 +771,34 @@
         "priority": 1,
         "action": "link-orphan",
         "sourcePaths": [
-          "/plants/monstera-deliciosa/"
+          "/blog/"
         ],
         "targetPaths": [
-          "/why-is-my-monstera-deliciosa-not-splitting/"
+          "/brown-spots-fiddle-leaf-fig-leaves/",
+          "/how-to-get-a-phalaenopsis-orchid-to-flower-again/",
+          "/how-to-water-peace-lily/",
+          "/how-to-water-pothos/",
+          "/how-to-water-snake-plant/",
+          "/why-are-my-calathea-leaves-curling/",
+          "/why-are-my-rubber-plant-leaves-turning-yellow/"
         ],
-        "reason": "Rescue a high-intent Monstera orphan from the most relevant existing pillar."
+        "reason": "Rescue genuine isolated care and problem articles from the verified editorial hub using descriptive contextual links."
       },
       {
         "priority": 2,
+        "action": "add-reciprocal-links",
+        "sourcePaths": [
+          "/plants/monstera-deliciosa/",
+          "/why-is-my-monstera-deliciosa-not-splitting/"
+        ],
+        "targetPaths": [
+          "/why-is-my-monstera-deliciosa-not-splitting/",
+          "/plants/monstera-deliciosa/"
+        ],
+        "reason": "Complete the orphan Monstera guide’s profile relationship and reinforce the strongest existing plant cluster."
+      },
+      {
+        "priority": 3,
         "action": "strengthen-cluster",
         "sourcePaths": [
           "/plants/monstera-deliciosa/"
@@ -822,148 +812,143 @@
           "/why-are-my-monstera-deliciosa-leaves-curling/",
           "/why-is-my-monstera-deliciosa-drooping/"
         ],
-        "reason": "Make the existing Monstera profile a complete plant-first hub."
+        "reason": "Make the verified plant profile a clear entry point to relevant care and symptom guides; validate article context before editing."
       },
       {
-        "priority": 3,
+        "priority": 4,
         "action": "add-reciprocal-links",
         "sourcePaths": [
-          "/why-is-my-monstera-deliciosa-not-splitting/",
           "/best-growing-media-for-monstera-deliciosa/",
           "/brown-spots-monstera-deliciosa-leaves/",
           "/how-often-to-water-monstera-deliciosa/",
           "/how-to-repot-monstera-deliciosa/",
           "/monstera-deliciosa-aerial-roots/",
           "/why-are-my-monstera-deliciosa-leaves-curling/",
-          "/why-is-my-monstera-deliciosa-drooping/"
+          "/why-is-my-monstera-deliciosa-drooping/",
+          "/why-is-my-monstera-deliciosa-not-splitting/"
         ],
         "targetPaths": [
           "/plants/monstera-deliciosa/"
         ],
-        "reason": "Provide a consistent return path to the Monstera profile."
-      },
-      {
-        "priority": 4,
-        "action": "link-orphan",
-        "sourcePaths": [
-          "/how-to-propagate-pothos-from-stem-cuttings/"
-        ],
-        "targetPaths": [
-          "/how-to-water-pothos/"
-        ],
-        "reason": "Connect closely related Pothos care methods."
+        "reason": "Ensure every relevant Monstera guide provides a contextual route back to the plant profile."
       },
       {
         "priority": 5,
         "action": "add-reciprocal-links",
         "sourcePaths": [
-          "/how-to-water-pothos/"
+          "/how-to-water-pothos/",
+          "/how-to-propagate-pothos-from-stem-cuttings/"
         ],
         "targetPaths": [
           "/why-are-my-pothos-leaves-turning-yellow/"
         ],
-        "reason": "Connect watering guidance to the directly relevant symptom guide."
+        "reason": "Connect Pothos care methods to the relevant symptom guide."
       },
       {
         "priority": 6,
-        "action": "link-orphan",
+        "action": "add-reciprocal-links",
         "sourcePaths": [
+          "/how-to-water-spider-plant/",
           "/how-to-propagate-spider-plant-babies/"
         ],
         "targetPaths": [
-          "/how-to-water-spider-plant/",
           "/why-are-my-spider-plant-tips-turning-brown/"
         ],
-        "reason": "Complete the Spider Plant care-to-symptom journey."
+        "reason": "Connect Spider Plant care and propagation to the matching symptom guide."
       },
       {
         "priority": 7,
-        "action": "link-orphan",
+        "action": "add-reciprocal-links",
         "sourcePaths": [
+          "/how-to-water-peace-lily/",
           "/why-is-my-peace-lily-not-flowering/"
         ],
         "targetPaths": [
-          "/how-to-water-peace-lily/"
+          "/why-are-my-peace-lily-leaves-turning-yellow/",
+          "/why-is-my-peace-lily-drooping/"
         ],
-        "reason": "Connect flowering troubleshooting to relevant watering care."
+        "reason": "Create useful symptom-to-care journeys within the Peace Lily topic."
       },
       {
         "priority": 8,
-        "action": "add-reciprocal-links",
-        "sourcePaths": [
-          "/how-to-water-snake-plant/"
-        ],
-        "targetPaths": [
-          "/why-are-my-snake-plant-leaves-turning-yellow/"
-        ],
-        "reason": "Connect core care guidance with its symptom guide."
-      },
-      {
-        "priority": 9,
-        "action": "review-new-hub",
-        "sourcePaths": [],
-        "targetPaths": [],
-        "reason": "Review restoration or creation of verified plant, problem and care hubs; no unverified path is approved as a live target."
-      },
-      {
-        "priority": 10,
         "action": "review-broken-link",
         "sourcePaths": [
           "/blog/",
           "/plants/"
         ],
+        "targetPaths": [
+          "/about/",
+          "/category/care-guides/",
+          "/comments/feed/",
+          "/contact/",
+          "/feed/",
+          "/plants/feed/",
+          "/privacy-policy/",
+          "/problem/",
+          "/tools/",
+          "/tools/plant-problem-checker/",
+          "/wp-includes/js/dist/script-modules/interactivity/index.min.js/",
+          "/xmlrpc.php/"
+        ],
+        "reason": "Human review is required to remove, repair or validate broken utility, taxonomy, legal and system links."
+      },
+      {
+        "priority": 9,
+        "action": "review-new-hub",
+        "sourcePaths": [
+          "/blog/",
+          "/plants/"
+        ],
         "targetPaths": [],
-        "reason": "Review broken hubs, feeds, technical endpoints and asset paths before editorial linking."
+        "reason": "Review potential care, problem or propagation hubs only after taxonomy and URL validation; no new hub is approved."
       }
     ],
     "rolloutPhases": [
       {
         "phase": 1,
-        "name": "Monstera journey",
-        "objective": "Complete and reciprocate the strongest existing plant cluster.",
+        "name": "Orphan rescue",
+        "objective": "Expose genuine isolated content from /blog/ and connect the orphan Monstera guide to its verified profile.",
         "actionPriorities": [
           1,
-          2,
-          3
+          2
         ]
       },
       {
         "phase": 2,
-        "name": "Relevant orphan rescue",
-        "objective": "Improve Pothos, Spider Plant, Peace Lily and Snake Plant journeys using existing relevant pages.",
+        "name": "Cluster strengthening",
+        "objective": "Complete Monstera profile reciprocity and add tightly relevant symptom-to-care links.",
         "actionPriorities": [
+          3,
           4,
           5,
           6,
-          7,
-          8
+          7
         ]
       },
       {
         "phase": 3,
-        "name": "Hub and architecture review",
-        "objective": "Verify broken hubs, review new hubs, taxonomy and navigation before broader discovery changes.",
+        "name": "Technical and architecture review",
+        "objective": "Resolve broken paths and assess taxonomy or hub changes without treating them as approved edits.",
         "actionPriorities": [
-          9,
-          10
+          8,
+          9
         ]
       }
     ],
     "measurements": [
-      "Reduce confirmed orphan count from 9 to 0, excluding the placeholder page after separate review.",
-      "Reduce broken internal paths from 12 to 0 or document intentional technical exceptions after review.",
-      "Measure cluster coverage: percentage of genuine articles assigned to a verified relevant plant, problem or care hub.",
-      "Measure average relevant internal links per article, segmented by cluster; do not use an arbitrary volume target.",
-      "Measure reciprocal-link coverage between plant profiles and their relevant care/problem guides.",
-      "Measure discovery clicks and organic entry-to-next-page journeys for each cluster."
+      "Reduce verified orphan count from 9, excluding the placeholder /sample-page/ from editorial targets.",
+      "Reduce broken internal paths from 12 after human validation and approved cleanup.",
+      "Measure cluster coverage: percentage of genuine care/problem articles linked from an appropriate hub or plant pillar.",
+      "Measure reciprocal coverage: percentage of Monstera guides linking to and from /plants/monstera-deliciosa/.",
+      "Measure average relevant contextual links per article, while avoiding arbitrary volume targets.",
+      "Re-crawl after each phase and verify no new broken internal paths or unintended cross-plant links."
     ],
     "requiredHumanChecks": [
-      "Verify every destination before publishing any link.",
-      "Confirm whether /problem/, /category/care-guides/, /tools/ and /tools/plant-problem-checker/ are live intended destinations.",
-      "Review taxonomy changes away from Uncategorized.",
-      "Review broken feeds, XML-RPC, asset and utility paths in templates/navigation.",
-      "Do not link to /sample-page/; review its removal separately.",
-      "Create or restore hubs only through separate human approval; do not treat recommendations as live edits."
+      "Validate every proposed contextual link against the article text before publishing.",
+      "Confirm whether broken hubs, utility, policy, feed and system paths should be restored or removed.",
+      "Review taxonomy before changing the Uncategorized structure.",
+      "Keep /sample-page/ excluded unless it is confirmed as genuine editorial content; do not link to it.",
+      "Validate any proposed new hub, URL, redirect or navigation change before implementation."
     ]
   }
 }

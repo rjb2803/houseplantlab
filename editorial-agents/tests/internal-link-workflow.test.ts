@@ -32,6 +32,17 @@ const inventory: SiteInventory = {
       categoryIds: [],
       outgoingInternalPaths: [],
     },
+    {
+      id: 0,
+      type: "hub",
+      title: "The Field Journal",
+      slug: "blog",
+      url: "https://houseplantlab.co.uk/blog/",
+      path: "/blog/",
+      modifiedAt: "2026-10-10T08:00:00.000Z",
+      categoryIds: [],
+      outgoingInternalPaths: [],
+    },
   ],
   brokenInternalPaths: [],
   orphanPaths: ["/why-is-my-monstera-drooping/"],
@@ -46,10 +57,12 @@ const plan: InternalLinkPlan = {
     links: [{
       targetPath: "/plants/monstera-deliciosa/",
       anchorLabel: "Monstera deliciosa care guide",
+      placement: "contextual-sentence",
+      contextSentence: "For broader ongoing care, read our {anchor}.",
       reason: "The plant profile gives the reader broader care information after diagnosis.",
     }],
   }],
-  requiredHumanChecks: ["Review the Related guides block on desktop and mobile after publication."],
+  requiredHumanChecks: ["Review the contextual text link on desktop and mobile after publication."],
 };
 
 test("internal-link workflow applies a verified marked block without changing other post fields", async () => {
@@ -61,10 +74,10 @@ test("internal-link workflow applies a verified marked block without changing ot
     const body = String(init?.body ?? "");
     requests.push({ url, method, body });
     if (method === "GET" && url.includes("context=edit")) {
-      return Response.json({ id: 10, content: { raw: "<p>Useful article copy.</p>", rendered: "<p>Useful article copy.</p>" } });
+      return Response.json({ id: 10, content: { raw: "<p>Useful article copy.</p><h2>In summary</h2><p>Closing copy.</p>", rendered: "<p>Useful article copy.</p>" } });
     }
     if (method === "GET" && url.includes("hpl-link-verify")) {
-      return new Response('<section class="hpl-related-guides"><a href="/plants/monstera-deliciosa/">Guide</a></section>');
+      return new Response('<p class="hpl-contextual-link">For broader ongoing care, read our <a href="/plants/monstera-deliciosa/">Guide</a>.</p>');
     }
     if (method === "GET" && url.includes("hpl-link-target-verify")) return new Response("Plant profile");
     const parsed = JSON.parse(body) as { content: string };
@@ -83,8 +96,9 @@ test("internal-link workflow applies a verified marked block without changing ot
     assert.deepEqual(result.updatedPaths, ["/why-is-my-monstera-drooping/"]);
     const postRequests = requests.filter((entry) => entry.method === "POST");
     assert.equal(postRequests.length, 1);
-    assert.match(postRequests[0]?.body ?? "", /hpl-internal-links:start/);
+    assert.match(postRequests[0]?.body ?? "", /hpl-contextual-link:plants-monstera-deliciosa:start/);
     assert.match(postRequests[0]?.body ?? "", /href=\\"\/plants\/monstera-deliciosa\/\\"/);
+    assert.ok((postRequests[0]?.body ?? "").indexOf("hpl-contextual-link") < (postRequests[0]?.body ?? "").indexOf("In summary"));
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -97,6 +111,8 @@ test("internal-link workflow discards an invented target before WordPress change
     recommendations: [{ ...plan.recommendations[0], links: [{
       targetPath: "/invented-guide/",
       anchorLabel: "Invented guide",
+      placement: "contextual-sentence",
+      contextSentence: "Read the {anchor} for additional help.",
       reason: "This target is not present in the confirmed live inventory and must be rejected.",
     }] }],
   };
@@ -125,6 +141,8 @@ test("internal-link workflow discards a self-link and applies the remaining safe
         {
           targetPath: "/why-is-my-monstera-drooping/",
           anchorLabel: "This article",
+          placement: "contextual-sentence",
+          contextSentence: "Return to {anchor} for the same information.",
           reason: "This is an invalid self-link and should be discarded without blocking safe links.",
         },
         ...plan.recommendations[0].links,
@@ -143,7 +161,7 @@ test("internal-link workflow discards a self-link and applies the remaining safe
       return Response.json({ id: 10, content: { rendered: body.content } });
     }
     if (url.includes("hpl-link-verify")) {
-      return new Response('<section class="hpl-related-guides"><a href="/plants/monstera-deliciosa/">Guide</a></section>');
+      return new Response('<p class="hpl-contextual-link"><a href="/plants/monstera-deliciosa/">Guide</a></p>');
     }
     return new Response("Plant profile");
   };
@@ -156,6 +174,33 @@ test("internal-link workflow discards a self-link and applies the remaining safe
       env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "editor", WP_APP_PASSWORD: "test password" },
     });
     assert.equal(result.outcome, "links-applied");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("internal-link workflow rejects a generic blog link as a false plant orphan fix", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "hpl-links-"));
+  const genericPlan: InternalLinkPlan = {
+    ...plan,
+    recommendations: [{ ...plan.recommendations[0], links: [{
+      targetPath: "/blog/",
+      anchorLabel: "The Field Journal",
+      placement: "contextual-sentence",
+      contextSentence: "Browse {anchor} for more plant articles.",
+      reason: "This generic outbound hub link does not provide a strong same-plant relationship.",
+    }] }],
+  };
+  try {
+    let fetched = false;
+    const result = await runInternalLinkWorkflow(root, { apply: true }, {
+      inventory: async () => inventory,
+      plan: async () => genericPlan,
+      fetch: (async () => { fetched = true; throw new Error("should not fetch"); }) as typeof fetch,
+      env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "editor", WP_APP_PASSWORD: "test password" },
+    });
+    assert.equal(result.outcome, "no-safe-updates");
+    assert.equal(fetched, false);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

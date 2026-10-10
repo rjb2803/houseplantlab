@@ -94,6 +94,18 @@ Search Console configuration uses OAuth 2.0 with the read-only `webmasters.reado
 
 Without these four values, the structural audit still runs and records that performance data is unavailable; it will not invent rankings or search volumes.
 
+## Build and apply the interlinking strategy
+
+```powershell
+npm run agents:interlinking-strategy
+npm run agents:internal-links
+npm run agents:internal-links:apply
+```
+
+The strategist combines the live inventory with read-only Search Console evidence. It identifies strong source pages and prioritises relevant targets in positions 11-20, followed by positions 5-10. The dry-run command writes a reviewable plan without changing WordPress. The apply command rechecks every URL and may update no more than three source articles.
+
+Links are inserted as short, natural contextual sentences inside the article body before the final summary. They are not rendered as a generic link list. Every sentence contains one descriptive text hyperlink, and the workflow rejects invented paths, self-links, repeated links, placeholders, unrelated plant families and generic hub links presented as orphan fixes. If Search Console is unavailable, ranking-based priority is paused rather than guessed.
+
 ## Research and design the blog index
 
 ```powershell

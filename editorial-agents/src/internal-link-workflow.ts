@@ -3,19 +3,24 @@ import path from "node:path";
 import { run } from "@openai/agents";
 import { z } from "zod";
 import { internalLinkAgent } from "./agents.js";
+import {
+  buildRankingOpportunities,
+  buildStrongSourcePages,
+  resolveSearchPerformance,
+  type RankingOpportunity,
+  type StrongSourcePage,
+} from "./internal-link-ranking.js";
 import { auditLiveSite } from "./site-audit.js";
 import {
   InternalLinkPlanSchema,
   InternalLinkStrategySchema,
   type InternalLinkPlan,
   type InternalLinkStrategy,
+  type SearchPerformanceSnapshot,
   type SiteInventory,
 } from "./schemas.js";
 
 const ORIGIN = "https://houseplantlab.co.uk";
-const BLOCK_START = "<!-- hpl-internal-links:start -->";
-const BLOCK_END = "<!-- hpl-internal-links:end -->";
-
 const EditablePostSchema = z.object({
   id: z.number().int().positive(),
   content: z.object({ raw: z.string(), rendered: z.string().optional() }),
@@ -30,6 +35,7 @@ export interface InternalLinkWorkflowDependencies {
   now?: () => Date;
   inventory?: () => Promise<SiteInventory>;
   plan?: (input: string) => Promise<InternalLinkPlan>;
+  performance?: () => Promise<SearchPerformanceSnapshot>;
   strategy?: InternalLinkStrategy | null;
   fetch?: typeof fetch;
   env?: NodeJS.ProcessEnv;
@@ -41,6 +47,9 @@ export interface InternalLinkWorkflowResult {
   assessedPostCount: number;
   updatedPostCount: number;
   updatedPaths: string[];
+  rankingOpportunityCount: number;
+  strongSourceCount: number;
+  searchPerformanceState: "measured" | "not-configured";
   message: string;
 }
 
@@ -69,8 +78,9 @@ function productionCredentials(env: NodeJS.ProcessEnv): { authorization: string 
 }
 
 function plantFamily(pagePath: string): string | null {
+  if (pagePath.includes("monstera")) return "monstera-deliciosa";
   const families = [
-    "monstera-deliciosa", "peace-lily", "snake-plant", "spider-plant", "pothos",
+    "peace-lily", "snake-plant", "spider-plant", "pothos",
     "phalaenopsis-orchid", "fiddle-leaf-fig", "rubber-plant", "calathea", "aloe-vera", "zz-plant",
   ];
   return families.find((family) => pagePath.includes(family)) ?? (pagePath.includes("orchid") ? "phalaenopsis-orchid" : null);
@@ -113,6 +123,7 @@ function validatePlan(plan: InternalLinkPlan, inventory: SiteInventory): Interna
       if (source.outgoingInternalPaths.includes(link.targetPath) || targets.has(link.targetPath)) continue;
       const targetFamily = plantFamily(link.targetPath);
       if (sourceFamily && targetFamily && sourceFamily !== targetFamily) continue;
+      if (sourceFamily && !targetFamily && ["/blog/", "/plants/"].includes(link.targetPath)) continue;
       if (/[<>]/u.test(link.anchorLabel)) throw new Error("Internal-link labels must be plain text.");
       targets.add(link.targetPath);
       links.push(link);
@@ -122,20 +133,54 @@ function validatePlan(plan: InternalLinkPlan, inventory: SiteInventory): Interna
   return { ...plan, recommendations };
 }
 
-function relatedGuidesBlock(postId: number, links: InternalLinkPlan["recommendations"][number]["links"]): string {
-  const items = links.map((link) =>
-    `  <li><a href="${escapeHtml(link.targetPath)}">${escapeHtml(link.anchorLabel)}</a></li>`,
-  ).join("\n");
+function markerId(targetPath: string): string {
+  return targetPath.replace(/^\/+|\/+$/g, "").replace(/[^a-z0-9-]+/gi, "-").toLowerCase();
+}
+
+function contextualLinkParagraph(link: InternalLinkPlan["recommendations"][number]["links"][number]): string {
+  const [before, after] = link.contextSentence.split("{anchor}");
+  const id = markerId(link.targetPath);
   return [
-    BLOCK_START,
-    `<section class="hpl-related-guides" aria-labelledby="hpl-related-guides-${postId}">`,
-    ` <h2 id="hpl-related-guides-${postId}">Related guides</h2>`,
-    " <ul>",
-    items,
-    " </ul>",
-    "</section>",
-    BLOCK_END,
+    `<!-- hpl-contextual-link:${id}:start -->`,
+    `<p class="hpl-contextual-link">${escapeHtml(before ?? "")}<a href="${escapeHtml(link.targetPath)}">${escapeHtml(link.anchorLabel)}</a>${escapeHtml(after ?? "")}</p>`,
+    `<!-- hpl-contextual-link:${id}:end -->`,
   ].join("\n");
+}
+
+function insertContextualLinks(
+  rawContent: string,
+  links: InternalLinkPlan["recommendations"][number]["links"],
+): string {
+  const additions = links
+    .filter((link) => !rawContent.includes(`hpl-contextual-link:${markerId(link.targetPath)}:start`))
+    .map(contextualLinkParagraph);
+  if (!additions.length) return rawContent;
+  const block = additions.join("\n\n");
+  const summaryPatterns = [/<h[23][^>]*>\s*In summary\s*<\/h[23]>/i, /^#{2,3}\s+In summary\s*$/im];
+  const insertionIndexes = summaryPatterns
+    .map((pattern) => pattern.exec(rawContent)?.index)
+    .filter((value): value is number => value !== undefined);
+  const insertionIndex = insertionIndexes.length ? Math.min(...insertionIndexes) : rawContent.length;
+  return `${rawContent.slice(0, insertionIndex).trimEnd()}\n\n${block}\n\n${rawContent.slice(insertionIndex).trimStart()}`.trimEnd() + "\n";
+}
+
+function prioritisePlan(
+  plan: InternalLinkPlan,
+  opportunities: RankingOpportunity[],
+  strongSources: StrongSourcePage[],
+): InternalLinkPlan {
+  const rank = new Map(opportunities.map((opportunity, index) => [opportunity.path, index]));
+  const sourceRank = new Map(strongSources.map((source, index) => [source.path, index]));
+  const recommendations = [...plan.recommendations].sort((a, b) => {
+    const bestRank = (recommendation: typeof a): number => Math.min(
+      ...recommendation.links.map((link) => rank.get(link.targetPath) ?? Number.MAX_SAFE_INTEGER),
+      rank.get(recommendation.sourcePath) ?? Number.MAX_SAFE_INTEGER,
+    );
+    return bestRank(a) - bestRank(b)
+      || (sourceRank.get(a.sourcePath) ?? Number.MAX_SAFE_INTEGER)
+        - (sourceRank.get(b.sourcePath) ?? Number.MAX_SAFE_INTEGER);
+  });
+  return { ...plan, recommendations };
 }
 
 async function responseError(response: Response, action: string): Promise<Error> {
@@ -157,25 +202,33 @@ export async function runInternalLinkWorkflow(
   const now = dependencies.now?.() ?? new Date();
   const request = dependencies.fetch ?? fetch;
   const inventory = await (dependencies.inventory ?? (() => auditLiveSite(request, now)))();
+  const performance = await (dependencies.performance
+    ? dependencies.performance()
+    : resolveSearchPerformance(now, { env: dependencies.env ?? process.env, fetch: request }));
+  const rankingOpportunities = buildRankingOpportunities(inventory, performance);
+  const strongSources = buildStrongSourcePages(inventory, performance);
   const posts = inventory.pages.filter((page) => page.type === "post" && !["hello-world"].includes(page.slug));
   const createPlan = dependencies.plan ?? defaultPlan;
   const strategy = dependencies.strategy === undefined
     ? await readLatestStrategy(projectRoot)
     : dependencies.strategy;
-  const plan = validatePlan(InternalLinkPlanSchema.parse(await createPlan([
+  const plan = prioritisePlan(validatePlan(InternalLinkPlanSchema.parse(await createPlan([
     "Assess every published article in this live inventory and propose only strong missing internal links.",
     "Return only the structured plan. Existing outgoingInternalPaths must never be recommended again.",
     strategy
       ? `Use this validated site-wide strategy as a priority guide, but independently verify every source and target against the current inventory:\n${JSON.stringify(strategy, null, 2)}`
       : "No saved site-wide strategy is available; use the live inventory conservatively.",
+    performance.rows.length
+      ? `Prioritise genuine ranking opportunities from this measured Search Console snapshot. Positions 11-20 come first, then positions 5-10. Prefer strong relevant source pages for those links. Never infer missing data:\n${JSON.stringify({ performance, rankingOpportunities, strongSources }, null, 2)}`
+      : "Search Console is not configured or returned no measured rows. Do not make or imply ranking claims; prioritise relevance and orphan rescue only.",
     JSON.stringify(inventory, null, 2),
-  ].join("\n"))), inventory);
+  ].join("\n"))), inventory), rankingOpportunities, strongSources);
 
   const runId = now.toISOString().replace(/[:.]/g, "-");
   const outputDirectory = path.join(projectRoot, "content-production", "internal-links", "runs", runId);
   await mkdir(outputDirectory, { recursive: true });
   const reportPath = path.join(outputDirectory, "internal-link-plan.json");
-  await writeFile(reportPath, `${JSON.stringify({ inventory, plan }, null, 2)}\n`, "utf8");
+  await writeFile(reportPath, `${JSON.stringify({ inventory, performance, rankingOpportunities, strongSources, plan }, null, 2)}\n`, "utf8");
   const relativeReportPath = path.relative(projectRoot, reportPath).replaceAll("\\", "/");
 
   if (!options.apply) {
@@ -185,6 +238,9 @@ export async function runInternalLinkWorkflow(
       assessedPostCount: posts.length,
       updatedPostCount: 0,
       updatedPaths: [],
+      rankingOpportunityCount: rankingOpportunities.length,
+      strongSourceCount: strongSources.length,
+      searchPerformanceState: performance.rows.length ? "measured" : "not-configured",
       message: `Internal-link report created for ${posts.length} published articles; no live content was changed.`,
     };
   }
@@ -201,9 +257,8 @@ export async function runInternalLinkWorkflow(
     });
     if (!getResponse.ok) throw await responseError(getResponse, "WordPress internal-link source read");
     const editable = EditablePostSchema.parse(await getResponse.json());
-    if (editable.content.raw.includes(BLOCK_START) || editable.content.raw.includes(BLOCK_END)) continue;
-
-    const nextContent = `${editable.content.raw.trim()}\n\n${relatedGuidesBlock(editable.id, recommendation.links)}\n`;
+    const nextContent = insertContextualLinks(editable.content.raw, recommendation.links);
+    if (nextContent === editable.content.raw) continue;
     const updateResponse = await request(`${ORIGIN}/wp-json/wp/v2/posts/${recommendation.sourcePostId}`, {
       method: "POST",
       redirect: "error",
@@ -223,8 +278,8 @@ export async function runInternalLinkWorkflow(
     const publicResponse = await request(verificationUrl, { redirect: "error" });
     if (!publicResponse.ok) throw await responseError(publicResponse, "Public internal-link verification");
     const publicHtml = await publicResponse.text();
-    if (!publicHtml.includes("hpl-related-guides")) {
-      throw new Error(`The public article did not render its Related guides section: ${recommendation.sourcePath}`);
+    if (!publicHtml.includes("hpl-contextual-link")) {
+      throw new Error(`The public article did not render its contextual link text: ${recommendation.sourcePath}`);
     }
     for (const link of recommendation.links) {
       if (!publicHtml.includes(`href="${link.targetPath}"`)
@@ -246,8 +301,11 @@ export async function runInternalLinkWorkflow(
     assessedPostCount: posts.length,
     updatedPostCount: updatedPaths.length,
     updatedPaths,
+    rankingOpportunityCount: rankingOpportunities.length,
+    strongSourceCount: strongSources.length,
+    searchPerformanceState: performance.rows.length ? "measured" : "not-configured",
     message: updatedPaths.length
-      ? `Added verified Related guides links to ${updatedPaths.length} published articles.`
+      ? `Added verified contextual text links to ${updatedPaths.length} published articles.`
       : "The audit found no safe unlinked article batch to update.",
   };
 }

@@ -203,6 +203,11 @@ export const InternalLinkPlanSchema = z.object({
     links: z.array(z.object({
       targetPath: z.string().regex(/^\/.*\/$/),
       anchorLabel: z.string().min(3).max(80),
+      placement: z.literal("contextual-sentence"),
+      contextSentence: z.string().min(20).max(220).refine(
+        (value) => (value.match(/\{anchor\}/g) ?? []).length === 1,
+        "contextSentence must contain {anchor} exactly once",
+      ),
       reason: z.string().min(20),
     })).min(1).max(3),
   })),

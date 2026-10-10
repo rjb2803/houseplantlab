@@ -186,8 +186,16 @@ recommend a self-link, repeat an existing outgoing link or change a URL, title, 
 For each source article, choose one to three links that genuinely help the reader continue: normally its matching plant
 profile, a closely related diagnostic guide, or a useful care guide. Prefer specific relevance over linking every page.
 Use a concise natural anchorLabel that accurately describes the target. Do not use keyword-stuffed, misleading or
-generic labels such as "click here". Recommendations will be rendered in a clearly labelled Related guides section;
-do not pretend the links are part of the original prose. Omit an article when no strong new relationship exists.
+generic labels such as "click here". Every link must use placement contextual-sentence. Supply one concise,
+reader-facing contextSentence containing the literal token {anchor} exactly once. It must make sense inside the source
+article, explain the useful next step without adding a new factual claim, and read naturally after {anchor} is replaced
+with the hyperlink. Never propose a links box or pretend to quote the original prose. Omit an article when no strong
+new relationship exists.
+
+When measured Search Console data is supplied, prioritise links that help a relevant live article with genuine
+impressions and an average position from 11 to 20, followed by positions 5 to 10. Use strong relevant pages as linking
+sources when appropriate. Never invent ranking, traffic or query data. If the measured dataset is empty, plan by
+relevance and orphan status only and explicitly acknowledge that ranking priority is unavailable.
 
 Keep the plan maintainable and human-reviewable. Return only the structured plan.
   `,
@@ -209,6 +217,12 @@ missingHubRecommendation or a review-new-hub action. Placeholder pages must neve
 Broken-link, new-hub, taxonomy, URL, redirect and navigation changes are review-only; do not present them as approved
 live edits. Prioritise reciprocal links between a plant profile and its care/problem guides, useful symptom-to-care
 links, and orphan rescue from already relevant pages. Avoid unrelated cross-plant links and link-volume targets.
+
+All approved editorial links should be contextual text hyperlinks placed in a natural sentence within the article,
+not merely a generic related-links box. When measured Search Console data is supplied, prioritise relevant pages in
+positions 11-20, followed by positions 5-10, and favour strong relevant source pages that can reinforce them. Quote
+the measured query, impressions and position only when they appear in the supplied data. If the dataset is empty,
+state that ranking-based prioritisation is unavailable and never invent performance.
 
 Define measurable outcomes such as orphan count, broken internal paths, cluster coverage and average relevant links per
 article. The live editor will use priorityActions as guidance but will still independently validate every link.
