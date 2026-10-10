@@ -6,6 +6,7 @@ import {
   EditorialReportSchema,
   EvidencePackSchema,
   ImageBriefSchema,
+  InternalLinkPlanSchema,
   SeoContentBriefSchema,
   SiteArchitectureReportSchema,
 } from "./schemas.js";
@@ -85,6 +86,10 @@ Flag unsupported claims, weak sourcing, keyword overlap, vague AI-style prose, u
 missing original photography, British-English problems and commercial copy that outruns the evidence.
 Treat visible source IDs, Evidence lines, Sources sections and bibliographies as blockers. Evidence belongs in the
 structured claimSourceIds and evidence pack, never in reader-facing prose.
+For this audit, reader-facing copy means only the title, excerpt, openingAnswer, section headings and section markdown.
+The claimSourceIds arrays, disclosures and photographyPlan are internal structured editorial data and are not rendered
+by the WordPress publisher. Never flag their presence as visible source material. Only block source markers when they
+actually appear in one of the reader-facing copy fields.
 Count the useful reader-facing words rather than trusting the writer's estimate. Treat fewer than 1,300 useful words,
 a missing final "In summary" section, or a weak ending that merely stops rather
 than synthesising the advice as blockers. Do not reward length created through repetition or filler.
@@ -92,6 +97,8 @@ Return ready-for-human-review only when there are no blocker findings and no uns
 Human checks must always include factual/source review and visual/photography review.
 Missing original photography is a required human check, not by itself a blocker, provided the draft does not
 claim that photographs already exist or use an image as diagnostic proof.
+The single hero image is generated and validated by a separate downstream image stage after this editorial audit.
+Never block a writing-stage draft merely because the photographyPlan describes images that have not yet been made.
 `,
   outputType: EditorialReportSchema,
   ...modelOption,
@@ -164,6 +171,26 @@ Keep destructive actions, URL changes, redirects and taxonomy changes behind hum
 Return only the structured site architecture report.
 `,
   outputType: SiteArchitectureReportSchema,
+  ...modelOption,
+});
+
+export const internalLinkAgent = new Agent({
+  name: "HouseplantLab Internal Link Editor",
+  instructions: `
+Assess the complete live HouseplantLab inventory and create a conservative internal-link plan for published articles.
+Use only sourcePostId, sourcePath, targetPath and titles that appear in the supplied inventory. Source pages must be
+published posts. Targets may be relevant posts, pages or plant profiles. Never invent a URL, link to a placeholder,
+recommend a self-link, repeat an existing outgoing link or change a URL, title, taxonomy or article claim.
+
+For each source article, choose one to three links that genuinely help the reader continue: normally its matching plant
+profile, a closely related diagnostic guide, or a useful care guide. Prefer specific relevance over linking every page.
+Use a concise natural anchorLabel that accurately describes the target. Do not use keyword-stuffed, misleading or
+generic labels such as "click here". Recommendations will be rendered in a clearly labelled Related guides section;
+do not pretend the links are part of the original prose. Omit an article when no strong new relationship exists.
+
+Keep the plan maintainable and human-reviewable. Return only the structured plan.
+  `,
+  outputType: InternalLinkPlanSchema,
   ...modelOption,
 });
 

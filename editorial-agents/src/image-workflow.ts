@@ -89,10 +89,12 @@ export async function generateNextArticleImage(
   const createBrief = dependencies.createBrief ?? defaultCreateBrief;
   const brief = ImageBriefSchema.parse(await createBrief(input));
   if (brief.articleSlug !== bundle.draft.slug) throw new Error("Image brief does not belong to the selected article.");
+  const safeSlug = brief.articleSlug.slice(0, 72).replace(/-+$/u, "");
+  const outputBrief = ImageBriefSchema.parse({ ...brief, filename: `${safeSlug}-hero-v1.png` });
 
   const model = env.HPL_IMAGE_MODEL?.trim() || DEFAULT_IMAGE_MODEL;
   const generateImage = dependencies.generateImage ?? defaultGenerateImage;
-  const image = await generateImage(brief, model);
+  const image = await generateImage(outputBrief, model);
   if (image.length < 8 || image.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a") {
     throw new Error("Image generator did not return a valid PNG file.");
   }
@@ -100,8 +102,8 @@ export async function generateNextArticleImage(
   const imageDirectory = path.resolve(projectRoot, item.lastOutputPath, "images");
   safeRelative(projectRoot, imageDirectory);
   await mkdir(imageDirectory, { recursive: true });
-  const imagePath = path.join(imageDirectory, brief.filename);
-  const manifestPath = path.join(imageDirectory, `${path.parse(brief.filename).name}.json`);
+  const imagePath = path.join(imageDirectory, outputBrief.filename);
+  const manifestPath = path.join(imageDirectory, `${path.parse(outputBrief.filename).name}.json`);
   await writeFile(imagePath, image, { flag: "wx" });
 
   const manifest: ImageManifest = ImageManifestSchema.parse({
@@ -110,7 +112,7 @@ export async function generateNextArticleImage(
     status: "human-review-required",
     sourceBundlePath: safeRelative(projectRoot, bundlePath),
     imagePath: safeRelative(projectRoot, imagePath),
-    brief,
+    brief: outputBrief,
   });
   await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, { encoding: "utf8", flag: "wx" });
 

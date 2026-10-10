@@ -195,6 +195,20 @@ export const SiteArchitectureReportSchema = z.object({
   requiredHumanChecks: z.array(z.string()).min(1),
 });
 
+export const InternalLinkPlanSchema = z.object({
+  summary: z.string().min(30),
+  recommendations: z.array(z.object({
+    sourcePostId: z.number().int().positive(),
+    sourcePath: z.string().regex(/^\/.*\/$/),
+    links: z.array(z.object({
+      targetPath: z.string().regex(/^\/.*\/$/),
+      anchorLabel: z.string().min(3).max(80),
+      reason: z.string().min(20),
+    })).min(1).max(3),
+  })),
+  requiredHumanChecks: z.array(z.string().min(10)).min(1),
+});
+
 export const SeoContentBriefSchema = z.object({
   recommendationType: z.enum(["new-article", "refresh-existing"]),
   plant: z.string().min(3),
@@ -317,7 +331,7 @@ export const QueueItemSchema = z.object({
 export const EditorialQueueSchema = z.object({
   version: z.literal(1),
   timeZone: z.literal("Europe/London"),
-  maxRunsPerDay: z.number().int().min(1).max(20),
+  maxRunsPerDay: z.number().int().min(1).max(40),
   items: z.array(QueueItemSchema),
 });
 
@@ -333,6 +347,7 @@ export type SiteInventory = z.infer<typeof SiteInventorySchema>;
 export type SearchPerformanceRow = z.infer<typeof SearchPerformanceRowSchema>;
 export type SearchPerformanceSnapshot = z.infer<typeof SearchPerformanceSnapshotSchema>;
 export type SiteArchitectureReport = z.infer<typeof SiteArchitectureReportSchema>;
+export type InternalLinkPlan = z.infer<typeof InternalLinkPlanSchema>;
 export type SeoContentBrief = z.infer<typeof SeoContentBriefSchema>;
 export type BlogDesignResearchPackage = z.infer<typeof BlogDesignResearchPackageSchema>;
 export type QueueItem = z.infer<typeof QueueItemSchema>;
