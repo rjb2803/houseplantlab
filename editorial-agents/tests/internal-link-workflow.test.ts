@@ -114,3 +114,49 @@ test("internal-link workflow rejects an invented target before WordPress changes
     await rm(root, { recursive: true, force: true });
   }
 });
+
+test("internal-link workflow discards a self-link and applies the remaining safe link", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "hpl-links-"));
+  const mixedPlan: InternalLinkPlan = {
+    ...plan,
+    recommendations: [{
+      ...plan.recommendations[0],
+      links: [
+        {
+          targetPath: "/why-is-my-monstera-drooping/",
+          anchorLabel: "This article",
+          reason: "This is an invalid self-link and should be discarded without blocking safe links.",
+        },
+        ...plan.recommendations[0].links,
+      ],
+    }],
+  };
+  const request = async (input: string | URL | Request, init?: RequestInit): Promise<Response> => {
+    const url = String(input);
+    const method = init?.method ?? "GET";
+    if (method === "GET" && url.includes("context=edit")) {
+      return Response.json({ id: 10, content: { raw: "<p>Useful article copy.</p>", rendered: "<p>Useful article copy.</p>" } });
+    }
+    if (method === "POST") {
+      const body = JSON.parse(String(init?.body ?? "{}")) as { content: string };
+      assert.doesNotMatch(body.content, /This article/);
+      return Response.json({ id: 10, content: { rendered: body.content } });
+    }
+    if (url.includes("hpl-link-verify")) {
+      return new Response('<section class="hpl-related-guides"><a href="/plants/monstera-deliciosa/">Guide</a></section>');
+    }
+    return new Response("Plant profile");
+  };
+
+  try {
+    const result = await runInternalLinkWorkflow(root, { apply: true }, {
+      inventory: async () => inventory,
+      plan: async () => mixedPlan,
+      fetch: request as typeof fetch,
+      env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "editor", WP_APP_PASSWORD: "test password" },
+    });
+    assert.equal(result.outcome, "links-applied");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

@@ -97,7 +97,7 @@ function validatePlan(plan: InternalLinkPlan, inventory: SiteInventory): Interna
       if (!byPath.has(link.targetPath) || placeholders.has(link.targetPath)) {
         throw new Error(`Internal Link Editor returned an unknown or placeholder target: ${link.targetPath}`);
       }
-      if (link.targetPath === source.path) throw new Error(`Internal Link Editor attempted a self-link on ${source.path}.`);
+      if (link.targetPath === source.path) continue;
       if (source.outgoingInternalPaths.includes(link.targetPath) || targets.has(link.targetPath)) continue;
       const targetFamily = plantFamily(link.targetPath);
       if (sourceFamily && targetFamily && sourceFamily !== targetFamily) continue;
