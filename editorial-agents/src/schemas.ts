@@ -137,7 +137,7 @@ export const ImageManifestSchema = z.object({
 
 export const SitePageSchema = z.object({
   id: z.number().int().nonnegative(),
-  type: z.enum(["post", "page", "plant"]),
+  type: z.enum(["post", "page", "plant", "hub"]),
   title: z.string().min(1),
   slug: z.string().min(1),
   url: z.string().min(8),
@@ -206,6 +206,40 @@ export const InternalLinkPlanSchema = z.object({
       reason: z.string().min(20),
     })).min(1).max(3),
   })),
+  requiredHumanChecks: z.array(z.string().min(10)).min(1),
+});
+
+export const InternalLinkStrategySchema = z.object({
+  summary: z.string().min(50),
+  principles: z.array(z.string().min(15)).min(3).max(8),
+  clusters: z.array(z.object({
+    clusterId: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    name: z.string().min(3),
+    readerIntent: z.string().min(20),
+    pillarPath: z.string().regex(/^\/.*\/$/).nullable(),
+    supportingPaths: z.array(z.string().regex(/^\/.*\/$/)),
+    missingHubRecommendation: z.string().min(20).nullable(),
+  })).min(1),
+  priorityActions: z.array(z.object({
+    priority: z.number().int().min(1),
+    action: z.enum([
+      "link-orphan",
+      "strengthen-cluster",
+      "add-reciprocal-links",
+      "review-broken-link",
+      "review-new-hub",
+    ]),
+    sourcePaths: z.array(z.string().regex(/^\/.*\/$/)),
+    targetPaths: z.array(z.string().regex(/^\/.*\/$/)),
+    reason: z.string().min(25),
+  })),
+  rolloutPhases: z.array(z.object({
+    phase: z.number().int().min(1),
+    name: z.string().min(3),
+    objective: z.string().min(20),
+    actionPriorities: z.array(z.number().int().min(1)),
+  })).min(1),
+  measurements: z.array(z.string().min(15)).min(3),
   requiredHumanChecks: z.array(z.string().min(10)).min(1),
 });
 
@@ -348,6 +382,7 @@ export type SearchPerformanceRow = z.infer<typeof SearchPerformanceRowSchema>;
 export type SearchPerformanceSnapshot = z.infer<typeof SearchPerformanceSnapshotSchema>;
 export type SiteArchitectureReport = z.infer<typeof SiteArchitectureReportSchema>;
 export type InternalLinkPlan = z.infer<typeof InternalLinkPlanSchema>;
+export type InternalLinkStrategy = z.infer<typeof InternalLinkStrategySchema>;
 export type SeoContentBrief = z.infer<typeof SeoContentBriefSchema>;
 export type BlogDesignResearchPackage = z.infer<typeof BlogDesignResearchPackageSchema>;
 export type QueueItem = z.infer<typeof QueueItemSchema>;

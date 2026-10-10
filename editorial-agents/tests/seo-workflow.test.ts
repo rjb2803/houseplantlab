@@ -41,6 +41,24 @@ test("live site audit finds orphan pages and broken internal paths", async () =>
   assert.equal(inventory.pages.length, 3);
 });
 
+test("live site audit recognises a real WordPress archive hub", async () => {
+  const request = async (input: string | URL | Request): Promise<Response> => {
+    const url = String(input);
+    if (url.includes("/posts?")) return Response.json([]);
+    if (url.includes("/pages?")) return Response.json([]);
+    if (url.includes("/plant?")) return Response.json([]);
+    if (url.includes("/plants/?hpl-audit=hub")) {
+      return new Response('<main><a href="/plants/monstera-deliciosa/">Monstera</a></main>', { headers: { "Content-Type": "text/html" } });
+    }
+    if (url.includes("hpl-audit=hub")) return new Response("Not found", { status: 404 });
+    return Response.json([{ id: 1, name: "Uncategorized", slug: "uncategorized" }]);
+  };
+  const inventory = await auditLiveSite(request as typeof fetch, new Date("2026-10-10T19:00:00.000Z"));
+  assert.equal(inventory.pages.length, 1);
+  assert.equal(inventory.pages[0].type, "hub");
+  assert.equal(inventory.pages[0].path, "/plants/");
+});
+
 async function createProject(): Promise<string> {
   const root = await mkdtemp(path.join(os.tmpdir(), "hpl-seo-"));
   await mkdir(path.join(root, "content-production", "queue"), { recursive: true });

@@ -61,21 +61,48 @@ async function fetchCollection(
   });
 }
 
+async function fetchLiveHubs(request: typeof fetch, now: Date): Promise<SiteInventory["pages"]> {
+  const candidates = [
+    { slug: "plants", title: "Plant profiles", path: "/plants/" },
+    { slug: "blog", title: "The Field Journal", path: "/blog/" },
+    { slug: "problem", title: "Plant problems", path: "/problem/" },
+    { slug: "tools", title: "Plant tools", path: "/tools/" },
+  ];
+  const hubs = await Promise.all(candidates.map(async (candidate) => {
+    const response = await request(`${ORIGIN}${candidate.path}?hpl-audit=hub`, { redirect: "error" });
+    if (!response.ok || !(response.headers.get("content-type") ?? "").toLowerCase().includes("text/html")) return null;
+    const html = await response.text();
+    return {
+      id: 0,
+      type: "hub" as const,
+      title: candidate.title,
+      slug: candidate.slug,
+      url: new URL(candidate.path, ORIGIN).toString(),
+      path: candidate.path,
+      modifiedAt: now.toISOString(),
+      categoryIds: [],
+      outgoingInternalPaths: internalLinks(html).filter((pagePath) => pagePath !== "/" && pagePath !== candidate.path),
+    };
+  }));
+  return hubs.filter((hub): hub is NonNullable<typeof hub> => Boolean(hub));
+}
+
 export async function auditLiveSite(request: typeof fetch = fetch, now: Date = new Date()): Promise<SiteInventory> {
-  const [posts, pages, plants, categoryResponse] = await Promise.all([
+  const [posts, pages, plants, hubs, categoryResponse] = await Promise.all([
     fetchCollection("posts", "post", request),
     fetchCollection("pages", "page", request),
     fetchCollection("plant", "plant", request),
+    fetchLiveHubs(request, now),
     request(`${ORIGIN}/wp-json/wp/v2/categories?per_page=100&_fields=id,name,slug`),
   ]);
   if (!categoryResponse.ok) throw new Error(`WordPress category inventory request failed with HTTP ${categoryResponse.status}.`);
   const categories = await categoryResponse.json() as Array<{ name: string }>;
-  const inventoryPages = [...posts, ...pages, ...plants].sort((a, b) => a.path.localeCompare(b.path));
+  const inventoryPages = [...posts, ...pages, ...plants, ...hubs].sort((a, b) => a.path.localeCompare(b.path));
   const knownPaths = new Set(inventoryPages.map((page) => page.path));
   const allOutgoing = inventoryPages.flatMap((page) => page.outgoingInternalPaths);
   const brokenInternalPaths = [...new Set(allOutgoing.filter((path) => path !== "/" && !knownPaths.has(path)))].sort();
   const linkedPaths = new Set(allOutgoing);
-  const hubPaths = new Set(["/plants/", "/blog/", "/problems/", "/tools/"]);
+  const hubPaths = new Set(["/plants/", "/blog/", "/problem/", "/tools/"]);
   const orphanPaths = inventoryPages
     .filter((page) => !hubPaths.has(page.path) && !linkedPaths.has(page.path))
     .map((page) => page.path)

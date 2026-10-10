@@ -90,7 +90,7 @@ test("internal-link workflow applies a verified marked block without changing ot
   }
 });
 
-test("internal-link workflow rejects an invented target before WordPress changes", async () => {
+test("internal-link workflow discards an invented target before WordPress changes", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "hpl-links-"));
   const unsafePlan: InternalLinkPlan = {
     ...plan,
@@ -101,15 +101,15 @@ test("internal-link workflow rejects an invented target before WordPress changes
     }] }],
   };
   try {
-    await assert.rejects(
-      runInternalLinkWorkflow(root, { apply: true }, {
-        inventory: async () => inventory,
-        plan: async () => unsafePlan,
-        fetch: (async () => { throw new Error("should not fetch"); }) as typeof fetch,
-        env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "editor", WP_APP_PASSWORD: "test password" },
-      }),
-      /unknown or placeholder target/,
-    );
+    let fetched = false;
+    const result = await runInternalLinkWorkflow(root, { apply: true }, {
+      inventory: async () => inventory,
+      plan: async () => unsafePlan,
+      fetch: (async () => { fetched = true; throw new Error("should not fetch"); }) as typeof fetch,
+      env: { WP_SITE_URL: "https://houseplantlab.co.uk", WP_USERNAME: "editor", WP_APP_PASSWORD: "test password" },
+    });
+    assert.equal(result.outcome, "no-safe-updates");
+    assert.equal(fetched, false);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

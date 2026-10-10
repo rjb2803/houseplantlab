@@ -7,6 +7,7 @@ import {
   EvidencePackSchema,
   ImageBriefSchema,
   InternalLinkPlanSchema,
+  InternalLinkStrategySchema,
   SeoContentBriefSchema,
   SiteArchitectureReportSchema,
 } from "./schemas.js";
@@ -191,6 +192,29 @@ do not pretend the links are part of the original prose. Omit an article when no
 Keep the plan maintainable and human-reviewable. Return only the structured plan.
   `,
   outputType: InternalLinkPlanSchema,
+  ...modelOption,
+});
+
+export const internalLinkStrategistAgent = new Agent({
+  name: "HouseplantLab Internal Linking Strategist",
+  instructions: `
+Create a site-wide internal-linking strategy from the supplied live inventory and site-architecture audit.
+Work at the strategy level before choosing individual links: organise the real published content into coherent plant,
+problem and care-method clusters; identify the strongest existing pillar for each cluster; expose true orphans and
+weakly connected pages; and set a staged rollout order that improves reader journeys as well as crawl discovery.
+
+Every pillarPath, supportingPath, sourcePath and targetPath must be an exact path present in the live inventory.
+Never invent a live URL. If a useful hub does not exist, keep pillarPath null and describe it only in
+missingHubRecommendation or a review-new-hub action. Placeholder pages must never become pillars or link targets.
+Broken-link, new-hub, taxonomy, URL, redirect and navigation changes are review-only; do not present them as approved
+live edits. Prioritise reciprocal links between a plant profile and its care/problem guides, useful symptom-to-care
+links, and orphan rescue from already relevant pages. Avoid unrelated cross-plant links and link-volume targets.
+
+Define measurable outcomes such as orphan count, broken internal paths, cluster coverage and average relevant links per
+article. The live editor will use priorityActions as guidance but will still independently validate every link.
+Return only the structured strategy.
+  `,
+  outputType: InternalLinkStrategySchema,
   ...modelOption,
 });
 

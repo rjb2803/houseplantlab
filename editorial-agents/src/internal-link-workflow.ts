@@ -6,7 +6,9 @@ import { internalLinkAgent } from "./agents.js";
 import { auditLiveSite } from "./site-audit.js";
 import {
   InternalLinkPlanSchema,
+  InternalLinkStrategySchema,
   type InternalLinkPlan,
+  type InternalLinkStrategy,
   type SiteInventory,
 } from "./schemas.js";
 
@@ -28,6 +30,7 @@ export interface InternalLinkWorkflowDependencies {
   now?: () => Date;
   inventory?: () => Promise<SiteInventory>;
   plan?: (input: string) => Promise<InternalLinkPlan>;
+  strategy?: InternalLinkStrategy | null;
   fetch?: typeof fetch;
   env?: NodeJS.ProcessEnv;
 }
@@ -79,6 +82,17 @@ async function defaultPlan(input: string): Promise<InternalLinkPlan> {
   return InternalLinkPlanSchema.parse(result.finalOutput);
 }
 
+async function readLatestStrategy(projectRoot: string): Promise<InternalLinkStrategy | null> {
+  const strategyPath = path.join(projectRoot, "content-production", "internal-links", "strategy", "latest.json");
+  try {
+    const payload = JSON.parse(await readFile(strategyPath, "utf8")) as { strategy?: unknown };
+    return InternalLinkStrategySchema.parse(payload.strategy);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw error;
+  }
+}
+
 function validatePlan(plan: InternalLinkPlan, inventory: SiteInventory): InternalLinkPlan {
   const byPath = new Map(inventory.pages.map((page) => [page.path, page]));
   const byId = new Map(inventory.pages.filter((page) => page.type === "post").map((page) => [page.id, page]));
@@ -94,9 +108,7 @@ function validatePlan(plan: InternalLinkPlan, inventory: SiteInventory): Interna
     const links: typeof recommendation.links = [];
     const sourceFamily = plantFamily(source.path);
     for (const link of recommendation.links) {
-      if (!byPath.has(link.targetPath) || placeholders.has(link.targetPath)) {
-        throw new Error(`Internal Link Editor returned an unknown or placeholder target: ${link.targetPath}`);
-      }
+      if (!byPath.has(link.targetPath) || placeholders.has(link.targetPath)) continue;
       if (link.targetPath === source.path) continue;
       if (source.outgoingInternalPaths.includes(link.targetPath) || targets.has(link.targetPath)) continue;
       const targetFamily = plantFamily(link.targetPath);
@@ -147,9 +159,15 @@ export async function runInternalLinkWorkflow(
   const inventory = await (dependencies.inventory ?? (() => auditLiveSite(request, now)))();
   const posts = inventory.pages.filter((page) => page.type === "post" && !["hello-world"].includes(page.slug));
   const createPlan = dependencies.plan ?? defaultPlan;
+  const strategy = dependencies.strategy === undefined
+    ? await readLatestStrategy(projectRoot)
+    : dependencies.strategy;
   const plan = validatePlan(InternalLinkPlanSchema.parse(await createPlan([
     "Assess every published article in this live inventory and propose only strong missing internal links.",
     "Return only the structured plan. Existing outgoingInternalPaths must never be recommended again.",
+    strategy
+      ? `Use this validated site-wide strategy as a priority guide, but independently verify every source and target against the current inventory:\n${JSON.stringify(strategy, null, 2)}`
+      : "No saved site-wide strategy is available; use the live inventory conservatively.",
     JSON.stringify(inventory, null, 2),
   ].join("\n"))), inventory);
 
