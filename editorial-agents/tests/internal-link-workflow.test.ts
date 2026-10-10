@@ -94,6 +94,8 @@ test("internal-link workflow applies a verified marked block without changing ot
     });
     assert.equal(result.outcome, "links-applied");
     assert.deepEqual(result.updatedPaths, ["/why-is-my-monstera-drooping/"]);
+    assert.equal(result.orphanCountBefore, 1);
+    assert.equal(result.articlesBelowMinimumBefore, 1);
     const postRequests = requests.filter((entry) => entry.method === "POST");
     assert.equal(postRequests.length, 1);
     assert.match(postRequests[0]?.body ?? "", /hpl-contextual-link:plants-monstera-deliciosa:start/);

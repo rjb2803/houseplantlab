@@ -34,6 +34,7 @@ const UpdatedPostSchema = z.object({
 export interface InternalLinkWorkflowDependencies {
   now?: () => Date;
   inventory?: () => Promise<SiteInventory>;
+  postApplyInventory?: () => Promise<SiteInventory>;
   plan?: (input: string) => Promise<InternalLinkPlan>;
   performance?: () => Promise<SearchPerformanceSnapshot>;
   strategy?: InternalLinkStrategy | null;
@@ -50,7 +51,16 @@ export interface InternalLinkWorkflowResult {
   rankingOpportunityCount: number;
   strongSourceCount: number;
   searchPerformanceState: "measured" | "not-configured";
+  orphanCountBefore: number;
+  orphanCountAfter: number;
+  articlesBelowMinimumBefore: number;
+  articlesBelowMinimumAfter: number;
   message: string;
+}
+
+interface LinkCoverage {
+  orphanPaths: string[];
+  belowMinimumPaths: Array<{ path: string; currentLinks: number; linksNeeded: number }>;
 }
 
 function escapeHtml(value: string): string {
@@ -84,6 +94,21 @@ function plantFamily(pagePath: string): string | null {
     "phalaenopsis-orchid", "fiddle-leaf-fig", "rubber-plant", "calathea", "aloe-vera", "zz-plant",
   ];
   return families.find((family) => pagePath.includes(family)) ?? (pagePath.includes("orchid") ? "phalaenopsis-orchid" : null);
+}
+
+function assessLinkCoverage(inventory: SiteInventory): LinkCoverage {
+  const placeholders = new Set(["/hello-world/", "/sample-page/"]);
+  const knownPaths = new Set(inventory.pages.map((page) => page.path));
+  const genuinePosts = inventory.pages.filter((page) => page.type === "post" && !placeholders.has(page.path));
+  return {
+    orphanPaths: inventory.orphanPaths.filter((pagePath) => !placeholders.has(pagePath)),
+    belowMinimumPaths: genuinePosts.flatMap((page) => {
+      const currentLinks = new Set(page.outgoingInternalPaths.filter((target) =>
+        target !== page.path && knownPaths.has(target) && !placeholders.has(target),
+      )).size;
+      return currentLinks >= 3 ? [] : [{ path: page.path, currentLinks, linksNeeded: 3 - currentLinks }];
+    }),
+  };
 }
 
 async function defaultPlan(input: string): Promise<InternalLinkPlan> {
@@ -168,15 +193,20 @@ function prioritisePlan(
   plan: InternalLinkPlan,
   opportunities: RankingOpportunity[],
   strongSources: StrongSourcePage[],
+  orphanPaths: string[],
 ): InternalLinkPlan {
   const rank = new Map(opportunities.map((opportunity, index) => [opportunity.path, index]));
   const sourceRank = new Map(strongSources.map((source, index) => [source.path, index]));
+  const orphans = new Set(orphanPaths);
   const recommendations = [...plan.recommendations].sort((a, b) => {
+    const orphanTargets = (recommendation: typeof a): number =>
+      recommendation.links.filter((link) => orphans.has(link.targetPath)).length;
     const bestRank = (recommendation: typeof a): number => Math.min(
       ...recommendation.links.map((link) => rank.get(link.targetPath) ?? Number.MAX_SAFE_INTEGER),
       rank.get(recommendation.sourcePath) ?? Number.MAX_SAFE_INTEGER,
     );
-    return bestRank(a) - bestRank(b)
+    return orphanTargets(b) - orphanTargets(a)
+      || bestRank(a) - bestRank(b)
       || (sourceRank.get(a.sourcePath) ?? Number.MAX_SAFE_INTEGER)
         - (sourceRank.get(b.sourcePath) ?? Number.MAX_SAFE_INTEGER);
   });
@@ -202,6 +232,7 @@ export async function runInternalLinkWorkflow(
   const now = dependencies.now?.() ?? new Date();
   const request = dependencies.fetch ?? fetch;
   const inventory = await (dependencies.inventory ?? (() => auditLiveSite(request, now)))();
+  const coverageBefore = assessLinkCoverage(inventory);
   const performance = await (dependencies.performance
     ? dependencies.performance()
     : resolveSearchPerformance(now, { env: dependencies.env ?? process.env, fetch: request }));
@@ -215,6 +246,9 @@ export async function runInternalLinkWorkflow(
   const plan = prioritisePlan(validatePlan(InternalLinkPlanSchema.parse(await createPlan([
     "Assess every published article in this live inventory and propose only strong missing internal links.",
     "Return only the structured plan. Existing outgoingInternalPaths must never be recommended again.",
+    "Coverage policy: every genuine article should have at least three relevant contextual outgoing links. For each source below three, propose only the number of strong missing links needed to reach three, up to the schema maximum. Never force an unrelated link to meet the number.",
+    "Orphan policy: every genuine orphan must gain at least one relevant inbound link. Prioritise recommendations whose targetPath is in orphanPaths. An outbound link from an orphan does not rescue that orphan.",
+    `CURRENT COVERAGE GAPS\n${JSON.stringify(coverageBefore, null, 2)}`,
     strategy
       ? `Use this validated site-wide strategy as a priority guide, but independently verify every source and target against the current inventory:\n${JSON.stringify(strategy, null, 2)}`
       : "No saved site-wide strategy is available; use the live inventory conservatively.",
@@ -222,13 +256,13 @@ export async function runInternalLinkWorkflow(
       ? `Prioritise genuine ranking opportunities from this measured Search Console snapshot. Positions 11-20 come first, then positions 5-10. Prefer strong relevant source pages for those links. Never infer missing data:\n${JSON.stringify({ performance, rankingOpportunities, strongSources }, null, 2)}`
       : "Search Console is not configured or returned no measured rows. Do not make or imply ranking claims; prioritise relevance and orphan rescue only.",
     JSON.stringify(inventory, null, 2),
-  ].join("\n"))), inventory), rankingOpportunities, strongSources);
+  ].join("\n"))), inventory), rankingOpportunities, strongSources, coverageBefore.orphanPaths);
 
   const runId = now.toISOString().replace(/[:.]/g, "-");
   const outputDirectory = path.join(projectRoot, "content-production", "internal-links", "runs", runId);
   await mkdir(outputDirectory, { recursive: true });
   const reportPath = path.join(outputDirectory, "internal-link-plan.json");
-  await writeFile(reportPath, `${JSON.stringify({ inventory, performance, rankingOpportunities, strongSources, plan }, null, 2)}\n`, "utf8");
+  await writeFile(reportPath, `${JSON.stringify({ inventory, coverageBefore, performance, rankingOpportunities, strongSources, plan }, null, 2)}\n`, "utf8");
   const relativeReportPath = path.relative(projectRoot, reportPath).replaceAll("\\", "/");
 
   if (!options.apply) {
@@ -241,6 +275,10 @@ export async function runInternalLinkWorkflow(
       rankingOpportunityCount: rankingOpportunities.length,
       strongSourceCount: strongSources.length,
       searchPerformanceState: performance.rows.length ? "measured" : "not-configured",
+      orphanCountBefore: coverageBefore.orphanPaths.length,
+      orphanCountAfter: coverageBefore.orphanPaths.length,
+      articlesBelowMinimumBefore: coverageBefore.belowMinimumPaths.length,
+      articlesBelowMinimumAfter: coverageBefore.belowMinimumPaths.length,
       message: `Internal-link report created for ${posts.length} published articles; no live content was changed.`,
     };
   }
@@ -294,7 +332,13 @@ export async function runInternalLinkWorkflow(
     updatedPaths.push(recommendation.sourcePath);
   }
 
-  await writeFile(path.join(outputDirectory, "apply-result.json"), `${JSON.stringify({ updatedPaths }, null, 2)}\n`, "utf8");
+  const inventoryAfter = dependencies.postApplyInventory
+    ? await dependencies.postApplyInventory()
+    : dependencies.inventory
+      ? inventory
+      : await auditLiveSite(request, new Date());
+  const coverageAfter = assessLinkCoverage(inventoryAfter);
+  await writeFile(path.join(outputDirectory, "apply-result.json"), `${JSON.stringify({ updatedPaths, coverageBefore, coverageAfter }, null, 2)}\n`, "utf8");
   return {
     outcome: updatedPaths.length ? "links-applied" : "no-safe-updates",
     reportPath: relativeReportPath,
@@ -304,6 +348,10 @@ export async function runInternalLinkWorkflow(
     rankingOpportunityCount: rankingOpportunities.length,
     strongSourceCount: strongSources.length,
     searchPerformanceState: performance.rows.length ? "measured" : "not-configured",
+    orphanCountBefore: coverageBefore.orphanPaths.length,
+    orphanCountAfter: coverageAfter.orphanPaths.length,
+    articlesBelowMinimumBefore: coverageBefore.belowMinimumPaths.length,
+    articlesBelowMinimumAfter: coverageAfter.belowMinimumPaths.length,
     message: updatedPaths.length
       ? `Added verified contextual text links to ${updatedPaths.length} published articles.`
       : "The audit found no safe unlinked article batch to update.",

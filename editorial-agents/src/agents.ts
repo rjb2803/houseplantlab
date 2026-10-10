@@ -183,8 +183,10 @@ Use only sourcePostId, sourcePath, targetPath and titles that appear in the supp
 published posts. Targets may be relevant posts, pages or plant profiles. Never invent a URL, link to a placeholder,
 recommend a self-link, repeat an existing outgoing link or change a URL, title, taxonomy or article claim.
 
-For each source article, choose one to three links that genuinely help the reader continue: normally its matching plant
-profile, a closely related diagnostic guide, or a useful care guide. Prefer specific relevance over linking every page.
+For each source article, aim for at least three total relevant contextual links, counting its existing outgoing links.
+If it currently has zero, propose up to three strong missing links; if it has one, propose up to two; if it has two,
+propose one. Never force an unrelated link merely to reach the number. Normally link to its matching plant profile, a
+closely related diagnostic guide, or a useful care guide. Prefer specific relevance over linking every page.
 Use a concise natural anchorLabel that accurately describes the target. Do not use keyword-stuffed, misleading or
 generic labels such as "click here". Every link must use placement contextual-sentence. Supply one concise,
 reader-facing contextSentence containing the literal token {anchor} exactly once. It must make sense inside the source
@@ -196,6 +198,11 @@ When measured Search Console data is supplied, prioritise links that help a rele
 impressions and an average position from 11 to 20, followed by positions 5 to 10. Use strong relevant pages as linking
 sources when appropriate. Never invent ranking, traffic or query data. If the measured dataset is empty, plan by
 relevance and orphan status only and explicitly acknowledge that ranking priority is unavailable.
+
+Treat orphan prevention separately from outbound coverage. A genuine orphan is rescued only when another relevant
+source page links into it; adding an outbound link from the orphan does not fix it. Prioritise safe recommendations that
+give every genuine orphan at least one inbound route. If no honest source exists, flag the missing cluster/profile in
+requiredHumanChecks rather than manufacturing a weak relationship.
 
 Keep the plan maintainable and human-reviewable. Return only the structured plan.
   `,
@@ -226,6 +233,9 @@ state that ranking-based prioritisation is unavailable and never invent performa
 
 Define measurable outcomes such as orphan count, broken internal paths, cluster coverage and average relevant links per
 article. The live editor will use priorityActions as guidance but will still independently validate every link.
+Set a target of at least three relevant contextual outgoing links per genuine article and at least one relevant inbound
+link to every genuine article. Where the current inventory cannot support three honest links, identify the missing
+plant profile or cluster hub for review rather than recommending irrelevant filler.
 Return only the structured strategy.
   `,
   outputType: InternalLinkStrategySchema,

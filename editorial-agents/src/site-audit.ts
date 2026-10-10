@@ -39,8 +39,11 @@ async function fetchCollection(
   endpoint: string,
   type: "post" | "page" | "plant",
   request: typeof fetch,
+  auditToken: string,
 ): Promise<SiteInventory["pages"]> {
-  const response = await request(`${ORIGIN}/wp-json/wp/v2/${endpoint}?status=publish&per_page=100&_fields=id,slug,link,modified_gmt,title,content,categories`);
+  const response = await request(`${ORIGIN}/wp-json/wp/v2/${endpoint}?status=publish&per_page=100&_fields=id,slug,link,modified_gmt,title,content,categories&hpl_audit=${encodeURIComponent(auditToken)}`, {
+    headers: { "Cache-Control": "no-cache" },
+  });
   if (response.status === 404) return [];
   if (!response.ok) throw new Error(`WordPress ${type} inventory request failed with HTTP ${response.status}.`);
   const items = await response.json() as WordPressItem[];
@@ -88,10 +91,11 @@ async function fetchLiveHubs(request: typeof fetch, now: Date): Promise<SiteInve
 }
 
 export async function auditLiveSite(request: typeof fetch = fetch, now: Date = new Date()): Promise<SiteInventory> {
+  const auditToken = now.toISOString();
   const [posts, pages, plants, hubs, categoryResponse] = await Promise.all([
-    fetchCollection("posts", "post", request),
-    fetchCollection("pages", "page", request),
-    fetchCollection("plant", "plant", request),
+    fetchCollection("posts", "post", request, auditToken),
+    fetchCollection("pages", "page", request, auditToken),
+    fetchCollection("plant", "plant", request, auditToken),
     fetchLiveHubs(request, now),
     request(`${ORIGIN}/wp-json/wp/v2/categories?per_page=100&_fields=id,name,slug`),
   ]);

@@ -106,6 +106,8 @@ The strategist combines the live inventory with read-only Search Console evidenc
 
 Links are inserted as short, natural contextual sentences inside the article body before the final summary. They are not rendered as a generic link list. Every sentence contains one descriptive text hyperlink, and the workflow rejects invented paths, self-links, repeated links, placeholders, unrelated plant families and generic hub links presented as orphan fixes. If Search Console is unavailable, ranking-based priority is paused rather than guessed.
 
+The coverage target is at least three relevant contextual outgoing links per genuine article and at least one relevant inbound link to every genuine article. Orphan rescue is prioritised before general coverage work. The report records orphan counts and articles below the three-link target before and after each live batch. The target is never met with unrelated filler: isolated subjects are reported as needing a real plant profile or cluster hub.
+
 ## Research and design the blog index
 
 ```powershell
