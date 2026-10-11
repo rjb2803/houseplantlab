@@ -659,20 +659,20 @@
       "assignment": "Prepare an evidence-led UK guide to identifying and managing fungus gnats around houseplants. Explain the adult and larval stages, why persistently moist growing media matter, how to distinguish gnats from other small flies, moisture-management and hygiene measures, and when an approved control may be considered. Avoid unsafe pesticide instructions, unsupported home remedies and absolute eradication promises.",
       "plant": "Houseplants",
       "priority": 32,
-      "status": "queued",
-      "attempts": 0,
+      "status": "published",
+      "attempts": 1,
       "createdAt": "2026-10-09T21:40:00.000Z",
-      "updatedAt": "2026-10-09T21:40:00.000Z",
-      "lastAttemptAt": null,
-      "lastRunId": null,
-      "lastOutputPath": null,
+      "updatedAt": "2026-10-10T23:33:13.799Z",
+      "lastAttemptAt": "2026-10-10T23:30:38.350Z",
+      "lastRunId": "live-fungus-gnats-houseplants-identification-control-2026-10-10T23-30-38-400Z",
+      "lastOutputPath": "content-production/runs/live-fungus-gnats-houseplants-identification-control-2026-10-10T23-30-38-400Z",
       "lastError": null,
-      "wordpressPostId": null,
-      "wordpressEditUrl": null,
-      "wordpressSyncedAt": null,
-      "wordpressMediaId": null,
-      "publishedUrl": null,
-      "publishedAt": null,
+      "wordpressPostId": 101,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=101&action=edit",
+      "wordpressSyncedAt": "2026-10-10T23:32:25.658Z",
+      "wordpressMediaId": 102,
+      "publishedUrl": "https://houseplantlab.co.uk/fungus-gnats-houseplants-identification-control/",
+      "publishedAt": "2026-10-10T23:33:13.799Z",
       "seoBriefPath": null
     },
     {
@@ -680,14 +680,21 @@
       "assignment": "Prepare an evidence-led UK guide to recognising and responding to suspected root rot in houseplants. Explain how to inspect compost, drainage and roots, which symptoms overlap with other problems, safe removal of damaged tissue where supported, repotting decisions and aftercare. Avoid diagnosing from one leaf symptom, unsupported disinfectants, home remedies and absolute recovery promises.",
       "plant": "Houseplants",
       "priority": 33,
-      "status": "queued",
-      "attempts": 0,
+      "status": "published",
+      "attempts": 1,
       "createdAt": "2026-10-10T23:15:00.000Z",
-      "updatedAt": "2026-10-10T23:15:00.000Z",
-      "lastAttemptAt": null,
-      "lastRunId": null,
-      "lastOutputPath": null,
-      "lastError": null
+      "updatedAt": "2026-10-11T07:13:12.167Z",
+      "lastAttemptAt": "2026-10-11T07:08:31.822Z",
+      "lastRunId": "live-suspected-root-rot-houseplants-2026-10-11T07-08-31-880Z",
+      "lastOutputPath": "content-production/runs/live-suspected-root-rot-houseplants-2026-10-11T07-08-31-880Z",
+      "lastError": null,
+      "wordpressPostId": 104,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=104&action=edit",
+      "wordpressSyncedAt": "2026-10-11T07:11:57.810Z",
+      "wordpressMediaId": 105,
+      "publishedUrl": "https://houseplantlab.co.uk/suspected-root-rot-houseplants/",
+      "publishedAt": "2026-10-11T07:13:12.167Z",
+      "seoBriefPath": null
     },
     {
       "id": "mealybugs-houseplants",
@@ -701,7 +708,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "spider-mites-houseplants",
@@ -715,7 +729,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "scale-insects-houseplants",
@@ -729,7 +750,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "thrips-houseplants",
@@ -743,7 +771,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "houseplant-compost-drainage",
@@ -757,7 +792,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "humidity-for-houseplants",
@@ -771,7 +813,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "grow-lights-for-houseplants",
@@ -785,7 +834,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "peace-lily-repotting",
@@ -799,7 +855,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "spider-plant-yellow-leaves",
@@ -813,7 +876,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "spider-plant-repotting",
@@ -827,7 +897,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "pothos-brown-spots",
@@ -841,7 +918,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "pothos-curling-leaves",
@@ -855,7 +939,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "pothos-repotting",
@@ -869,7 +960,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "rubber-plant-drooping",
@@ -883,7 +981,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "rubber-plant-brown-spots",
@@ -897,7 +1002,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "rubber-plant-watering",
@@ -911,7 +1023,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "fiddle-leaf-fig-yellow-leaves",
@@ -925,7 +1044,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "fiddle-leaf-fig-watering",
@@ -939,7 +1065,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "calathea-brown-edges",
@@ -953,7 +1086,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "calathea-watering",
@@ -967,7 +1107,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "zz-plant-watering",
@@ -981,7 +1128,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "zz-plant-repotting",
@@ -995,7 +1149,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "aloe-vera-brown-tips",
@@ -1009,7 +1170,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "aloe-vera-repotting",
@@ -1023,7 +1191,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "phalaenopsis-yellow-leaves",
@@ -1037,7 +1212,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "phalaenopsis-repotting",
@@ -1051,7 +1233,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "monstera-feeding",
@@ -1065,7 +1254,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     },
     {
       "id": "snake-plant-propagation",
@@ -1079,7 +1275,14 @@
       "lastAttemptAt": null,
       "lastRunId": null,
       "lastOutputPath": null,
-      "lastError": null
+      "lastError": null,
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
     }
   ]
 }
