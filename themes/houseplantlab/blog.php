@@ -107,11 +107,6 @@ $plant_filters = [
             </div>
         </section>
 
-        <aside class="hpl-journal-ad" aria-label="Advertisement">
-            <span class="hpl-journal-ad__label">Advertisement</span>
-            <div class="hpl-journal-ad__copy"><h2>A more natural way<br>to care for your plants.</h2><p>Organic plant care products for a healthier, greener home.</p><a href="/tools/plant-problem-checker/">Shop now <span aria-hidden="true">→</span></a></div>
-            <div class="hpl-journal-ad__products" aria-hidden="true"></div><p class="hpl-journal-ad__note">Happier<br>Plants.<br>Brighter<br>Homes.</p>
-        </aside>
     </main>
 
     <footer class="hpl-journal-footer">

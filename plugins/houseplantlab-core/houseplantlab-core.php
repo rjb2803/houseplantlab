@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.4
+ * Version: 0.7.5
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.4';
+const HOUSEPLANTLAB_CORE_VERSION = '0.7.5';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -600,16 +600,14 @@ function houseplantlab_render_recommended_products(): string
     $cards = '';
     for ($product = 1; $product <= 3; $product++) {
         $name = trim((string) get_post_meta(get_the_ID(), "houseplantlab_product_{$product}_name", true));
-        if ($name === '') {
+        $url = trim((string) get_post_meta(get_the_ID(), "houseplantlab_product_{$product}_url", true));
+        if ($name === '' || $url === '') {
             continue;
         }
 
         $reason = trim((string) get_post_meta(get_the_ID(), "houseplantlab_product_{$product}_reason", true));
         $label = trim((string) get_post_meta(get_the_ID(), "houseplantlab_product_{$product}_label", true));
-        $url = trim((string) get_post_meta(get_the_ID(), "houseplantlab_product_{$product}_url", true));
-        $action = $url !== ''
-            ? sprintf('<a class="hpl-product__link" href="%s" rel="sponsored nofollow">%s <span aria-hidden="true">→</span></a>', esc_url($url), esc_html($label !== '' ? $label : 'Check price'))
-            : '<span class="hpl-product__pending">Recommendation link added after testing</span>';
+        $action = sprintf('<a class="hpl-product__link" href="%s" rel="sponsored nofollow">%s <span aria-hidden="true">→</span></a>', esc_url($url), esc_html($label !== '' ? $label : 'Check price'));
 
         $cards .= sprintf(
             '<article class="hpl-product"><span class="hpl-product__image hpl-product__image--%1$d" role="img" aria-label="%2$s"></span><div class="hpl-product__body"><h3>%2$s</h3><p>%3$s</p>%4$s</div></article>',
@@ -624,7 +622,7 @@ function houseplantlab_render_recommended_products(): string
         return '';
     }
 
-    return '<div class="hpl-products">' . $cards . '</div><p id="affiliate-disclosure" class="hpl-affiliate-disclosure"><strong>How we recommend:</strong> products are selected for a specific care job and links are added only after review. Some future links may be affiliate links, which can earn HouseplantLab a commission at no extra cost to you.</p>';
+    return '<div class="hpl-products">' . $cards . '</div><p id="affiliate-disclosure" class="hpl-affiliate-disclosure"><strong>Affiliate disclosure:</strong> products are selected for a specific care job. Where a link is marked as an affiliate link, HouseplantLab may earn a commission at no extra cost to you.</p>';
 }
 add_shortcode('houseplantlab_recommended_products', 'houseplantlab_render_recommended_products');
 
@@ -689,7 +687,7 @@ function houseplantlab_render_publication_profile(): string
         }
         $problem_action = $problem_link !== ''
             ? '<a href="' . esc_url($problem_link) . '">Read the full guide <span aria-hidden="true">→</span></a>'
-            : '<span class="hpl-pub-problem__pending">Detailed guide in preparation</span>';
+            : '';
         $problems .= sprintf(
             '<article class="hpl-pub-problem"><span class="hpl-pub-problem__image hpl-pub-problem__image--%1$d" role="img" aria-label="%2$s"></span><div><h3>%2$s</h3><p>%3$s</p>%4$s</div></article>',
             $problem,
@@ -735,13 +733,13 @@ function houseplantlab_render_publication_profile(): string
                 <h1><?php echo esc_html($title); ?></h1>
                 <?php if ($botanical !== '') : ?><p class="hpl-pub-botanical"><?php echo esc_html($botanical); ?></p><?php endif; ?>
                 <?php if ($excerpt !== '') : ?><p class="hpl-pub-deck"><?php echo esc_html($excerpt); ?></p><?php endif; ?>
-                <div class="hpl-pub-byline"><span class="hpl-pub-byline__mark" aria-hidden="true">⌁</span><span><strong>Grown and observed by HouseplantLab</strong><small>Last reviewed <?php echo esc_html($modified); ?> · Practical UK growing guide</small></span></div>
+                <div class="hpl-pub-byline"><span class="hpl-pub-byline__mark" aria-hidden="true">⌁</span><span><strong>Reviewed by HouseplantLab</strong><small>Last reviewed <?php echo esc_html($modified); ?> · Practical UK growing guide</small></span></div>
             </div>
             <figure class="hpl-pub-hero__media"><?php echo $hero_image; ?><figcaption><?php echo esc_html($title); ?> in bright, indirect light</figcaption></figure>
             <div class="hpl-pub-facts"><?php echo $fact_markup; ?></div>
         </section>
 
-        <nav class="hpl-pub-nav" aria-label="Plant guide sections"><a class="is-active" href="#overview">Overview</a><a href="#care">Care</a><a href="#problems">Problems</a><a href="#propagation">Propagation</a><a href="#recommended-kit">Recommended kit</a><a href="#faq">FAQ</a></nav>
+        <nav class="hpl-pub-nav" aria-label="Plant guide sections"><a class="is-active" href="#overview">Overview</a><a href="#care">Care</a><?php if ($problems !== '') : ?><a href="#problems">Problems</a><?php endif; ?><?php if ($propagation_intro !== '' || $propagation_steps !== '') : ?><a href="#propagation">Propagation</a><?php endif; ?><?php if ($product_markup !== '') : ?><a href="#recommended-kit">Recommended kit</a><?php endif; ?><?php if ($faqs !== '') : ?><a href="#faq">FAQ</a><?php endif; ?></nav>
 
         <section class="hpl-pub-editorial" id="overview">
             <article class="hpl-pub-story"><span class="hpl-pub-kicker">At home with <?php echo esc_html($title); ?></span><h2>A tropical climber with real presence</h2>
@@ -751,7 +749,7 @@ function houseplantlab_render_publication_profile(): string
                 <?php if ($overview_quote !== '') : ?><blockquote><?php echo esc_html($overview_quote); ?></blockquote><?php endif; ?>
                 <span class="hpl-pub-kicker" id="care">The essential care</span><h2>Four decisions that matter</h2><?php echo $care_markup; ?>
             </article>
-            <aside class="hpl-pub-rail"><nav aria-label="In this guide"><h2>In this guide</h2><a href="#care">Care essentials <span>→</span></a><a href="#problems">Common problems <span>→</span></a><a href="#propagation">Propagation <span>→</span></a><a href="#recommended-kit">Recommended kit <span>→</span></a><a href="#faq">Questions answered <span>→</span></a></nav><div class="hpl-pub-ad" aria-label="Advertisement">Advertisement · 300 × 250</div><div class="hpl-pub-promise"><strong>Our promise</strong><br>Advice is based on plants we grow, supported by reputable horticultural sources and updated when our evidence changes.</div></aside>
+            <aside class="hpl-pub-rail"><nav aria-label="In this guide"><h2>In this guide</h2><a href="#care">Care essentials <span>→</span></a><?php if ($problems !== '') : ?><a href="#problems">Common problems <span>→</span></a><?php endif; ?><?php if ($propagation_intro !== '' || $propagation_steps !== '') : ?><a href="#propagation">Propagation <span>→</span></a><?php endif; ?><?php if ($product_markup !== '') : ?><a href="#recommended-kit">Recommended kit <span>→</span></a><?php endif; ?><?php if ($faqs !== '') : ?><a href="#faq">Questions answered <span>→</span></a><?php endif; ?></nav><div class="hpl-pub-promise"><strong>Our promise</strong><br>Advice is checked against reputable horticultural sources and updated when the evidence changes.</div></aside>
         </section>
 
         <?php if ($problems !== '') : ?><section class="hpl-pub-section hpl-pub-section--sage" id="problems"><div class="hpl-pub-section__heading"><div><span class="hpl-pub-kicker">Read the leaves</span><h2>What is your <?php echo esc_html($title); ?> telling you?</h2></div><p>Start with the pattern of damage, then check roots, compost and recent changes before reaching for a treatment.</p></div><div class="hpl-pub-problems"><?php echo $problems; ?></div></section><?php endif; ?>
@@ -762,7 +760,7 @@ function houseplantlab_render_publication_profile(): string
 
         <?php if ($faqs !== '') : ?><section class="hpl-pub-section" id="faq"><div class="hpl-pub-faq"><div><span class="hpl-pub-kicker">Straight answers</span><h2><?php echo esc_html($title); ?> questions, answered</h2><p>Practical answers for the situations UK growers encounter most often.</p></div><div class="hpl-pub-faq__list"><?php echo $faqs; ?></div></div></section><?php endif; ?>
 
-        <section class="hpl-pub-evidence"><h2>How we know</h2><div><p>This profile combines first-hand growing observations with guidance from reputable horticultural sources. Product claims and photographs are labelled according to their provenance.</p><a href="<?php echo esc_url(home_url('/about/')); ?>">Read our editorial and testing policy <span aria-hidden="true">→</span></a></div></section>
+        <section class="hpl-pub-evidence"><h2>How we know</h2><div><p>This profile is reviewed against reputable horticultural sources. Product claims and editorial illustrations are labelled according to their provenance.</p><a href="<?php echo esc_url(home_url('/about/')); ?>">Read our editorial and testing policy <span aria-hidden="true">→</span></a></div></section>
     </main>
     <?php
     $profile = (string) ob_get_clean();

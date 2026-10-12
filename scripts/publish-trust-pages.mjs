@@ -32,7 +32,7 @@ const pages = [
 <p>Articles are prepared from a defined brief and checked against reputable horticultural evidence. We separate supported guidance from assumptions, avoid guarantees and fixed schedules where growing conditions matter, and review every article for clarity, usefulness and factual support before publication.</p>
 <p>Automated tools may help with research organisation, drafting checks and image production. They do not replace editorial review. AI-generated editorial illustrations are used as illustrations only; they are not presented as photographs of a diagnosed plant or as proof of a particular symptom.</p>
 <h2>How we recommend products</h2>
-<p>A product is mentioned only when it has a clear role in a care task. Some future links may be affiliate links, meaning HouseplantLab could earn a commission at no extra cost to the reader. Commercial relationships do not determine our care advice, and paid or affiliate links will be identified where they appear.</p>
+<p>A product is mentioned only when it has a clear role in a care task. Where a link is an affiliate link, HouseplantLab may earn a commission at no extra cost to the reader. Commercial relationships do not determine our care advice, and every paid or affiliate link is identified where it appears.</p>
 <h2>Corrections and updates</h2>
 <p>Plant care is affected by species, season, home conditions and the evidence available at the time. We update guides when better evidence or clearer practical advice becomes available. If you spot an error, an unclear claim or a broken link, please use our <a href="/contact/">Contact page</a> and include the article URL.</p>
 <p>For details of how the site handles personal information and cookies, see our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/cookie-policy/">Cookie Policy</a>.</p>`,
@@ -55,7 +55,7 @@ const pages = [
   {
     title: 'Privacy Policy',
     slug: 'privacy-policy',
-    excerpt: 'How HouseplantLab handles contact details, technical data, analytics and future advertising services.',
+    excerpt: 'How HouseplantLab handles contact details, technical data, analytics, advertising and affiliate services.',
     content: `
 <p><strong>Last updated: 12 October 2026.</strong></p>
 <p>HouseplantLab is responsible for personal information handled through this website. This policy explains what information may be processed, why it is used and the choices available to you.</p>
@@ -65,15 +65,17 @@ const pages = [
 <h2>Technical and security information</h2>
 <p>The website and its hosting or security services may process technical information such as an IP address, browser type, requested URL, date and time, and security events. This information is used to deliver the site, prevent abuse, investigate faults and protect the website. Server and security logs are retained according to the relevant provider’s operational and security settings.</p>
 <h2>Analytics</h2>
-<p>HouseplantLab uses Google measurement technology to understand how the site is found and used. Depending on your consent choices and the configuration active when you visit, this may process information such as pages viewed, approximate location derived from an IP address, device and browser information, and interactions with the site. We use aggregated reporting to improve navigation and editorial coverage rather than to identify individual readers.</p>
-<p>Non-essential analytics storage requires an appropriate consent choice. See the <a href="/cookie-policy/">Cookie Policy</a> for more detail and browser controls.</p>
+<p>HouseplantLab uses Google Analytics and Google measurement technology to understand how the site is found and used. These services can process information such as pages viewed, approximate location derived from an IP address, device and browser information, and interactions with the site. We use aggregated reporting to improve navigation and editorial coverage rather than to identify individual readers.</p>
+<p>Analytics storage is non-essential and requires consent where applicable. See the <a href="/cookie-policy/">Cookie Policy</a> for details and controls.</p>
 <h2>Advertising and affiliate services</h2>
-<p>HouseplantLab is preparing to use advertising services such as Google AdSense. Advertising is not currently described as active on this site. Before advertising cookies or personalised advertising are enabled, we will use an appropriate consent management platform and update this policy with the relevant data-use details.</p>
-<p>Some future links may be affiliate links. If you follow one, the destination retailer may process information under its own privacy policy. HouseplantLab does not receive your payment-card details from those retailers.</p>
+<p><strong>Current advertising status:</strong> HouseplantLab does not currently display third-party advertising, and Google AdSense advertising cookies are not active.</p>
+<p>HouseplantLab has selected Google AdSense as its advertising provider. When advertising is activated, Google and its advertising partners may use cookies, web beacons, IP addresses and other identifiers to deliver and measure advertising, limit repeated adverts, prevent fraud and, where you have consented, personalise advertising. Third parties may place and read cookies in your browser or use web beacons and IP addresses as a result of ad serving.</p>
+<p>Non-essential advertising storage and personalised advertising require the relevant consent choice. Advertising will not be activated for visitors covered by UK, EEA or Swiss consent rules until those choices are available through a Google-certified consent platform. Google also provides controls through <a href="https://adssettings.google.com/" rel="external">Google Ads Settings</a>.</p>
+<p>Where a link is identified as an affiliate link, HouseplantLab may receive a commission at no extra cost to you. The destination retailer processes visits and purchases under its own privacy policy. HouseplantLab does not receive your payment-card details from those retailers.</p>
 <h2>Who receives information</h2>
 <p>Information may be handled by service providers needed to operate the site, including the web host, security services, email provider and analytics provider. They process information under their own terms and safeguards. Information may also be disclosed where required by law or necessary to protect legal rights and site security.</p>
 <h2>International transfers</h2>
-<p>Some technology providers may process information outside the UK. Where required, transfers should be protected by recognised safeguards such as adequacy regulations or approved contractual protections.</p>
+<p>Some technology providers may process information outside the UK. Where required, we rely on recognised safeguards such as adequacy regulations or approved contractual protections.</p>
 <h2>How long information is kept</h2>
 <p>Contact messages are kept only for as long as reasonably needed to answer the enquiry, maintain an appropriate record of the conversation, meet legal obligations or resolve a dispute. Technical, analytics and security information follows the retention settings of the relevant service.</p>
 <h2>Your rights</h2>
@@ -96,9 +98,11 @@ const pages = [
 <p>The public contact form uses a short-lived WordPress security token to check that a submission came from the form. The message itself is emailed to the site administrator and is not stored as a public comment or WordPress database entry.</p>
 <h2>Analytics</h2>
 <p>The site includes Google measurement technology to help us understand visits and improve the publication. When analytics storage is permitted, Google Analytics cookies commonly use names beginning with <code>_ga</code>. Their precise names and duration can depend on the measurement configuration.</p>
-<p>Analytics is not strictly necessary to display the site. Where consent is required, analytics cookies should be used only after an affirmative choice. You can also block or delete cookies using your browser controls.</p>
+<p>Analytics is not strictly necessary to display the site. Analytics storage requires an affirmative consent choice where applicable. You can also block or delete cookies using your browser controls.</p>
 <h2>Advertising</h2>
-<p>HouseplantLab is preparing for Google AdSense, but Google advertising cookies are not currently described as active. Before personalised advertising or advertising storage is enabled for UK, EEA or Swiss visitors, the site will use a Google-certified consent management platform and this policy will be updated to explain the active advertising partners and choices.</p>
+<p><strong>Current advertising-cookie status:</strong> HouseplantLab does not currently display third-party advertising, and Google AdSense advertising cookies are not active.</p>
+<p>HouseplantLab has selected Google AdSense as its advertising provider. When advertising is activated, Google and its advertising partners may use cookies, web beacons, IP addresses and other identifiers to deliver and measure adverts, limit repeated adverts, prevent fraud and, where you have consented, personalise advertising.</p>
+<p>Advertising storage and personalised advertising are non-essential. Advertising will not be activated for visitors covered by UK, EEA or Swiss consent rules until the relevant choices are available through a Google-certified consent platform. Google also provides controls through <a href="https://adssettings.google.com/" rel="external">Google Ads Settings</a>.</p>
 <h2>Managing cookies</h2>
 <p>You can review, block or delete cookies through your browser settings. Blocking strictly necessary technologies may prevent security, login or form features from working correctly. Browser controls do not automatically prevent every server log or cookie-free measurement technique.</p>
 <p>When a consent panel is available, use its settings to accept, reject or revisit non-essential categories. You can also find browser-specific guidance through the help pages for Chrome, Edge, Firefox and Safari.</p>
