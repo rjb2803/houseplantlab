@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.2
+ * Version: 0.7.3
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.2';
+const HOUSEPLANTLAB_CORE_VERSION = '0.7.3';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -63,7 +63,10 @@ function houseplantlab_is_hacked_numeric_query(string $request_uri): bool
         return false;
     }
 
-    return preg_match('/^(?:d|g|h|i|n|q|v)=\d{7,}$/D', $query) === 1;
+    // Match the attack's single-letter, long-numeric query URLs while
+    // preserving WordPress's legitimate one-letter public query variables:
+    // m (date archive), p (post), s (search), and w (week archive).
+    return preg_match('/^(?!(?:m|p|s|w)=)[a-z]=\d{7,}$/D', $query) === 1;
 }
 
 /**
