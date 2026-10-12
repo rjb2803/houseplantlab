@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.5
+ * Version: 0.8.0
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.5';
+const HOUSEPLANTLAB_CORE_VERSION = '0.8.0';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -773,6 +773,136 @@ function houseplantlab_render_publication_profile(): string
     return is_string($compact_profile) ? $compact_profile : $profile;
 }
 add_shortcode('houseplantlab_publication_profile', 'houseplantlab_render_publication_profile');
+
+/**
+ * Render an accessible first-step problem checker. It narrows the existing
+ * evidence-reviewed guides by visible symptom and, optionally, plant. It does
+ * not claim to diagnose a plant from a single symptom.
+ */
+function houseplantlab_render_problem_checker(): string
+{
+    $guides = [
+        ['yellow', 'pothos', 'Why are my Pothos leaves turning yellow?', '/why-are-my-pothos-leaves-turning-yellow/'],
+        ['yellow', 'peace-lily', 'Why are my Peace Lily leaves turning yellow?', '/why-are-my-peace-lily-leaves-turning-yellow/'],
+        ['yellow', 'snake-plant', 'Why are my Snake Plant leaves turning yellow?', '/why-are-my-snake-plant-leaves-turning-yellow/'],
+        ['yellow', 'rubber-plant', 'Why are my Rubber Plant leaves turning yellow?', '/why-are-my-rubber-plant-leaves-turning-yellow/'],
+        ['yellow', 'fiddle-leaf-fig', 'Why are my Fiddle-leaf Fig leaves turning yellow?', '/why-are-my-fiddle-leaf-fig-leaves-turning-yellow/'],
+        ['yellow', 'phalaenopsis-orchid', 'Why are my Phalaenopsis Orchid leaves turning yellow?', '/why-are-my-phalaenopsis-orchid-leaves-turning-yellow/'],
+        ['yellow', 'zz-plant', 'Why are my ZZ Plant leaves turning yellow?', '/why-are-my-zz-plant-leaves-turning-yellow/'],
+        ['yellow', 'spider-plant', 'Why are my Spider Plant leaves turning yellow?', '/why-are-my-spider-plant-leaves-turning-yellow/'],
+        ['brown', 'monstera-deliciosa', 'Brown spots on Monstera deliciosa leaves', '/brown-spots-monstera-deliciosa-leaves/'],
+        ['brown', 'pothos', 'Brown spots on Pothos leaves', '/brown-spots-on-pothos-leaves/'],
+        ['brown', 'rubber-plant', 'Brown spots on Rubber Plant leaves', '/brown-spots-rubber-plant-leaves/'],
+        ['brown', 'fiddle-leaf-fig', 'Brown spots on Fiddle-leaf Fig leaves', '/brown-spots-fiddle-leaf-fig-leaves/'],
+        ['brown', 'aloe-vera', 'Brown tips on Aloe Vera leaves', '/why-are-my-aloe-vera-leaves-turning-brown-at-the-tips/'],
+        ['brown', 'calathea', 'Brown edges on Calathea leaves', '/why-are-my-calathea-leaves-turning-brown-at-the-edges/'],
+        ['brown', 'spider-plant', 'Brown tips on Spider Plant leaves', '/why-are-my-spider-plant-tips-turning-brown/'],
+        ['curling', 'calathea', 'Why are my Calathea leaves curling?', '/why-are-my-calathea-leaves-curling/'],
+        ['curling', 'monstera-deliciosa', 'Why are my Monstera deliciosa leaves curling?', '/why-are-my-monstera-deliciosa-leaves-curling/'],
+        ['curling', 'pothos', 'Why are my Pothos leaves curling?', '/why-are-my-pothos-leaves-curling/'],
+        ['drooping', 'monstera-deliciosa', 'Why is my Monstera deliciosa drooping?', '/why-is-my-monstera-deliciosa-drooping/'],
+        ['drooping', 'peace-lily', 'Why is my Peace Lily drooping?', '/why-is-my-peace-lily-drooping/'],
+        ['drooping', 'rubber-plant', 'Why is my Rubber Plant drooping?', '/why-is-my-rubber-plant-drooping/'],
+        ['pests', 'all', 'Fungus gnats on houseplants', '/fungus-gnats-houseplants-identification-control/'],
+        ['pests', 'all', 'Mealybugs on houseplants', '/mealybugs-on-houseplants/'],
+        ['pests', 'all', 'Scale insects on houseplants', '/scale-insects-on-houseplants/'],
+        ['pests', 'all', 'Spider mites on houseplants', '/spider-mites-on-houseplants/'],
+        ['pests', 'all', 'Thrips on houseplants', '/thrips-on-houseplants/'],
+        ['roots', 'all', 'Suspected root rot in houseplants', '/suspected-root-rot-houseplants/'],
+        ['roots', 'all', 'Choosing a well-drained growing medium', '/well-drained-growing-medium-houseplants/'],
+    ];
+
+    $plants = [
+        '' => 'Any or unknown plant',
+        'aloe-vera' => 'Aloe Vera',
+        'calathea' => 'Calathea',
+        'fiddle-leaf-fig' => 'Fiddle-leaf Fig',
+        'monstera-deliciosa' => 'Monstera deliciosa',
+        'peace-lily' => 'Peace Lily',
+        'phalaenopsis-orchid' => 'Phalaenopsis Orchid',
+        'pothos' => 'Pothos',
+        'rubber-plant' => 'Rubber Plant',
+        'snake-plant' => 'Snake Plant',
+        'spider-plant' => 'Spider Plant',
+        'zz-plant' => 'ZZ Plant',
+    ];
+
+    $checker_id = wp_unique_id('hpl-problem-checker-');
+    $cards = '';
+    foreach ($guides as [$symptom, $plant, $title, $path]) {
+        $cards .= sprintf(
+            '<li class="hpl-checker__result" data-symptom="%1$s" data-plant="%2$s" hidden><a href="%3$s"><strong>%4$s</strong><span>Open guide →</span></a></li>',
+            esc_attr($symptom),
+            esc_attr($plant),
+            esc_url(home_url($path)),
+            esc_html($title)
+        );
+    }
+
+    $plant_options = '';
+    foreach ($plants as $value => $label) {
+        $plant_options .= '<option value="' . esc_attr($value) . '">' . esc_html($label) . '</option>';
+    }
+
+    ob_start();
+    ?>
+    <section class="hpl-checker" id="<?php echo esc_attr($checker_id); ?>">
+        <div class="hpl-checker__intro">
+            <p class="hpl-hub-kicker">Start with what you can see</p>
+            <h2>Find the most relevant troubleshooting guides</h2>
+            <p>A leaf symptom can have several causes. This checker narrows the reading list; it does not diagnose a plant from one sign alone.</p>
+        </div>
+        <form class="hpl-checker__form">
+            <label>What is the clearest symptom?
+                <select name="symptom" required>
+                    <option value="">Choose a symptom</option>
+                    <option value="yellow">Yellow leaves</option>
+                    <option value="brown">Brown tips, edges or spots</option>
+                    <option value="curling">Curling leaves</option>
+                    <option value="drooping">Drooping or wilting</option>
+                    <option value="pests">Visible pests or sticky residue</option>
+                    <option value="roots">Wet compost, damaged roots or repotting concern</option>
+                </select>
+            </label>
+            <label>Which plant is affected?
+                <select name="plant"><?php echo $plant_options; ?></select>
+            </label>
+            <button type="submit">Show relevant guides</button>
+        </form>
+        <div class="hpl-checker__output" aria-live="polite">
+            <p class="hpl-checker__status">Choose a symptom to begin.</p>
+            <ul class="hpl-checker__results"><?php echo $cards; ?></ul>
+            <p class="hpl-checker__none" hidden>No plant-specific match is available yet. Try “Any or unknown plant” or browse the complete <a href="<?php echo esc_url(home_url('/problems/')); ?>">Plant Problems hub</a>.</p>
+        </div>
+    </section>
+    <script>
+    (() => {
+        const root = document.getElementById(<?php echo wp_json_encode($checker_id); ?>);
+        if (!root) return;
+        const form = root.querySelector('form');
+        const status = root.querySelector('.hpl-checker__status');
+        const empty = root.querySelector('.hpl-checker__none');
+        const cards = [...root.querySelectorAll('.hpl-checker__result')];
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const symptom = form.elements.symptom.value;
+            const plant = form.elements.plant.value;
+            let matches = 0;
+            cards.forEach((card) => {
+                const plantMatches = !plant || card.dataset.plant === plant || card.dataset.plant === 'all';
+                const show = card.dataset.symptom === symptom && plantMatches;
+                card.hidden = !show;
+                if (show) matches += 1;
+            });
+            status.textContent = matches === 1 ? '1 relevant guide found.' : `${matches} relevant guides found.`;
+            empty.hidden = matches !== 0;
+        });
+    })();
+    </script>
+    <?php
+    return (string) ob_get_clean();
+}
+add_shortcode('houseplantlab_problem_checker', 'houseplantlab_render_problem_checker');
 
 /**
  * Render a small, privacy-conscious contact form without exposing the

@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.8.5
+Version: 0.9.0
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -63,8 +63,34 @@ a { text-underline-offset: 0.18em; }
 .hpl-contact-form__notice--success { background: #e8f3e8; border-color: #327346; }
 .hpl-contact-form__notice--error { background: #f9e8e5; border-color: #a83d2f; }
 
+.hpl-hub-intro { color: #34584b; font-family: Georgia, serif; font-size: clamp(1.1rem, 0.95rem + 0.45vw, 1.45rem); line-height: 1.65; max-width: 52rem; }
+.hpl-hub-kicker { color: #327346; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; margin-bottom: 0.35rem; text-transform: uppercase; }
+.hpl-hub-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-block: 2rem; }
+.hpl-hub-card,
+.hpl-guide-list li { background: #f7f4ea; border: 1px solid #d8dfd5; border-radius: 0.75rem; }
+.hpl-hub-card { padding: clamp(1.15rem, 2vw, 1.75rem); }
+.hpl-hub-card h2,
+.hpl-hub-card h3 { margin-top: 0; }
+.hpl-hub-card p:last-child { margin-bottom: 0; }
+.hpl-guide-list { display: grid; gap: 0.8rem; list-style: none; margin: 1.5rem 0 2rem; padding: 0; }
+.hpl-guide-list a { align-items: center; display: flex; gap: 1rem; justify-content: space-between; padding: 1rem 1.15rem; text-decoration: none; }
+.hpl-guide-list a::after { content: "→"; }
+.hpl-checker { background: #eef2e7; border-radius: 1rem; margin-block: 2rem; padding: clamp(1.2rem, 3vw, 2.25rem); }
+.hpl-checker__intro h2 { margin-top: 0; }
+.hpl-checker__form { display: grid; gap: 1rem; margin-block: 1.5rem; }
+.hpl-checker__form label { color: #163d30; display: grid; font-weight: 700; gap: 0.4rem; }
+.hpl-checker__form select { background: #fff; border: 1px solid #879b90; border-radius: 0.4rem; font: inherit; padding: 0.75rem; }
+.hpl-checker__form button { background: #0b553d; border: 0; border-radius: 999px; color: #fff; cursor: pointer; font: inherit; font-weight: 800; justify-self: start; padding: 0.8rem 1.35rem; }
+.hpl-checker__form button:hover { background: #073e2e; }
+.hpl-checker__status { font-weight: 700; }
+.hpl-checker__results { display: grid; gap: 0.75rem; list-style: none; margin: 1rem 0 0; padding: 0; }
+.hpl-checker__result a { align-items: center; background: #fff; border: 1px solid #cbd6cd; border-radius: 0.6rem; display: flex; gap: 1rem; justify-content: space-between; padding: 0.9rem 1rem; text-decoration: none; }
+.hpl-checker__result span { white-space: nowrap; }
+
 @media (max-width: 620px) {
   .hpl-contact-form__grid { grid-template-columns: 1fr; }
+  .hpl-hub-grid { grid-template-columns: 1fr; }
+  .hpl-checker__result a { align-items: flex-start; flex-direction: column; }
 }
 
 .hpl-card {

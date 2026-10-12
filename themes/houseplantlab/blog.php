@@ -53,7 +53,7 @@ $plant_filters = [
         <div class="hpl-journal-header__inner">
             <a class="hpl-journal-logo" href="/" aria-label="HouseplantLab home"><span aria-hidden="true">❧</span> HouseplantLab</a>
             <nav class="hpl-journal-nav" aria-label="Primary navigation">
-                <a href="/plants/">Plants</a><a href="/problem/">Problems</a><a href="/category/care-guides/">Care Guides</a><a href="/tools/plant-problem-checker/">Plant Checker</a><a class="is-current" href="/blog/">Journal</a>
+                <a href="/plants/">Plants</a><a href="/problems/">Problems</a><a href="/care-guides/">Care Guides</a><a href="/tools/plant-problem-checker/">Plant Checker</a><a class="is-current" href="/blog/">Journal</a>
             </nav>
             <form class="hpl-journal-search" role="search" method="get" action="/">
                 <span aria-hidden="true">⌕</span><label class="screen-reader-text" for="hpl-journal-search">Find practical plant care</label><input id="hpl-journal-search" name="s" type="search" placeholder="Find practical plant care">
@@ -113,8 +113,8 @@ $plant_filters = [
         <div class="hpl-journal-footer__grid">
             <div class="hpl-journal-footer__intro"><a href="/">❧ HouseplantLab</a><p>Practical plant care to help you create a healthier, greener home.</p></div>
             <nav aria-label="Plant links"><strong>Plants</strong><a href="/plants/">A–Z plant directory</a><a href="/plants/">Plant care guides</a><a href="/plants/">Popular plants</a><a href="/plants/">New to houseplants</a></nav>
-            <nav aria-label="Problem links"><strong>Problems</strong><a href="/problem/">Diagnose plant problems</a><a href="/?s=yellow+leaves">Yellow leaves</a><a href="/?s=pests">Pests and diseases</a><a href="/?s=troubleshooting">Troubleshooting guides</a></nav>
-            <nav aria-label="Care guide links"><strong>Care Guides</strong><a href="/?s=watering">Watering advice</a><a href="/?s=light">Light and location</a><a href="/?s=soil">Soil and feeding</a><a href="/?s=repotting">Repotting</a></nav>
+            <nav aria-label="Problem links"><strong>Problems</strong><a href="/problems/">Diagnose plant problems</a><a href="/problems/yellow-leaves/">Yellow leaves</a><a href="/problems/pests/">Pests and diseases</a><a href="/problems/curling-and-drooping/">Curling and drooping</a></nav>
+            <nav aria-label="Care guide links"><strong>Care Guides</strong><a href="/care-guides/watering/">Watering advice</a><a href="/care-guides/light-and-location/">Light and location</a><a href="/care-guides/repotting/">Repotting and growing media</a><a href="/care-guides/propagation/">Propagation</a></nav>
             <nav aria-label="Plant checker links"><strong>Plant Checker</strong><a href="/tools/plant-problem-checker/">Identify your plant</a><a href="/tools/plant-problem-checker/">Check for problems</a><a href="/tools/plant-problem-checker/">Get care advice</a></nav>
         </div>
         <div class="hpl-journal-footer__bottom"><nav aria-label="Legal"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a><a href="/cookie-policy/">Cookies</a></nav><p>A greener home for brighter days. &nbsp; HouseplantLab © <?php echo esc_html(wp_date('Y')); ?></p></div>
