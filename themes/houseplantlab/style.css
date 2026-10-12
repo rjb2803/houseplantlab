@@ -32,6 +32,41 @@ a { text-underline-offset: 0.18em; }
 
 .wp-site-blocks > footer { margin-block-start: auto; }
 
+.hpl-contact-form {
+  background: #f6f3e9;
+  border: 1px solid #d7ddce;
+  border-radius: 0.75rem;
+  display: grid;
+  gap: 1.15rem;
+  margin-block: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.hpl-contact-form__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hpl-contact-form label { color: #163d30; display: grid; font-weight: 700; gap: 0.4rem; }
+.hpl-contact-form input,
+.hpl-contact-form textarea { background: #fff; border: 1px solid #9baa9f; border-radius: 0.35rem; box-sizing: border-box; font: inherit; padding: 0.75rem; width: 100%; }
+.hpl-contact-form textarea { resize: vertical; }
+.hpl-contact-form input:focus,
+.hpl-contact-form textarea:focus { outline: 3px solid rgb(51 121 86 / 25%); outline-offset: 1px; }
+.hpl-contact-form__consent { align-items: start; display: flex !important; font-size: 0.9rem; font-weight: 400 !important; }
+.hpl-contact-form__consent input { margin-top: 0.25rem; width: auto; }
+.hpl-contact-form button { background: #0b553d; border: 0; border-radius: 999px; color: #fff; cursor: pointer; font: inherit; font-weight: 800; justify-self: start; padding: 0.8rem 1.35rem; }
+.hpl-contact-form button:hover { background: #073e2e; }
+.hpl-contact-form__trap { left: -10000px; position: absolute; }
+.hpl-contact-form__notice { border-left: 4px solid; padding: 0.85rem 1rem; }
+.hpl-contact-form__notice--success { background: #e8f3e8; border-color: #327346; }
+.hpl-contact-form__notice--error { background: #f9e8e5; border-color: #a83d2f; }
+
+@media (max-width: 620px) {
+  .hpl-contact-form__grid { grid-template-columns: 1fr; }
+}
+
 .hpl-card {
   background: var(--wp--preset--color--paper);
   border: 1px solid var(--hpl-border);

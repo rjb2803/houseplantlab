@@ -122,7 +122,7 @@ $plant_filters = [
             <nav aria-label="Care guide links"><strong>Care Guides</strong><a href="/?s=watering">Watering advice</a><a href="/?s=light">Light and location</a><a href="/?s=soil">Soil and feeding</a><a href="/?s=repotting">Repotting</a></nav>
             <nav aria-label="Plant checker links"><strong>Plant Checker</strong><a href="/tools/plant-problem-checker/">Identify your plant</a><a href="/tools/plant-problem-checker/">Check for problems</a><a href="/tools/plant-problem-checker/">Get care advice</a></nav>
         </div>
-        <div class="hpl-journal-footer__bottom"><nav aria-label="Legal"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a></nav><p>A greener home for brighter days. &nbsp; HouseplantLab © <?php echo esc_html(wp_date('Y')); ?></p></div>
+        <div class="hpl-journal-footer__bottom"><nav aria-label="Legal"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a><a href="/cookie-policy/">Cookies</a></nav><p>A greener home for brighter days. &nbsp; HouseplantLab © <?php echo esc_html(wp_date('Y')); ?></p></div>
     </footer>
 </div>
 <?php wp_footer(); ?>

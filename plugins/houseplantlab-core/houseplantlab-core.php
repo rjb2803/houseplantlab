@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.3
+ * Version: 0.7.4
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.3';
+const HOUSEPLANTLAB_CORE_VERSION = '0.7.4';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -775,6 +775,98 @@ function houseplantlab_render_publication_profile(): string
     return is_string($compact_profile) ? $compact_profile : $profile;
 }
 add_shortcode('houseplantlab_publication_profile', 'houseplantlab_render_publication_profile');
+
+/**
+ * Render a small, privacy-conscious contact form without exposing the
+ * WordPress administrator email address in the page source.
+ */
+function houseplantlab_render_contact_form(): string
+{
+    $status = isset($_GET['contact'])
+        ? sanitize_key(wp_unslash((string) $_GET['contact']))
+        : '';
+    $notice = '';
+
+    if ($status === 'sent') {
+        $notice = '<p class="hpl-contact-form__notice hpl-contact-form__notice--success" role="status">Thank you. Your message has been sent to HouseplantLab.</p>';
+    } elseif ($status === 'error') {
+        $notice = '<p class="hpl-contact-form__notice hpl-contact-form__notice--error" role="alert">We could not send your message. Please check the fields and try again later.</p>';
+    }
+
+    $nonce = wp_nonce_field('houseplantlab_contact', 'houseplantlab_contact_nonce', true, false);
+    $privacy_url = home_url('/privacy-policy/');
+
+    return $notice . sprintf(
+        '<form class="hpl-contact-form" action="%1$s" method="post"><input type="hidden" name="action" value="houseplantlab_contact">%2$s<div class="hpl-contact-form__grid"><label>Name <input type="text" name="name" autocomplete="name" maxlength="120" required></label><label>Email <input type="email" name="email" autocomplete="email" maxlength="254" required></label></div><label>Subject <input type="text" name="subject" maxlength="160"></label><label>Message <textarea name="message" rows="8" minlength="20" maxlength="5000" required></textarea></label><div class="hpl-contact-form__trap" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div><label class="hpl-contact-form__consent"><input type="checkbox" name="privacy_consent" value="1" required> I agree that HouseplantLab may use my details to reply to this enquiry, as explained in the <a href="%3$s">Privacy Policy</a>.</label><button type="submit">Send message</button></form>',
+        esc_url(admin_url('admin-post.php')),
+        $nonce,
+        esc_url($privacy_url)
+    );
+}
+add_shortcode('houseplantlab_contact_form', 'houseplantlab_render_contact_form');
+
+/**
+ * Deliver contact enquiries to the configured WordPress administrator email.
+ * The plugin does not store submissions in WordPress.
+ */
+function houseplantlab_handle_contact_form(): void
+{
+    $redirect = home_url('/contact/');
+
+    $nonce = isset($_POST['houseplantlab_contact_nonce'])
+        ? sanitize_text_field(wp_unslash((string) $_POST['houseplantlab_contact_nonce']))
+        : '';
+    if ($nonce === '' || ! wp_verify_nonce($nonce, 'houseplantlab_contact')) {
+        wp_safe_redirect(add_query_arg('contact', 'error', $redirect));
+        exit;
+    }
+
+    // Silently accept honeypot submissions so bots receive no useful signal.
+    $website = isset($_POST['website'])
+        ? trim(sanitize_text_field(wp_unslash((string) $_POST['website'])))
+        : '';
+    if ($website !== '') {
+        wp_safe_redirect(add_query_arg('contact', 'sent', $redirect));
+        exit;
+    }
+
+    $name = isset($_POST['name'])
+        ? trim(sanitize_text_field(wp_unslash((string) $_POST['name'])))
+        : '';
+    $email = isset($_POST['email'])
+        ? sanitize_email(wp_unslash((string) $_POST['email']))
+        : '';
+    $subject = isset($_POST['subject'])
+        ? trim(sanitize_text_field(wp_unslash((string) $_POST['subject'])))
+        : '';
+    $message = isset($_POST['message'])
+        ? trim(sanitize_textarea_field(wp_unslash((string) $_POST['message'])))
+        : '';
+    $consented = isset($_POST['privacy_consent']) && wp_unslash((string) $_POST['privacy_consent']) === '1';
+
+    if (
+        $name === ''
+        || strlen($name) > 120
+        || ! is_email($email)
+        || strlen($subject) > 160
+        || strlen($message) < 20
+        || strlen($message) > 5000
+        || ! $consented
+    ) {
+        wp_safe_redirect(add_query_arg('contact', 'error', $redirect));
+        exit;
+    }
+
+    $mail_subject = '[HouseplantLab enquiry] ' . ($subject !== '' ? $subject : 'Website message');
+    $mail_body = "Name: {$name}\nEmail: {$email}\n\n{$message}";
+    $headers = ['Reply-To: ' . $name . ' <' . $email . '>'];
+    $sent = wp_mail((string) get_option('admin_email'), $mail_subject, $mail_body, $headers);
+
+    wp_safe_redirect(add_query_arg('contact', $sent ? 'sent' : 'error', $redirect));
+    exit;
+}
+add_action('admin_post_nopriv_houseplantlab_contact', 'houseplantlab_handle_contact_form');
+add_action('admin_post_houseplantlab_contact', 'houseplantlab_handle_contact_form');
 
 register_activation_hook(__FILE__, static function (): void {
     houseplantlab_register_content();
