@@ -134,11 +134,16 @@ const existing = await request('/wp-json/wp/v2/pages?per_page=100&context=edit&s
 const results = [];
 
 for (const page of pages) {
-  // WordPress may reserve its protected built-in Privacy Policy slug even for
-  // Editors. Matching the exact title as well keeps this operation idempotent
-  // if WordPress publishes the replacement as privacy-policy-2.
-  const matches = existing.filter((candidate) => candidate.slug === page.slug || candidate.title?.raw === page.title);
+  // WordPress protects the page selected as its Privacy Policy with the
+  // manage_privacy_options capability. Always update that original record;
+  // do not silently create or maintain a second public policy page.
+  const matches = page.slug === 'privacy-policy'
+    ? existing.filter((candidate) => candidate.id === 3)
+    : existing.filter((candidate) => candidate.slug === page.slug || candidate.title?.raw === page.title);
   if (matches.length > 1) throw new Error(`Multiple WordPress pages use the slug ${page.slug}.`);
+  if (page.slug === 'privacy-policy' && matches.length !== 1) {
+    throw new Error('The canonical WordPress Privacy Policy page (ID 3) was not found.');
+  }
   const endpoint = matches[0] ? `/wp-json/wp/v2/pages/${matches[0].id}` : '/wp-json/wp/v2/pages';
   const saved = await request(endpoint, {
     method: 'POST',
@@ -152,6 +157,25 @@ for (const page of pages) {
   results.push({ id: saved.id, status: saved.status, slug: saved.slug, title: saved.title?.rendered, url: saved.link });
 }
 
+const privacyResult = results.find((page) => page.slug === 'privacy-policy');
+if (!privacyResult || privacyResult.id !== 3 || privacyResult.status !== 'publish') {
+  throw new Error('The canonical WordPress Privacy Policy page was not published successfully.');
+}
+
+const duplicatePrivacyPages = existing.filter((candidate) => (
+  candidate.id !== privacyResult.id
+  && candidate.title?.raw === 'Privacy Policy'
+  && /^privacy-policy(?:-\d+)?$/.test(candidate.slug)
+));
+const retiredPrivacyPages = [];
+for (const duplicate of duplicatePrivacyPages) {
+  const retired = await request(`/wp-json/wp/v2/pages/${duplicate.id}`, {
+    method: 'POST',
+    body: JSON.stringify({ status: 'draft' }),
+  });
+  retiredPrivacyPages.push({ id: retired.id, slug: retired.slug, status: retired.status });
+}
+
 const placeholders = existing.filter((candidate) => candidate.slug === 'sample-page' && candidate.title?.raw === 'Sample Page');
 if (placeholders.length !== 1) {
   throw new Error(`Expected exactly one confirmed Sample Page; found ${placeholders.length}.`);
@@ -161,4 +185,8 @@ const placeholder = await request(`/wp-json/wp/v2/pages/${placeholders[0].id}`, 
   body: JSON.stringify({ status: 'draft' }),
 });
 
-console.log(JSON.stringify({ publishedPages: results, placeholder: { id: placeholder.id, slug: placeholder.slug, status: placeholder.status } }, null, 2));
+console.log(JSON.stringify({
+  publishedPages: results,
+  retiredPrivacyPages,
+  placeholder: { id: placeholder.id, slug: placeholder.slug, status: placeholder.status },
+}, null, 2));
