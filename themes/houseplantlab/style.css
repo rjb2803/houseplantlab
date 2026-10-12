@@ -3,7 +3,7 @@ Theme Name: HouseplantLab
 Theme URI: https://github.com/rjb2803/houseplantlab
 Author: HouseplantLab
 Description: A calm, editorial block theme for practical UK houseplant guidance.
-Version: 0.9.0
+Version: 0.9.1
 Requires at least: 6.6
 Requires PHP: 8.1
 Text Domain: houseplantlab
@@ -177,53 +177,9 @@ a { text-underline-offset: 0.18em; }
   width: calc(100% - clamp(2rem, 8vw, 9rem));
 }
 
-.hpl-brand { gap: clamp(0.65rem, 0.4rem + 0.3vw, 0.85rem); }
+.hpl-brand__logo { display: block; flex: 0 0 auto; line-height: 0; }
+.hpl-brand__logo img { display: block; height: clamp(2.35rem, 1.9rem + 0.65vw, 3rem); object-fit: contain; width: auto; }
 
-.hpl-brand__mark {
-  align-items: center;
-  background: var(--wp--preset--color--forest);
-  border-radius: 0.55rem 0.55rem 0.55rem 0.15rem;
-  box-shadow: 0 5px 12px rgb(19 65 47 / 16%);
-  color: var(--wp--preset--color--paper);
-  display: inline-flex;
-  height: clamp(2.35rem, 1.9rem + 0.55vw, 2.85rem);
-  justify-content: center;
-  transform: rotate(-8deg);
-  width: clamp(2.35rem, 1.9rem + 0.55vw, 2.85rem);
-}
-
-.hpl-brand__mark svg {
-  fill: none;
-  height: clamp(1.35rem, 1.05rem + 0.35vw, 1.65rem);
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-  width: clamp(1.35rem, 1.05rem + 0.35vw, 1.65rem);
-}
-
-.hpl-brand__copy { gap: 0 !important; }
-
-.hpl-brand__title {
-  font-family: var(--wp--preset--font-family--interface);
-  font-size: clamp(1.1rem, 0.7rem + 0.5vw, 1.3rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin: 0;
-}
-
-.hpl-brand__tagline {
-  color: var(--wp--preset--color--leaf);
-  font-size: clamp(0.52rem, 0.35rem + 0.2vw, 0.62rem);
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  margin: 0.32rem 0 0;
-  text-transform: uppercase;
-}
-
-.hpl-brand__title a,
 .hpl-primary-nav a {
   color: var(--wp--preset--color--forest);
   text-decoration: none;
@@ -1171,7 +1127,6 @@ a { text-underline-offset: 0.18em; }
 }
 
 @media (max-width: 960px) {
-  .hpl-brand__tagline { display: none; }
   .hpl-primary-nav { font-size: 0.86rem; }
   .hpl-primary-nav .wp-block-navigation__container { gap: 0.05rem; }
   .hpl-primary-nav .wp-block-navigation-item__content { padding-inline: 0.58rem; }
@@ -1243,8 +1198,7 @@ a { text-underline-offset: 0.18em; }
 @media (max-width: 781px) {
   .hpl-header__inner { min-height: 4.25rem; }
   .hpl-primary-nav { font-size: 1rem; }
-  .hpl-brand__mark { height: 2rem; width: 2rem; }
-  .hpl-brand__tagline { display: none; }
+  .hpl-brand__logo img { height: 2.35rem; }
   .hpl-header__actions { display: none; }
   .hpl-primary-nav .wp-block-navigation__responsive-container-open {
     align-items: center;
@@ -1438,7 +1392,6 @@ a { text-underline-offset: 0.18em; }
 }
 
 @media (max-width: 520px) {
-  .hpl-brand__title { font-size: 1rem; }
   .hpl-article-query .wp-block-post-template { grid-template-columns: 1fr 1fr; }
   .hpl-section__heading { align-items: baseline; }
   .hpl-mock-grid--articles { grid-template-columns: 1fr 1fr; }
