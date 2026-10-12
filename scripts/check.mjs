@@ -8,6 +8,7 @@ const requiredFiles = [
   'themes/houseplantlab/blog.php',
   'themes/houseplantlab/assets/src/field-journal.css',
   'plugins/houseplantlab-core/houseplantlab-core.php',
+  'deploy/purge-houseplantlab-cache.php',
 ];
 
 for (const file of requiredFiles) {

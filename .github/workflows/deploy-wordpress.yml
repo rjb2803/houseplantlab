@@ -13,6 +13,7 @@ on:
           - verify
           - deploy
           - activate
+          - purge-cache
 
 permissions:
   contents: read
@@ -155,6 +156,47 @@ jobs:
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
           rm -f public_html/wp-content/mu-plugins/activate-houseplantlab.php
+          bye
+          LFTP
+
+  purge-cache:
+    if: inputs.mode == 'purge-cache'
+    runs-on: ubuntu-24.04
+    environment: production
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install FTP client
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Upload one-time WordPress cache purge
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_HOST" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          mkdir -p public_html/wp-content/mu-plugins
+          put -O public_html/wp-content/mu-plugins deploy/purge-houseplantlab-cache.php
+          bye
+          LFTP
+      - name: Trigger and verify cache purge
+        run: |
+          curl --fail --silent --show-error --location --max-time 30 --dump-header purge-headers.txt "https://houseplantlab.co.uk/?hpl-cache-purge=${GITHUB_SHA}" > /dev/null
+          grep -qi '^X-HouseplantLab-Cache-Purge:' purge-headers.txt
+      - name: Ensure temporary cache purge is removed
+        if: always()
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p 21 "$FTP_HOST" <<'LFTP'
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set ssl:verify-certificate true
+          rm -f public_html/wp-content/mu-plugins/purge-houseplantlab-cache.php
           bye
           LFTP
 
