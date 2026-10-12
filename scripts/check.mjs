@@ -29,5 +29,12 @@ if (!plugin.includes('Plugin Name: HouseplantLab Core')) {
   throw new Error('The WordPress plugin header is missing.');
 }
 
+if (
+  !plugin.includes('houseplantlab_reject_hacked_numeric_queries')
+  || !plugin.includes('status_header(410)')
+) {
+  throw new Error('The hacked-query 410 protection is missing.');
+}
+
 console.log('HouseplantLab structure and metadata checks passed.');
 

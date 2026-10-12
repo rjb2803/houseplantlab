@@ -3,7 +3,7 @@
  * Plugin Name: HouseplantLab Core
  * Plugin URI: https://github.com/rjb2803/houseplantlab
  * Description: Permanent content types, taxonomies and structured plant fields for HouseplantLab.
- * Version: 0.7.1
+ * Version: 0.7.2
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: HouseplantLab
@@ -16,7 +16,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-const HOUSEPLANTLAB_CORE_VERSION = '0.7.1';
+const HOUSEPLANTLAB_CORE_VERSION = '0.7.2';
 
 /**
  * Keep public traffic on the configured HTTPS origin.
@@ -40,6 +40,57 @@ function houseplantlab_enforce_https(): void
     exit;
 }
 add_action('template_redirect', 'houseplantlab_enforce_https', -100);
+
+/**
+ * Identify the numeric query-string pattern left by the October 2026 spam
+ * injection. Keep this deliberately narrow so ordinary WordPress, analytics
+ * and campaign query parameters continue to work normally.
+ */
+function houseplantlab_is_hacked_numeric_query(string $request_uri): bool
+{
+    $request_path = wp_parse_url($request_uri, PHP_URL_PATH);
+    $query = wp_parse_url($request_uri, PHP_URL_QUERY);
+    $home_path = wp_parse_url(home_url('/'), PHP_URL_PATH);
+
+    if (! is_string($request_path) || ! is_string($query) || $query === '') {
+        return false;
+    }
+
+    $normalised_request_path = '/' . trim($request_path, '/');
+    $normalised_home_path = '/' . trim(is_string($home_path) ? $home_path : '/', '/');
+
+    if ($normalised_request_path !== $normalised_home_path) {
+        return false;
+    }
+
+    return preg_match('/^(?:d|g|h|i|n|q|v)=\d{7,}$/D', $query) === 1;
+}
+
+/**
+ * Tell crawlers that the injected spam URLs have been permanently removed.
+ * Redirecting these requests to the homepage would create soft-404 responses
+ * and could keep the fake URLs in search results for longer.
+ */
+function houseplantlab_reject_hacked_numeric_queries(): void
+{
+    if (is_admin() || wp_doing_ajax() || ! isset($_SERVER['REQUEST_URI'])) {
+        return;
+    }
+
+    $request_uri = wp_unslash((string) $_SERVER['REQUEST_URI']);
+    if (! houseplantlab_is_hacked_numeric_query($request_uri)) {
+        return;
+    }
+
+    status_header(410);
+    nocache_headers();
+    header('X-Robots-Tag: noindex, nofollow', true);
+    header('Content-Type: text/html; charset=' . get_option('blog_charset'));
+
+    echo '<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>Gone</title></head><body><h1>Gone</h1><p>This URL has been permanently removed.</p></body></html>';
+    exit;
+}
+add_action('template_redirect', 'houseplantlab_reject_hacked_numeric_queries', -90);
 
 /**
  * Register permanent site content structures.
