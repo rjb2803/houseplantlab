@@ -1388,6 +1388,48 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-are-my-rubber-plant-leaves-curling/",
       "publishedAt": "2026-10-15T20:56:41.563Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "why-is-my-fiddle-leaf-fig-drooping",
+      "assignment": "Prepare an evidence-led UK guide explaining a drooping Fiddle Leaf Fig. Cover soil moisture, root condition, recent moves, temperature, light and structural weight, and show how to assess the whole plant before intervening. Avoid fixed watering schedules and guarantees of recovery. Use the exact article slug 'why-is-my-fiddle-leaf-fig-drooping'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "Fiddle Leaf Fig",
+      "priority": 67,
+      "status": "needs-revision",
+      "attempts": 2,
+      "createdAt": "2026-10-15T21:04:51.280Z",
+      "updatedAt": "2026-10-15T21:13:15.245Z",
+      "lastAttemptAt": "2026-10-15T21:10:11.673Z",
+      "lastRunId": "live-why-is-my-fiddle-leaf-fig-drooping-2026-10-15T21-10-11-723Z",
+      "lastOutputPath": "content-production/runs/live-why-is-my-fiddle-leaf-fig-drooping-2026-10-15T21-10-11-723Z",
+      "lastError": "Editorial agent requires revisions. | Editorial report contains unsupported claims. | Editorial report contains blocker findings.",
+      "wordpressPostId": null,
+      "wordpressEditUrl": null,
+      "wordpressSyncedAt": null,
+      "wordpressMediaId": null,
+      "publishedUrl": null,
+      "publishedAt": null,
+      "seoBriefPath": null
+    },
+    {
+      "id": "why-are-my-calathea-leaves-turning-yellow",
+      "assignment": "Prepare an evidence-led UK guide explaining yellow Calathea leaves. Cover natural ageing, moisture and drainage, roots, light, temperature, feeding and pests, including how to distinguish one ageing leaf from a broader pattern. Avoid overdiagnosis and unsupported water-quality claims. Use the exact article slug 'why-are-my-calathea-leaves-turning-yellow'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "Calathea",
+      "priority": 68,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-15T21:13:48.615Z",
+      "updatedAt": "2026-10-15T21:16:38.039Z",
+      "lastAttemptAt": "2026-10-15T21:13:57.947Z",
+      "lastRunId": "live-why-are-my-calathea-leaves-turning-yellow-2026-10-15T21-13-58-001Z",
+      "lastOutputPath": "content-production/runs/live-why-are-my-calathea-leaves-turning-yellow-2026-10-15T21-13-58-001Z",
+      "lastError": null,
+      "wordpressPostId": 222,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=222&action=edit",
+      "wordpressSyncedAt": "2026-10-15T21:15:52.611Z",
+      "wordpressMediaId": 223,
+      "publishedUrl": "https://houseplantlab.co.uk/why-are-my-calathea-leaves-turning-yellow/",
+      "publishedAt": "2026-10-15T21:16:38.039Z",
+      "seoBriefPath": null
     }
   ]
 }
