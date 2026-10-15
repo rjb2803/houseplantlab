@@ -1430,6 +1430,27 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-are-my-calathea-leaves-turning-yellow/",
       "publishedAt": "2026-10-15T21:16:38.039Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "why-is-my-zz-plant-drooping",
+      "assignment": "Prepare an evidence-led UK guide explaining drooping or leaning ZZ Plant stems. Cover normal growth habit, light direction, moisture, rhizome and root condition, temperature and physical damage. Distinguish leaning from soft collapse and avoid diagnosing from posture alone. Use the exact article slug 'why-is-my-zz-plant-drooping'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "ZZ Plant",
+      "priority": 69,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-15T21:23:48.528Z",
+      "updatedAt": "2026-10-15T21:27:27.895Z",
+      "lastAttemptAt": "2026-10-15T21:23:57.007Z",
+      "lastRunId": "live-why-is-my-zz-plant-drooping-2026-10-15T21-23-57-062Z",
+      "lastOutputPath": "content-production/runs/live-why-is-my-zz-plant-drooping-2026-10-15T21-23-57-062Z",
+      "lastError": null,
+      "wordpressPostId": 225,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=225&action=edit",
+      "wordpressSyncedAt": "2026-10-15T21:26:43.707Z",
+      "wordpressMediaId": 226,
+      "publishedUrl": "https://houseplantlab.co.uk/why-is-my-zz-plant-drooping/",
+      "publishedAt": "2026-10-15T21:27:27.895Z",
+      "seoBriefPath": null
     }
   ]
 }
