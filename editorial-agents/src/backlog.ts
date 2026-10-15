@@ -57,7 +57,7 @@ export async function seedNextBacklogItem(projectRoot: string, now = new Date())
   const highestPriority = queue.items.reduce((maximum, item) => Math.max(maximum, item.priority), 0);
   const updatedQueue = EditorialQueueSchema.parse({
     ...queue,
-    maxRunsPerDay: 3,
+    maxRunsPerDay: 40,
     items: [...queue.items, {
       id: next.id,
       assignment: `${next.assignment} Use the exact article slug '${next.id}'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.`,

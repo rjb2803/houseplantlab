@@ -51,7 +51,7 @@ test("backlog seeder queues one unused item and skips live or queued duplicates"
   assert.equal(result.outcome, "queued");
   assert.equal(result.itemId, "genuinely-new-topic");
   const queue = JSON.parse(await readFile(path.join(root, "content-production", "queue", "articles.json"), "utf8"));
-  assert.equal(queue.maxRunsPerDay, 3);
+  assert.equal(queue.maxRunsPerDay, 40);
   assert.equal(queue.items.at(-1).id, "genuinely-new-topic");
   assert.equal(queue.items.at(-1).status, "queued");
   assert.match(queue.items.at(-1).assignment, /exact article slug 'genuinely-new-topic'/);
