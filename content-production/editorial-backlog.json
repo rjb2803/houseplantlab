@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "why-are-my-peace-lily-leaf-tips-turning-brown",
+      "plant": "Peace Lily",
+      "assignment": "Prepare an evidence-led UK guide explaining brown Peace Lily leaf tips, how to distinguish tip burn from larger lesions, and how water quality, moisture consistency, humidity, feeding, heat and root condition may contribute. Avoid single-cause diagnosis, fixed watering schedules and unsupported remedies."
+    },
+    {
+      "id": "why-are-my-snake-plant-leaves-soft-and-mushy",
+      "plant": "Snake Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining soft or mushy Snake Plant leaves. Cover safe inspection of leaf bases, roots, growing medium, drainage, cold exposure and watering history, with proportionate next steps. Avoid diagnosing root rot from one symptom or promising recovery."
+    },
+    {
+      "id": "brown-spots-on-snake-plant-leaves",
+      "plant": "Snake Plant",
+      "assignment": "Prepare an evidence-led UK article explaining brown spots on Snake Plant leaves and how readers can compare physical damage, excess moisture, temperature stress, sun exposure and possible pests or disease. Keep diagnosis cautious and avoid unsupported treatments or pesticide recommendations."
+    },
+    {
+      "id": "why-are-my-pothos-leaf-tips-turning-brown",
+      "plant": "Pothos",
+      "assignment": "Prepare an evidence-led UK guide to brown tips on Pothos leaves. Cover moisture patterns, roots, feeding, water quality, humidity, heat and physical damage, and explain what readers can inspect before changing care. Avoid assuming low humidity or prescribing rigid routines."
+    },
+    {
+      "id": "why-are-my-rubber-plant-leaves-curling",
+      "plant": "Rubber Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining curled Rubber Plant leaves. Cover new-leaf development, moisture and roots, light, temperature, draughts and pest inspection, with safe corrective priorities. Avoid treating curling as proof of one cause or recommending unsupported sprays."
+    },
+    {
+      "id": "why-is-my-fiddle-leaf-fig-drooping",
+      "plant": "Fiddle Leaf Fig",
+      "assignment": "Prepare an evidence-led UK guide explaining a drooping Fiddle Leaf Fig. Cover soil moisture, root condition, recent moves, temperature, light and structural weight, and show how to assess the whole plant before intervening. Avoid fixed watering schedules and guarantees of recovery."
+    },
+    {
+      "id": "why-are-my-calathea-leaves-turning-yellow",
+      "plant": "Calathea",
+      "assignment": "Prepare an evidence-led UK guide explaining yellow Calathea leaves. Cover natural ageing, moisture and drainage, roots, light, temperature, feeding and pests, including how to distinguish one ageing leaf from a broader pattern. Avoid overdiagnosis and unsupported water-quality claims."
+    },
+    {
+      "id": "why-is-my-zz-plant-drooping",
+      "plant": "ZZ Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining drooping or leaning ZZ Plant stems. Cover normal growth habit, light direction, moisture, rhizome and root condition, temperature and physical damage. Distinguish leaning from soft collapse and avoid diagnosing from posture alone."
+    },
+    {
+      "id": "why-are-my-aloe-vera-leaves-soft",
+      "plant": "Aloe vera",
+      "assignment": "Prepare an evidence-led UK guide explaining soft Aloe vera leaves. Cover hydration, root and crown condition, drainage, cold damage, light and natural lower-leaf ageing, with careful inspection steps. Avoid equating softness automatically with overwatering or recommending unsupported wound treatments."
+    },
+    {
+      "id": "healthy-and-unhealthy-phalaenopsis-orchid-roots",
+      "plant": "Phalaenopsis orchid",
+      "assignment": "Prepare an evidence-led UK visual guide to assessing Phalaenopsis orchid roots. Explain how colour can change with moisture, what firmness and tissue condition reveal, how aerial roots differ from pot roots, and when intervention may be justified. Avoid trimming healthy roots or diagnosing by colour alone."
+    },
+    {
+      "id": "why-are-my-spider-plant-leaves-pale",
+      "plant": "Spider Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining pale or washed-out Spider Plant leaves. Cover cultivar pattern, light, moisture, roots, feeding, temperature and pest checks, and help readers distinguish gradual paling from local damage. Avoid inventing nutrient deficiencies from appearance alone."
+    },
+    {
+      "id": "aphids-on-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to identifying and managing aphids on indoor plants. Cover identification, cast skins and honeydew, inspection of new growth, isolation and non-chemical first steps, and when UK-authorised products require label-led use. Do not recommend unverified homemade pesticides."
+    },
+    {
+      "id": "whiteflies-on-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to identifying and managing whiteflies on indoor plants. Cover adults, immature stages, honeydew, underside inspection, isolation, monitoring and safe non-chemical measures. Avoid unsupported pesticide advice and distinguish whiteflies from fungus gnats and other small insects."
+    },
+    {
+      "id": "springtails-in-houseplant-compost",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide explaining springtails in houseplant compost, how to distinguish them from common pests, what their presence may indicate about moisture and organic matter, and when action is proportionate. Avoid portraying all soil organisms as harmful or prescribing pesticides unnecessarily."
+    },
+    {
+      "id": "cold-damage-on-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to recognising and responding to cold damage on houseplants. Cover cold windows, draughts, transport exposure, chilled roots and delayed symptoms, with safe stabilisation and pruning guidance. Avoid exact universal temperature thresholds or guarantees of recovery."
+    },
+    {
+      "id": "how-to-acclimatise-a-new-houseplant",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide for acclimatising a newly purchased houseplant. Cover quarantine and pest inspection, light transition, moisture assessment, temperature stability, when not to repot immediately and what changes to monitor. Avoid rigid timelines and unnecessary treatments."
+    },
+    {
+      "id": "how-to-clean-houseplant-leaves",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to cleaning houseplant leaves safely. Cover when dust removal is useful, support for delicate leaves, suitable water and cloth methods, plants with hairy or fragile foliage, and why oils and leaf-shine products may be inappropriate. Avoid claims that cleaning cures plant problems."
+    },
+    {
+      "id": "how-to-check-houseplant-roots-without-unnecessary-repotting",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide explaining when and how to inspect houseplant roots without reflexively repotting. Cover external clues, careful removal, root texture and smell, container condition, when to return the plant unchanged and when intervention is justified. Avoid diagnosing from root colour alone."
+    }
+  ]
+}
