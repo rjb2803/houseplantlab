@@ -16,7 +16,7 @@
     "why-is-my-monstera-deliciosa-not-splitting",
     "why-is-my-peace-lily-drooping"
   ],
-  "minimumArticleWords": 1300,
+  "minimumArticleWords": 1000,
   "maximumArticleWords": 1900,
   "requireClosingSummary": true,
   "allowedInternalPaths": [

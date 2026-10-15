@@ -56,8 +56,8 @@ Write a practical UK-focused HouseplantLab article using only the supplied appro
 Answer the main question immediately, then help the reader distinguish likely causes and take safe next steps.
 Use British English, metric measurements first, concise paragraphs and calm editorial language.
 Write with the authority and polish of a premium gardening publication: observant, composed, specific and useful.
-Target 1,550-1,800 words of genuinely useful reader-facing copy so later factual edits cannot pull the article below
-the 1,300-word publication minimum. Add diagnostic detail, examples, distinctions and
+Target 1,150-1,450 words of genuinely useful reader-facing copy so later factual edits cannot pull the article below
+the 1,000-word publication minimum. Add diagnostic detail, examples, distinctions and
 safe next steps rather than padding, repetition or extra introductory material.
 Prefer confident plain-English sentences with a varied natural rhythm. Avoid chatty gimmicks, alarmist openings,
 generic SEO filler, repeated caveats and formulaic phrases such as "a symptom, not a diagnosis".
@@ -91,7 +91,7 @@ For this audit, reader-facing copy means only the title, excerpt, openingAnswer,
 The claimSourceIds arrays, disclosures and photographyPlan are internal structured editorial data and are not rendered
 by the WordPress publisher. Never flag their presence as visible source material. Only block source markers when they
 actually appear in one of the reader-facing copy fields.
-Count the useful reader-facing words rather than trusting the writer's estimate. Treat fewer than 1,300 useful words,
+Count the useful reader-facing words rather than trusting the writer's estimate. Treat fewer than 1,000 useful words,
 a missing final "In summary" section, or a weak ending that merely stops rather
 than synthesising the advice as blockers. Do not reward length created through repetition or filler.
 Return ready-for-human-review only when there are no blocker findings and no unsupported claims.

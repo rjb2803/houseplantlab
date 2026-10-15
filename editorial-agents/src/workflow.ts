@@ -102,10 +102,10 @@ export async function runLiveWorkflow(
   const allowedLinks = qualityContext.allowedInternalPaths?.length
     ? qualityContext.allowedInternalPaths.join("\n")
     : "No internal links are currently confirmed.";
-  const minimumArticleWords = qualityContext.minimumArticleWords ?? 1300;
+  const minimumArticleWords = qualityContext.minimumArticleWords ?? 1000;
   const maximumArticleWords = qualityContext.maximumArticleWords ?? 1900;
-  const targetMinimumWords = Math.min(maximumArticleWords, Math.max(1550, minimumArticleWords + 250));
-  const targetMaximumWords = Math.max(targetMinimumWords, Math.min(maximumArticleWords, 1800));
+  const targetMinimumWords = Math.min(maximumArticleWords, Math.max(1150, minimumArticleWords + 150));
+  const targetMaximumWords = Math.max(targetMinimumWords, Math.min(maximumArticleWords, 1450));
   const briefResult = await run(
     directorAgent,
     `Current date: ${currentDate}.\n${assignment}\nOnly use internal paths from this confirmed site manifest; do not invent future URLs:\n${allowedLinks}`,
