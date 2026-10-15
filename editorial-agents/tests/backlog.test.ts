@@ -55,6 +55,7 @@ test("backlog seeder queues one unused item and skips live or queued duplicates"
   assert.equal(queue.items.at(-1).id, "genuinely-new-topic");
   assert.equal(queue.items.at(-1).status, "queued");
   assert.match(queue.items.at(-1).assignment, /exact article slug 'genuinely-new-topic'/);
+  assert.match(queue.items.at(-1).assignment, /preflight has checked the complete queue and confirmed live manifest/);
 
   const backlogPath = path.join(root, "content-production", "editorial-backlog.json");
   const backlog = JSON.parse(await readFile(backlogPath, "utf8"));
