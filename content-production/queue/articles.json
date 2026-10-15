@@ -1367,6 +1367,27 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-are-my-pothos-leaf-tips-turning-brown/",
       "publishedAt": "2026-10-15T20:39:13.157Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "why-are-my-rubber-plant-leaves-curling",
+      "assignment": "Prepare an evidence-led UK guide explaining curled Rubber Plant leaves. Cover new-leaf development, moisture and roots, light, temperature, draughts and pest inspection, with safe corrective priorities. Avoid treating curling as proof of one cause or recommending unsupported sprays. Use the exact article slug 'why-are-my-rubber-plant-leaves-curling'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "Rubber Plant",
+      "priority": 66,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-15T20:50:16.535Z",
+      "updatedAt": "2026-10-15T20:56:41.563Z",
+      "lastAttemptAt": "2026-10-15T20:50:59.913Z",
+      "lastRunId": "live-why-are-my-rubber-plant-leaves-curling-2026-10-15T20-51-00-323Z",
+      "lastOutputPath": "content-production/runs/live-why-are-my-rubber-plant-leaves-curling-2026-10-15T20-51-00-323Z",
+      "lastError": null,
+      "wordpressPostId": 219,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=219&action=edit",
+      "wordpressSyncedAt": "2026-10-15T20:54:15.756Z",
+      "wordpressMediaId": 220,
+      "publishedUrl": "https://houseplantlab.co.uk/why-are-my-rubber-plant-leaves-curling/",
+      "publishedAt": "2026-10-15T20:56:41.563Z",
+      "seoBriefPath": null
     }
   ]
 }
