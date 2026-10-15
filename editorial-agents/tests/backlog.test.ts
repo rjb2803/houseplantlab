@@ -39,6 +39,7 @@ test("backlog seeder queues one unused item and skips live or queued duplicates"
   }), "utf8");
   await writeFile(path.join(root, "content-production", "editorial-backlog.json"), JSON.stringify({
     version: 1,
+    targetPublishedCount: 86,
     items: [
       { id: "already-queued", plant: "Houseplants", assignment: "Prepare an evidence-led article that is deliberately already present in the queue and must be skipped safely." },
       { id: "already-live", plant: "Houseplants", assignment: "Prepare an evidence-led article that is deliberately present in the live manifest and must be skipped safely." },
@@ -54,4 +55,11 @@ test("backlog seeder queues one unused item and skips live or queued duplicates"
   assert.equal(queue.items.at(-1).id, "genuinely-new-topic");
   assert.equal(queue.items.at(-1).status, "queued");
   assert.match(queue.items.at(-1).assignment, /exact article slug 'genuinely-new-topic'/);
+
+  const backlogPath = path.join(root, "content-production", "editorial-backlog.json");
+  const backlog = JSON.parse(await readFile(backlogPath, "utf8"));
+  await writeFile(backlogPath, JSON.stringify({ ...backlog, targetPublishedCount: 1 }), "utf8");
+  const stopped = await seedNextBacklogItem(root, new Date("2026-10-15T13:00:00.000Z"));
+  assert.equal(stopped.outcome, "no-work");
+  assert.match(stopped.message, /Publication target reached: 1\/1/);
 });

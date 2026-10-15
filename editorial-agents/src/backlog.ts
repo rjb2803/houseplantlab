@@ -11,6 +11,7 @@ const BacklogItemSchema = z.object({
 
 const EditorialBacklogSchema = z.object({
   version: z.literal(1),
+  targetPublishedCount: z.number().int().positive(),
   items: z.array(BacklogItemSchema),
 });
 
@@ -36,6 +37,11 @@ export async function seedNextBacklogItem(projectRoot: string, now = new Date())
   const queue = EditorialQueueSchema.parse(JSON.parse(queueRaw));
   const manifest = SiteManifestSchema.parse(JSON.parse(manifestRaw));
   const backlog = EditorialBacklogSchema.parse(JSON.parse(backlogRaw));
+
+  const publishedCount = queue.items.filter((item) => item.status === "published").length;
+  if (publishedCount >= backlog.targetPublishedCount) {
+    return { outcome: "no-work", itemId: null, message: `Publication target reached: ${publishedCount}/${backlog.targetPublishedCount}.` };
+  }
 
   const backlogIds = backlog.items.map((item) => item.id);
   if (new Set(backlogIds).size !== backlogIds.length) throw new Error("Editorial backlog contains duplicate IDs.");

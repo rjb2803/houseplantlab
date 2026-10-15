@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "targetPublishedCount": 86,
   "items": [
     {
       "id": "why-are-my-peace-lily-leaf-tips-turning-brown",
@@ -90,6 +91,116 @@
       "id": "how-to-check-houseplant-roots-without-unnecessary-repotting",
       "plant": "Houseplants",
       "assignment": "Prepare an evidence-led UK guide explaining when and how to inspect houseplant roots without reflexively repotting. Cover external clues, careful removal, root texture and smell, container condition, when to return the plant unchanged and when intervention is justified. Avoid diagnosing from root colour alone."
+    },
+    {
+      "id": "how-to-divide-a-peace-lily",
+      "plant": "Peace Lily",
+      "assignment": "Prepare an evidence-led UK guide to dividing a mature Peace Lily. Explain when division may be appropriate, how to identify separate crowns, minimise root disturbance, choose containers and provide aftercare. Avoid fixed division schedules, guarantees of success and unsupported treatments."
+    },
+    {
+      "id": "why-are-my-snake-plant-leaves-curling",
+      "plant": "Snake Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining curled or folded Snake Plant leaves. Cover normal leaf form, moisture and roots, temperature, light, physical damage and pests, with safe inspection priorities. Avoid diagnosing solely from curl shape or prescribing unsupported remedies."
+    },
+    {
+      "id": "why-are-my-spider-plant-leaves-curling",
+      "plant": "Spider Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining curled Spider Plant leaves. Cover moisture consistency, roots, light, temperature, humidity, feeding and pests, and help readers compare new growth with established leaves. Avoid rigid watering schedules and single-cause claims."
+    },
+    {
+      "id": "why-is-my-pothos-growing-leggy",
+      "plant": "Pothos",
+      "assignment": "Prepare an evidence-led UK guide explaining long gaps and sparse growth on Pothos vines. Cover light, seasonal growth, pruning, support, propagation choices and realistic recovery expectations. Avoid promising that one intervention will restore old bare sections or recommending unnecessary feeding."
+    },
+    {
+      "id": "why-is-my-rubber-plant-dropping-leaves",
+      "plant": "Rubber Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining Rubber Plant leaf drop. Cover natural ageing, recent moves, moisture and roots, temperature, draughts, light and pests, with a pattern-based inspection sequence. Avoid attributing every dropped leaf to overwatering or promising recovery."
+    },
+    {
+      "id": "why-is-my-fiddle-leaf-fig-dropping-leaves",
+      "plant": "Fiddle Leaf Fig",
+      "assignment": "Prepare an evidence-led UK guide explaining Fiddle Leaf Fig leaf drop. Cover leaf position, recent changes, moisture and roots, light, temperature, draughts and pests, and explain when isolated loss differs from continuing decline. Avoid single-cause diagnosis and rigid schedules."
+    },
+    {
+      "id": "why-is-my-calathea-drooping",
+      "plant": "Calathea",
+      "assignment": "Prepare an evidence-led UK guide explaining a drooping Calathea. Cover daily leaf movement, moisture, roots, temperature, humidity, light and recent disturbance, helping readers distinguish temporary posture from sustained loss of firmness. Avoid assuming thirst from drooping alone."
+    },
+    {
+      "id": "why-are-my-zz-plant-leaf-tips-turning-brown",
+      "plant": "ZZ Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining brown ZZ Plant leaf tips. Cover physical damage, moisture history, roots and rhizomes, salts or feeding, heat, cold and natural ageing. Avoid diagnosing from tips alone, recommending fixed flushing routines or promising reversal."
+    },
+    {
+      "id": "why-is-my-aloe-vera-stretching-and-leaning",
+      "plant": "Aloe vera",
+      "assignment": "Prepare an evidence-led UK guide explaining stretched, leaning or weak Aloe vera growth. Cover light direction and intensity, rotation, watering, temperature, pot stability and the limits of correcting existing growth. Avoid telling readers to move plants abruptly into harsh sun."
+    },
+    {
+      "id": "why-are-my-phalaenopsis-orchid-buds-dropping",
+      "plant": "Phalaenopsis orchid",
+      "assignment": "Prepare an evidence-led UK guide explaining Phalaenopsis orchid bud drop. Cover environmental change, temperature, draughts, moisture and roots, light, humidity and ethylene exposure where supported. Avoid certainty from one symptom and guarantees that unopened buds can be saved."
+    },
+    {
+      "id": "how-to-choose-the-right-pot-size-for-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to choosing pot size for houseplants. Explain root-ball fit, drainage, stability, plant habit, cachepots and why oversized containers can complicate moisture management. Avoid universal size increments, arbitrary annual upsizing and product promotion."
+    },
+    {
+      "id": "bottom-watering-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide explaining bottom watering for houseplants, when it can be useful, its limitations, safe technique and how it fits with drainage and occasional top watering. Avoid presenting it as universally superior or giving fixed soaking times for every plant."
+    },
+    {
+      "id": "white-mould-on-houseplant-compost",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to white fungal growth on houseplant compost. Cover how to distinguish surface fungal growth from mineral deposits and pests, conditions that favour it, proportionate moisture and ventilation changes, and when root or crown symptoms require closer inspection. Avoid unnecessary fungicides."
+    },
+    {
+      "id": "when-to-remove-damaged-houseplant-leaves",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide explaining when to leave, trim or remove damaged houseplant leaves. Cover remaining green tissue, disease uncertainty, clean tools, pet or child safety, plant size and recovery priorities. Avoid claiming pruning cures underlying care problems."
+    },
+    {
+      "id": "how-to-water-houseplants-after-repotting",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to watering houseplants after repotting. Explain how plant type, root disturbance, fresh medium, container drainage and season affect the decision, and how to reassess moisture safely. Avoid one universal immediate-watering rule or fixed waiting periods."
+    },
+    {
+      "id": "do-houseplant-pots-need-drainage-holes",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide explaining why drainage holes matter for houseplant moisture management, how nursery pots and cachepots can work together, and the risks of planting directly into sealed containers. Avoid promising that drainage layers substitute for an outlet."
+    },
+    {
+      "id": "can-you-use-tap-water-for-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to using tap water for houseplants. Cover regional variation, sensitive plants, visible deposits, water temperature, practical alternatives and when changing water is unlikely to solve the real issue. Avoid blanket claims about chlorine, fluoride or leaving water overnight."
+    },
+    {
+      "id": "signs-a-houseplant-needs-more-light",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to assessing whether a houseplant needs more light. Cover stretched growth, smaller leaves, slowed growth, leaning, variegation changes and seasonal context, while distinguishing light issues from root, moisture or temperature problems. Avoid universal lux thresholds."
+    },
+    {
+      "id": "sunburn-on-houseplant-leaves",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to recognising and responding to sunburn or leaf scorch on houseplants. Cover symptom position, recent moves, window exposure, heat and acclimatisation, with safe relocation and monitoring steps. Avoid diagnosing every pale or brown patch as sunburn."
+    },
+    {
+      "id": "heat-stress-in-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to heat stress in houseplants during warm weather. Cover leaf temperature, direct sun, drying rate, roots, ventilation and watering assessment, with practical stabilisation steps. Avoid fixed temperature cut-offs for all species and reflexive overwatering."
+    },
+    {
+      "id": "moving-house-with-houseplants",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK guide to moving home with houseplants. Cover preparation, safe packing, temperature exposure, legal and practical transport limits, unpacking, pest inspection and gradual placement. Avoid guarantees against damage and unnecessary immediate repotting."
+    },
+    {
+      "id": "winter-houseplant-care-uk",
+      "plant": "Houseplants",
+      "assignment": "Prepare an evidence-led UK winter houseplant care guide. Cover reduced light, slower drying, heating, cold windows, draughts, feeding decisions and pest monitoring, while emphasising plant-by-plant assessment. Avoid universal winter watering calendars or blanket dormancy claims."
     }
   ]
 }
