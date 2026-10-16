@@ -1472,6 +1472,27 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-are-my-aloe-vera-leaves-soft/",
       "publishedAt": "2026-10-16T00:57:50.095Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "healthy-and-unhealthy-phalaenopsis-orchid-roots",
+      "assignment": "Prepare an evidence-led UK visual guide to assessing Phalaenopsis orchid roots. Explain how colour can change with moisture, what firmness and tissue condition reveal, how aerial roots differ from pot roots, and when intervention may be justified. Avoid trimming healthy roots or diagnosing by colour alone. Use the exact article slug 'healthy-and-unhealthy-phalaenopsis-orchid-roots'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "Phalaenopsis orchid",
+      "priority": 71,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-16T01:03:57.054Z",
+      "updatedAt": "2026-10-16T01:08:48.748Z",
+      "lastAttemptAt": "2026-10-16T01:04:07.882Z",
+      "lastRunId": "live-healthy-and-unhealthy-phalaenopsis-orchid-roots-2026-10-16T01-04-07-947Z",
+      "lastOutputPath": "content-production/runs/live-healthy-and-unhealthy-phalaenopsis-orchid-roots-2026-10-16T01-04-07-947Z",
+      "lastError": null,
+      "wordpressPostId": 231,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=231&action=edit",
+      "wordpressSyncedAt": "2026-10-16T01:06:15.010Z",
+      "wordpressMediaId": 232,
+      "publishedUrl": "https://houseplantlab.co.uk/healthy-and-unhealthy-phalaenopsis-orchid-roots/",
+      "publishedAt": "2026-10-16T01:08:48.748Z",
+      "seoBriefPath": null
     }
   ]
 }
