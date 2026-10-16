@@ -1451,6 +1451,27 @@
       "publishedUrl": "https://houseplantlab.co.uk/why-is-my-zz-plant-drooping/",
       "publishedAt": "2026-10-15T21:27:27.895Z",
       "seoBriefPath": null
+    },
+    {
+      "id": "why-are-my-aloe-vera-leaves-soft",
+      "assignment": "Prepare an evidence-led UK guide explaining soft Aloe vera leaves. Cover hydration, root and crown condition, drainage, cold damage, light and natural lower-leaf ageing, with careful inspection steps. Avoid equating softness automatically with overwatering or recommending unsupported wound treatments. Use the exact article slug 'why-are-my-aloe-vera-leaves-soft'. Editorial preflight has checked the complete queue and confirmed live manifest: no exact slug or substantially equivalent live topic was found. Use only internal paths supplied through the confirmed-live allowlist; never invent or alter a destination.",
+      "plant": "Aloe vera",
+      "priority": 70,
+      "status": "published",
+      "attempts": 1,
+      "createdAt": "2026-10-16T00:54:15.280Z",
+      "updatedAt": "2026-10-16T00:57:50.095Z",
+      "lastAttemptAt": "2026-10-16T00:54:27.603Z",
+      "lastRunId": "live-why-are-my-aloe-vera-leaves-soft-2026-10-16T00-54-27-662Z",
+      "lastOutputPath": "content-production/runs/live-why-are-my-aloe-vera-leaves-soft-2026-10-16T00-54-27-662Z",
+      "lastError": null,
+      "wordpressPostId": 228,
+      "wordpressEditUrl": "https://houseplantlab.co.uk/wp-admin/post.php?post=228&action=edit",
+      "wordpressSyncedAt": "2026-10-16T00:57:05.066Z",
+      "wordpressMediaId": 229,
+      "publishedUrl": "https://houseplantlab.co.uk/why-are-my-aloe-vera-leaves-soft/",
+      "publishedAt": "2026-10-16T00:57:50.095Z",
+      "seoBriefPath": null
     }
   ]
 }
