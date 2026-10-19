@@ -17,6 +17,20 @@ add_action('after_setup_theme', static function (): void {
     add_editor_style('style.css');
 });
 
+/**
+ * Keep public search results focused on editorial articles.
+ *
+ * WordPress searches posts and pages by default. Hub, tool and trust pages have
+ * their own navigation routes and should not appear inside the article grid.
+ */
+add_action('pre_get_posts', static function (WP_Query $query): void {
+    if (is_admin() || ! $query->is_main_query() || ! $query->is_search()) {
+        return;
+    }
+
+    $query->set('post_type', 'post');
+});
+
 add_action('wp_enqueue_scripts', static function (): void {
     wp_enqueue_style(
         'houseplantlab',

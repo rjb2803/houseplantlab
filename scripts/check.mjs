@@ -25,6 +25,14 @@ if (!style.includes('Theme Name: HouseplantLab')) {
   throw new Error('The WordPress theme header is missing.');
 }
 
+const themeFunctions = await readFile('themes/houseplantlab/functions.php', 'utf8');
+if (
+  !themeFunctions.includes("add_action('pre_get_posts'")
+  || !themeFunctions.includes("$query->set('post_type', 'post')")
+) {
+  throw new Error('The public search query must exclude hub and trust pages from the article grid.');
+}
+
 const plugin = await readFile('plugins/houseplantlab-core/houseplantlab-core.php', 'utf8');
 if (!plugin.includes('Plugin Name: HouseplantLab Core')) {
   throw new Error('The WordPress plugin header is missing.');
