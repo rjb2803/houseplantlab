@@ -6,6 +6,7 @@ const appPassword = process.env.WP_APP_PASSWORD?.trim();
 if (process.argv[2] !== '--apply') {
   throw new Error('Pass --apply to publish the trust pages and unpublish the confirmed Sample Page.');
 }
+const targetSlug = process.argv.find((argument) => argument.startsWith('--slug='))?.slice('--slug='.length) ?? null;
 if (!siteUrl || !username || !appPassword) {
   throw new Error('WP_SITE_URL, WP_USERNAME and WP_APP_PASSWORD are required.');
 }
@@ -30,7 +31,7 @@ const pages = [
 <p>We focus on practical plant profiles, symptom-led troubleshooting, propagation and repotting guidance. Our aim is to help readers observe first, rule out likely causes and take proportionate action instead of reaching immediately for a product or a dramatic treatment.</p>
 <h2>Our editorial process</h2>
 <p>Articles are prepared from a defined brief and checked against reputable horticultural evidence. We separate supported guidance from assumptions, avoid guarantees and fixed schedules where growing conditions matter, and review every article for clarity, usefulness and factual support before publication.</p>
-<p>Automated tools may help with research organisation, drafting checks and image production. They do not replace editorial review. AI-generated editorial illustrations are used as illustrations only; they are not presented as photographs of a diagnosed plant or as proof of a particular symptom.</p>
+<p>We aim to show our reasoning clearly. Where several causes are possible, we explain how to distinguish between them and when it is better to wait, investigate further or seek specialist advice. Images support the subject of a guide and should not be treated as proof of a particular diagnosis.</p>
 <h2>How we recommend products</h2>
 <p>A product is mentioned only when it has a clear role in a care task. Where a link is an affiliate link, HouseplantLab may earn a commission at no extra cost to the reader. Commercial relationships do not determine our care advice, and every paid or affiliate link is identified where it appears.</p>
 <h2>Corrections and updates</h2>
@@ -131,9 +132,13 @@ async function request(path, options = {}) {
 }
 
 const existing = await request('/wp-json/wp/v2/pages?per_page=100&context=edit&status=publish,draft,pending,private,future&_fields=id,status,slug,title,link');
+const pagesToPublish = targetSlug ? pages.filter((page) => page.slug === targetSlug) : pages;
+if (targetSlug && pagesToPublish.length !== 1) {
+  throw new Error(`Unknown trust-page slug: ${targetSlug}.`);
+}
 const results = [];
 
-for (const page of pages) {
+for (const page of pagesToPublish) {
   // WordPress protects the page selected as its Privacy Policy with the
   // manage_privacy_options capability. Always update that original record;
   // do not silently create or maintain a second public policy page.
@@ -158,11 +163,11 @@ for (const page of pages) {
 }
 
 const privacyResult = results.find((page) => page.slug === 'privacy-policy');
-if (!privacyResult || privacyResult.id !== 3 || privacyResult.status !== 'publish') {
+if ((!targetSlug || targetSlug === 'privacy-policy') && (!privacyResult || privacyResult.id !== 3 || privacyResult.status !== 'publish')) {
   throw new Error('The canonical WordPress Privacy Policy page was not published successfully.');
 }
 
-const duplicatePrivacyPages = existing.filter((candidate) => (
+const duplicatePrivacyPages = targetSlug ? [] : existing.filter((candidate) => (
   candidate.id !== privacyResult.id
   && candidate.title?.raw === 'Privacy Policy'
   && /^privacy-policy(?:-\d+)?$/.test(candidate.slug)
@@ -176,17 +181,20 @@ for (const duplicate of duplicatePrivacyPages) {
   retiredPrivacyPages.push({ id: retired.id, slug: retired.slug, status: retired.status });
 }
 
-const placeholders = existing.filter((candidate) => candidate.slug === 'sample-page' && candidate.title?.raw === 'Sample Page');
-if (placeholders.length !== 1) {
-  throw new Error(`Expected exactly one confirmed Sample Page; found ${placeholders.length}.`);
+let placeholder = null;
+if (!targetSlug) {
+  const placeholders = existing.filter((candidate) => candidate.slug === 'sample-page' && candidate.title?.raw === 'Sample Page');
+  if (placeholders.length !== 1) {
+    throw new Error(`Expected exactly one confirmed Sample Page; found ${placeholders.length}.`);
+  }
+  placeholder = await request(`/wp-json/wp/v2/pages/${placeholders[0].id}`, {
+    method: 'POST',
+    body: JSON.stringify({ status: 'draft' }),
+  });
 }
-const placeholder = await request(`/wp-json/wp/v2/pages/${placeholders[0].id}`, {
-  method: 'POST',
-  body: JSON.stringify({ status: 'draft' }),
-});
 
 console.log(JSON.stringify({
   publishedPages: results,
   retiredPrivacyPages,
-  placeholder: { id: placeholder.id, slug: placeholder.slug, status: placeholder.status },
+  placeholder: placeholder ? { id: placeholder.id, slug: placeholder.slug, status: placeholder.status } : null,
 }, null, 2));

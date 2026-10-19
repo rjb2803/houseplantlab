@@ -202,7 +202,7 @@ export async function repairNextMissingFeaturedImage(
     "Do not include words, labels, logos, watermarks, borders, collages, people, hands, impossible leaves, duplicate pots or surreal elements.",
   ].join(" ");
   const altText = `Editorial houseplant illustration for ${article.title}`.slice(0, 180);
-  const caption = `AI-generated editorial illustration for “${article.title}”.`;
+  const caption = `HouseplantLab editorial illustration for “${article.title}”.`;
   const image = dependencies.generateImage
     ? await dependencies.generateImage(prompt, model)
     : await defaultGenerateImage(prompt, model, env);
