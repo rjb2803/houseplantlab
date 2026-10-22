@@ -33,26 +33,34 @@
 @layer components {
   .hpl-journal-shell { background: #f8f4e9; margin: 0 auto; max-width: 1440px; min-height: 100vh; width: 100%; }
 
-  .hpl-journal-header { background: #fffef9; border-bottom: 1px solid #ced6cc; border-top: 4px solid #285642; }
-  .hpl-journal-header__inner { align-items: center; display: grid; gap: clamp(1.25rem, 2.6vw, 2.75rem); grid-template-columns: auto 1fr minmax(16rem, 21rem); margin: 0 auto; min-height: 5.45rem; padding: 0 clamp(1.5rem, 4vw, 4rem); }
-  .hpl-journal-logo { align-items: center; display: inline-flex; font-family: "HPL Newsreader", Georgia, serif; font-weight: 700; gap: 0.65rem; white-space: nowrap; }
-  .hpl-journal-logo__mark { align-items: center; background: #285642; border-radius: 2px 11px 2px 2px; color: #fffaf0; display: flex; font-size: 1.25rem; height: 2.65rem; justify-content: center; width: 2.65rem; }
-  .hpl-journal-logo__type { color: #173f31; display: flex; flex-direction: column; font-size: 1.55rem; line-height: 0.95; }
-  .hpl-journal-logo__type small { color: #758b78; font-family: "HPL IBM Plex Sans", Arial, sans-serif; font-size: 0.55rem; font-weight: 500; letter-spacing: 0.15em; margin-top: 0.4rem; text-transform: uppercase; }
-  .hpl-journal-nav { align-items: stretch; align-self: stretch; display: flex; gap: clamp(0.3rem, 0.9vw, 0.8rem); justify-content: center; }
-  .hpl-journal-nav a { align-items: flex-start; display: flex; flex-direction: column; font-size: 0.75rem; justify-content: center; min-width: 4.4rem; padding: 0.25rem clamp(0.35rem, 0.65vw, 0.7rem); position: relative; white-space: nowrap; }
-  .hpl-journal-nav a span { color: #8b9b8b; font-size: 0.54rem; letter-spacing: 0.12em; margin-bottom: 0.22rem; }
-  .hpl-journal-nav a::after { background: #c86f49; bottom: -1px; content: ""; height: 3px; left: 50%; position: absolute; right: 50%; transition: left 180ms ease, right 180ms ease; }
-  .hpl-journal-nav a:hover::after,
-  .hpl-journal-nav a.is-current::after { left: 0.4rem; right: 0.4rem; }
-  .hpl-journal-nav a.is-current { background: #f3efe4; color: #173f31; }
-  .hpl-journal-nav a.is-current span { color: #c86f49; }
-  .hpl-journal-search { align-items: stretch; background: #f8f4e9; border: 1px solid #b6c0b5; border-radius: 2px 13px 2px 2px; display: flex; min-height: 2.8rem; overflow: hidden; }
-  .hpl-journal-search input { background: transparent; border: 0; color: #385247; font-size: 0.73rem; min-width: 0; outline: 0; padding: 0 0.85rem; width: 100%; }
-  .hpl-journal-search input:focus-visible { box-shadow: inset 0 0 0 2px #c86f49; }
-  .hpl-journal-search button { align-items: center; background: #285642; border: 0; color: #fffaf0; cursor: pointer; display: flex; font-size: 0.65rem; font-weight: 500; gap: 0.35rem; letter-spacing: 0.08em; padding: 0 0.8rem; text-transform: uppercase; }
-  .hpl-journal-search button span { font-size: 0.9rem; transition: transform 180ms ease; }
-  .hpl-journal-search button:hover span { transform: translateX(0.2rem); }
+  .hpl-journal-header { background: #f8f4e9; border-bottom: 1px solid rgb(18 60 47 / 24%); }
+  .hpl-journal-header__desktop { display: grid; grid-template-columns: minmax(25rem, 34%) minmax(0, 1fr); min-height: 11.5rem; }
+  .hpl-journal-brand { background: #073e32; color: #fff8ed; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding: 2rem clamp(2rem, 3vw, 2.7rem) 1.65rem; position: relative; }
+  .hpl-journal-brand::after { background: #d66f43; bottom: 0; content: ""; position: absolute; right: -0.42rem; top: 0; width: 0.42rem; z-index: 2; }
+  .hpl-journal-brand__meta { align-items: center; display: flex; font-size: 0.61rem; font-weight: 700; gap: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .hpl-journal-brand__meta i { background: #d66f43; border-radius: 70% 20% 70% 20%; display: block; height: 0.58rem; transform: rotate(-20deg); width: 0.58rem; }
+  .hpl-journal-brand__wordmark { font-family: "HPL Newsreader", Georgia, serif; font-size: clamp(3rem, 4.3vw, 4.65rem); font-weight: 500; letter-spacing: -0.075em; line-height: 0.85; white-space: nowrap; }
+  .hpl-journal-brand__wordmark em { color: #d7e4b9; font-weight: 400; }
+  .hpl-journal-brand__strapline { color: #cadacf; font-size: 0.73rem; letter-spacing: 0.025em; }
+  .hpl-journal-nav-panel { display: grid; grid-template-rows: 3.35rem minmax(0, 1fr) 3rem; min-width: 0; }
+  .hpl-journal-utility { align-items: center; border-bottom: 1px solid rgb(18 60 47 / 19%); display: flex; font-size: 0.6rem; font-weight: 700; justify-content: space-between; letter-spacing: 0.16em; padding: 0 clamp(1.5rem, 2.7vw, 2.4rem); text-transform: uppercase; }
+  .hpl-journal-utility > div { color: #63776d; display: flex; gap: 1.7rem; }
+  .hpl-journal-utility__search { align-items: center; color: #a55334; display: flex; gap: 0.65rem; }
+  .hpl-journal-utility__search::before { background: #d66f43; content: ""; height: 1px; width: 1.6rem; }
+  .hpl-journal-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) minmax(10rem, 1.22fr); min-width: 0; }
+  .hpl-journal-nav a { border-right: 1px solid rgb(18 60 47 / 19%); display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding: 1.35rem clamp(0.8rem, 1.65vw, 1.45rem) 1.15rem; transition: background 180ms ease, color 180ms ease; }
+  .hpl-journal-nav a:hover,
+  .hpl-journal-nav a.is-current { background: #efe6d5; }
+  .hpl-journal-nav small { color: #829087; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase; }
+  .hpl-journal-nav strong { font-family: "HPL Newsreader", Georgia, serif; font-size: clamp(1rem, 1.3vw, 1.2rem); font-weight: 500; margin-top: 1rem; white-space: nowrap; }
+  .hpl-journal-nav .hpl-journal-nav__checker { background: #d66f43; border-right: 0; color: #fff8ed; }
+  .hpl-journal-nav .hpl-journal-nav__checker:hover { background: #bf5d36; }
+  .hpl-journal-nav__checker small { color: rgb(255 248 237 / 72%); }
+  .hpl-journal-nav__checker strong { align-items: center; display: flex; justify-content: space-between; }
+  .hpl-journal-nav__checker strong span { font-family: "HPL IBM Plex Sans", Arial, sans-serif; font-size: 0.85rem; }
+  .hpl-journal-nav-note { align-items: center; border-top: 1px solid rgb(18 60 47 / 19%); color: #5e7369; display: flex; font-size: 0.65rem; justify-content: space-between; padding: 0 clamp(1.5rem, 2.7vw, 2.4rem); }
+  .hpl-journal-nav-note b { color: #123c2f; }
+  .hpl-journal-header__mobile { display: none; }
 
   .hpl-journal-main { background: #f8f4e9; padding: 0 clamp(1.25rem, 3.3vw, 3.5rem) 2.3rem; }
   .hpl-journal-masthead { align-items: center; display: grid; min-height: 11.75rem; overflow: hidden; position: relative; text-align: center; }
@@ -136,12 +144,39 @@
 }
 
 @media (max-width: 1100px) {
-  .hpl-journal-header__inner { grid-template-columns: auto 1fr; }
-  .hpl-journal-search { display: none; }
+  .hpl-journal-header__desktop { grid-template-columns: minmax(22rem, 33%) minmax(0, 1fr); }
+  .hpl-journal-brand { padding-inline: 1.7rem; }
+  .hpl-journal-brand__wordmark { font-size: clamp(2.7rem, 4.4vw, 3.5rem); }
+  .hpl-journal-nav a { padding-inline: 0.8rem; }
+  .hpl-journal-nav-note > span:last-child { display: none; }
   .hpl-journal-masthead__copy { padding-inline: 7rem; }
   .hpl-journal-masthead__words { right: 10%; }
   .hpl-journal-feature-grid { grid-template-columns: minmax(0, 1.25fr) minmax(19rem, 0.85fr); }
   .hpl-journal-side-card { grid-template-columns: 42% 1fr; }
+}
+
+@media (max-width: 960px) {
+  .hpl-journal-header__desktop { display: none; }
+  .hpl-journal-header__mobile { background: #073e32; color: #fff8ed; display: grid; grid-template-columns: minmax(0, 1fr) 5.15rem; position: relative; }
+  .hpl-journal-mobile-brand { display: flex; flex-direction: column; justify-content: space-between; min-height: 5.15rem; padding: 0.9rem 1.2rem 0.75rem; }
+  .hpl-journal-mobile-brand small { color: #c4d5ca; font-size: 0.46rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+  .hpl-journal-mobile-brand strong { font-family: "HPL Newsreader", Georgia, serif; font-size: 1.85rem; font-weight: 500; letter-spacing: -0.055em; line-height: 0.9; }
+  .hpl-journal-mobile-menu { background: #d66f43; position: static; }
+  .hpl-journal-mobile-menu summary { align-content: center; cursor: pointer; display: grid; gap: 0.4rem; height: 5.15rem; justify-content: center; list-style: none; }
+  .hpl-journal-mobile-menu summary::-webkit-details-marker { display: none; }
+  .hpl-journal-mobile-menu summary span { background: #fff8ed; display: block; height: 2px; transition: transform 180ms ease; width: 1.7rem; }
+  .hpl-journal-mobile-menu[open] summary span:first-child { transform: translateY(0.25rem) rotate(45deg); }
+  .hpl-journal-mobile-menu[open] summary span:last-child { transform: translateY(-0.25rem) rotate(-45deg); }
+  .hpl-journal-mobile-menu nav { background: #f8f4e9; border-bottom: 1px solid rgb(18 60 47 / 22%); box-shadow: 0 1rem 2.5rem rgb(7 62 50 / 20%); color: #123c2f; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); left: 0; position: absolute; right: 0; top: 5.15rem; z-index: 20; }
+  .hpl-journal-mobile-menu nav a { border-bottom: 1px solid rgb(18 60 47 / 18%); border-right: 1px solid rgb(18 60 47 / 18%); display: flex; flex-direction: column; font-family: "HPL Newsreader", Georgia, serif; font-size: 1.1rem; min-height: 5rem; padding: 0.85rem 1rem; }
+  .hpl-journal-mobile-menu nav a:nth-child(even) { border-right: 0; }
+  .hpl-journal-mobile-menu nav a small { color: #7e8f86; font-family: "HPL IBM Plex Sans", Arial, sans-serif; font-size: 0.48rem; font-weight: 700; letter-spacing: 0.16em; margin-bottom: 0.7rem; text-transform: uppercase; }
+  .hpl-journal-mobile-menu nav a.is-current { background: #efe6d5; }
+  .hpl-journal-mobile-menu nav .hpl-journal-mobile-menu__checker { background: #d66f43; color: #fff8ed; grid-column: 1 / -1; }
+  .hpl-journal-mobile-menu__checker small { color: rgb(255 248 237 / 72%) !important; }
+  .hpl-journal-mobile-menu__checker span { margin-left: auto; margin-top: -1.15rem; }
+  .hpl-journal-mobile-sub { align-items: center; background: #f8f4e9; color: #61766c; display: flex; font-size: 0.52rem; font-weight: 700; grid-column: 1 / -1; justify-content: space-between; letter-spacing: 0.13em; min-height: 2.55rem; padding: 0 1.2rem; text-transform: uppercase; }
+  .hpl-journal-mobile-sub a { color: #a55334; }
 }
 
 @media (max-width: 1400px) {
@@ -150,13 +185,6 @@
 }
 
 @media (max-width: 800px) {
-  .hpl-journal-header__inner { display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 0; }
-  .hpl-journal-logo { align-self: stretch; padding: 0.7rem 1rem 0.65rem; }
-  .hpl-journal-logo__mark { height: 2.2rem; width: 2.2rem; }
-  .hpl-journal-logo__type { font-size: 1.35rem; }
-  .hpl-journal-nav { align-self: stretch; border-top: 1px solid #e0e1d8; display: grid; gap: 0; grid-template-columns: repeat(5, minmax(5.25rem, 1fr)); height: 3.45rem; justify-content: start; overflow-x: auto; padding-inline: 0.45rem; scrollbar-width: none; }
-  .hpl-journal-nav a { align-items: center; min-width: 0; padding-inline: 0.35rem; }
-  .hpl-journal-nav a::after { bottom: 0; }
   .hpl-journal-main { padding-inline: 1rem; }
   .hpl-journal-masthead { min-height: 11rem; }
   .hpl-journal-masthead__copy { padding: 2.1rem 1rem; }
@@ -179,7 +207,6 @@
 }
 
 @media (max-width: 540px) {
-  .hpl-journal-logo { font-size: 1.25rem; }
   .hpl-journal-feature-grid { gap: 0.75rem; }
   .hpl-journal-lead,
   .hpl-journal-lead > a { min-height: 25rem; }

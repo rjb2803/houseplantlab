@@ -50,17 +50,40 @@ $plant_filters = [
 <?php wp_body_open(); ?>
 <div class="hpl-journal-shell">
     <header class="hpl-journal-header">
-        <div class="hpl-journal-header__inner">
-            <a class="hpl-journal-logo" href="/" aria-label="HouseplantLab home">
-                <span class="hpl-journal-logo__mark" aria-hidden="true">❧</span>
-                <span class="hpl-journal-logo__type">HouseplantLab<small>Plant care journal</small></span>
+        <div class="hpl-journal-header__desktop">
+            <a class="hpl-journal-brand" href="/" aria-label="HouseplantLab home">
+                <span class="hpl-journal-brand__meta"><i aria-hidden="true"></i>Independent plant care · UK</span>
+                <span class="hpl-journal-brand__wordmark">Houseplant<em>Lab</em></span>
+                <span class="hpl-journal-brand__strapline">Practical advice for plants that live indoors.</span>
             </a>
-            <nav class="hpl-journal-nav" aria-label="Primary navigation">
-                <a href="/plants/"><span aria-hidden="true">01</span>Plants</a><a href="/problems/"><span aria-hidden="true">02</span>Problems</a><a href="/care-guides/"><span aria-hidden="true">03</span>Care Guides</a><a href="/tools/plant-problem-checker/"><span aria-hidden="true">04</span>Plant Checker</a><a class="is-current" href="/blog/"><span aria-hidden="true">05</span>Journal</a>
-            </nav>
-            <form class="hpl-journal-search" role="search" method="get" action="/">
-                <label class="screen-reader-text" for="hpl-journal-search">Find practical plant care</label><input id="hpl-journal-search" name="s" type="search" placeholder="Search plant care"><button type="submit">Find <span aria-hidden="true">→</span></button>
-            </form>
+            <div class="hpl-journal-nav-panel">
+                <div class="hpl-journal-utility">
+                    <div><span>Journal / <?php echo esc_html(wp_date('d.m.y')); ?></span><a href="/blog/">Field notes</a></div>
+                    <a class="hpl-journal-utility__search" href="/?s=">Search the archive</a>
+                </div>
+                <nav class="hpl-journal-nav" aria-label="Primary navigation">
+                    <a href="/plants/"><small>Explore</small><strong>Plants</strong></a>
+                    <a href="/problems/"><small>Diagnose</small><strong>Problems</strong></a>
+                    <a href="/care-guides/"><small>Learn</small><strong>Care guides</strong></a>
+                    <a class="is-current" href="/blog/"><small>Read</small><strong>Journal</strong></a>
+                    <a class="hpl-journal-nav__checker" href="/tools/plant-problem-checker/"><small>Start here</small><strong>Plant checker <span aria-hidden="true">↗</span></strong></a>
+                </nav>
+                <div class="hpl-journal-nav-note"><span><b>Made for real homes,</b> not perfect greenhouses.</span><span>100+ practical articles</span></div>
+            </div>
+        </div>
+        <div class="hpl-journal-header__mobile">
+            <a class="hpl-journal-mobile-brand" href="/" aria-label="HouseplantLab home"><small>Independent plant care · UK</small><strong>HouseplantLab</strong></a>
+            <details class="hpl-journal-mobile-menu">
+                <summary aria-label="Open navigation"><span></span><span></span></summary>
+                <nav aria-label="Mobile navigation">
+                    <a href="/plants/"><small>Explore</small>Plants</a>
+                    <a href="/problems/"><small>Diagnose</small>Problems</a>
+                    <a href="/care-guides/"><small>Learn</small>Care guides</a>
+                    <a class="is-current" href="/blog/"><small>Read</small>Journal</a>
+                    <a class="hpl-journal-mobile-menu__checker" href="/tools/plant-problem-checker/"><small>Start here</small>Plant checker <span aria-hidden="true">↗</span></a>
+                </nav>
+            </details>
+            <div class="hpl-journal-mobile-sub"><span>Journal / <?php echo esc_html(wp_date('d.m.y')); ?></span><a href="/?s=">Search <span aria-hidden="true">↗</span></a></div>
         </div>
     </header>
 
