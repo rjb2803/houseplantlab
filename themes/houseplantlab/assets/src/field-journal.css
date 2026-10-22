@@ -87,8 +87,8 @@
   .hpl-journal-heading-row > a { border-bottom: 1px solid #2e6d4d; color: #2e6d4d; font-size: 0.75rem; font-weight: 500; padding: 0 0 0.28rem; white-space: nowrap; }
   .hpl-journal-heading-row > a span { display: inline-block; font-size: 1rem; margin-left: 0.28rem; transition: transform 180ms ease; }
   .hpl-journal-heading-row > a:hover span { transform: translateX(0.28rem); }
-  .hpl-journal-plant-pills { display: flex; gap: 0.65rem; margin-top: 1rem; overflow-x: auto; padding: 0.15rem 0 0.35rem; scrollbar-width: none; }
-  .hpl-journal-plant-pills a { align-items: center; background: #fffef9; border: 1px solid #b6c0b5; border-radius: 2px 13px 2px 2px; display: inline-grid; font-size: 0.76rem; font-weight: 500; gap: 0.55rem; grid-template-columns: auto 1fr; min-height: 2.85rem; padding: 0.42rem 0.85rem 0.42rem 0.42rem; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; white-space: nowrap; }
+  .hpl-journal-plant-pills { display: grid; gap: clamp(0.45rem, 0.7vw, 0.75rem); grid-template-columns: repeat(9, minmax(0, 1fr)); margin-top: 1rem; padding: 0.15rem 0 0.35rem; }
+  .hpl-journal-plant-pills a { align-items: center; background: #fffef9; border: 1px solid #b6c0b5; border-radius: 2px 13px 2px 2px; display: grid; font-size: clamp(0.68rem, 0.58rem + 0.12vw, 0.78rem); font-weight: 500; gap: clamp(0.38rem, 0.55vw, 0.6rem); grid-template-columns: auto minmax(0, 1fr); min-height: clamp(2.85rem, 3.2vw, 3.25rem); min-width: 0; padding: 0.42rem clamp(0.48rem, 0.7vw, 0.85rem) 0.42rem 0.42rem; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; white-space: nowrap; width: 100%; }
   .hpl-journal-plant-pills a:hover { background: #e7eee4; border-color: #78917e; transform: translateY(-2px); }
   .hpl-journal-plant-pills a:focus-visible { outline: 2px solid #c86f49; outline-offset: 3px; }
   .hpl-journal-plant-pills .hpl-plant-index { align-items: center; background: #285642; color: #fffaf0; display: flex; font-size: 0.62rem; font-weight: 500; height: 1.85rem; justify-content: center; letter-spacing: 0.04em; width: 1.85rem; }
@@ -134,6 +134,11 @@
   .hpl-journal-side-card { grid-template-columns: 42% 1fr; }
 }
 
+@media (max-width: 1400px) {
+  .hpl-journal-plant-pills { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .hpl-journal-plant-pills a:nth-child(n + 7) { grid-column: span 2; }
+}
+
 @media (max-width: 800px) {
   .hpl-journal-header__inner { grid-template-columns: 1fr auto; min-height: 4rem; }
   .hpl-journal-nav { display: none; }
@@ -143,6 +148,8 @@
   .hpl-journal-masthead h1 { font-size: clamp(2.55rem, 9vw, 4.2rem); white-space: normal; }
   .hpl-journal-masthead__leaf { opacity: 0.28; width: 9rem; }
   .hpl-journal-masthead__words { display: none; }
+  .hpl-journal-plant-pills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hpl-journal-plant-pills a:nth-child(n + 7) { grid-column: auto; }
   .hpl-journal-feature-grid { grid-template-columns: 1fr; }
   .hpl-journal-side-stories { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; }
   .hpl-journal-side-card { display: block; }
@@ -165,6 +172,8 @@
   .hpl-journal-lead h2 { font-size: 2.6rem; }
   .hpl-journal-side-stories { grid-template-columns: 1fr; }
   .hpl-journal-side-card { display: grid; grid-template-columns: 42% 1fr; min-height: 11rem; }
+  .hpl-journal-plant-pills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hpl-journal-plant-pills a:last-child { grid-column: 1 / -1; }
   .hpl-journal-heading-row { align-items: flex-start; gap: 1rem; }
   .hpl-journal-heading-row h2 { font-size: 2rem; }
   .hpl-journal-article-card { display: block; }
