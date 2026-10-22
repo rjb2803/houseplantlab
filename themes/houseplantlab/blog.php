@@ -51,12 +51,15 @@ $plant_filters = [
 <div class="hpl-journal-shell">
     <header class="hpl-journal-header">
         <div class="hpl-journal-header__inner">
-            <a class="hpl-journal-logo" href="/" aria-label="HouseplantLab home"><span aria-hidden="true">❧</span> HouseplantLab</a>
+            <a class="hpl-journal-logo" href="/" aria-label="HouseplantLab home">
+                <span class="hpl-journal-logo__mark" aria-hidden="true">❧</span>
+                <span class="hpl-journal-logo__type">HouseplantLab<small>Plant care journal</small></span>
+            </a>
             <nav class="hpl-journal-nav" aria-label="Primary navigation">
-                <a href="/plants/">Plants</a><a href="/problems/">Problems</a><a href="/care-guides/">Care Guides</a><a href="/tools/plant-problem-checker/">Plant Checker</a><a class="is-current" href="/blog/">Journal</a>
+                <a href="/plants/"><span aria-hidden="true">01</span>Plants</a><a href="/problems/"><span aria-hidden="true">02</span>Problems</a><a href="/care-guides/"><span aria-hidden="true">03</span>Care Guides</a><a href="/tools/plant-problem-checker/"><span aria-hidden="true">04</span>Plant Checker</a><a class="is-current" href="/blog/"><span aria-hidden="true">05</span>Journal</a>
             </nav>
             <form class="hpl-journal-search" role="search" method="get" action="/">
-                <span aria-hidden="true">⌕</span><label class="screen-reader-text" for="hpl-journal-search">Find practical plant care</label><input id="hpl-journal-search" name="s" type="search" placeholder="Find practical plant care">
+                <label class="screen-reader-text" for="hpl-journal-search">Find practical plant care</label><input id="hpl-journal-search" name="s" type="search" placeholder="Search plant care"><button type="submit">Find <span aria-hidden="true">→</span></button>
             </form>
         </div>
     </header>
