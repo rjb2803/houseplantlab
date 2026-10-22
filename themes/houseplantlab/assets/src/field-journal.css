@@ -39,7 +39,7 @@
   .hpl-journal-brand::after { background: #d66f43; bottom: 0; content: ""; position: absolute; right: -0.42rem; top: 0; width: 0.42rem; z-index: 2; }
   .hpl-journal-brand__meta { align-items: center; display: flex; font-size: 0.61rem; font-weight: 700; gap: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
   .hpl-journal-brand__meta i { background: #d66f43; border-radius: 70% 20% 70% 20%; display: block; height: 0.58rem; transform: rotate(-20deg); width: 0.58rem; }
-  .hpl-journal-brand__wordmark { font-family: "HPL Newsreader", Georgia, serif; font-size: clamp(3rem, 4.3vw, 4.65rem); font-weight: 500; letter-spacing: -0.075em; line-height: 0.85; white-space: nowrap; }
+  .hpl-journal-brand__wordmark { color: #fff8ed; font-family: "HPL Newsreader", Georgia, serif; font-size: clamp(3rem, 4.3vw, 4.65rem); font-weight: 500; letter-spacing: -0.075em; line-height: 0.85; white-space: nowrap; }
   .hpl-journal-brand__wordmark em { color: #d7e4b9; font-weight: 400; }
   .hpl-journal-brand__strapline { color: #cadacf; font-size: 0.73rem; letter-spacing: 0.025em; }
   .hpl-journal-nav-panel { display: grid; grid-template-rows: 3.35rem minmax(0, 1fr) 3rem; min-width: 0; }
