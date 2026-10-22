@@ -89,9 +89,10 @@ $plant_filters = [
         </section>
 
         <section class="hpl-journal-plant-browser" aria-labelledby="browse-by-plant-title">
+            <p class="hpl-journal-index-label"><span aria-hidden="true"></span>Plant index</p>
             <div class="hpl-journal-heading-row"><div><h2 id="browse-by-plant-title">Browse by plant</h2><p>Explore care guides, tips and advice for your favourite houseplants.</p></div><a href="/plants/">View all plants <span aria-hidden="true">→</span></a></div>
             <nav class="hpl-journal-plant-pills" aria-label="Browse articles by plant">
-                <?php foreach ($plant_filters as [$label, $url]) : ?><a href="<?php echo esc_url($url); ?>"><span aria-hidden="true">●</span><?php echo esc_html($label); ?></a><?php endforeach; ?><a href="/plants/"><span aria-hidden="true">•••</span>More</a>
+                <?php foreach ($plant_filters as $plant_index => [$label, $url]) : ?><a href="<?php echo esc_url($url); ?>"><span class="hpl-plant-index" aria-hidden="true"><?php echo esc_html(str_pad((string) ($plant_index + 1), 2, '0', STR_PAD_LEFT)); ?></span><span><?php echo esc_html($label); ?></span></a><?php endforeach; ?><a href="/plants/"><span class="hpl-plant-index" aria-hidden="true">+</span><span>More</span></a>
             </nav>
         </section>
 
