@@ -1083,7 +1083,7 @@ a { text-underline-offset: 0.18em; }
 @media (max-width: 960px) {
   .hpl-site-header__desktop { display: none; }
   .hpl-site-header__mobile { background: #073e32; color: #fff8ed; display: grid; grid-template-columns: minmax(0, 1fr) 5.65rem; position: relative; }
-  .hpl-site-mobile-brand { display: flex; flex-direction: column; justify-content: space-between; min-height: 5.65rem; padding: 0.9rem 1.2rem 0.8rem; }
+  .hpl-site-mobile-brand { box-sizing: border-box; display: flex; flex-direction: column; height: 5.65rem; justify-content: space-between; padding: 0.9rem 1.2rem 0.8rem; }
   .hpl-site-mobile-brand small { color: #c4d5ca; font-size: 0.46rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
   .hpl-site-mobile-brand strong { display: block; font-family: var(--wp--preset--font-family--editorial); font-size: 1.75rem; font-weight: 500; letter-spacing: -0.055em; line-height: 1; }
   .hpl-site-mobile-menu { background: #d66f43; position: static; }
