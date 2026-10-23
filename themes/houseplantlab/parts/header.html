@@ -1,17 +1,39 @@
-<!-- wp:group {"align":"full","className":"hpl-header","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull hpl-header"><!-- wp:group {"align":"wide","className":"hpl-header__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-<div class="wp-block-group alignwide hpl-header__inner"><!-- wp:html --><a class="hpl-brand__logo" href="/" aria-label="HouseplantLab home"><img src="/wp-content/themes/houseplantlab/assets/images/houseplantlab-logo-v1.png" width="2172" height="724" alt="HouseplantLab" decoding="async" fetchpriority="high"></a><!-- /wp:html -->
-<!-- /wp:group -->
-<!-- wp:group {"className":"hpl-header__navigation","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} --><div class="wp-block-group hpl-header__navigation">
-<!-- wp:navigation {"overlayMenu":"mobile","className":"hpl-primary-nav","layout":{"type":"flex","justifyContent":"right"}} -->
-<!-- wp:navigation-link {"label":"Plants","url":"/plants/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"Problems","url":"/problems/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"Care Guides","url":"/care-guides/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"Tools","url":"/tools/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"The Field Journal","url":"/blog/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"About","url":"/about/","kind":"custom"} /-->
-<!-- /wp:navigation -->
-<!-- wp:html --><div class="hpl-header__actions"><a class="hpl-header__search" href="/?s=" aria-label="Search HouseplantLab"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></a><a class="hpl-header__cta" href="/tools/plant-problem-checker/">Plant checker <span aria-hidden="true">→</span></a></div><!-- /wp:html --></div><!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
+<!-- wp:html -->
+<div class="hpl-site-header">
+  <div class="hpl-site-header__desktop">
+    <a class="hpl-site-brand" href="/" aria-label="HouseplantLab home">
+      <span class="hpl-site-brand__meta"><i aria-hidden="true"></i>Independent plant care · UK</span>
+      <span class="hpl-site-brand__wordmark">Houseplant<em>Lab</em></span>
+      <span class="hpl-site-brand__strapline">Practical advice for plants that live indoors.</span>
+    </a>
+    <div class="hpl-site-nav-panel">
+      <div class="hpl-site-utility">
+        <div><span>HouseplantLab</span><a href="/blog/">Field notes</a></div>
+        <a class="hpl-site-utility__search" href="/?s=">Search the archive</a>
+      </div>
+      <nav class="hpl-site-nav" aria-label="Primary navigation">
+        <a class="hpl-site-nav__plants" href="/plants/"><small>Explore</small><strong>Plants</strong></a>
+        <a class="hpl-site-nav__problems" href="/problems/"><small>Diagnose</small><strong>Problems</strong></a>
+        <a class="hpl-site-nav__care" href="/care-guides/"><small>Learn</small><strong>Care guides</strong></a>
+        <a class="hpl-site-nav__journal" href="/blog/"><small>Read</small><strong>Journal</strong></a>
+        <a class="hpl-site-nav__checker" href="/tools/plant-problem-checker/"><small>Start here</small><strong>Plant checker <span aria-hidden="true">↗</span></strong></a>
+      </nav>
+      <div class="hpl-site-nav-note"><span><b>Made for real homes,</b> not perfect greenhouses.</span><span>100+ practical articles</span></div>
+    </div>
+  </div>
+  <div class="hpl-site-header__mobile">
+    <a class="hpl-site-mobile-brand" href="/" aria-label="HouseplantLab home"><small>Independent plant care · UK</small><strong>HouseplantLab</strong></a>
+    <details class="hpl-site-mobile-menu">
+      <summary aria-label="Open navigation"><span></span><span></span></summary>
+      <nav aria-label="Mobile navigation">
+        <a href="/plants/"><small>Explore</small>Plants</a>
+        <a href="/problems/"><small>Diagnose</small>Problems</a>
+        <a href="/care-guides/"><small>Learn</small>Care guides</a>
+        <a href="/blog/"><small>Read</small>Journal</a>
+        <a class="hpl-site-mobile-menu__checker" href="/tools/plant-problem-checker/"><small>Start here</small>Plant checker <span aria-hidden="true">↗</span></a>
+      </nav>
+    </details>
+    <div class="hpl-site-mobile-sub"><span>HouseplantLab / UK</span><a href="/?s=">Search <span aria-hidden="true">↗</span></a></div>
+  </div>
+</div>
+<!-- /wp:html -->
