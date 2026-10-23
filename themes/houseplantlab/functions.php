@@ -32,11 +32,13 @@ add_action('pre_get_posts', static function (WP_Query $query): void {
 });
 
 add_action('wp_enqueue_scripts', static function (): void {
+    $theme_css = get_stylesheet_directory() . '/style.css';
+
     wp_enqueue_style(
         'houseplantlab',
         get_stylesheet_uri(),
         [],
-        (string) wp_get_theme()->get('Version')
+        file_exists($theme_css) ? (string) filemtime($theme_css) : (string) wp_get_theme()->get('Version')
     );
 
     if (hpl_is_field_journal_request()) {
