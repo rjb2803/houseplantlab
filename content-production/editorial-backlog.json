@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "targetPublishedCount": 86,
+  "targetPublishedCount": 110,
   "items": [
     {
       "id": "why-are-my-peace-lily-leaf-tips-turning-brown",
@@ -201,6 +201,56 @@
       "id": "winter-houseplant-care-uk",
       "plant": "Houseplants",
       "assignment": "Prepare an evidence-led UK winter houseplant care guide. Cover reduced light, slower drying, heating, cold windows, draughts, feeding decisions and pest monitoring, while emphasising plant-by-plant assessment. Avoid universal winter watering calendars or blanket dormancy claims."
+    },
+    {
+      "id": "monstera-yellow-leaves",
+      "plant": "Monstera",
+      "assignment": "Prepare an evidence-led UK guide to yellow leaves on Monstera. Cover leaf age and position, moisture history, roots, light, temperature, nutrition and pests, with a practical inspection order that distinguishes one ageing leaf from a continuing pattern. Avoid diagnosing overwatering from colour alone or promising damaged leaves will recover."
+    },
+    {
+      "id": "why-is-my-monstera-growing-sideways",
+      "plant": "Monstera",
+      "assignment": "Prepare an evidence-led UK guide explaining sideways, leaning or uneven Monstera growth. Cover light direction, the plant's climbing habit, support, rotation, container stability, aerial roots and the limits of reshaping established stems. Avoid abrupt relocation into intense sun, forced bending or guarantees of symmetrical growth."
+    },
+    {
+      "id": "why-is-my-pothos-not-growing",
+      "plant": "Pothos",
+      "assignment": "Prepare an evidence-led UK guide explaining slow or absent visible growth in Pothos. Cover seasonal growth, light, temperature, moisture and roots, recent repotting, pruning and realistic recovery expectations. Distinguish stable slow growth from decline and avoid unnecessary feeding, automatic repotting or rigid growth-rate claims."
+    },
+    {
+      "id": "peace-lily-brown-spots",
+      "plant": "Peace Lily",
+      "assignment": "Prepare an evidence-led UK guide to brown spots on Peace Lily leaves. Cover spot position and development, physical damage, moisture and roots, direct sun or heat, cold, pests and possible disease indicators. Explain when monitoring is appropriate and when isolation or removal is reasonable, without diagnosing from photographs or recommending routine fungicide use."
+    },
+    {
+      "id": "why-are-my-peace-lily-leaves-curling",
+      "plant": "Peace Lily",
+      "assignment": "Prepare an evidence-led UK guide explaining curled Peace Lily leaves. Cover moisture consistency, roots, light and heat, temperature changes, humidity, pests and emerging leaves, with a symptom-led inspection sequence. Avoid assuming thirst from curl alone, prescribing fixed watering intervals or promising existing leaves will flatten."
+    },
+    {
+      "id": "why-is-my-calathea-not-growing",
+      "plant": "Calathea",
+      "assignment": "Prepare an evidence-led UK guide explaining slow or absent visible growth in Calathea. Cover season, light, temperature, moisture and roots, humidity, water quality where relevant, recent repotting and pests. Help readers distinguish slow stable growth from decline, avoiding fixed growth targets, unnecessary feeding and automatic repotting."
+    },
+    {
+      "id": "snake-plant-brown-tips",
+      "plant": "Snake Plant",
+      "assignment": "Prepare an evidence-led UK guide to brown Snake Plant leaf tips. Cover physical damage, moisture history, roots and rhizomes, salts or feeding, heat, cold and natural ageing. Distinguish dry tip damage from spreading soft tissue or discrete leaf spots, and avoid diagnosis from tips alone, fixed flushing routines or promises of reversal."
+    },
+    {
+      "id": "why-is-my-rubber-plant-not-growing",
+      "plant": "Rubber Plant",
+      "assignment": "Prepare an evidence-led UK guide explaining slow or absent visible growth in Rubber Plants. Cover seasonal growth, light, temperature, moisture and roots, recent moves or repotting, pests and realistic expectations. Distinguish stable slow growth from active decline and avoid unnecessary feeding, automatic pot changes or rigid growth-rate claims."
+    },
+    {
+      "id": "fiddle-leaf-fig-leaves-curling",
+      "plant": "Fiddle Leaf Fig",
+      "assignment": "Prepare an evidence-led UK guide to curling Fiddle Leaf Fig leaves. Cover leaf age, moisture and roots, light and heat, temperature changes, humidity, pests and mechanical damage, with a practical inspection sequence. Avoid assigning one cause from curl direction alone or promising established leaves will return to their previous shape."
+    },
+    {
+      "id": "why-are-my-phalaenopsis-orchid-roots-growing-out-of-the-pot",
+      "plant": "Phalaenopsis orchid",
+      "assignment": "Prepare an evidence-led UK guide explaining Phalaenopsis orchid roots growing outside the pot. Cover normal aerial roots, healthy and unhealthy root appearance, ventilation, moisture, potting medium, container condition and when repotting is or is not warranted. Avoid telling readers to cut healthy aerial roots, force them into the pot or repot solely because roots are visible."
     }
   ]
 }
