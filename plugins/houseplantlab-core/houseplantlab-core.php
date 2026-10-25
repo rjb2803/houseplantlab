@@ -17,6 +17,51 @@ if (! defined('ABSPATH')) {
 }
 
 const HOUSEPLANTLAB_CORE_VERSION = '0.7.3';
+const HOUSEPLANTLAB_ADSENSE_PUBLISHER_ID = 'pub-0278710559651957';
+
+/**
+ * Publish the account marker used by AdSense to verify site ownership.
+ *
+ * This does not load the AdSense JavaScript or enable advertising. Ad loading
+ * remains a separate, consent-gated launch step after site approval.
+ */
+function houseplantlab_adsense_account_meta(): void
+{
+    printf(
+        '<meta name="google-adsense-account" content="ca-%s">' . "\n",
+        esc_attr(HOUSEPLANTLAB_ADSENSE_PUBLISHER_ID)
+    );
+}
+add_action('wp_head', 'houseplantlab_adsense_account_meta', 1);
+
+/**
+ * Serve the authorised Google seller record from the WordPress origin.
+ */
+function houseplantlab_serve_ads_txt(): void
+{
+    if (is_admin() || wp_doing_ajax() || ! isset($_SERVER['REQUEST_URI'])) {
+        return;
+    }
+
+    $request_path = wp_parse_url(wp_unslash((string) $_SERVER['REQUEST_URI']), PHP_URL_PATH);
+    $home_path = wp_parse_url(home_url('/'), PHP_URL_PATH);
+
+    if (! is_string($request_path)) {
+        return;
+    }
+
+    $expected_path = rtrim(is_string($home_path) ? $home_path : '', '/') . '/ads.txt';
+    if ($request_path !== $expected_path) {
+        return;
+    }
+
+    status_header(200);
+    nocache_headers();
+    header('Content-Type: text/plain; charset=utf-8');
+    echo 'google.com, ' . HOUSEPLANTLAB_ADSENSE_PUBLISHER_ID . ', DIRECT, f08c47fec0942fa0' . "\n";
+    exit;
+}
+add_action('template_redirect', 'houseplantlab_serve_ads_txt', -120);
 
 /**
  * Keep public traffic on the configured HTTPS origin.
