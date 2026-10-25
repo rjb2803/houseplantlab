@@ -94,5 +94,6 @@ add_filter('pre_get_document_title', static function (string $title): string {
 
 add_action('wp_head', static function (): void {
     echo '<meta name="google-site-verification" content="0q2VJe6VnaDhuZytklPbkyVyVNX7Q0jw0_kazQuBWG8">' . "\n";
+    echo '<meta name="p:domain_verify" content="4532f237a1e34d9084d12a24a8a5c067">' . "\n";
 }, 1);
 
