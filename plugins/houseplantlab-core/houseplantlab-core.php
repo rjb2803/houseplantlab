@@ -42,6 +42,53 @@ function houseplantlab_enforce_https(): void
 add_action('template_redirect', 'houseplantlab_enforce_https', -100);
 
 /**
+ * Publish the authorised seller declaration at the root ads.txt URL.
+ *
+ * The site does not have a writable document-root file in this repository, so
+ * WordPress serves the standard declaration before its normal 404 handling.
+ */
+function houseplantlab_serve_ads_txt(): void
+{
+    if (is_admin() || wp_doing_ajax() || ! isset($_SERVER['REQUEST_URI'])) {
+        return;
+    }
+
+    $request_path = wp_parse_url(wp_unslash((string) $_SERVER['REQUEST_URI']), PHP_URL_PATH);
+    $home_path = wp_parse_url(home_url('/'), PHP_URL_PATH);
+
+    if (! is_string($request_path) || ! is_string($home_path)) {
+        return;
+    }
+
+    $relative_path = trim($request_path, '/');
+    $normalised_home_path = trim($home_path, '/');
+    if ($normalised_home_path !== '' && str_starts_with($relative_path, $normalised_home_path . '/')) {
+        $relative_path = substr($relative_path, strlen($normalised_home_path) + 1);
+    }
+
+    if ($relative_path !== 'ads.txt') {
+        return;
+    }
+
+    status_header(200);
+    header('Content-Type: text/plain; charset=utf-8');
+    header('Cache-Control: public, max-age=86400');
+    echo "google.com, pub-0278710559651957, DIRECT, f08c47fec0942fa0\n";
+    exit;
+}
+add_action('template_redirect', 'houseplantlab_serve_ads_txt', -95);
+
+/**
+ * Keep the AdSense ownership and review code available throughout the site.
+ * The published Google CMP controls consent for eligible UK/EEA/Swiss users.
+ */
+function houseplantlab_output_adsense_code(): void
+{
+    echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0278710559651957" crossorigin="anonymous"></script>' . "\n";
+}
+add_action('wp_head', 'houseplantlab_output_adsense_code', 1);
+
+/**
  * Identify the numeric query-string pattern left by the October 2026 spam
  * injection. Keep this deliberately narrow so ordinary WordPress, analytics
  * and campaign query parameters continue to work normally.
