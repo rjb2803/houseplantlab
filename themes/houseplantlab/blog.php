@@ -52,9 +52,7 @@ $plant_filters = [
     <header class="hpl-journal-header">
         <div class="hpl-journal-header__desktop">
             <a class="hpl-journal-brand" href="/" aria-label="HouseplantLab home">
-                <span class="hpl-journal-brand__meta"><i aria-hidden="true"></i>Independent plant care · UK</span>
-                <span class="hpl-journal-brand__wordmark">Houseplant<em>Lab</em></span>
-                <span class="hpl-journal-brand__strapline">Practical advice for plants that live indoors.</span>
+                <img class="hpl-journal-brand__logo" src="<?php echo esc_url(get_theme_file_uri('assets/images/houseplantlab-logo-primary-v2.png')); ?>" alt="HouseplantLab">
             </a>
             <div class="hpl-journal-nav-panel">
                 <div class="hpl-journal-utility">
@@ -72,7 +70,7 @@ $plant_filters = [
             </div>
         </div>
         <div class="hpl-journal-header__mobile">
-            <a class="hpl-journal-mobile-brand" href="/" aria-label="HouseplantLab home"><small>Independent plant care · UK</small><strong>HouseplantLab</strong></a>
+            <a class="hpl-journal-mobile-brand" href="/" aria-label="HouseplantLab home"><img class="hpl-journal-mobile-brand__logo" src="<?php echo esc_url(get_theme_file_uri('assets/images/houseplantlab-logo-primary-v2.png')); ?>" alt="HouseplantLab"></a>
             <details class="hpl-journal-mobile-menu">
                 <summary aria-label="Open navigation"><span></span><span></span></summary>
                 <nav aria-label="Mobile navigation">

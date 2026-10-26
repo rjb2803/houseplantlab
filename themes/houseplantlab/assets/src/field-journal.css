@@ -35,13 +35,9 @@
 
   .hpl-journal-header { background: #f8f4e9; border-bottom: 1px solid rgb(18 60 47 / 24%); }
   .hpl-journal-header__desktop { display: grid; grid-template-columns: minmax(25rem, 34%) minmax(0, 1fr); min-height: 11.5rem; }
-  .hpl-journal-brand { background: #073e32; color: #fff8ed; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; padding: 2rem clamp(2rem, 3vw, 2.7rem) 1.65rem; position: relative; }
+  .hpl-journal-brand { align-items: center; background: #eef1e8; color: #073e32; display: flex; justify-content: center; min-width: 0; padding: 1.35rem clamp(1.5rem, 2.5vw, 2.35rem); position: relative; }
   .hpl-journal-brand::after { background: #d66f43; bottom: 0; content: ""; position: absolute; right: -0.42rem; top: 0; width: 0.42rem; z-index: 2; }
-  .hpl-journal-brand__meta { align-items: center; color: #c4d5ca; display: flex; font-size: 0.61rem; font-weight: 700; gap: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
-  .hpl-journal-brand__meta i { background: #d66f43; border-radius: 70% 20% 70% 20%; display: block; height: 0.58rem; transform: rotate(-20deg); width: 0.58rem; }
-  .hpl-journal-brand__wordmark { color: #fff8ed; font-family: "HPL Newsreader", Georgia, serif; font-size: clamp(3rem, 4.3vw, 4.65rem); font-weight: 500; letter-spacing: -0.075em; line-height: 0.85; white-space: nowrap; }
-  .hpl-journal-brand__wordmark em { color: #d7e4b9; font-weight: 400; }
-  .hpl-journal-brand__strapline { color: #cadacf; font-size: 0.73rem; letter-spacing: 0.025em; }
+  .hpl-journal-brand__logo { display: block; height: auto; max-height: 8.6rem; max-width: 100%; object-fit: contain; width: 100%; }
   .hpl-journal-nav-panel { display: grid; grid-template-rows: 3.35rem minmax(0, 1fr) 3rem; min-width: 0; }
   .hpl-journal-utility { align-items: center; border-bottom: 1px solid rgb(18 60 47 / 19%); display: flex; font-size: 0.6rem; font-weight: 700; justify-content: space-between; letter-spacing: 0.16em; padding: 0 clamp(1.5rem, 2.7vw, 2.4rem); text-transform: uppercase; }
   .hpl-journal-utility > div { color: #63776d; display: flex; gap: 1.7rem; }
@@ -145,8 +141,7 @@
 
 @media (max-width: 1100px) {
   .hpl-journal-header__desktop { grid-template-columns: minmax(22rem, 33%) minmax(0, 1fr); }
-  .hpl-journal-brand { padding-inline: 1.7rem; }
-  .hpl-journal-brand__wordmark { font-size: clamp(2.7rem, 4.4vw, 3.5rem); }
+  .hpl-journal-brand { padding-inline: 1.35rem; }
   .hpl-journal-nav a { padding-inline: 0.8rem; }
   .hpl-journal-nav-note > span:last-child { display: none; }
   .hpl-journal-masthead__copy { padding-inline: 7rem; }
@@ -157,10 +152,9 @@
 
 @media (max-width: 960px) {
   .hpl-journal-header__desktop { display: none; }
-  .hpl-journal-header__mobile { background: #073e32; color: #fff8ed; display: grid; grid-template-columns: minmax(0, 1fr) 5.15rem; position: relative; }
-  .hpl-journal-mobile-brand { display: flex; flex-direction: column; justify-content: space-between; min-height: 5.15rem; padding: 0.9rem 1.2rem 0.75rem; }
-  .hpl-journal-mobile-brand small { color: #c4d5ca; font-size: 0.46rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-  .hpl-journal-mobile-brand strong { font-family: "HPL Newsreader", Georgia, serif; font-size: 1.85rem; font-weight: 500; letter-spacing: -0.055em; line-height: 0.9; }
+  .hpl-journal-header__mobile { background: #eef1e8; color: #073e32; display: grid; grid-template-columns: minmax(0, 1fr) 5.15rem; position: relative; }
+  .hpl-journal-mobile-brand { align-items: center; display: flex; min-height: 5.15rem; padding: 0.5rem 1.2rem; }
+  .hpl-journal-mobile-brand__logo { display: block; height: 4.15rem; max-width: min(18rem, 100%); object-fit: contain; object-position: left center; width: auto; }
   .hpl-journal-mobile-menu { background: #d66f43; position: static; }
   .hpl-journal-mobile-menu summary { align-content: center; cursor: pointer; display: grid; gap: 0.4rem; height: 5.15rem; justify-content: center; list-style: none; }
   .hpl-journal-mobile-menu summary::-webkit-details-marker { display: none; }
