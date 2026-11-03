@@ -117,6 +117,10 @@
   .hpl-journal-article-card h3 { font-size: clamp(1.25rem, 1.75vw, 1.7rem); margin: 0 0 0.55rem; }
   .hpl-journal-article-card p { color: #53655c; font-family: "HPL Newsreader", Georgia, serif; font-size: 0.8rem; line-height: 1.45; margin: 0; }
   .hpl-journal-article-card .hpl-journal-arrow { bottom: 0.9rem; height: 2rem; right: 0.9rem; width: 2rem; }
+  .hpl-journal-pagination { align-items: center; display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; padding-top: 1.5rem; }
+  .hpl-journal-pagination .page-numbers { align-items: center; background: #fffdf7; border: 1px solid #b6c0b5; color: #285642; display: inline-flex; font-size: 0.72rem; font-weight: 600; justify-content: center; min-height: 2.35rem; min-width: 2.35rem; padding: 0.45rem 0.7rem; }
+  .hpl-journal-pagination .page-numbers.current { background: #285642; border-color: #285642; color: #fffaf0; }
+  .hpl-journal-pagination .page-numbers:hover { border-color: #285642; }
 
   .hpl-journal-ad { background: #ede6d7; display: grid; grid-template-columns: 1.05fr 1.8fr 0.45fr; min-height: 13rem; overflow: hidden; position: relative; }
   .hpl-journal-ad__label { font-size: 0.55rem; left: 1.5rem; letter-spacing: 0.18em; position: absolute; text-transform: uppercase; top: 1.25rem; }

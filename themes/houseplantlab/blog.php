@@ -21,10 +21,12 @@ $post_image_alt = static function (int $post_id): string {
     $alt = $thumbnail_id ? get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true) : '';
     return is_string($alt) && trim($alt) !== '' ? trim($alt) : get_the_title($post_id);
 };
+$journal_page = isset($_GET['journal_page']) ? max(1, absint(wp_unslash($_GET['journal_page']))) : 1;
 $journal_posts = new WP_Query([
     'post_type' => 'post',
     'post_status' => 'publish',
-    'posts_per_page' => 5,
+    'posts_per_page' => 14,
+    'paged' => $journal_page,
     'ignore_sticky_posts' => true,
 ]);
 $posts = $journal_posts->posts;
@@ -120,16 +122,30 @@ $plant_filters = [
             </nav>
         </section>
 
-        <section class="hpl-journal-latest" aria-labelledby="latest-articles-title">
-            <div class="hpl-journal-heading-row"><h2 id="latest-articles-title">Latest articles</h2><a href="/?s=plant">View all articles <span aria-hidden="true">→</span></a></div>
+        <section id="article-archive" class="hpl-journal-latest" aria-labelledby="latest-articles-title">
+            <div class="hpl-journal-heading-row"><div><h2 id="latest-articles-title"><?php echo $journal_page === 1 ? 'Latest articles' : 'Article archive'; ?></h2><p>Browse practical HouseplantLab guides, with the newest published first.</p></div><a href="/?s=">Search all articles <span aria-hidden="true">→</span></a></div>
             <div class="hpl-journal-latest__grid">
-                <?php foreach (array_slice($posts, 2, 3) as $post) : setup_postdata($post); ?>
+                <?php foreach (array_slice($posts, 2) as $post) : setup_postdata($post); ?>
                     <article class="hpl-journal-article-card">
                         <a class="hpl-journal-article-card__image" href="<?php the_permalink(); ?>"><img src="<?php echo esc_url($post_image(get_the_ID(), 'large')); ?>" alt="<?php echo esc_attr($post_image_alt(get_the_ID())); ?>"></a>
                         <div class="hpl-journal-article-card__copy"><h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3><p><?php echo esc_html(wp_trim_words(get_the_excerpt(), 18)); ?></p><a class="hpl-journal-arrow" href="<?php the_permalink(); ?>" aria-label="Read <?php echo esc_attr(get_the_title()); ?>">→</a></div>
                     </article>
                 <?php endforeach; wp_reset_postdata(); ?>
             </div>
+            <?php if ($journal_posts->max_num_pages > 1) : ?>
+                <nav class="hpl-journal-pagination" aria-label="Article archive pages">
+                    <?php
+                    echo wp_kses_post(paginate_links([
+                        'base' => add_query_arg('journal_page', '%#%', home_url('/blog/')) . '#article-archive',
+                        'format' => '',
+                        'current' => $journal_page,
+                        'total' => (int) $journal_posts->max_num_pages,
+                        'prev_text' => '← Newer articles',
+                        'next_text' => 'Older articles →',
+                    ]));
+                    ?>
+                </nav>
+            <?php endif; ?>
         </section>
 
     </main>
