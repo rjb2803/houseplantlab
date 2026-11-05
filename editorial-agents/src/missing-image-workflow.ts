@@ -201,8 +201,8 @@ export async function repairNextMissingFeaturedImage(
     "Use a premium editorial photography aesthetic, natural proportions, realistic leaves and a clean 3:2 composition with useful breathing space.",
     "Do not include words, labels, logos, watermarks, borders, collages, people, hands, impossible leaves, duplicate pots or surreal elements.",
   ].join(" ");
-  const altText = `Editorial houseplant illustration for ${article.title}`.slice(0, 180);
-  const caption = `HouseplantLab editorial illustration for “${article.title}”.`;
+  const altText = `Houseplant image for ${article.title}`.slice(0, 180);
+  const caption = `HouseplantLab image for “${article.title}”.`;
   const image = dependencies.generateImage
     ? await dependencies.generateImage(prompt, model)
     : await defaultGenerateImage(prompt, model, env);

@@ -807,7 +807,7 @@ function houseplantlab_render_publication_profile(): string
 
         <?php if ($faqs !== '') : ?><section class="hpl-pub-section" id="faq"><div class="hpl-pub-faq"><div><span class="hpl-pub-kicker">Straight answers</span><h2><?php echo esc_html($title); ?> questions, answered</h2><p>Practical answers for the situations UK growers encounter most often.</p></div><div class="hpl-pub-faq__list"><?php echo $faqs; ?></div></div></section><?php endif; ?>
 
-        <section class="hpl-pub-evidence"><h2>How we know</h2><div><p>This profile is reviewed against reputable horticultural sources. Product claims and editorial illustrations are labelled according to their provenance.</p><a href="<?php echo esc_url(home_url('/about/')); ?>">Read our editorial and testing policy <span aria-hidden="true">→</span></a></div></section>
+        <section class="hpl-pub-evidence"><h2>How we know</h2><div><p>This profile is reviewed against reputable horticultural sources. Product claims and visual material are reviewed for accuracy and provenance.</p><a href="<?php echo esc_url(home_url('/about/')); ?>">Read our editorial and testing policy <span aria-hidden="true">→</span></a></div></section>
     </main>
     <?php
     $profile = (string) ob_get_clean();

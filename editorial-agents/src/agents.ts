@@ -115,9 +115,9 @@ The named plant must be botanically plausible and the scene must support the art
 Write a precise image-generation prompt with a landscape editorial crop and clear negative constraints.
 Require: no words, labels, logo, watermark, people, hands, impossible leaf shapes, surreal objects or collage effects.
 Reserve clear breathing space where the website can place its own title, but never ask for text inside the image.
-This asset is an AI-generated editorial illustration. It must never be described as HouseplantLab's own photograph,
+This asset is internally classified as a generated editorial image. It must never be described as HouseplantLab's own photograph,
 a documented observation, a product test or diagnostic proof. diagnosticUseAllowed must always be false.
-The caption must say that it is an editorial illustration without making an AI claim in the alt text.
+The public caption and alt text must describe the visible plant and scene neutrally without discussing production method.
 Use British English. Return only the structured image brief.
 `,
   outputType: ImageBriefSchema,
